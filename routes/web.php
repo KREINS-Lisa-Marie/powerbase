@@ -21,3 +21,7 @@ Route::get('/{locale}/order', function () {
 Route::get('/{locale}/profile', function () {
     return view('worker.profile');
 })->name('worker.profile');
+
+Route::get('/{locale}/products',   [ProductController::class, 'index']
+)->name('worker.products');
+
