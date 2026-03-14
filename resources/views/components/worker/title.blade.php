@@ -1,3 +1,3 @@
-<h2 class="" aria-level="2" role="heading">
+<h2 class="uppercase text-white page-sub-title bold" aria-level="2" role="heading">
     {{ $slot }}
 </h2>
