@@ -28,3 +28,15 @@ Route::get('/{locale}/products',   [ProductController::class, 'index']
 Route::get('/{locale}/products/{product}', function () {
     return view('worker.product');
 })->name('worker.product');
+
+Route::get('/{locale}/login', function () {
+    return view('auth.login');
+})->name('auth.login');
+
+Route::get('/{locale}/forgot-password', function () {
+    return view('auth.forgot-password');
+})->name('auth.forgot-password');
+
+Route::get('/{locale}/reset-password', function () {
+    return view('auth.reset-password');
+})->name('auth.reset-password');
