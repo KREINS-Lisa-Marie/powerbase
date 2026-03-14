@@ -3,14 +3,14 @@
         Powerbase
     </h1>
 
-    <section class="">
-            <div class="">
+    <section class="login-section border-radius-16 background-light-grey ">
+            <div class="d-flex flex-cr">
                 <div>
-                    <h2 class="" aria-level="2" role="heading">
+                    <h2 class="bold text-dark-red uppercase" aria-level="2" role="heading">
                         Réinitialiser mon mot de passe
                     </h2>
                 </div>
-                <span class="">
+                <span class="d-flex flex-gap-24 flex-a-i-center">
                         LOGO
              </span>
             </div>
