@@ -17,3 +17,7 @@ Route::get('/{locale}/contact', function () {
 Route::get('/{locale}/order', function () {
     return view('worker.order');
 })->name('worker.order');
+
+Route::get('/{locale}/profile', function () {
+    return view('worker.profile');
+})->name('worker.profile');
