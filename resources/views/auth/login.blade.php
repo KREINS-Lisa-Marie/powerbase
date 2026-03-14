@@ -1,7 +1,7 @@
 <x-worker.app>
 
     <h1 class="sro" role="heading" aria-level="1" data-element-id="headingsMap-0-0">
-        Powerstaff
+        Powerbase
     </h1>
 
     <section class="">
