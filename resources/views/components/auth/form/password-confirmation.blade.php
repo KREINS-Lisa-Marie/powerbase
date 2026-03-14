@@ -1,5 +1,5 @@
-<div class="">
-    <label for="password_confirmation" class="">
+<div class="d-flex flex-col">
+    <label for="password_confirmation" class="auth-label medium">
         Retapez votre mot de passe
         {{--{{__('register.confirmation_password')}}--}}
     </label>
@@ -8,5 +8,5 @@
         {{$message}}
     </p>
     @enderror
-    <input type="password" id="password_confirmation" name="password_confirmation" class="" value="" aria-required="true" {{--wire:model.blur="{{$wire}}"--}}>
+    <input type="password" id="password_confirmation" name="password_confirmation" class="border-radius-16 background-white border-input auth-input" value="" aria-required="true" {{--wire:model.blur="{{$wire}}"--}}>
 </div>
