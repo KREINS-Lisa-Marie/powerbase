@@ -36,3 +36,7 @@ Route::get('/{locale}/login', function () {
 Route::get('/{locale}/forgot-password', function () {
     return view('auth.forgot-password');
 })->name('auth.forgot-password');
+
+Route::get('/{locale}/reset-password', function () {
+    return view('auth.reset-password');
+})->name('auth.reset-password');
