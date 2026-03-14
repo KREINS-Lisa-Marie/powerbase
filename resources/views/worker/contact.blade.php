@@ -1,6 +1,6 @@
 <x-worker.app>
-<section class="">
-    <h2 class="" aria-level="2" role="heading">
+<section class="text-white background-dark margin-first-content-top">
+    <h2 class="uppercase text-white fs-page-title bold page-title mb-64" aria-level="2" role="heading">
         Contact
     </h2>
     <dl>

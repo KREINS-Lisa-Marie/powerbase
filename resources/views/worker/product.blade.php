@@ -1,12 +1,12 @@
 <x-worker.app>
-    <section class="">
-        <h2 class="" aria-level="2" role="heading">
+    <section class="text-white background-dark margin-first-content-top">
+        <h2 class="uppercase text-white fs-page-title bold page-title mb-64" aria-level="2" role="heading">
             SPAX visses 4,5x70mm – 500 pièces
         </h2>
-        <div class="">
-            <div class="">
+        <div class="product-details">
+            <div class="img-button">
                 <img src="{!! asset('assets/img/spax.jpg') !!}" alt="" width="1200" height="1200"
-                       class="">
+                     class="border-radius-16 product-detail-img mb-64">
 
                 <!-- BUTTON TO ADD TO CART -->
 
@@ -15,10 +15,10 @@
 
                         <div class="">
 
-                            <div class="">
+                            <div class="increment_fields d-flex j-c-center p-t-b-16 border-b-dark border-r-top background-white">
 
-                                <button class="">
-                                <span class="">
+                                <button class="incr_control incr_control_minus ">
+                                <span class="btn-icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
                                         <path fill="rgb(0, 0, 0)"
                                               d="M96 320C96 302.3 110.3 288 128 288L512 288C529.7 288 544 302.3 544 320C544 337.7 529.7 352 512 352L128 352C110.3 352 96 337.7 96 320z"/>
@@ -26,12 +26,12 @@
                                 </span>
                                 </button>
 
-                                <input class="" id="paintball-gants" type="number" max=""
+                                <input class="bold incr-input t-a-center" id="paintball-gants" type="number" max=""
                                        name="supplement" value="0">
 
 
-                                <button class="">
-                                <span class="">
+                                <button class="incr_control incr_control_plus ">
+                                <span class="btn-icon">
 
                                     <svg fill="000" xmlns="http://www.w3.org/2000/svg" width="24" height="24"  viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
                                         <path
@@ -47,7 +47,7 @@
 
                     </fieldset>
                     <button type="submit"
-                            class="">
+                            class="order-form-btn background-light-red text-white border-r-bottom p-t-b-16 uppercase bold">
                         Mettre dans le panier
                     </button>
                 </form>
@@ -76,5 +76,5 @@
                 </x-worker.definition>
             </dl>
         </div>
-</section>
+    </section>
 </x-worker.app>
