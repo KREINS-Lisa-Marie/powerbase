@@ -33,3 +33,6 @@ Route::get('/{locale}/login', function () {
     return view('auth.login');
 })->name('auth.login');
 
+Route::get('/{locale}/forgot-password', function () {
+    return view('auth.forgot-password');
+})->name('auth.forgot-password');
