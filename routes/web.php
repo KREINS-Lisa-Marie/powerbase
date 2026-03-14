@@ -28,3 +28,8 @@ Route::get('/{locale}/products',   [ProductController::class, 'index']
 Route::get('/{locale}/products/{product}', function () {
     return view('worker.product');
 })->name('worker.product');
+
+Route::get('/{locale}/login', function () {
+    return view('auth.login');
+})->name('auth.login');
+
