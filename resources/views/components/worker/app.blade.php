@@ -14,12 +14,12 @@
     <title>{{ $title ?? 'Page Title' }}</title>
     @vite(['resources/css/app.css'])
 </head>
-<body class="">
+<body class="body-style background-worker">
 @if( !str_starts_with($currentRoute, 'auth.'))
     <x-navigation></x-navigation>
 @endif
 
-<main class="" id="content">
+<main class="body-content m-l-r-main" id="content">
     {{ $slot }}
 </main>
 </body>

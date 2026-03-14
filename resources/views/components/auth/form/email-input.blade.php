@@ -1,5 +1,5 @@
-<div class="">
-    <label for="email" class="">
+<div class="d-flex flex-col">
+    <label for="email" class="auth-label medium">
         Adresse email{{--{{__('login.email')}}--}}
     </label>
     @error('email')
@@ -7,6 +7,6 @@
         {{$message}}
     </p>
     @enderror
-    <input type="email" id="email" name="email" class=""
+    <input type="email" id="email" name="email" class="border-radius-16 background-white border-input auth-input"
            value="{{old('email')}}">
 </div>

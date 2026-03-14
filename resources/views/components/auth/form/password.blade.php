@@ -1,5 +1,5 @@
-<div class="">
-    <label for="password" class="">
+<div class="d-flex flex-col">
+    <label for="password" class="auth-label medium">
         Mot de passe{{--{{__('login.email')}}--}}
     </label>
     @error('password')
@@ -7,6 +7,6 @@
         {{$message}}
     </p>
     @enderror
-    <input type="password" id="password" name="password" class=""
+    <input type="password" id="password" name="password" class="border-radius-16 background-white border-input auth-input"
            value="{{old('password')}}" aria-required="true">
 </div>

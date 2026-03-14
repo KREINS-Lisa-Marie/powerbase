@@ -6,9 +6,7 @@
      <section class="border-radius-16 background-light-grey login-section">
             <div class="d-flex flex-cr">
                 <div>
-                    <h2 class="bold text-dark-red uppercase" aria-level="2" role="heading">
-                        Mot de passe oublié
-                    </h2>
+                    <h2 class="bold text-dark-red uppercase" aria-level="2" role="heading">Mot de passe oublié</h2>
                     <p class="italic reset-info mb-32">
                         Pour réinitialiser votre mot de passe, veuillez entrer votre adresse email.
                     </p>
