@@ -1,7 +1,6 @@
 <div class="d-flex flex-col">
     <label for="password_confirmation" class="auth-label medium">
-        Retapez votre mot de passe
-        {{--{{__('register.confirmation_password')}}--}}
+        {{__('auth/reset_password.rewrite_password')}}
     </label>
     @error('verification_password')
     <p class="error">
