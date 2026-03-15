@@ -7,8 +7,7 @@ use Illuminate\Support\Facades\Route;
     return view('welcome');
 });*/
 
-Route::get('/',  [HomepageController::class, 'index'])->name('worker.homepage');
-
+Route::get('/{locale}',  [HomepageController::class, 'index'])->name('worker.homepage');
 
 Route::get('/{locale}/contact', function () {
     return view('worker.contact');
