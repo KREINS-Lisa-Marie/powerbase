@@ -1,7 +1,7 @@
 <x-worker.app>
     <section>
         <x-worker.title>
-            Produits
+            {{__('worker/products.products')}}
         </x-worker.title>
 
         <label for="search"></label>

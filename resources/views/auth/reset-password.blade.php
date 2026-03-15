@@ -1,13 +1,13 @@
 <x-worker.app>
     <h1 class="sro" role="heading" aria-level="1" data-element-id="headingsMap-0-0">
-        Powerbase
+        {{__('auth/reset_password.powerbase')}}
     </h1>
 
     <section class="login-section border-radius-16 background-light-grey ">
             <div class="d-flex flex-cr">
                 <div>
                     <h2 class="bold text-dark-red uppercase" aria-level="2" role="heading">
-                        Réinitialiser mon mot de passe
+                        {{__('auth/reset_password.reset_password')}}
                     </h2>
                 </div>
                 <span class="d-flex flex-gap-24 flex-a-i-center">
@@ -23,8 +23,7 @@
                 <x-auth.form.password-confirmation></x-auth.form.password-confirmation>
 
                 <x-auth.form.submit-button>
-                    Réinitialiser mon mot de passe
-                    {{--{{__('auth.forgotten_password')}}--}}
+                    {{__('auth/reset_password.reset_password')}}
                 </x-auth.form.submit-button>
             </form>
 

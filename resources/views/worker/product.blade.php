@@ -48,28 +48,28 @@
                     </fieldset>
                     <button type="submit"
                             class="order-form-btn background-light-red text-white border-r-bottom p-t-b-16 uppercase bold">
-                        Mettre dans le panier
+                        {{__('worker/product.add_to_cart')}}
                     </button>
                 </form>
             </div>
 
             <dl>
                 <x-worker.definitionterm>
-                    Description
+                    {{__('worker/product.description')}}
                 </x-worker.definitionterm>
                 <x-worker.definition>
                     description description descriptiondescription v vvdescriptiondescriptionv descriptionv
                 </x-worker.definition>
 
                 <x-worker.definitionterm>
-                    Notes
+                    {{__('worker/product.notes')}}
                 </x-worker.definitionterm>
                 <x-worker.definition>
                     description description descriptiondescription v vvdescriptiondescriptionv descriptionv
                 </x-worker.definition>
 
                 <x-worker.definitionterm>
-                    Stock restant
+                    {{__('worker/product.remaining_stock')}}
                 </x-worker.definitionterm>
                 <x-worker.definition>
                     3
