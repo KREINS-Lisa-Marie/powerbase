@@ -1,6 +1,6 @@
 <header class="header-general header background-black">
     <h1 class="sro" role="heading" aria-level="1">
-        Powerbase
+        {{__('navigation.powerbase')}}
     </h1>
 {{--<nav class="nav__header">
      <h2 class="sro">
@@ -133,7 +133,7 @@
  </nav>--}}
 
     <nav class="nav__header text-white bold" role="navigation" aria-label="Main">
-        <h2 class="sro" aria-level="2" role="heading">Navigation principale</h2>
+        <h2 class="sro" aria-level="2" role="heading">{{__('navigation.main_navigation')}}</h2>
 
         <a href="/"
            lang=""
@@ -152,7 +152,8 @@
             svg logo gross
         </a>
 
-        <a href="#content" class="sro skip" title="Aller au contenu principal" aria-label="Aller au contenu principal">Aller au contenu principal</a>
+        <a href="#content" class="sro skip" title="Aller au contenu principal" aria-label="Aller au contenu principal">
+            {{__('navigation.go_to_main_content')}}</a>
 
         <input type="checkbox" id="burger_menu" name="burger_menu">
         <label for="burger_menu" class="burger_menu">
@@ -184,19 +185,19 @@
                 </a>
             </li>--}}
             <li class="nav__item__header">
-                <a href="{{route('worker.homepage', ['locale' => __('general.currentLocale')])}}" class="nav__link__header" title="Aller vers la page Accueil" aria-label="Aller vers la page Accueil">Accueil</a>
+                <a href="{{route('worker.homepage', ['locale' => __('general.currentLocale')])}}" class="nav__link__header" title="Aller vers la page Accueil" aria-label="Aller vers la page Accueil">{{__('navigation.homepage')}}</a>
         </li>
         <li class="nav__item__header">
-            <a href="{{route('worker.products', ['locale' => __('general.currentLocale')])}}" title="Aller vers la page Nos animaux" class="nav__link__header" aria-label="Aller vers la page Nos animaux">Produits</a>
+            <a href="{{route('worker.products', ['locale' => __('general.currentLocale')])}}" title="Aller vers la page Nos animaux" class="nav__link__header" aria-label="Aller vers la page Nos animaux">{{__('navigation.products')}}</a>
         </li>
         <li class="nav__item__header">
-            <a href="{{route('worker.order', ['locale' => __('general.currentLocale')])}}" class="nav__link__header" title="Aller vers la page Contact" aria-label="Aller vers la page Contact">Commande</a>
+            <a href="{{route('worker.order', ['locale' => __('general.currentLocale')])}}" class="nav__link__header" title="Aller vers la page Contact" aria-label="Aller vers la page Contact">{{__('navigation.order')}}</a>
         </li>
             <li class="nav__item__header">
-                <a href="{{route('worker.contact', ['locale' => __('general.currentLocale')])}}" class="nav__link__header" title="Aller vers la page Contact" aria-label="Aller vers la page Contact">Contact</a>
+                <a href="{{route('worker.contact', ['locale' => __('general.currentLocale')])}}" class="nav__link__header" title="Aller vers la page Contact" aria-label="Aller vers la page Contact">{{__('navigation.contact')}}</a>
             </li>
             <li class="nav__item__header">
-                <a href="{{route('worker.profile', ['locale' => __('general.currentLocale')])}}" class="nav__link__header" title="Aller vers la page Contact" aria-label="Aller vers la page Contact">Profil</a>
+                <a href="{{route('worker.profile', ['locale' => __('general.currentLocale')])}}" class="nav__link__header" title="Aller vers la page Contact" aria-label="Aller vers la page Contact">{{__('navigation.profile')}}</a>
             </li>
             <li class="nav__item__header">
                 <a href="{{route('worker.contact', ['locale' => __('general.currentLocale')])}}" class="nav__link__header" title="Aller vers la page Contact" aria-label="Aller vers la page Contact">EN</a>

@@ -1,27 +1,22 @@
 <x-worker.app>
     <x-worker.page-title>
-        Bonjour Eric
+        {{__('worker/homepage.hello')}} Eric
     </x-worker.page-title>
         <section class="product-section section-end-128">
             <x-worker.title>
-                Nouveaux produits
+                {{__('worker/homepage.new_products')}}
             </x-worker.title>
             <div class="d-flex flex-wrap flex-gap-24">
             @for( $i= 0;$i<=3; $i++)
-
                 <x-worker.product-card productname="Vis 1000"/>
-
-
-              {{-- <x-worker.product-card productname = "Vis 1000" />--}}
             @endfor
             </div>
         </section>
 
         <section class="text-white section-end-128">
             <x-worker.title>
-                Produits populaires
+                {{__('worker/homepage.popular_products')}}
             </x-worker.title>
-
             <div class="d-flex flex-wrap flex-gap-24">
             @for( $i= 0; $i<=7; $i++)
                 <x-worker.product-card productname="Vis 1000"/>
