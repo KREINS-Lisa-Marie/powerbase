@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomepageController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*Route::get('/', function () {
@@ -21,7 +22,7 @@ Route::get('/{locale}/profile', function () {
     return view('worker.profile');
 })->name('worker.profile');
 
-Route::get('/{locale}/products',   [ProductController::class, 'index']
+Route::get('/{locale}/products',  [ProductController::class, 'index']
 )->name('worker.products');
 
 Route::get('/{locale}/products/{product}', function () {
@@ -39,3 +40,9 @@ Route::get('/{locale}/forgot-password', function () {
 Route::get('/{locale}/reset-password', function () {
     return view('auth.reset-password');
 })->name('auth.reset-password');
+
+
+
+Route::livewire('/{locale}/dashboard', 'pages::dashboard.index')->name('pages::dashboard.index')->middleware([
+    'auth',
+]);
