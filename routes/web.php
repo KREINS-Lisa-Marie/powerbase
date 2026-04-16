@@ -47,6 +47,11 @@ Route::livewire('/{locale}/dashboard', 'pages::dashboard.index')->name('pages::d
     'auth',
 ]);
 
+Route::livewire('/{locale}/admin/profile', 'pages::profile.index')->name('pages::profile.index')->middleware([
+    'auth',
+]);
+
+
 Route::livewire('/{locale}/admin/contacts', 'pages::contacts.index')->name('pages::contacts.index')->middleware([
     'auth',
 ]);
@@ -58,3 +63,55 @@ Route::livewire('/{locale}/admin/contacts/create', 'pages::contacts.create')->na
 Route::livewire('/{locale}/admin/contacts/{contact}/edit', 'pages::contacts.edit')->name('pages::contacts.edit')->middleware([
     'auth',
 ]);
+
+Route::livewire('/{locale}/admin/contacts/{contact}/show', 'pages::contacts.show')->name('pages::contacts.show')->middleware([
+    'auth',
+]);
+
+Route::livewire('/{locale}/admin/products/{product}/show', 'pages::products.show')->name('pages::contacts.show')->middleware([
+    'auth',
+]);
+Route::livewire('/{locale}/admin/products/create', 'pages::products.create')->name('pages::products.create')->middleware([
+    'auth',
+]);
+
+Route::livewire('/{locale}/admin/products/{products}/edit', 'pages::products.edit')->name('pages::products.edit')->middleware([
+    'auth',
+]);
+
+Route::livewire('/{locale}/admin/products', 'pages::products.index')->name('pages::products.index')->middleware([
+    'auth',
+]);
+
+Route::livewire('/{locale}/admin/orders', 'pages::orders.index')->name('pages::orders.index')->middleware([
+    'auth',
+]);
+
+Route::livewire('/{locale}/admin/projects', 'pages::projects.index')->name('pages::projects.index')->middleware([
+    'auth',
+]);
+Route::livewire('/{locale}/admin/projects/create', 'pages::projects.create')->name('pages::projects.create')->middleware([
+    'auth',
+]);
+
+Route::livewire('/{locale}/admin/projects/{project}/show', 'pages::projects.show')->name('pages::projects.show')->middleware([
+    'auth',
+]);
+
+Route::livewire('/{locale}/admin/projects/{project}/edit', 'pages::projects.edit')->name('pages::projects.edit')->middleware([
+    'auth',
+]);
+
+Route::livewire('/{locale}/admin/orders/{order}/show', 'pages::orders.show')->name('pages::orders.show')->middleware([
+    'auth',
+]);
+
+Route::livewire('/{locale}/admin/orders/{order}/edit', 'pages::orders.edit')->name('pages::orders.edit')->middleware([
+    'auth',
+]);
+
+Route::livewire('/{locale}/admin/orders/create', 'pages::orders.create')->name('pages::orders.create')->middleware([
+    'auth',
+]);
+
+//Route::resource('jiris', JiriController::class)->middleware('auth');
