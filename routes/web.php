@@ -47,11 +47,14 @@ Route::livewire('/{locale}/dashboard', 'pages::dashboard.index')->name('pages::d
     'auth',
 ]);
 
-
 Route::livewire('/{locale}/admin/contacts', 'pages::contacts.index')->name('pages::contacts.index')->middleware([
     'auth',
 ]);
 
 Route::livewire('/{locale}/admin/contacts/create', 'pages::contacts.create')->name('pages::contacts.create')->middleware([
+    'auth',
+]);
+
+Route::livewire('/{locale}/admin/contacts/{contact}/edit', 'pages::contacts.edit')->name('pages::contacts.edit')->middleware([
     'auth',
 ]);
