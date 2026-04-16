@@ -46,3 +46,8 @@ Route::get('/{locale}/reset-password', function () {
 Route::livewire('/{locale}/dashboard', 'pages::dashboard.index')->name('pages::dashboard.index')->middleware([
     'auth',
 ]);
+
+
+Route::livewire('/{locale}/admin/contacts', 'pages::contacts.index')->name('pages::contacts.index')->middleware([
+    'auth',
+]);
