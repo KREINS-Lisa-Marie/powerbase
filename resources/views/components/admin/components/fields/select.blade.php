@@ -1,0 +1,16 @@
+@props([
+    'select_name',
+    'label',
+    'wire',
+    'options' => [],
+])
+
+<div class="text-field">
+<label for="{{$select_name}}" class="field__label">{{$label}}</label>
+<select name="{{$select_name}}" id="{{$select_name}}" class="d-block background-white border-radius-16 p-16" wire:model.blur="{{$wire}}">
+    <option class="m-b-24" value="">{{__('admin/contacts.select_an_option')}}</option>
+    @foreach($options as $option)
+        <x-admin.components.fields.select-option :option_value="$option['value']" :option_name="$option['name']"  />
+    @endforeach
+</select>
+</div>
