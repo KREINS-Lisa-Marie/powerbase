@@ -75,6 +75,9 @@ Route::livewire('/{locale}/admin/products/create', 'pages::products.create')->na
     'auth',
 ]);
 
+Route::livewire('/{locale}/admin/products/{products}/edit', 'pages::products.edit')->name('pages::products.edit')->middleware([
+    'auth',
+]);
 
 Route::livewire('/{locale}/admin/products', 'pages::products.index')->name('pages::products.index')->middleware([
     'auth',
