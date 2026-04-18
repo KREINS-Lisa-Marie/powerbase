@@ -47,7 +47,9 @@ Route::livewire('/{locale}/dashboard', 'pages::dashboard.index')->name('pages::d
     'auth',
 ]);
 
-
+Route::livewire('/{locale}/admin/profile', 'pages::profile.index')->name('pages::profile.index')->middleware([
+    'auth',
+]);
 
 
 Route::livewire('/{locale}/admin/contacts', 'pages::contacts.index')->name('pages::contacts.index')->middleware([
@@ -63,5 +65,10 @@ Route::livewire('/{locale}/admin/contacts/{contact}/edit', 'pages::contacts.edit
 ]);
 
 Route::livewire('/{locale}/admin/contacts/{contact}/show', 'pages::contacts.show')->name('pages::contacts.show')->middleware([
+    'auth',
+]);
+
+
+Route::livewire('/{locale}/admin/products', 'pages::products.index')->name('pages::products.index')->middleware([
     'auth',
 ]);
