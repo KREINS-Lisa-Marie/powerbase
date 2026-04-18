@@ -42,6 +42,10 @@ Hintergrundfarb-Hilfen
     background-color: var(--dark-red);
 }
 
+.background-white{
+    background-color: var(--white);
+}
+
 .bold{
     font-weight: 700;
 }
@@ -91,4 +95,13 @@ Hintergrundfarb-Hilfen
 
 .italic{
     font-style: italic;
+}
+
+
+.background-page-bar{
+    background-color: var(--border-light-red);
+}
+
+.max-w-admin-web{
+    max-width: var(--max-w-big-desktop);
 }
