@@ -68,6 +68,10 @@ Route::livewire('/{locale}/admin/contacts/{contact}/show', 'pages::contacts.show
     'auth',
 ]);
 
+Route::livewire('/{locale}/admin/products/{product}/show', 'pages::products.show')->name('pages::contacts.show')->middleware([
+    'auth',
+]);
+
 
 Route::livewire('/{locale}/admin/products', 'pages::products.index')->name('pages::products.index')->middleware([
     'auth',
