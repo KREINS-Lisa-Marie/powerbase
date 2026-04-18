@@ -89,3 +89,7 @@ Route::livewire('/{locale}/admin/projects', 'pages::projects.index')->name('page
 Route::livewire('/{locale}/admin/projects/create', 'pages::projects.create')->name('pages::projects.create')->middleware([
     'auth',
 ]);
+
+Route::livewire('/{locale}/admin/projects/{project}/show', 'pages::projects.show')->name('pages::projects.show')->middleware([
+    'auth',
+]);
