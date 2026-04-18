@@ -1,0 +1,28 @@
+<?php
+
+return [
+    'create_a_project' => 'Ein Projekt erstellen',
+    'project_name' => 'Projektname',
+    'adress' => 'Adresse',
+    'created_at' => 'Erstellt am',
+    'finished_at' => 'Abgeschlossen am',
+    'create_project' => 'Projekt erstellen',
+    'project_description' => 'Projektbeschreibung',
+    'project_adress' => 'Projektadresse',
+    'client_name' => 'Kundenname',
+    'project_type' => 'Projekttyp',
+    'phone_person_in_charge' => 'Telefon des Projektverantwortlichen',
+    'person_in_charge' => 'Projektverantwortlicher',
+    'general_information' => 'Allgemeine Informationen',
+
+    'modify_project' => 'Daten bearbeiten',
+    'delete_project' => 'Projekt löschen',
+    'print_project' => 'Projekt drucken',
+    'ordered_products' => 'Bestellte Produkte',
+    'product_name' => 'Produktname',
+    'quantity' => 'Anzahl der Produkte',
+    'products_used' => 'Für das Projekt verwendete Produkte',
+    'products_to_add' => 'Ein Produkt hinzufügen',
+    'save' => 'Speichern',
+
+];
