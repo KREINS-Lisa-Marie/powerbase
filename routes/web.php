@@ -97,3 +97,19 @@ Route::livewire('/{locale}/admin/projects/{project}/show', 'pages::projects.show
 Route::livewire('/{locale}/admin/projects/{project}/edit', 'pages::projects.edit')->name('pages::projects.edit')->middleware([
     'auth',
 ]);
+
+Route::livewire('/{locale}/admin/orders', 'pages::orders.index')->name('pages::orders.index')->middleware([
+    'auth',
+]);
+
+Route::livewire('/{locale}/admin/orders/{order}/show', 'pages::orders.show')->name('pages::orders.show')->middleware([
+    'auth',
+]);
+
+Route::livewire('/{locale}/admin/orders/{order}/edit', 'pages::orders.edit')->name('pages::orders.edit')->middleware([
+    'auth',
+]);
+
+Route::livewire('/{locale}/admin/orders/create', 'pages::orders.create')->name('pages::orders.create')->middleware([
+    'auth',
+]);
