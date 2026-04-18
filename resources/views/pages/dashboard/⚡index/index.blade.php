@@ -2,6 +2,11 @@
     <x-admin.page-bar>
         Accueil{{--{{__('admin/dashboard.dashboard')}}--}}
     </x-admin.page-bar>
+    {{--<div class="page-bar min-w-full">
+        <h2 >
+            Accueil
+        </h2>
+    </div>--}}
 <div class="main-container">
     <section class="welcome-dashobard-section ">
         <x-admin.components.page-title>
@@ -225,6 +230,43 @@
                 </div>
             </x-list-items>
         </ul>
+        {{--<form method="GET" action="{{ route('pages::dashboard.index', ['locale' => __('general.currentLocale')]) }}" class="">
+            <div class="statistics_start_date">
+                <label for="statistics_start_date" class="">
+                    {{__('dashboard.start_date')}}
+                </label>
+                <input type="date" name="start_date" id="statistics_start_date" value="{{request('statistics_start_date')}}"
+                       class="">
+                @error('date')
+                {{$message}}
+                @enderror
+            </div>
+
+            <div class="statistics_end_date">
+                <label for="date" class="">
+                    {{__('dashboard.statistics_end_date')}}
+                </label>
+                <input type="date" name="statistics_end_date" id="date" value="{{request('statistics_end_date')}}"
+                       class="">
+                @error('date')
+                {{$message}}
+                @enderror
+            </div>
+            --}}{{--@component('components.button')
+                Filtrer
+            @endcomponent--}}{{--
+        </form>
+
+        <table>
+            <x-admin.dashboard.dahboard-table-cards statistics_title="Nombre d’animaux accueillis" statistics_number="5" />
+            <x-admin.dashboard.dahboard-table-cards statistics_title="Nombre d’adoptions réussies" statistics_number="3" />
+            <x-admin.dashboard.dahboard-table-cards statistics_title="Nombre d’animaux encore au refuge :" statistics_number="15" />
+        </table>
+
+        <a href="#" title="Exporter en PDF" class="dashboard-button">
+            Exporter en pdf
+        </a>--}}
+
     </section>
 
 

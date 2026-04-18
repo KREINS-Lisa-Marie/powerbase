@@ -21,14 +21,14 @@
             @endif
 
 
-            <form action="{{--{{ route('login.store', ['locale' => __('general.currentLocale')]) }}--}}" method="post" class="reset-form">
+            <form action="{{ route('login.store', ['locale' => __('general.currentLocale')]) }}" method="post" class="reset-form">
                 @csrf
 
                 <x-auth.form.email-input></x-auth.form.email-input>
                 <x-auth.form.password></x-auth.form.password>
 
                 <div class="add-info">
-                    <a href="/forgot-password" class="d-block medium m-b-24">
+                    <a href="{{route('auth.forgot-password', ['locale' => __('general.currentLocale')])}}" class="d-block medium m-b-24">
                         {{__('auth/login.password_forgotten')}}
                     </a>
                     <div class="d-flex  flex-gap-12 mb-64">
