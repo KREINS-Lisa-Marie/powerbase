@@ -71,6 +71,9 @@ Route::livewire('/{locale}/admin/contacts/{contact}/show', 'pages::contacts.show
 Route::livewire('/{locale}/admin/products/{product}/show', 'pages::products.show')->name('pages::contacts.show')->middleware([
     'auth',
 ]);
+Route::livewire('/{locale}/admin/products/create', 'pages::products.create')->name('pages::products.create')->middleware([
+    'auth',
+]);
 
 
 Route::livewire('/{locale}/admin/products', 'pages::products.index')->name('pages::products.index')->middleware([
