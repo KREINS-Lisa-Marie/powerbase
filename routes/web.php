@@ -102,6 +102,10 @@ Route::livewire('/{locale}/admin/orders', 'pages::orders.index')->name('pages::o
     'auth',
 ]);
 
+Route::livewire('/{locale}/admin/orders/{order}/edit', 'pages::orders.edit')->name('pages::orders.edit')->middleware([
+    'auth',
+]);
+
 Route::livewire('/{locale}/admin/orders/create', 'pages::orders.create')->name('pages::orders.create')->middleware([
     'auth',
 ]);
