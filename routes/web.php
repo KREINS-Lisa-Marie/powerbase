@@ -82,3 +82,7 @@ Route::livewire('/{locale}/admin/products/{products}/edit', 'pages::products.edi
 Route::livewire('/{locale}/admin/products', 'pages::products.index')->name('pages::products.index')->middleware([
     'auth',
 ]);
+
+Route::livewire('/{locale}/admin/projects', 'pages::projects.index')->name('pages::projects.index')->middleware([
+    'auth',
+]);
