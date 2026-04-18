@@ -93,3 +93,7 @@ Route::livewire('/{locale}/admin/projects/create', 'pages::projects.create')->na
 Route::livewire('/{locale}/admin/projects/{project}/show', 'pages::projects.show')->name('pages::projects.show')->middleware([
     'auth',
 ]);
+
+Route::livewire('/{locale}/admin/projects/{project}/edit', 'pages::projects.edit')->name('pages::projects.edit')->middleware([
+    'auth',
+]);
