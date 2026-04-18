@@ -4,8 +4,10 @@
 :root {
     --white: #ffffff;
     --dark-red: #5a0201;
+    --red-border-stroke:#8C0A05;
     --black: #000000;
     --light-grey: #f7f5f5;
+    --light-button: #EFE0DF;
     --light-red: #B36E6D;
     --border-light: #f5f0f0;
     --border-light-red: #be9e9d;
@@ -13,6 +15,7 @@
     --error: #bb332d;
     --error-border: #ac2f29;
     --placeholder: #616161;
+    --text-color-dark-red: #3A0100;
 
     --dark-background-transparent: rgba(0, 0, 0, 0.70);
 }
@@ -51,6 +54,7 @@
     --margin-padding-24: 24px;
     --margin-padding-32: 32px;
     --margin-padding-40: 40px;
+    --margin-padding-56: 56px;
     --margin-padding-64: 64px;
     --margin-padding-80: 80px;
     --margin-padding-128: 128px;
@@ -60,6 +64,7 @@
 /*          --       Sizes       --     */
 
     --max-w-big-desktop: 1272px;
+    --max-h-textarea: 200px;
     --max-w-worker-big-desktop: 1224px;
     --max-w-input-desktop: 392px;
     --max-w-button-desktop: 544px;
