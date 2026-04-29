@@ -24,4 +24,8 @@ return [
     'products_used' => 'Products used for the project',
     'products_to_add' => 'Add a product',
     'save' => 'Save',
+    'projects'=>'Projects',
+    'modify'=>'Modify',
+    'corporate'=>'Corporate',
+    'private'=>'Private',
 ];
