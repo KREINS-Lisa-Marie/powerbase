@@ -68,14 +68,14 @@ Route::livewire('/{locale}/admin/contacts/{contact}/show', 'pages::contacts.show
     'auth',
 ]);
 
-Route::livewire('/{locale}/admin/products/{product}/show', 'pages::products.show')->name('pages::contacts.show')->middleware([
+Route::livewire('/{locale}/admin/products/{product}/show', 'pages::products.show')->name('pages::products.show')->middleware([
     'auth',
 ]);
 Route::livewire('/{locale}/admin/products/create', 'pages::products.create')->name('pages::products.create')->middleware([
     'auth',
 ]);
 
-Route::livewire('/{locale}/admin/products/{products}/edit', 'pages::products.edit')->name('pages::products.edit')->middleware([
+Route::livewire('/{locale}/admin/products/{product}/edit', 'pages::products.edit')->name('pages::products.edit')->middleware([
     'auth',
 ]);
 
@@ -113,3 +113,8 @@ Route::livewire('/{locale}/admin/orders/{order}/edit', 'pages::orders.edit')->na
 Route::livewire('/{locale}/admin/orders/create', 'pages::orders.create')->name('pages::orders.create')->middleware([
     'auth',
 ]);
+
+Route::livewire('/{locale}/admin/profile/{profile}/edit', 'pages::profile.edit')->name('pages::profile.edit')->middleware([
+    'auth',
+]);
+
