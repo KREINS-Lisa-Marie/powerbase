@@ -23,33 +23,12 @@ return [
     'phone_number_title' => 'Telefonnummer:',
     'email_title' => 'E-Mail:',
     'name_title' => 'Vollständiger Name:',
+    'contacts' => 'Kontakte',
 
-    /*    'volunteers' => 'Freiwillige',
-        'create_a_volunteer' => 'Einen Freiwilligen erstellen',
-        'name' => 'Vollständiger Name',
-        'name_title' => 'Name: ',
-
-        'phone_number_title' => 'Telefonnummer: ',
-
-        'role_title' => 'Rolle: ',*/
-
-
-    /*
-     *  'profile_image' => 'Profilbild',
-    'modify_volunteer' => 'Meine Daten bearbeiten',
-    'availability_of' => 'Verfügbarkeit von ',
-    'delete_info' => 'Person löschen',
-    'modify_info' => 'Details bearbeiten',
-     *
-     *
-        'modify' => 'Bearbeiten',
-        'password' => 'Passwort',
-        'save' => 'Speichern',
-        'availabilities' => 'Verfügbarkeiten',
-
-        'volunteer' => 'Freiwilliger',
-        'admin' => 'Administrator',
-    'delete_volunteer' => 'Person löschen',*/
-
-
+    'delete_the_person' => 'Die Person löschen',
+    'modify_the_data' => 'Die Daten ändern',
+    'save' => 'Speichern',
+    'search' => 'Suche',
+    'searching' => 'Suchen',
+    'no_result' => 'Kein Resultat',
 ];

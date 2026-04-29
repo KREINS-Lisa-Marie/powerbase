@@ -23,19 +23,13 @@ return [
     'phone_number_title' => 'Numéro téléphone :',
     'email_title' => 'Email :',
     'name_title' => 'Nom complèt :',
+    'contacts' => 'Contacts',
 
-    /*
-
-    'delete_info' => 'Supprimer la personne',
-    'modify_info' => 'Modifier les détails',
-     *
-     *
-        'modify' => 'Modifier',
-        'password' => 'Mot de passe',
-        'save' => 'Enregistrer',
-        'availabilities' => 'Disponibilités',
-        'admin' => 'Administrateur',
-    'delete_volunteer' => 'Supprimer la personne',*/
-
+    'delete_the_person' => 'Supprimer la personne',
+    'modify_the_data' => 'Modifier les données',
+    'save' => 'Enregistrer',
+    'search' => 'Recherche',
+    'searching' => 'Rechercher',
+    'no_result' => 'Pas de résultat',
 
 ];
