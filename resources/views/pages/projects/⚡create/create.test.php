@@ -36,7 +36,7 @@ it('redirects to the projects index route after the successfull creation of a pr
             ->set('project_name', 'Project1')
             ->set('person_in_charge', $user->id)
             ->set('phone_in_charge', $user->phone)
-            ->set('project_type', '$random_project_state')
+            ->set('project_type', $random_project_state)
             ->set('client_name', 'Mr. Muller')
             ->set('project_address', 'Rue de l’école 2')
             ->set('project_description', 'Travail à faire')
