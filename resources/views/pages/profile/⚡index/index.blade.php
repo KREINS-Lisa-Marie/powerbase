@@ -11,6 +11,9 @@
             <x-admin.components.admin-primary-button href="{{__('admin/profile.change_language')}}" title="" class="">
                 {{__('admin/profile.change_language')}}DE
             </x-admin.components.admin-primary-button>
+            <x-admin.components.admin-primary-button href="{{route('pages::profile.edit', ['locale' => __('general.currentLocale'), $user->id])}}" title="Aller sur la page 'Modifier mon mot de passe'" title="" class="">
+                {{__('admin/profile.change_password')}}
+            </x-admin.components.admin-primary-button>
             <form action="{{route('logout')}}" method="POST"
                   class="text-white admin-logout-button border-radius-16 bold">
                 @csrf
@@ -18,6 +21,7 @@
                     {{__('admin/sidebar.logout')}}
                 </button>
             </form>
+
         </section>
     </div>
 </main>
