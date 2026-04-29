@@ -23,33 +23,12 @@ return [
     'phone_number_title' => 'Phone number:',
     'email_title' => 'Email:',
     'name_title' => 'Full name:',
+    'contacts' => 'Contacts',
 
-/*    'volunteers' => 'Volunteers',
-    'create_a_volunteer' => 'Create a volunteer',
-    'name' => 'Full name',
-    'name_title' => 'Name: ',
-
-    'phone_number_title' => 'Phone number: ',
-
-    'role_title' => 'Role: ',*/
-
-
-    /*
-     *  'profile_image' => 'Profile image',
-    'modify_volunteer' => 'Edit my details',
-    'availability_of' => 'Availability of ',
-    'delete_info' => 'Delete person',
-    'modify_info' => 'Edit details',
-     *
-     *
-        'modify' => 'Modifier',
-        'password' => 'Password',
-        'save' => 'Save',
-        'availabilities' => 'Availabilities',
-
-        'volunteer' => 'Volunteer',
-        'admin' => 'Admin',
-    'delete_volunteer' => 'Delete person',*/
-
-
+    'delete_the_person' => 'Delete the person',
+    'modify_the_data' => 'Modify the data',
+    'save' => 'Save',
+    'search' => 'Search',
+    'searching' => 'Searching',
+    'no_result' => 'No result',
 ];
