@@ -1,9 +1,9 @@
+@php
+    $contact = \App\Models\User::findOrFail($contact_id);
+ @endphp
 <main class="admin contacts" id="content">
-{{--    <x-admin.page-bar>
-        Thomas Fortin   --}}{{--{!! $volunteer->first_name !!}  {!! $volunteer->last_name !!}--}}{{--
-    </x-admin.page-bar>--}}
     <x-admin.page-bar>
-        Nom du contact
+        {{$contact->first_name}} {{$contact->last_name}}
     </x-admin.page-bar>
     <div class="main-container">
         <section class="contact-information max-w-admin-web big-section">
@@ -17,8 +17,7 @@
                         {{__('admin/contacts.full_name')}}
                     </x-admin.components.definition-term>
                     <x-admin.components.definition>
-                        {{--{!! $volunteer->first_name !!}--}}{{--{!! $volunteer->last_name !!}--}}
-                        Bob Lee
+                        {{$contact->first_name}} {{$contact->last_name}}
                     </x-admin.components.definition>
                 </div>
 
@@ -27,8 +26,7 @@
                         {{__('admin/contacts.email')}}
                     </x-admin.components.definition-term>
                     <x-admin.components.definition>
-                        {{--{!! $volunteer->email !!}--}}
-                        email@gmail.com
+                        {{$contact->email}}
                     </x-admin.components.definition>
                 </div>
 
@@ -37,8 +35,7 @@
                         {{__('admin/contacts.phone_number')}}
                     </x-admin.components.definition-term>
                     <x-admin.components.definition>
-                        {{--{!! $volunteer->phone !!}--}}
-                        40257230582
+                        {{$contact->phone}}
                     </x-admin.components.definition>
                 </div>
 
@@ -47,8 +44,7 @@
                         {{__('admin/contacts.job')}}
                     </x-admin.components.definition-term>
                     <x-admin.components.definition>
-                        {{--{!! $volunteer->is_admin? __('admin/volunteers.admin'): __('admin/volunteers.volunteer') !!}--}}
-                        Job
+                        {{$contact->job == 'worker' ? 'Electricien' : ($contact->job == 'admin' ? 'Admin' : 'Lagerist') }}
                     </x-admin.components.definition>
                 </div>
 
@@ -58,8 +54,7 @@
                         {{__('admin/contacts.private_phone_number')}}
                     </x-admin.components.definition-term>
                     <x-admin.components.definition>
-                        {{--{!! $volunteer->phone !!}--}}
-                        42754307
+                        {{$contact->private_phone}}
                     </x-admin.components.definition>
                 </div>
 
@@ -69,8 +64,7 @@
                         {{__('admin/contacts.private_adress')}}
                     </x-admin.components.definition-term>
                     <x-admin.components.definition>
-                        {{--{!! $volunteer->phone !!}--}}
-                        Neue adresse von mir
+                        {{$contact->private_adress}}
                     </x-admin.components.definition>
                 </div>
             </dl>
@@ -88,8 +82,7 @@
                             {{__('admin/contacts.vehicle_type')}}
                         </x-admin.components.definition-term>
                         <x-admin.components.definition>
-                            {{--{!! $volunteer->phone !!}--}}
-                            Camionette
+                            {{$contact->car_type}}
                         </x-admin.components.definition>
                     </div>
                     <div>
@@ -97,40 +90,23 @@
                             {{__('admin/contacts.license_plate')}}
                         </x-admin.components.definition-term>
                         <x-admin.components.definition>
-                            {{--{!! $volunteer->phone !!}--}}
-                            37HRHF
+                            {{$contact->car_plate}}
                         </x-admin.components.definition>
                     </div>
                 </dl>
             </section>
             <div class="admin-information-buttons">
-                <x-admin.components.admin-primary-button href="" title="" href="" class="">
+                <x-admin.components.admin-primary-button href="{{route('pages::contacts.edit', ['locale' => __('general.currentLocale'), 'contact' => $contact])}}" title="{{__('admin/contacts.modify_the_data')}}"  class="">
                     {{__('admin/contacts.modify_contact')}}
                 </x-admin.components.admin-primary-button>
 
-                <x-admin.components.admin-secondary-button href="" title="" href="" class="">
-                    {{__('admin/contacts.delete_info')}}
-                </x-admin.components.admin-secondary-button>
+                <form wire:submit="destroy" method="post">
+                    @csrf
+                    <x-admin.components.delete-btn title="{{__('admin/contacts.delete_the_person')}}">
+                        {{__('admin/contacts.delete_info')}}
+                    </x-admin.components.delete-btn>
+                </form>
             </div>
         </div>
     </div>
-
-
-    {{--<div class=" max-w-admin-web volunteer-buttons">
-        <div class="top-row">
-            <x-admin.admin-button href="{{route('pages::volunteers.edit', ['locale' => __('general.currentLocale'), 'volunteer' => $volunteer])}}"
-                                  title="modifier les données" class="">
-                {{__('admin/volunteers.modify_info')}}
-            </x-admin.admin-button>
-
-            <form wire:submit="destroy" method="post">
-                @csrf
-                <x-admin.form-button title="Supprimer la personne" class="delete_background delete-button">
-                    {{__('admin/volunteers.delete_info')}}
-                </x-admin.form-button>
-
-            </form>
-        </div>
-    </div>
---}}
 </main>
