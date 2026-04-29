@@ -2,9 +2,13 @@
 
 namespace Database\Seeders;
 
+use App\Models\Order;
+use App\Models\Product;
+use App\Models\Project;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,8 +22,28 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         User::factory()->create([
-            'name' => 'Test User',
+            'first_name' => 'Test User',
+            'last_name' => 'User',
+            'phone' => fake()->phoneNumber(),
+            'job' => 'admin',
+            'private_phone'=>fake()->phoneNumber(),
+            'private_address'=>fake()->address(),
             'email' => 'test@example.com',
         ]);
+
+        $user = User::factory()->create([
+            'first_name' => 'Anika',
+            'last_name' => 'Ing',
+            'phone' => fake()->phoneNumber(),
+            'job' => 'worker',
+            'private_phone'=>fake()->phoneNumber(),
+            'private_address'=>fake()->address(),
+            'email' => 'anika@gmail.com',
+            'password' => Hash::make('test'),
+        ]);
+
+        $user2 = User::factory(15)->create();
+
+        
     }
 }
