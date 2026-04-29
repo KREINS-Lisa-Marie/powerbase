@@ -24,5 +24,8 @@ return [
     'products_used' => 'Für das Projekt verwendete Produkte',
     'products_to_add' => 'Ein Produkt hinzufügen',
     'save' => 'Speichern',
-
+    'projects'=>'Projekte',
+    'modify'=>'Bearbeiten von',
+    'corporate'=>'Firma',
+    'private'=>'Privat',
 ];

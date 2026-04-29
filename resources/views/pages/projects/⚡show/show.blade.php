@@ -1,5 +1,5 @@
 @php
-    $filter_options =[
+$filter_options =[
            [
             'name' => 'ABC',
         'value' =>'ABC',
@@ -12,15 +12,15 @@
             'name' => 'latest',
         'value' =>'plus récents',
         ],
-    ]
+    ];
+
+    $project = \App\Models\Project::findOrFail($project_id);
+    $user = \App\Models\User::findOrFail($project->person_in_charge)
 @endphp
 
 <main class="admin project-show" id="content">
-    {{--    <x-admin.page-bar>
-            Thomas Fortin   --}}{{--{!! $volunteer->first_name !!}  {!! $volunteer->last_name !!}--}}{{--
-        </x-admin.page-bar>--}}
     <x-admin.page-bar>
-        Nom du projet
+        {{$project->project_name}}
     </x-admin.page-bar>
     <div class="main-container">
         <section class="project-information max-w-admin-web big-section">
@@ -35,8 +35,7 @@
                             {{__('admin/projects.project_name')}}
                         </x-admin.components.definition-term>
                         <x-admin.components.definition>
-                            {{--{!! $volunteer->first_name !!}--}}{{--{!! $volunteer->last_name !!}--}}
-                            Maison Piette Mulhausen
+                            {{$project->project_name}}
                         </x-admin.components.definition>
                     </div>
                     <div>
@@ -44,8 +43,7 @@
                             {{__('admin/projects.person_in_charge')}}
                         </x-admin.components.definition-term>
                         <x-admin.components.definition>
-                            {{--{!! $volunteer->email !!}--}}
-                            Michel Berro
+                            {{$user->first_name}} {{$user->last_name}}
                         </x-admin.components.definition>
                     </div>
                     <div>
@@ -53,8 +51,7 @@
                             {{__('admin/projects.phone_person_in_charge')}}
                         </x-admin.components.definition-term>
                         <x-admin.components.definition>
-                            {{--{!! $volunteer->phone !!}--}}
-                            Michel Berro
+                            {{$project->phone_in_charge}}
                         </x-admin.components.definition>
                     </div>
                 </dl>
@@ -66,8 +63,7 @@
                             {{__('admin/projects.project_type')}}
                         </x-admin.components.definition-term>
                         <x-admin.components.definition>
-                            {{--{!! $volunteer->is_admin? __('admin/volunteers.admin'): __('admin/volunteers.volunteer') !!}--}}
-                            Particulier
+                            {{$project->project_type == 'corporate' ? 'Firma' : 'Particulier'}}
                         </x-admin.components.definition>
                     </div>
 
@@ -76,8 +72,7 @@
                             {{__('admin/projects.client_name')}}
                         </x-admin.components.definition-term>
                         <x-admin.components.definition>
-                            {{--{!! $volunteer->is_admin? __('admin/volunteers.admin'): __('admin/volunteers.volunteer') !!}--}}
-                            Angèle Marteau
+                            {{$project->client_name}}
                         </x-admin.components.definition>
                     </div>
                     <div>
@@ -85,8 +80,7 @@
                             {{__('admin/projects.project_adress')}}
                         </x-admin.components.definition-term>
                         <x-admin.components.definition>
-                            {{--{!! $volunteer->is_admin? __('admin/volunteers.admin'): __('admin/volunteers.volunteer') !!}--}}
-                            Rue de l’école 3, 4000 Liège
+                            {{$project->project_address}}
                         </x-admin.components.definition>
                     </div>
                 </dl>
@@ -96,8 +90,7 @@
                             {{__('admin/projects.project_description')}}
                         </x-admin.components.definition-term>
                         <x-admin.components.definition>
-                            {{--{!! $volunteer->is_admin? __('admin/volunteers.admin'): __('admin/volunteers.volunteer') !!}--}}
-                            Rue de l’école 3, 4000 Liège
+                            {{$project->project_description}}
                         </x-admin.components.definition>
                     </div>
                 </dl>
@@ -159,17 +152,31 @@
 
             </section>
             <div class="admin-information-buttons">
-                <x-admin.components.admin-primary-button href="" title="" href="" class="">
+                <x-admin.components.admin-primary-button href="{{route('pages::projects.edit', ['locale' => __('general.currentLocale'), 'project' => $project])}}" title="{{__('admin/projects.modify_project')}}"  class="">
                     {{__('admin/projects.modify_project')}}
                 </x-admin.components.admin-primary-button>
 
-                <x-admin.components.admin-secondary-button href="" title="" href="" class="">
+  {{--              <x-admin.components.admin-secondary-button href="" title="" href="" class="">
                     {{__('admin/projects.delete_project')}}
-                </x-admin.components.admin-secondary-button>
+                </x-admin.components.admin-secondary-button>--}}
+                <form wire:submit="destroy" method="post">
+                    @csrf
+                    <x-admin.components.delete-btn title="{{__('admin/projects.delete_project')}}">
+                        {{__('admin/projects.delete_project')}}
+                    </x-admin.components.delete-btn>
+                </form>
 
+{{--
                 <x-admin.components.admin-secondary-button href="" title="" href="" class="">
                     {{__('admin/projects.print_project')}}
                 </x-admin.components.admin-secondary-button>
+--}}
+
+                <button onclick="window.print()" class="text-white border-radius-16 admin-secondary-button bold t-a-center">
+                    {{__('admin/projects.print_project')}}
+                </button>
+
+
             </div>
         </div>
     </div>

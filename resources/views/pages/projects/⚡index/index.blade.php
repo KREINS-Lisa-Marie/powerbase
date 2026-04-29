@@ -12,7 +12,7 @@
             'name' => 'latest',
         'value' =>'plus récents',
         ],
-    ]
+    ];
 @endphp
 <main class="admin orders-index-page" id="content">
     <x-admin.page-bar>
@@ -22,8 +22,8 @@
         <div class="admin-filters-buttons max-w-admin-web">
             <div class="top-row">
                 <x-admin.components.admin-primary-button
-                    href="{{route('pages::contacts.create', ['locale' => __('general.currentLocale')])}}"
-                    title="Aller sur la page 'Créer une commande'" class="">
+                    href="{{route('pages::projects.create', ['locale' => __('general.currentLocale')])}}"
+                    title="Aller sur la page 'Créer un projet'" class="">
                     {{__('admin/projects.create_a_project')}}
                 </x-admin.components.admin-primary-button>
             </div>
@@ -56,39 +56,44 @@
                 </tr>
                 </thead>
                 <tbody>
-
-                @for($i=0; $i<10; $i++)
-                    {{--@foreach($this->searchedUsers() as $volunteer)--}}
+                    @forelse($projects as $project)
                     <tr class="table-row position-relative">
                         <x-admin.components.table.table-td class="table-full_name">
                             <span class="show-web">{{__('admin/projects.project_name')}}</span>
-                            Black Jack
-                            {{--<img src="{!! asset('assets/img/border-collie.jpg') !!}" alt="image du chien" class="border-r-big">--}}
+                            {{$project->project_name}}
                         </x-admin.components.table.table-td>
                         <x-admin.components.table.table-td class="table-name fw-medium">
                             <span
-                                class="show-web">{{__('admin/projects.adress')}}</span>{{--{!! $volunteer->last_name !!} {!! $volunteer->first_name !!}--}}
-                            john@doe.com
+                                class="show-web">{{__('admin/projects.adress')}}</span>
+                            {{$project->project_address}}
                         </x-admin.components.table.table-td>
                         <x-admin.components.table.table-td class="table-state">
                             <span
-                                class="show-web">{{__('admin/projects.created_at')}}</span>{{--{!! $volunteer->phone !!}--}}
-                            2943473207
+                                class="show-web">{{__('admin/projects.created_at')}}</span>
+                            {{ date('d/m/Y', strtotime($project->created_at)) }}
                         </x-admin.components.table.table-td>
                         <x-admin.components.table.table-td class="table-species">
                             <span
-                                class="show-web">{{__('admin/projects.finished_at')}}</span>{{--{!! $volunteer->is_admin?   __('admin/volunteers.admin'): __('admin/volunteers.volunteer') !!}--}}
-                            Electricien
-                            <a href="{{--{{route('pages::volunteers.show',  ['locale' => __('general.currentLocale'),  'volunteer' => $volunteer->id])}}--}}"
-                               title="aller vers la page de la commande" class="card-link">
+                                class="show-web">{{__('admin/projects.finished_at')}}</span>
+                            {{ date('d/m/Y', strtotime($project->updated_at)) }}
+                            <a href="{{route('pages::projects.show',  ['locale' => __('general.currentLocale'),  'project' => $project->id])}}"
+                               title="aller vers la page du projet" class="card-link">
                             </a>
                         </x-admin.components.table.table-td>
                     </tr>
-                    {{--@endforeach--}}
-                @endfor
+                    @empty
+                        <tr class="table-row position-relative">
+                            <x-admin.components.table.table-td class="table-full_name">
+                                {{__('admin/projects.no_result')}}
+                            </x-admin.components.table.table-td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
         </section>
+        <div class="pagination max-w-admin-web">
+            {{ $projects->links() }}
+        </div>
     </div>
 
 </main>

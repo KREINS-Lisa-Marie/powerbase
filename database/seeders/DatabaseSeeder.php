@@ -44,6 +44,7 @@ class DatabaseSeeder extends Seeder
 
         $user2 = User::factory(15)->create();
 
-        
+        $projects = Project::factory(15)->create();
+
     }
 }
