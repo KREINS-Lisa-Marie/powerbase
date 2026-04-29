@@ -1,26 +1,27 @@
 @php
     $project_options = [
-        [
-            'name' => 'Electricien',
-        'value' => 'electricien',
-        ],
-        [
-            'name' => 'Magasinier',
-            'value' =>'magasinier',
-        ],
-            [
-            'name' => 'Admin',
-            'value' =>'admin',
-        ],
-];
+         [
+             'name' => __('admin/projects.private'),
+             'value' => \App\Enums\ProjectTypes::Private->value,
+         ],
+         [
+             'name' => __('admin/projects.corporate'),
+             'value' => \App\Enums\ProjectTypes::Corporate->value,
+         ],
+    ];
+
+    $in_charge_options = [];
+     $users =  App\Models\User::get();
+     foreach ($users as $user) {
+        $in_charge_options[] = [
+            'name'  => "$user->first_name $user->last_name",
+            'value' => $user->id,
+        ];
+    }
 @endphp
 
 
-
 <main class="admin project" id="content">
-    {{--    <x-admin.page-bar>
-            Thomas Fortin   --}}{{--{!! $volunteer->first_name !!}  {!! $volunteer->last_name !!}--}}{{--
-        </x-admin.page-bar>--}}
     <x-admin.page-bar>
         {{__('admin/projects.create_a_project')}}
     </x-admin.page-bar>
@@ -34,20 +35,22 @@
                 <div class="contact-information-list">
                     <div>
                         <div>
-                            <x-admin.components.fields.text name="first_name" value="" placeholder="John" wire=""
-                                                            id="first_name">
+                            <x-admin.components.fields.text name="project_name" value="" placeholder="John"
+                                                            wire="project_name"
+                                                            id="project_name">
                                 {{__('admin/projects.project_name')}}
                             </x-admin.components.fields.text>
                         </div>
                         <div>
-                            <x-admin.components.fields.text name="last_name" value="" placeholder="John" wire=""
-                                                            id="last_name">
-                                {{__('admin/projects.person_in_charge')}}
-                            </x-admin.components.fields.text>
+                            <x-admin.components.fields.select select_name="person_in_charge"
+                                                              label="{{__('admin/projects.person_in_charge')}}"
+                                                              :options="$in_charge_options" wire="person_in_charge">
+                            </x-admin.components.fields.select>
                         </div>
 
                         <div>
-                            <x-admin.components.fields.phone wire="" name="general_phone" id="general_phone" value=""
+                            <x-admin.components.fields.phone wire="phone_in_charge" name="phone_in_charge"
+                                                             id="phone_in_charge" value=""
                                                              placeholder="048383903">
                                 {{__('admin/projects.phone_person_in_charge')}}
                             </x-admin.components.fields.phone>
@@ -64,23 +67,25 @@
 
                         <div>
                             <x-admin.components.fields.text name="client_name" value="" placeholder="John Dupont"
-                                                            wire=""
+                                                            wire="client_name"
                                                             id="client_name">
                                 {{__('admin/projects.client_name')}}
                             </x-admin.components.fields.text>
                         </div>
 
                         <div>
-                            <x-admin.components.fields.text name="project_adress" value=""
-                                                            placeholder="Rue de l'école 2, 4000 Liège" wire=""
-                                                            id="project_adress">
+                            <x-admin.components.fields.text name="project_address" value=""
+                                                            placeholder="Rue de l'école 2, 4000 Liège"
+                                                            wire="project_address"
+                                                            id="project_address">
                                 {{__('admin/projects.project_adress')}}
                             </x-admin.components.fields.text>
                         </div>
                     </div>
 
                     <div>
-                        <x-admin.components.fields.textarea wire="" name="project_description" id="project_description"
+                        <x-admin.components.fields.textarea wire="project_description" name="project_description"
+                                                            id="project_description"
                                                             value=""
                                                             placeholder="petite description">
                             {{__('admin/projects.project_description')}}
@@ -91,9 +96,9 @@
 
             <div class="split-row">
                 <div class="admin-information-buttons">
-                    <x-admin.components.admin-primary-button href="" title="" href="" class="">
+                    <x-admin.components.submit-button class="">
                         {{__('admin/projects.create_project')}}
-                    </x-admin.components.admin-primary-button>
+                    </x-admin.components.submit-button>
                 </div>
             </div>
         </form>
