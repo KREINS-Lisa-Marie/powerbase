@@ -58,38 +58,44 @@
                 </thead>
                 <tbody>
 
-                @for($i=0; $i<10; $i++)
-                    {{--@foreach($this->searchedUsers() as $volunteer)--}}
+                    @forelse($contacts as $contact)
                     <tr class="table-row position-relative">
                         <x-admin.components.table.table-td class="table-full_name">
                             <span class="show-web">{{__('admin/contacts.name_title')}}</span>
-                            Black Jack
-                            {{--<img src="{!! asset('assets/img/border-collie.jpg') !!}" alt="image du chien" class="border-r-big">--}}
+                            {{$contact->first_name}} {{$contact->last_name}}
                         </x-admin.components.table.table-td>
                         <x-admin.components.table.table-td class="table-name fw-medium">
                             <span
-                                class="show-web">{{__('admin/contacts.email_title')}}</span>{{--{!! $volunteer->last_name !!} {!! $volunteer->first_name !!}--}}
-                            john@doe.com
+                                class="show-web">{{__('admin/contacts.email_title')}}</span>
+                            {{$contact->email}}
                         </x-admin.components.table.table-td>
                         <x-admin.components.table.table-td class="table-state">
                             <span
-                                class="show-web">{{__('admin/contacts.phone_number_title')}}</span>{{--{!! $volunteer->phone !!}--}}
-                            2943473207
+                                class="show-web">{{__('admin/contacts.phone_number_title')}}</span>
+                            {{$contact->phone}}
                         </x-admin.components.table.table-td>
                         <x-admin.components.table.table-td class="table-species">
                             <span
-                                class="show-web">{{__('admin/contacts.job_title')}}</span>{{--{!! $volunteer->is_admin?   __('admin/volunteers.admin'): __('admin/volunteers.volunteer') !!}--}}
-                            Electricien
-                            <a href="{{--{{route('pages::volunteers.show',  ['locale' => __('general.currentLocale'),  'volunteer' => $volunteer->id])}}--}}"
-                               title="aller vers la page de l’animal" class="card-link">
+                                class="show-web">{{__('admin/contacts.job_title')}}</span>
+                            {{$contact->job == 'worker' ? 'Electricien' : ($contact->job == 'admin' ? 'Admin' : 'Lagerist') }}
+                            <a href="{{route('pages::contacts.show',  ['locale' => __('general.currentLocale'),  'contact' => $contact->id])}}"
+                               title="aller vers la page de la personne" class="card-link">
                             </a>
                         </x-admin.components.table.table-td>
                     </tr>
-                    {{--@endforeach--}}
-                @endfor
+                    @empty
+                        <tr class="table-row position-relative">
+                            <x-admin.components.table.table-td class="table-full_name">
+                                {{__('admin/contacts.no_result')}}
+                            </x-admin.components.table.table-td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
         </section>
+        <div class="pagination max-w-admin-web">
+            {{ $contacts->links() }}
+        </div>
     </div>
 
 </main>
