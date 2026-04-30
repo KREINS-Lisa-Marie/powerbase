@@ -1,11 +1,11 @@
 @php
     $vehicle_options = [
         [
-            'name' => 'Camionette',
+            'name' => __('admin/contacts.van'),
         'value' => '1',
         ],
         [
-            'name' => 'Voiture',
+            'name' => __('admin/contacts.car'),
             'value' =>'0',
         ],
 ];
@@ -13,15 +13,15 @@
 
     $job_options = [
         [
-            'name' => 'Electricien',
+            'name' => __('admin/contacts.electrician'),
         'value' => 'electricien',
         ],
         [
-            'name' => 'Magasinier',
+            'name' => __('admin/contacts.storekeeper'),
             'value' =>'magasinier',
         ],
             [
-            'name' => 'Admin',
+            'name' => __('admin/contacts.admin'),
             'value' =>'admin',
         ],
 ];
@@ -79,7 +79,7 @@
 
                         <div>
                             <x-auth.form.password wire="password" name="user_password" id="user_password" value=""
-                                                  placeholder="Entrez un mot de passe">
+                                                  placeholder="{{__('admin/contacts.enter_a_password')}}">
                                 {{__('admin/contacts.user_password')}}
                             </x-auth.form.password>
                         </div>
@@ -97,7 +97,7 @@
 
                         <div>
                             <x-admin.components.fields.text name="adress" value=""
-                                                            placeholder="Rue de l'école 2, 4000 Liège" wire="private_address"
+                                                            placeholder="{{__('admin/contacts.address_example')}}" wire="private_address"
                                                             id="adress">
                                 {{__('admin/contacts.private_adress')}}
                             </x-admin.components.fields.text>

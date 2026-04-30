@@ -2,15 +2,15 @@
     $filter_options =[
            [
             'name' => 'ABC',
-        'value' =>'ABC',
+        'value' =>'abc',
         ],
                    [
             'name' => 'ZYX',
-        'value' =>'ZYX',
+        'value' =>'zyx',
         ],
                    [
-            'name' => 'latest',
-        'value' =>'plus récents',
+            'name' => __('admin/contacts.most_recent'),
+        'value' =>'latest',
         ],
     ]
 @endphp
@@ -23,7 +23,7 @@
             <div class="top-row">
                 <x-admin.components.admin-primary-button
                     href="{{route('pages::contacts.create', ['locale' => __('general.currentLocale')])}}"
-                    title="Aller sur la page 'Créer un bénévole'" class="">
+                    title="{{__('admin/contacts.go_to_create_contact')}}" class="">
                     {{__('admin/contacts.create_a_contact')}}
                 </x-admin.components.admin-primary-button>
             </div>
@@ -37,7 +37,7 @@
 
         <section class="contacts-list">
             <h2 class="sro">
-
+                {{__('admin/contacts.list_of_contacts')}}
             </h2>
             <table class="table max-w-admin-web">
                 <thead>
@@ -77,9 +77,9 @@
                         <x-admin.components.table.table-td class="table-species">
                             <span
                                 class="show-web">{{__('admin/contacts.job_title')}}</span>
-                            {{$contact->job == 'worker' ? 'Electricien' : ($contact->job == 'admin' ? 'Admin' : 'Lagerist') }}
+                            {{$contact->job == 'worker' ? __('admin/contacts.electrician') : ($contact->job == 'admin' ? __('admin/contacts.admin') : __('admin/contacts.storekeeper')) }}
                             <a href="{{route('pages::contacts.show',  ['locale' => __('general.currentLocale'),  'contact' => $contact->id])}}"
-                               title="aller vers la page de la personne" class="card-link">
+                               title="{{__('admin/contacts.go_to_contact')}}" class="card-link">
                             </a>
                         </x-admin.components.table.table-td>
                     </tr>
