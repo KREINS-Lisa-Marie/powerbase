@@ -14,14 +14,14 @@
                 <fieldset class="contact-information max-w-admin-web small-section">
                 <div class="profile-inputs">
                     <x-auth.form.password wire="password" name="user_password" id="user_password" value=""
-                                          placeholder="Entrez un mot de passe">
+                                          placeholder="{{__('admin/profile.enter_a_password')}}">
                         {{__('admin/profile.user_password')}}
                     </x-auth.form.password>
                 </div>
 
                 <div class="profile-inputs">
                     <x-auth.form.password-confirmation wire="password_confirmation" name="user_password_confirmation" id="user_password_confirmation" value=""
-                                                       placeholder="Retapez votre mot de passe">
+                                                       placeholder="{{__('admin/profile.reenter_a_password')}}">
                         {{__('admin/profile.user_password_confirmation')}}
                     </x-auth.form.password-confirmation>
                 </div>
