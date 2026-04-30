@@ -8,4 +8,9 @@ return [
     'save'=>'Enregistrer',
     'change_my_password'=>'Changer mon mot de passe',
     'change_password'=>'Changer mot de passe',
+
+    'enter_a_password'=>'Entrez un mot de passe',
+    'reenter_a_password'=>'Retapez votre mot de passe',
+    'go_to_change_password'=>"Aller sur la page 'Modifier mon mot de passe'",
+    'change_language_to'=>"Changer la langue vers",
 ];

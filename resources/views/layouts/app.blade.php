@@ -12,11 +12,6 @@
 </head>
 <body class="body-style background-admin">
 <x-admin.sidebar></x-admin.sidebar>
-{{--<x-admin.page-bar>
-    Accueil--}}{{--{{__('admin/dashboard.dashboard')}}--}}{{--
-</x-admin.page-bar>--}}
-
-
 
     {{ $slot }}
 

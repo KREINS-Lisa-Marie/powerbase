@@ -1,11 +1,11 @@
 @php
     $vehicle_options = [
         [
-            'name' => 'Camionette',
+            'name' => __('admin/contacts.van'),
         'value' => '1',
         ],
         [
-            'name' => 'Voiture',
+            'name' => __('admin/contacts.car'),
             'value' =>'0',
         ],
 ];
@@ -13,15 +13,15 @@
 
     $job_options = [
         [
-            'name' => 'Electricien',
+            'name' => __('admin/contacts.electrician'),
         'value' => 'electricien',
         ],
         [
-            'name' => 'Magasinier',
+            'name' => __('admin/contacts.storekeeper'),
             'value' =>'magasinier',
         ],
             [
-            'name' => 'Admin',
+            'name' => __('admin/contacts.admin'),
             'value' =>'admin',
         ],
 ];
@@ -30,9 +30,6 @@
 
 
 <main class="admin" id="content">
-    {{--    <x-admin.page-bar>
-            Thomas Fortin   --}}{{--{!! $volunteer->first_name !!}  {!! $volunteer->last_name !!}--}}{{--
-        </x-admin.page-bar>--}}
     <x-admin.page-bar>
         {{__('admin/contacts.modify_contact')}}
     </x-admin.page-bar>
@@ -88,7 +85,7 @@
 
                     <div>
                         <x-admin.components.fields.text name="adress" value="{!! $contact->private_address !!}"
-                                                        placeholder="Rue de l'école 2, 4000 Liège" wire="private_address" id="adress">
+                                                        placeholder="{{__('admin/contacts.address_example')}}" wire="private_address" id="adress">
                             {{__('admin/contacts.private_adress')}}
                         </x-admin.components.fields.text>
                     </div>

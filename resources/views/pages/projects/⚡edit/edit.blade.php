@@ -75,7 +75,7 @@
 
                         <div>
                             <x-admin.components.fields.text name="project_address" value=""
-                                                            placeholder="Rue de l'école 2, 4000 Liège" wire="project_address"
+                                                            placeholder="{{__('admin/projects.example_address')}}" wire="project_address"
                                                             id="project_adress">
                                 {{__('admin/projects.project_adress')}}
                             </x-admin.components.fields.text>
@@ -85,7 +85,7 @@
                     <div>
                         <x-admin.components.fields.textarea wire="project_description" name="project_description" id="project_description"
                                                             value=""
-                                                            placeholder="petite description">
+                                                            placeholder=" {{__('admin/projects.example_project_description')}}">
                             {{__('admin/projects.project_description')}}
                         </x-admin.components.fields.textarea>
                     </div>

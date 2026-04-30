@@ -28,4 +28,10 @@ return [
     'modify'=>'Bearbeiten von',
     'corporate'=>'Firma',
     'private'=>'Privat',
+
+    'example_address' => 'Rue de l’école 2, 4000 Liège',
+    'example_project_description' => 'Das Projekt besteht aus...',
+    'most_recent' => 'Neueste',
+    'go_to_create_project' => "Gehen Sie zur Seite 'Projekt erstellen'",
+    'go_to_project_page' => "Gehen Sie zur Projektseite",
 ];

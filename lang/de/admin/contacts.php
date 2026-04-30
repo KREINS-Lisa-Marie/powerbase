@@ -31,4 +31,16 @@ return [
     'search' => 'Suche',
     'searching' => 'Suchen',
     'no_result' => 'Kein Resultat',
+
+    'enter_a_password' => 'Geben Sie ein Passwort ein',
+    'address_example' => 'Rue de l’école 2, 4000 Liège',
+    'go_to_create_contact' => "Gehen Sie zur Seite 'Kontakt erstellen'",
+    'list_of_contacts' => 'Kontaktliste',
+    'electrician' => 'Elektriker',
+    'admin' => 'Admin',
+    'storekeeper' => 'Lagerist',
+    'go_to_contact' => "Gehen Sie zur Detailseite des Kontakts",
+
+    'most_recent' => 'Neueste',
+    'van' => 'Kleintransporter',
 ];

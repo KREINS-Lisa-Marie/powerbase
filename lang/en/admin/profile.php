@@ -8,4 +8,9 @@ return [
     'save'=>'Save',
     'change_my_password'=>'Change my password',
     'change_password'=>'Change password',
+
+    'enter_a_password' => 'Enter a password',
+    'reenter_a_password' => 'Re-enter your password',
+    'go_to_change_password' => "Go to the 'Change my password' page",
+    'change_language_to' => "Change language to",
 ];

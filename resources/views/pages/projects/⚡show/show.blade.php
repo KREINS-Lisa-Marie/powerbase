@@ -2,15 +2,15 @@
 $filter_options =[
            [
             'name' => 'ABC',
-        'value' =>'ABC',
+        'value' =>'abc',
         ],
                    [
             'name' => 'ZYX',
-        'value' =>'ZYX',
+        'value' =>'zyx',
         ],
                    [
-            'name' => 'latest',
-        'value' =>'plus récents',
+            'name' => __('admin/projects.most_recent'),
+        'value' =>'latest',
         ],
     ];
 
@@ -63,7 +63,7 @@ $filter_options =[
                             {{__('admin/projects.project_type')}}
                         </x-admin.components.definition-term>
                         <x-admin.components.definition>
-                            {{$project->project_type == 'corporate' ? 'Firma' : 'Particulier'}}
+                            {{$project->project_type == 'corporate' ? __('admin/projects.corporate') : __('admin/projects.private')}}
                         </x-admin.components.definition>
                     </div>
 
@@ -166,16 +166,9 @@ $filter_options =[
                     </x-admin.components.delete-btn>
                 </form>
 
-{{--
-                <x-admin.components.admin-secondary-button href="" title="" href="" class="">
-                    {{__('admin/projects.print_project')}}
-                </x-admin.components.admin-secondary-button>
---}}
-
                 <button onclick="window.print()" class="text-white border-radius-16 admin-secondary-button bold t-a-center">
                     {{__('admin/projects.print_project')}}
                 </button>
-
 
             </div>
         </div>

@@ -31,4 +31,16 @@ return [
     'search' => 'Search',
     'searching' => 'Searching',
     'no_result' => 'No result',
-];
+
+    'enter_a_password' => 'Enter a password',
+    'address_example' => 'Rue de l’école 2, 4000 Liège',
+    'go_to_create_contact' => "Go to the 'Create a contact' page",
+    'list_of_contacts' => 'List of contacts',
+    'electrician' => 'Electrician',
+    'admin' => 'Admin',
+    'storekeeper' => 'Storekeeper',
+    'go_to_contact' => "Go to the contact detail page",
+
+    'most_recent' => 'Most recent',
+    'van' => 'Van',
+    ];

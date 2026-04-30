@@ -44,7 +44,7 @@
                         {{__('admin/contacts.job')}}
                     </x-admin.components.definition-term>
                     <x-admin.components.definition>
-                        {{$contact->job == 'worker' ? 'Electricien' : ($contact->job == 'admin' ? 'Admin' : 'Lagerist') }}
+                        {{$contact->job == 'worker' ? __('admin/contacts.electrician') : ($contact->job == 'admin' ? __('admin/contacts.admin') : __('admin/contacts.storekeeper')) }}
                     </x-admin.components.definition>
                 </div>
 
