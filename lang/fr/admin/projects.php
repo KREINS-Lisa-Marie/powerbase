@@ -29,4 +29,10 @@ return [
     'corporate'=>'Public',
     'private'=>'Privé',
 
+    'example_address'=>'Rue de l’école 2, 4000 Liège',
+    'example_project_description'=>'Le projet consiste en...',
+    'most_recent'=>'Plus récents',
+    'go_to_create_project'=>"Aller sur la page 'Créer un projet'",
+    'go_to_project_page'=>"Aller vers la page du projet",
+
 ];

@@ -2,15 +2,15 @@
     $filter_options =[
            [
             'name' => 'ABC',
-        'value' =>'ABC',
+        'value' =>'abc',
         ],
                    [
             'name' => 'ZYX',
-        'value' =>'ZYX',
+        'value' =>'zyx',
         ],
                    [
-            'name' => 'latest',
-        'value' =>'plus récents',
+            'name' => __('admin/projects.most_recent'),
+        'value' =>'latest',
         ],
     ];
 @endphp
@@ -23,7 +23,7 @@
             <div class="top-row">
                 <x-admin.components.admin-primary-button
                     href="{{route('pages::projects.create', ['locale' => __('general.currentLocale')])}}"
-                    title="Aller sur la page 'Créer un projet'" class="">
+                    title="{{__('admin/projects.go_to_create_project')}}" class="">
                     {{__('admin/projects.create_a_project')}}
                 </x-admin.components.admin-primary-button>
             </div>
@@ -77,7 +77,7 @@
                                 class="show-web">{{__('admin/projects.finished_at')}}</span>
                             {{ date('d/m/Y', strtotime($project->updated_at)) }}
                             <a href="{{route('pages::projects.show',  ['locale' => __('general.currentLocale'),  'project' => $project->id])}}"
-                               title="aller vers la page du projet" class="card-link">
+                               title="{{__('admin/projects.go_to_project_page')}}" class="card-link">
                             </a>
                         </x-admin.components.table.table-td>
                     </tr>
