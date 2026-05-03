@@ -9,11 +9,14 @@ use App\Actions\Fortify\UpdateUserProfileInformation;
 use Illuminate\Auth\Middleware\RedirectIfAuthenticated;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Laravel\Fortify\Actions\RedirectIfTwoFactorAuthenticatable;
+use Laravel\Fortify\Contracts\LogoutResponse;
 use Laravel\Fortify\Fortify;
+use Laravel\Fortify\Http\Requests\LoginRequest;
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -22,7 +25,14 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->instance(LogoutResponse::class, new class implements LogoutResponse {
+            public function toResponse($request)
+            {
+                $locale = __('general.currentLocale');
+
+                return redirect("/$locale/login");
+            }
+        });
     }
 
     /**
@@ -61,6 +71,17 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::resetPasswordView(function (Request $request) {
             return view('auth.reset-password', ['request' => $request]);
         });
+
+/*        //remember me
+
+        Fortify::authenticateUsing(function (LoginRequest $request) {
+            $credentials = $request->only(Fortify::username(), 'password');
+
+            if (Auth::attempt($credentials, $request->boolean('remember'))) {
+                return $request->user();
+            }
+        }
+        );*/
 
     }
 }
