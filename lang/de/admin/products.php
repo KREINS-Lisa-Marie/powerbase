@@ -15,4 +15,15 @@ return [
     'edit_product' => 'Speichern',
     'updated_at' => 'Aktualisiert am',
     'in_stock_since' => 'Im Lager seit',
+
+    'modify' => 'Ändern von',
+    'products' => 'Produkte',
+
+    'placeholder_description' => 'Das Produkt besteht aus...',
+    'placeholder_note' => 'Farbänderung seit...',
+    'most_recent' => 'Neueste',
+    'got_to_create_product' => "Gehen Sie zur Seite 'Produkt erstellen'",
+    'got_to_product_page' => 'Gehen Sie zur Produktseite',
+    'products_list' => 'Produktliste',
+    'the_product_image' => 'Produktbild',
 ];

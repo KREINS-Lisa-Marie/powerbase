@@ -51,7 +51,7 @@
                         <div>
                             <x-admin.components.fields.textarea wire="product_description" id="product_description"
                                                                 name="product_description"
-                                                                placeholder="Petite description">
+                                                                placeholder="{{__('admin/products.placeholder_description')}}">
                                 {{__('admin/products.description')}}
                             </x-admin.components.fields.textarea>
                         </div>
@@ -61,7 +61,7 @@
                     <dl>
                         <div>
                             <x-admin.components.fields.textarea wire="" name="product_notes" id="product_notes" value=""
-                                                                placeholder="petite note">
+                                                                placeholder="{{__('admin/products.placeholder_note')}}">
                                 {{__('admin/products.notes')}}
                             </x-admin.components.fields.textarea>
                         </div>

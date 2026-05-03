@@ -44,6 +44,9 @@ class DatabaseSeeder extends Seeder
 
         $user2 = User::factory(15)->create();
 
+        $products = Product::factory(15)->create();
+        //var_dump(User::where('job', 'worker')->pluck('id'));
+
         $projects = Project::factory(15)->create();
 
     }

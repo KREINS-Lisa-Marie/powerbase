@@ -15,4 +15,15 @@ return [
     'edit_product' => 'Save',
     'updated_at' => 'Updated at',
     'in_stock_since' => 'In Inventory since',
+
+    'modify' => 'Modify',
+    'products' => 'Products',
+
+    'placeholder_description' => 'The product consists of...',
+    'placeholder_note' => 'Color change since...',
+    'most_recent' => 'Most recent',
+    'got_to_create_product' => "Go to the 'Create a product' page",
+    'got_to_product_page' => 'Go to the product page',
+    'products_list' => 'Products list',
+    'the_product_image' => 'Product image',
 ];
