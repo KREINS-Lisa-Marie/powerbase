@@ -2,25 +2,25 @@
     $filter_options =[
            [
             'name' => 'ABC',
-        'value' =>'ABC',
+        'value' =>'abc',
         ],
                    [
             'name' => 'ZYX',
-        'value' =>'ZYX',
+        'value' =>'zyx',
         ],
                    [
-            'name' => 'latest',
-        'value' =>'plus récents',
+            'name' => __('admin/orders.latest'),
+        'value' =>'most recent',
         ],
-    ]
+    ];
+
+    $order = \App\Models\Order::findOrFail($order_id);
+    $user = \App\Models\User::findOrFail($order->for_who);
 @endphp
 
 <main class="admin project-show" id="content">
-    {{--    <x-admin.page-bar>
-            Thomas Fortin   --}}{{--{!! $volunteer->first_name !!}  {!! $volunteer->last_name !!}--}}{{--
-        </x-admin.page-bar>--}}
     <x-admin.page-bar>
-        Order name or number
+        {{__('admin/orders.order_number_title')}} {{$order->id}}
     </x-admin.page-bar>
     <div class="main-container">
         <section class="project-information max-w-admin-web big-section">
@@ -35,8 +35,7 @@
                             {{__('admin/orders.order_number')}}
                         </x-admin.components.definition-term>
                         <x-admin.components.definition>
-                            {{--{!! $volunteer->first_name !!}--}}{{--{!! $volunteer->last_name !!}--}}
-                            Maison Piette Mulhausen
+                            {{$order->id}}
                         </x-admin.components.definition>
                     </div>
                     <div>
@@ -44,8 +43,7 @@
                             {{__('admin/orders.for_who')}}
                         </x-admin.components.definition-term>
                         <x-admin.components.definition>
-                            {{--{!! $volunteer->email !!}--}}
-                            Michel Berro
+                            {{$user->first_name}} {{$user->last_name}}
                         </x-admin.components.definition>
                     </div>
                     <div>
@@ -53,8 +51,7 @@
                             {{__('admin/orders.phone_person_order')}}
                         </x-admin.components.definition-term>
                         <x-admin.components.definition>
-                            {{--{!! $volunteer->phone !!}--}}
-                            Michel Berro
+                            {{$user->phone}}
                         </x-admin.components.definition>
                     </div>
                 </dl>
@@ -66,8 +63,7 @@
                             {{__('admin/orders.project_name')}}
                         </x-admin.components.definition-term>
                         <x-admin.components.definition>
-                            {{--{!! $volunteer->is_admin? __('admin/volunteers.admin'): __('admin/volunteers.volunteer') !!}--}}
-                            Particulier
+                            {{$order->project_name}}
                         </x-admin.components.definition>
                     </div>
 
@@ -76,8 +72,7 @@
                             {{__('admin/orders.order_state')}}
                         </x-admin.components.definition-term>
                         <x-admin.components.definition>
-                            {{--{!! $volunteer->is_admin? __('admin/volunteers.admin'): __('admin/volunteers.volunteer') !!}--}}
-                            Angèle Marteau
+                            {{$order->order_state}}
                         </x-admin.components.definition>
                     </div>
                     <div>
@@ -85,8 +80,7 @@
                             {{__('admin/orders.ordered_at')}}
                         </x-admin.components.definition-term>
                         <x-admin.components.definition>
-                            {{--{!! $volunteer->is_admin? __('admin/volunteers.admin'): __('admin/volunteers.volunteer') !!}--}}
-                            Rue de l’école 3, 4000 Liège
+                            {{ date('d/m/Y', strtotime($order->ordered_at)) }}
                         </x-admin.components.definition>
                     </div>
                 </dl>
@@ -134,7 +128,7 @@
                                         class="show-web">{{__('admin/orders.product_name')}}</span>{{--{!! $volunteer->is_admin?   __('admin/volunteers.admin'): __('admin/volunteers.volunteer') !!}--}}
                                     Vis 100
                                     <a href="{{--{{route('pages::volunteers.show',  ['locale' => __('general.currentLocale'),  'volunteer' => $volunteer->id])}}--}}"
-                                       title="aller vers la fiche du produit" class="card-link">
+                                       title="{{__('admin/orders.go_to_detail_page')}}" class="card-link">
                                     </a>
                                 </x-admin.components.table.table-td>
                                 <x-admin.components.table.table-td class="table-full_name">
@@ -151,17 +145,20 @@
 
             </section>
             <div class="admin-information-buttons">
-                <x-admin.components.admin-primary-button href="" title="" href="" class="">
+                <x-admin.components.admin-primary-button href="{{route('pages::orders.edit', ['locale' => __('general.currentLocale'), 'order' => $order])}}" title="{{__('admin/orders.modify_order')}}"  class="">
                     {{__('admin/orders.modify_order')}}
                 </x-admin.components.admin-primary-button>
 
-                <x-admin.components.admin-secondary-button href="" title="" href="" class="">
-                    {{__('admin/orders.delete_order')}}
-                </x-admin.components.admin-secondary-button>
+                <form wire:submit="destroy" method="post">
+                    @csrf
+                    <x-admin.components.delete-btn title="{{__('admin/orders.delete_order')}}">
+                        {{__('admin/orders.delete_order')}}
+                    </x-admin.components.delete-btn>
+                </form>
 
-                <x-admin.components.admin-secondary-button href="" title="" href="" class="">
+                <button onclick="window.print()" class="text-white border-radius-16 admin-secondary-button bold t-a-center">
                     {{__('admin/orders.print_order')}}
-                </x-admin.components.admin-secondary-button>
+                </button>
             </div>
         </div>
     </div>

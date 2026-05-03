@@ -48,6 +48,6 @@ class DatabaseSeeder extends Seeder
         //var_dump(User::where('job', 'worker')->pluck('id'));
 
         $projects = Project::factory(15)->create();
-
+        $orders = Order::factory(15)->create();
     }
 }

@@ -1,11 +1,11 @@
 @php
     $orders_state_options = [
         [
-            'name' => 'En attente',
+            'name' => __('admin/orders.pending'),
         'value' => 'waiting',
         ],
         [
-            'name' => 'Complèt',
+            'name' => __('admin/orders.completed'),
             'value' =>'completed',
         ],
 ];
@@ -14,9 +14,6 @@
 
 
 <main class="admin project-show" id="content">
-    {{--    <x-admin.page-bar>
-            Thomas Fortin   --}}{{--{!! $volunteer->first_name !!}  {!! $volunteer->last_name !!}--}}{{--
-        </x-admin.page-bar>--}}
     <x-admin.page-bar>
         {{__('admin/orders.modify_order')}}
     </x-admin.page-bar>

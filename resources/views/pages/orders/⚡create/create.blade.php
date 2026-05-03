@@ -1,11 +1,11 @@
 @php
     $orders_state_options = [
         [
-            'name' => 'En attente',
+            'name' => __('admin/orders.pending'),
         'value' => 'waiting',
         ],
         [
-            'name' => 'Complèt',
+            'name' => __('admin/orders.completed'),
             'value' =>'completed',
         ],
 
