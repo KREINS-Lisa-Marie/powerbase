@@ -17,4 +17,6 @@ return [
     'create_a_project' => 'Ein Projekt erstellen',
     'hello' => 'Hallo',
 
+    'home' => 'Startseite',
+    'go_to_order' => 'Zur Seite Bestellungen gehen',
 ];
