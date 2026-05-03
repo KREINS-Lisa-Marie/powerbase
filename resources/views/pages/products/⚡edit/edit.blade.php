@@ -25,16 +25,14 @@
             'value' =>'admin',
         ],
 ];
+
+    $product = \App\Models\Product::findOrFail($product_id);
 @endphp
 
-
-
 <main class=" admin product" id="content">
-    {{--    <x-admin.page-bar>
-            Thomas Fortin   --}}{{--{!! $volunteer->first_name !!}  {!! $volunteer->last_name !!}--}}{{--
-        </x-admin.page-bar>--}}
     <x-admin.page-bar>
-        Modifier Produit 1{{--{{__('admin/dashboard.dashboard')}}--}}
+ {{__('admin/products.modify')}}
+        {{$product->product_name}}
     </x-admin.page-bar>
     <div class="main-container">
         <form wire:submit="save" class="profile-form volunteers-edit">
@@ -54,7 +52,7 @@
                         <div>
                             <x-admin.components.fields.textarea wire="product_description" id="product_description"
                                                                 name="product_description"
-                                                                placeholder="Petite description">
+                                                                placeholder="{{__('admin/products.placeholder_description')}}">
                                 {{__('admin/products.description')}}
                             </x-admin.components.fields.textarea>
                         </div>
@@ -64,7 +62,7 @@
                     <dl>
                         <div>
                             <x-admin.components.fields.textarea wire="" name="product_notes" id="product_notes" value=""
-                                                                placeholder="petite note">
+                                                                placeholder="{{__('admin/products.placeholder_note')}}">
                                 {{__('admin/products.notes')}}
                             </x-admin.components.fields.textarea>
                         </div>
