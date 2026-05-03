@@ -1,9 +1,9 @@
 
 @php
-    /*$new_message = \App\Models\Message::where('state', '!=', 'read')->get();
-    $message_number = $new_message->count();
+    $new_order = \App\Models\Order::where('order_state', '!=', 'completed')->get();
+    $orders_number = $new_order->count();
 
-    $new_adoption_requests = \App\Models\Request::where('state', '=', 'not_treated_yet')->get();
+    /*$new_adoption_requests = \App\Models\Request::where('state', '=', 'not_treated_yet')->get();
     $adoption_requests_number = $new_adoption_requests->count();*/
 @endphp
 <header class="sidebar d-flex">
@@ -72,7 +72,7 @@
         <li class="nav__item__header">
             <a href="{{route('pages::projects.index', ['locale' => __('general.currentLocale')])}}" class="nav__link__header" aria-label="{{__('admin/sidebar.go_to_the_page_projects')}}" title="{{__('admin/sidebar.go_to_the_page_projects')}}">
                 {{__('admin/sidebar.projects')}}
-                </a> <span class="numbers">{{--{!! $adoption_requests_number !!}--}}</span>
+            </a>
         </li>
         <li class="nav__item__header">
             <a href="{{route('pages::contacts.index', ['locale' => __('general.currentLocale')])}}" class="nav__link__header" aria-label="{{__('admin/sidebar.go_to_the_page_contacts')}}" title="{{__('admin/sidebar.go_to_the_page_contacts')}}">
@@ -82,7 +82,7 @@
         <li class="nav__item__header">
             <a href="{{route('pages::orders.index', ['locale' => __('general.currentLocale')])}}" class="nav__link__header" aria-label="{{__('admin/sidebar.go_to_the_page_orders')}}" title="{{__('admin/sidebar.go_to_the_page_orders')}}">
                 {{__('admin/sidebar.orders')}}
-                </a> <span class="numbers">{{--{!! $message_number !!}--}}</span>
+                </a> <span class="numbers">{!! $orders_number !!}</span>
         </li>
     </ul>
 
