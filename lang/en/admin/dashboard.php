@@ -17,4 +17,6 @@ return [
     'create_a_project' => 'Create a project',
     'hello' => 'Hello',
 
+    'home' => 'Home',
+    'go_to_order' => 'Go to the order page',
 ];

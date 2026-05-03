@@ -17,4 +17,8 @@ return [
     'create_a_project' => 'Créer un projet',
     'hello' => 'Bonjour',
 
+
+    'home' => 'Accueil',
+    'go_to_order' => 'Aller vers la page de la commande',
+
 ];
