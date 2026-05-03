@@ -25,4 +25,9 @@ return [
 
     'create_order' => 'Bestellung erstellen',
     'products_to_order' => 'Zu bestellende Produkte',
+    'pending' => 'In Bearbeitung',
+    'completed' => 'Fertig',
+    'order_number_title' => 'Bestellung n°',
+
+    'orders' => 'Bestellungen',
 ];

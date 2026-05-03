@@ -25,5 +25,9 @@ return [
 
     'create_order' => 'Create the order',
     'products_to_order' => 'Products to order',
+    'pending' => 'Pending',
+    'completed' => 'Completed',
+    'order_number_title' => 'Order n°',
 
+    'orders' => 'Orders',
 ];

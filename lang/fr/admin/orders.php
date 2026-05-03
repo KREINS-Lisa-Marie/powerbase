@@ -26,5 +26,15 @@ return [
 
     'create_order' => 'Créer la commande',
     'products_to_order' => 'Produits à commander',
+    'pending' => 'En cours',
+    'completed' => 'Prêt',
+    'order_number_title' => 'Numéro de commande',
+    'orders' => 'Commandes',
+
+    'latest' => 'Plus récents',
+    'go_to_create_order' => "Aller sur la page 'Créer une commande'",
+    'go_to_order_page' => 'Aller sur la page de la commande',
+    'oders_list' => 'Liste des commandes',
+    'go_to_detail_page' => 'Aller vers la page de détail',
 
 ];
