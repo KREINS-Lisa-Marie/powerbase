@@ -44,9 +44,9 @@ class DatabaseSeeder extends Seeder
 
         $user2 = User::factory(15)->create();
 
-        $products = Product::factory(15)->create();
+        //$products = Product::factory(15)->create();
         //var_dump(User::where('job', 'worker')->pluck('id'));
-
+        $this->call(ProductsSeeder::class);
         $projects = Project::factory(15)->create();
         $orders = Order::factory(15)->create();
     }
