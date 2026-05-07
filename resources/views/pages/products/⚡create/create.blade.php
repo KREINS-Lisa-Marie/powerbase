@@ -43,9 +43,15 @@
                 <div class="contact-information-list">
                     <dl>
                         <div>
-                            <x-admin.components.fields.text name="first_name" value="" placeholder="John" wire=""
-                                                            id="first_name">
+                            <x-admin.components.fields.text name="product_name" value="" placeholder="John" wire="product_name"
+                                                            id="product_name">
                                 {{__('admin/products.product_name')}}
+                            </x-admin.components.fields.text>
+                        </div>
+                        <div>
+                            <x-admin.components.fields.text name="brand" value="" placeholder="Johnson" wire="brand"
+                                                            id="brand">
+                                {{__('admin/products.brand')}}
                             </x-admin.components.fields.text>
                         </div>
                         <div>
@@ -60,15 +66,22 @@
 
                     <dl>
                         <div>
-                            <x-admin.components.fields.textarea wire="" name="product_notes" id="product_notes" value=""
+                            <x-admin.components.fields.textarea wire="product_notes" name="product_notes" id="product_notes" value=""
                                                                 placeholder="{{__('admin/products.placeholder_note')}}">
                                 {{__('admin/products.notes')}}
                             </x-admin.components.fields.textarea>
                         </div>
 
                         <div>
-                            <x-admin.components.fields.number wire="product_number" name="product_number"
-                                                              id="product_number"
+                            <x-admin.components.fields.text wire="ref_article" name="ref_article"
+                                                              id="ref_article"
+                                                              value="" placeholder="22">
+                                {{__('admin/products.ref_article')}}
+                            </x-admin.components.fields.text>
+                        </div>
+                        <div>
+                            <x-admin.components.fields.number wire="quantity" name="quantity"
+                                                              id="quantity"
                                                               value="" placeholder="22">
                                 {{__('admin/products.stock_number')}}
                             </x-admin.components.fields.number>
@@ -76,10 +89,18 @@
                     </dl>
 
                     <div>
-                        <x-admin.components.fields.file name_id="product_image" wire="product_image"
-                                                        name="product_image">
-                            {{__('admin/products.product_image')}}
-                        </x-admin.components.fields.file>
+                        <div>
+                            <x-admin.components.fields.text name="gtin" value="" placeholder="DHH34HK43BF2" wire="gtin"
+                                                            id="gtin">
+                                {{__('admin/products.gtin')}}
+                            </x-admin.components.fields.text>
+                        </div>
+                        <div>
+                            <x-admin.components.fields.file name_id="product_image" wire="product_image"
+                                                            name="product_image">
+                                {{__('admin/products.product_image')}}
+                            </x-admin.components.fields.file>
+                        </div>
                     </div>
                 </div>
 

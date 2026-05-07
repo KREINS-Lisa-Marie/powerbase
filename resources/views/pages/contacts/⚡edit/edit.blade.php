@@ -61,14 +61,14 @@
                     </div>
 
                     <div>
-                        <x-admin.components.fields.phone wire="phone" name="general_phone" id="general_phone" value="{!! $contact->phone !!}"
+                        <x-admin.components.fields.phone wire="phone" name="phone" id="phone" value="{!! $contact->phone !!}"
                                                          placeholder="048383903">
                             {{__('admin/contacts.phone')}}
                         </x-admin.components.fields.phone>
                     </div>
 
                     <div>
-                        <x-admin.components.fields.select select_name="job_type"
+                        <x-admin.components.fields.select select_name="job"
                                                           label="{{__('admin/contacts.job_type')}}"
                                                           :options="$job_options" wire="job">
                         </x-admin.components.fields.select>
@@ -84,8 +84,8 @@
 
 
                     <div>
-                        <x-admin.components.fields.text name="adress" value="{!! $contact->private_address !!}"
-                                                        placeholder="{{__('admin/contacts.address_example')}}" wire="private_address" id="adress">
+                        <x-admin.components.fields.text name="private_address" value="{!! $contact->private_address !!}"
+                                                        placeholder="{{__('admin/contacts.address_example')}}" wire="private_address" id="private_address">
                             {{__('admin/contacts.private_adress')}}
                         </x-admin.components.fields.text>
                     </div>
@@ -99,14 +99,14 @@
                         {{__('admin/contacts.car')}}
                     </x-admin.components.subtitle>
                     <div>
-                        <x-admin.components.fields.select select_name="vehicle_type"
+                        <x-admin.components.fields.select select_name="car_type"
                                                           label="{{__('admin/contacts.vehicle_type')}}"
                                                           :options="$vehicle_options" wire="car_type">
                         </x-admin.components.fields.select>
                     </div>
                     <div>
-                        <x-admin.components.fields.text name="license_plate" value="{!! $contact->car_plate !!}" placeholder="79327HD" wire="car_plate"
-                                                        id="license_plate">
+                        <x-admin.components.fields.text name="car_plate" value="{!! $contact->car_plate !!}" placeholder="79327HD" wire="car_plate"
+                                                        id="car_plate">
                             {{__('admin/contacts.license_plate')}}
                         </x-admin.components.fields.text>
                     </div>

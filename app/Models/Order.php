@@ -12,7 +12,13 @@ class Order extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['for_who','phone', 'project_name', 'order_state', 'ordered_at'];
+    protected $fillable = [
+        'for_who',
+        'phone',
+        'project_name',
+        'order_state',
+        'ordered_at'
+    ];
 
     public function products():BelongsToMany
     {

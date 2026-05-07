@@ -64,24 +64,31 @@
 
                     <div>
                         <div>
-                            <x-admin.components.fields.phone wire="phone" name="general_phone" id="general_phone" value=""
+                            <x-admin.components.fields.phone wire="phone" name="phone" id="phone" value=""
                                                              placeholder="048383903">
                                 {{__('admin/contacts.phone')}}
                             </x-admin.components.fields.phone>
                         </div>
 
                         <div>
-                            <x-admin.components.fields.select select_name="job_type"
+                            <x-admin.components.fields.select select_name="job"
                                                               label="{{__('admin/contacts.job_type')}}"
                                                               :options="$job_options" wire="job">
                             </x-admin.components.fields.select>
                         </div>
 
                         <div>
-                            <x-auth.form.password wire="password" name="user_password" id="user_password" value=""
+                            <x-auth.form.password wire="password" name="password" id="password" value=""
                                                   placeholder="{{__('admin/contacts.enter_a_password')}}">
                                 {{__('admin/contacts.user_password')}}
                             </x-auth.form.password>
+                        </div>
+
+                        <div>
+                            <x-auth.form.password-confirmation wire="password_confirmation" name="password_confirmation" id="password_confirmation" value=""
+                                                  placeholder="{{__('admin/contacts.enter_a_password')}}">
+                                {{__('admin/contacts.enter_a_password')}}
+                            </x-auth.form.password-confirmation>
                         </div>
                     </div>
 
@@ -96,9 +103,9 @@
 
 
                         <div>
-                            <x-admin.components.fields.text name="adress" value=""
+                            <x-admin.components.fields.text name="private_address" value=""
                                                             placeholder="{{__('admin/contacts.address_example')}}" wire="private_address"
-                                                            id="adress">
+                                                            id="private_address">
                                 {{__('admin/contacts.private_adress')}}
                             </x-admin.components.fields.text>
                         </div>
@@ -113,14 +120,14 @@
                         {{__('admin/contacts.car')}}
                     </x-admin.components.subtitle>
                     <div>
-                        <x-admin.components.fields.select select_name="vehicle_type"
+                        <x-admin.components.fields.select select_name="car_type"
                                                           label="{{__('admin/contacts.vehicle_type')}}"
                                                           :options="$vehicle_options" wire="car_type">
                         </x-admin.components.fields.select>
                     </div>
                     <div>
-                        <x-admin.components.fields.text name="license_plate" value="" placeholder="79327HD" wire="car_plate"
-                                                        id="license_plate">
+                        <x-admin.components.fields.text name="car_plate" value="" placeholder="79327HD" wire="car_plate"
+                                                        id="car_plate">
                             {{__('admin/contacts.license_plate')}}
                         </x-admin.components.fields.text>
                     </div>

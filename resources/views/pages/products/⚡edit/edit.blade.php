@@ -26,7 +26,7 @@
         ],
 ];
 
-    $product = \App\Models\Product::findOrFail($product_id);
+    //$product = \App\Models\Product::findOrFail($product_id);
 @endphp
 
 <main class=" admin product" id="content">
@@ -44,14 +44,20 @@
                 <div class="contact-information-list">
                     <dl>
                         <div>
-                            <x-admin.components.fields.text name="first_name" value="" placeholder="John" wire=""
-                                                            id="first_name">
+                            <x-admin.components.fields.text name="product_name" value="{!! $product->product_name !!}" placeholder="John" wire="product_name"
+                                                            id="product_name">
                                 {{__('admin/products.product_name')}}
                             </x-admin.components.fields.text>
                         </div>
                         <div>
+                            <x-admin.components.fields.text name="brand" value="{!! $product->brand !!}" placeholder="Johnson" wire="brand"
+                                                            id="brand">
+                                {{__('admin/products.brand')}}
+                            </x-admin.components.fields.text>
+                        </div>
+                        <div>
                             <x-admin.components.fields.textarea wire="product_description" id="product_description"
-                                                                name="product_description"
+                                                                name="product_description" value="{!! $product->product_description !!}"
                                                                 placeholder="{{__('admin/products.placeholder_description')}}">
                                 {{__('admin/products.description')}}
                             </x-admin.components.fields.textarea>
@@ -61,26 +67,43 @@
 
                     <dl>
                         <div>
-                            <x-admin.components.fields.textarea wire="" name="product_notes" id="product_notes" value=""
+                            <x-admin.components.fields.textarea wire="product_notes" name="product_notes" id="product_notes" value="{!! $product->product_notes !!}"
                                                                 placeholder="{{__('admin/products.placeholder_note')}}">
                                 {{__('admin/products.notes')}}
                             </x-admin.components.fields.textarea>
                         </div>
 
                         <div>
-                            <x-admin.components.fields.number wire="product_number" name="product_number"
-                                                              id="product_number"
-                                                              value="" placeholder="22">
+                            <x-admin.components.fields.text name="ref_article" value="{!! $product->ref_article !!}" placeholder="22" wire="ref_article"
+                                                            id="ref_article">
+                                {{__('admin/products.ref_article')}}
+                            </x-admin.components.fields.text>
+                        </div>
+
+                        <div>
+                            <x-admin.components.fields.number wire="quantity" name="quantity"
+                                                              id="quantity"
+                                                              value="{!! $product->quantity !!}" placeholder="22">
                                 {{__('admin/products.stock_number')}}
                             </x-admin.components.fields.number>
                         </div>
                     </dl>
 
                     <div>
-                        <x-admin.components.fields.file name_id="product_image" wire="product_image"
-                                                        name="product_image">
-                            {{__('admin/products.product_image')}}
-                        </x-admin.components.fields.file>
+                        <div>
+                            <x-admin.components.fields.text name="gtin" value="{!! $product->gtin !!}" placeholder="DHH34HK43BF2"
+                                                            wire="gtin"
+                                                            id="gtin">
+                                {{__('admin/products.gtin')}}
+                            </x-admin.components.fields.text>
+                        </div>
+
+                        <div>
+                            <x-admin.components.fields.file name_id="product_image" wire="product_image"
+                                                            name="product_image">
+                                {{__('admin/products.product_image')}}
+                            </x-admin.components.fields.file>
+                        </div>
                     </div>
                 </div>
 

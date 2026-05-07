@@ -26,7 +26,7 @@ new #[Layout('layouts.app')] class extends Component
     public function mount()         //avant de render ( 1x seulement)
     {
         $this->user = Auth::user();
-        $this->orders_to_finisch = Order::where('order_state', '!=', 'completed')->count();
+        $this->orders_to_finish = Order::where('order_state', '!=', 'completed')->count();
         $this->products_low_quantity = Product::where('quantity', '<', 5)->count();
         $this->products_in_stock = Product::count();
         $this->five_latest_orders = Order::latest()->limit(5)->get();

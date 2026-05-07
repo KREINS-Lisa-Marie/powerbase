@@ -23,6 +23,22 @@
                     </div>
                     <div>
                         <x-admin.components.definition-term>
+                            {{__('admin/products.brand')}}
+                        </x-admin.components.definition-term>
+                        <x-admin.components.definition>
+                            {{$product->brand}}
+                        </x-admin.components.definition>
+                    </div>
+                    <div>
+                        <x-admin.components.definition-term>
+                            {{__('admin/products.gtin')}}
+                        </x-admin.components.definition-term>
+                        <x-admin.components.definition>
+                            {{$product->gtin}}
+                        </x-admin.components.definition>
+                    </div>
+                    <div>
+                        <x-admin.components.definition-term>
                             {{__('admin/products.description')}}
                         </x-admin.components.definition-term>
                         <x-admin.components.definition>
@@ -39,7 +55,14 @@
                             {{$product->product_notes}}
                         </x-admin.components.definition>
                     </div>
-
+                    <div>
+                        <x-admin.components.definition-term>
+                            {{__('admin/products.ref_article')}}
+                        </x-admin.components.definition-term>
+                        <x-admin.components.definition>
+                            {{$product->ref_article}}
+                        </x-admin.components.definition>
+                    </div>
                     <div>
                         <x-admin.components.definition-term>
                             {{__('admin/products.stock_number')}}
