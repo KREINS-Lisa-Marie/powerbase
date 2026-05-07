@@ -40,14 +40,14 @@
                 <div class="contact-information-list">
                     <div>
                         <div>
-                            <x-admin.components.fields.text name="first_name" value="" placeholder="John" wire=""
-                                                            id="first_name">
+                            <x-admin.components.fields.text name="for_who" value="" placeholder="John" wire="for_who"
+                                                            id="for_who">
                                 {{__('admin/orders.for_who')}}
                             </x-admin.components.fields.text>
                         </div>
 
                         <div>
-                            <x-admin.components.fields.phone wire="" name="general_phone" id="general_phone" value=""
+                            <x-admin.components.fields.phone wire="phone" name="phone" id="phone" value=""
                                                              placeholder="048383903">
                                 {{__('admin/orders.phone_person_order')}}
                             </x-admin.components.fields.phone>
@@ -56,16 +56,16 @@
 
                     <div>
                         <div>
-                            <x-admin.components.fields.select select_name="project_type"
+                            <x-admin.components.fields.select select_name="order_state"
                                                               label="{{__('admin/orders.order_state')}}"
-                                                              :options="$orders_state_options" wire="project_type">
+                                                              :options="$orders_state_options" wire="order_state">
                             </x-admin.components.fields.select>
                         </div>
 
                         <div>
-                            <x-admin.components.fields.select select_name="project_type"
+                            <x-admin.components.fields.select select_name="project_name"
                                                               label="{{__('admin/orders.project_name')}}"
-                                                              :options="$project_options" wire="project_type">
+                                                              :options="$project_options" wire="project_name">
                             </x-admin.components.fields.select>
                         </div>
                     </div>
@@ -112,9 +112,9 @@
 
                 </fieldset>
                 <div class="admin-information-buttons">
-                    <x-admin.components.admin-primary-button href="" title="" href="" class="">
+                    <x-admin.components.form-button>
                         {{__('admin/orders.create_order')}}
-                    </x-admin.components.admin-primary-button>
+                    </x-admin.components.form-button>
                 </div>
             </div>
         </form>
