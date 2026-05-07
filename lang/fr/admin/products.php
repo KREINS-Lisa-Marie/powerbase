@@ -28,4 +28,8 @@ return [
     'products_list' => 'Liste des produits',
     'the_product_image' => 'Image du produit',
 
+    'ref_article' => 'Réference',
+    'brand' => 'Marque',
+    'gtin' => 'GTIN13',
+
 ];

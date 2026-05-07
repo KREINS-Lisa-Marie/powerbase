@@ -26,4 +26,8 @@ return [
     'got_to_product_page' => 'Go to the product page',
     'products_list' => 'Products list',
     'the_product_image' => 'Product image',
+
+    'ref_article' => 'Reference',
+    'brand' => 'Brand',
+    'gtin' => 'GTIN13',
 ];

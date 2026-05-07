@@ -26,4 +26,8 @@ return [
     'got_to_product_page' => 'Gehen Sie zur Produktseite',
     'products_list' => 'Produktliste',
     'the_product_image' => 'Produktbild',
+
+    'ref_article' => 'Referenz',
+    'brand' => 'Marke',
+    'gtin' => 'GTIN13',
 ];
