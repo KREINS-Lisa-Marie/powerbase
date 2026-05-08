@@ -74,7 +74,12 @@ return [
     */
 
 
-    'home' => "{{__('general.currentLocale')}}/dashboard",
+    // si worker alors redirigé vers pages worker et sinon vers admin
+    'home' => function () {
+        return ( auth()->user()->job == 'admin' || auth()->user()->job == 'storekeeper' )
+            ? route( 'pages::dashboard.index', ['locale' => app()->getLocale()])
+            : route( 'worker.homepage', ['locale' => app()->getLocale()]);
+    },
 
     /*
     |--------------------------------------------------------------------------

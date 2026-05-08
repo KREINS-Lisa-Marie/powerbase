@@ -28,7 +28,7 @@ class FortifyServiceProvider extends ServiceProvider
         $this->app->instance(LogoutResponse::class, new class implements LogoutResponse {
             public function toResponse($request)
             {
-                $locale = __('general.currentLocale');
+                $locale = app()->getLocale();
 
                 return redirect("/$locale/login");
             }
@@ -55,7 +55,6 @@ class FortifyServiceProvider extends ServiceProvider
         RateLimiter::for('two-factor', function (Request $request) {
             return Limit::perMinute(5)->by($request->session()->get('login.id'));
         });
-
 
         Fortify::loginView(function () {
             return view('auth.login', ['locale' => __('general.currentLocale')]);
