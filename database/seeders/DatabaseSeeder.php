@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
             'private_phone'=>fake()->phoneNumber(),
             'private_address'=>fake()->address(),
             'email' => 'test@example.com',
+            'password' => Hash::make('test'),
         ]);
 
         $user = User::factory()->create([
