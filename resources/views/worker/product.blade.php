@@ -1,7 +1,7 @@
 <x-worker.app>
     <section class="text-white background-dark margin-first-content-top">
         <h2 class="uppercase text-white fs-page-title bold page-title mb-64" aria-level="2" role="heading">
-            SPAX visses 4,5x70mm – 500 pièces
+            {{$product->product_name}}
         </h2>
         <div class="product-details">
             <div class="img-button">
@@ -26,7 +26,7 @@
                                 </span>
                                 </button>
 
-                                <input class="bold incr-input t-a-center" id="paintball-gants" type="number" max=""
+                                <input class="bold incr-input t-a-center" id="paintball-gants" type="number" {{--max=""--}}
                                        name="supplement" value="0">
 
 
@@ -53,26 +53,47 @@
                 </form>
             </div>
 
-            <dl>
+            <dl>`
+                <x-worker.definitionterm>
+                    {{__('worker/product.brand')}}
+                </x-worker.definitionterm>
+                <x-worker.definition>
+                    {{$product->brand}}
+                </x-worker.definition>
+
+                <x-worker.definitionterm>
+                    {{__('worker/product.ref_article')}}
+                </x-worker.definitionterm>
+                <x-worker.definition>
+                    {{$product->ref_article}}
+                </x-worker.definition>
+
+                <x-worker.definitionterm>
+                    {{__('worker/product.gtin')}}
+                </x-worker.definitionterm>
+                <x-worker.definition>
+                    {{$product->gtin}}
+                </x-worker.definition>
+
                 <x-worker.definitionterm>
                     {{__('worker/product.description')}}
                 </x-worker.definitionterm>
                 <x-worker.definition>
-                    description description descriptiondescription v vvdescriptiondescriptionv descriptionv
+                    {{$product->product_description}}
                 </x-worker.definition>
 
                 <x-worker.definitionterm>
                     {{__('worker/product.notes')}}
                 </x-worker.definitionterm>
                 <x-worker.definition>
-                    description description descriptiondescription v vvdescriptiondescriptionv descriptionv
+                    {{$product->product_notes}}
                 </x-worker.definition>
 
                 <x-worker.definitionterm>
                     {{__('worker/product.remaining_stock')}}
                 </x-worker.definitionterm>
                 <x-worker.definition>
-                    3
+                    {{$product->quantity}}
                 </x-worker.definition>
             </dl>
         </div>
