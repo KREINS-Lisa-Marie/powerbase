@@ -7,9 +7,11 @@
                 {{__('worker/homepage.new_products')}}
             </x-worker.title>
             <div class="d-flex flex-wrap flex-gap-24">
-            @for( $i= 0;$i<=3; $i++)
-                <x-worker.product-card productname="Vis 1000"/>
-            @endfor
+                @forelse($newest_products as $newest_product)
+                <x-worker.product-card productname="{{$newest_product->product_name}}" product_id="{{$newest_product->id}}"/>
+                @empty
+                    <x-worker.product-card productname="{{__('worker/homepage.no_product_found')}}" product_id="null"/>
+                @endforelse
             </div>
         </section>
 
@@ -18,9 +20,12 @@
                 {{__('worker/homepage.popular_products')}}
             </x-worker.title>
             <div class="d-flex flex-wrap flex-gap-24">
-            @for( $i= 0; $i<=7; $i++)
-                <x-worker.product-card productname="Vis 1000"/>
-            @endfor
+                {{--most ordered à faire !--}}
+                @forelse($products as $product)
+                    <x-worker.product-card productname="{{$product->product_name}}" product_id="{{$product->id}}"/>
+                @empty
+                    <x-worker.product-card productname="{{__('worker/homepage.no_product_found')}}" product_id=""/>
+                @endforelse
             </div>
         </section>
 
