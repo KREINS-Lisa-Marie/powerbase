@@ -8,24 +8,36 @@ use Illuminate\Support\Facades\Route;
     return view('welcome');
 });*/
 
-Route::get('/{locale}',  [HomepageController::class, 'index'])->name('worker.homepage');
+Route::get('/{locale}',  [HomepageController::class, 'index'])->name('worker.homepage')->middleware([
+    'auth',
+]);
 
 Route::get('/{locale}/contact', function () {
     return view('worker.contact');
-})->name('worker.contact');
+})->name('worker.contact')->middleware([
+    'auth',
+]);
 
 Route::get('/{locale}/order', function () {
     return view('worker.order');
-})->name('worker.order');
+})->name('worker.order')->middleware([
+    'auth',
+]);
 
 Route::get('/{locale}/profile', function () {
     return view('worker.profile');
-})->name('worker.profile');
+})->name('worker.profile')->middleware([
+    'auth',
+]);
 
 Route::get('/{locale}/products',  [ProductController::class, 'index']
-)->name('worker.products');
+)->name('worker.products')->middleware([
+    'auth',
+]);
 
-Route::get('/{locale}/products/{product}', [ProductController::class, 'show'])->name('worker.product');
+Route::get('/{locale}/products/{product}', [ProductController::class, 'show'])->name('worker.product')->middleware([
+    'auth',
+]);
 
 Route::get('/{locale}/login', function () {
     return view('auth.login');
