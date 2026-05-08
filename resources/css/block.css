@@ -1473,3 +1473,10 @@ td img {
     }
 }
 */
+
+.card-productname{
+    overflow: hidden;
+    max-width: var(--max-w-table-column-desktop);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
