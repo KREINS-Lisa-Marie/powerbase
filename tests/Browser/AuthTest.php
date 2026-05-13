@@ -2,6 +2,7 @@
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Hash;
 use function Pest\Laravel\actingAs;
 use function Pest\Laravel\assertDatabaseMissing;
 
@@ -13,16 +14,23 @@ it('can sign in the user', function () {
     //Event::fake();
 
     User::factory()->create([
-        'email' => 'bob@test.com',
-        'password' => 'password',
+        'first_name' => 'Test User',
+        'last_name' => 'User',
+        'phone' => fake()->phoneNumber(),
+        'job' => 'admin',
+        'private_phone'=>fake()->phoneNumber(),
+        'private_address'=>fake()->address(),
+        'email' => 'test@example.com',
+        'password' => Hash::make('password'),
     ]);
+
 
     $locale = app()->getLocale();
 
 
     $this->visit("/$locale/login")->on()->mobile()
         ->assertSee('Se connecter')
-        ->fill('email', 'bob@test.com')
+        ->fill('email', 'test@example.com')
         ->fill('password', 'password')
         ->click('button[type="submit"]')
         ->assertSee('Accueil');
@@ -60,7 +68,7 @@ it('redirects to the reset password page when clicked on the link', function () 
         ->assertSee('Se connecter')
         ->click('Mot de passe oublié?')
         ->assertUrlIs(route('auth.forgot-password', ['locale' => $locale]));
-
+    
 });
 
 

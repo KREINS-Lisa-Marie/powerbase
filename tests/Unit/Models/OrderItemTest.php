@@ -54,7 +54,7 @@ it('belongs to an order', function () {
         'order_id'=>$random_order->id,
         'product_id'=>$random_product->id
     ]);
-    
+
     expect($orderItem->order)->toBeInstanceOf(\App\Models\Order::class);
 });
 
