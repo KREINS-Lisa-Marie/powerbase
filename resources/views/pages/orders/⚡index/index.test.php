@@ -35,8 +35,8 @@ it('displays a list of orders on the orders index page', function () {
     $project = Project::factory()->create();
 
     $orders = \App\Models\Order::factory(3)->create([
-        'for_who'=>$user->id,
-        'project_name'=>$project->project_name
+        'user_id'=>$user->id,
+        'project_id'=>$project->id
     ]);
 
     Livewire::test('pages::orders.index')

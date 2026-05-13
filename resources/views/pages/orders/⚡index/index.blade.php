@@ -59,7 +59,7 @@
 
                     @forelse($orders as $order)
                         @php
-                            $user = \App\Models\User::findOrFail($order->for_who)
+                            $user = \App\Models\User::findOrFail($order->user_id)
                         @endphp
                     <tr class="table-row position-relative">
                         <x-admin.components.table.table-td class="table-full_name">
