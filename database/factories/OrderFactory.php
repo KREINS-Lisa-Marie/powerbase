@@ -18,14 +18,14 @@ class OrderFactory extends Factory
 
         $worker_id =  User::where('job', 'worker')->pluck('id');
         $random_worker = fake()->randomElement($worker_id);
-        $phone_worker = User::where('id', $random_worker)->pluck('users.phone');
-        $random_project = Project::all()->pluck('project_name');
+        //$phone_worker = User::where('id', $random_worker)->pluck('users.phone');
+        $random_project = Project::all()->pluck('project_id');
         $random_state = rand(0, 1) ? OrderStates::Pending->value : OrderStates::Completed->value;
 
         return [
-            'for_who' => $random_worker,
-            'phone' => $phone_worker,
-            'project_name' => fake()->randomElement($random_project),
+            'user_id' => $random_worker,
+            //'phone' => $phone_worker,
+            'project_id' => fake()->randomElement($random_project),
             'order_state' => $random_state,
             'ordered_at' => Carbon::now(),
             'created_at' => Carbon::now(),

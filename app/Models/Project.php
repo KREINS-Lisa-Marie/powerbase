@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Project extends Model
@@ -12,31 +13,29 @@ class Project extends Model
     use HasFactory;
 
     protected $fillable = [
-        'product_id',
-        'quantity',
         'project_name',
-        'person_in_charge',
-        'phone_in_charge',
+        'user_id',
         'project_type',
+        'project_state',
         'client_name',
         'project_address',
         'project_description',
     ];
 
-    public function products():HasMany
+    // über orders
+/*    public function products():HasMany
     {
         return $this->hasMany(Product::class);
-    }
+    }*/
 
     public function orders():HasMany
     {
         return $this->hasMany(Order::class);
     }
 
-    public function users():HasMany
+    public function user():BelongsTo
     {
-        return $this->hasMany(User::class);
+        return $this->belongsTo(User::class);
     }
-
 
 }

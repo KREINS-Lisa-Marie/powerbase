@@ -24,7 +24,7 @@ class ProductsSeeder extends Seeder
         $headers = array_filter(array_map('trim', $headers));
 
         // Supprimer les produits avant d'importer
-        DB::table('products')->truncate();
+        DB::table('products')->delete();
 
         // boucler sur chaque ligne du csv
         while ($product_row = fgetcsv($file, 1000, ';', escape: '')) {
