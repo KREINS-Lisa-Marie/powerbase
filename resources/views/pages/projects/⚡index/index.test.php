@@ -25,7 +25,7 @@ it('renders successfully', function () {
 it('verifies that the projects index page is showing content elements in the right order', function () {
     Livewire::test('pages::projects.index')
         ->assertStatus(200)
-        ->assertSee(['Créer un projet', 'Trier', 'Rechercher', 'Nom projet', 'Adresse', 'Crée le', 'Cloturé le']);
+        ->assertSeeInOrder(['Créer un projet', 'Trier', 'Rechercher', 'Nom projet', 'Adresse', 'Crée le', 'Cloturé le']);
 });
 
 
@@ -42,8 +42,5 @@ it('displays a list of projects on the project index page', function () {
         ->assertSee($projects[1]->project_name)
         ->assertSee($projects[2]->project_name);
 
-    /*    \Pest\Laravel\assertDatabaseHas('projects',
-        ['name'=>'Projet Client',
-        ]);*/
 }
 );

@@ -21,7 +21,7 @@ it('renders successfully', function () {
 it('verifies that the products create page is showing content elements in the right order', function () {
     Livewire::test('pages::products.create')
         ->assertStatus(200)
-        ->assertSee(['Informations générales', 'Nom du produit', 'Image', 'Créer le produit']);
+        ->assertSeeInOrder(['Informations générales', 'Nom du produit', 'Image', 'Créer le produit']);
 });
 
 

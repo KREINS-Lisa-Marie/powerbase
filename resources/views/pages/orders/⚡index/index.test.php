@@ -22,7 +22,7 @@ it('renders successfully', function () {
 it('verifies that the orders index page is showing content elements in the right order', function () {
     Livewire::test('pages::orders.index')
         ->assertStatus(200)
-        ->assertSee(['Créer une commande', 'Trier', 'Rechercher', 'Commandé par', 'Nombre', 'Commandé le', 'Statut']);
+        ->assertSeeInOrder(['Créer une commande', 'Trier', 'Rechercher', 'Commandé par', 'Nombre', 'Commandé le', 'Statut']);
 });
 
 
@@ -43,9 +43,5 @@ it('displays a list of orders on the orders index page', function () {
         ->assertSee($orders[0]->id)
         ->assertSee($orders[1]->id)
         ->assertSee($orders[2]->id);
-
-    /*    \Pest\Laravel\assertDatabaseHas('projects',
-        ['name'=>'Projet Client',
-        ]);*/
 }
 );

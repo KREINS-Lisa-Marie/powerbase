@@ -24,7 +24,7 @@ it('renders successfully', function () {
 it('verifies that the products index page is showing content elements in the right order', function () {
     Livewire::test('pages::products.index')
         ->assertStatus(200)
-        ->assertSee(['Créer un produit', 'Trier', 'Rechercher', 'Nom du produit', 'Stock', 'En stock depuis', 'Mise à jour']);
+        ->assertSeeInOrder(['Créer un produit', 'Trier', 'Rechercher', 'Nom du produit', 'Stock', 'En stock depuis', 'Mise à jour']);
 });
 
 
@@ -38,8 +38,5 @@ it('displays a list of Products on the product index page', function () {
         ->assertSee($products[1]->product_name)
         ->assertSee($products[2]->product_name);
 
-    /*    \Pest\Laravel\assertDatabaseHas('projects',
-        ['name'=>'Projet Client',
-        ]);*/
 }
 );

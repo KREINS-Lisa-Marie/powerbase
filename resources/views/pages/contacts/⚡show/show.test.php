@@ -28,7 +28,7 @@ it('verifies that the contact show page is showing content elements in the right
         'contact' => $contact->id,
     ])
         ->assertStatus(200)
-        ->assertSee(['Informations générales', 'Nom complèt', 'Adresse privée', 'Voiture', 'Plaque', 'Modifier les données', 'Supprimer la personne' ]);
+        ->assertSeeInOrder(['Informations générales', 'Nom complèt', 'Adresse privée', 'Voiture', 'Plaque', 'Modifier les données', 'Supprimer la personne' ]);
 });
 
 

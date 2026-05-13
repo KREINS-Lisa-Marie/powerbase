@@ -21,7 +21,7 @@ it('renders successfully', function () {
 it('verifies that the contact index page is showing content elements in the right order', function () {
     Livewire::test('pages::contacts.index')
         ->assertStatus(200)
-        ->assertSee(['Créer un contact', 'Trier', 'Rechercher', 'Nom complèt', 'E-mail', 'Téléphone', 'Job']);
+        ->assertSeeInOrder(['Créer un contact', 'Trier', 'Rechercher', 'Nom complèt', 'E-mail', 'Téléphone', 'Job']);
 });
 
 
@@ -34,10 +34,6 @@ it('displays a list of Contacts on the contact index page', function () {
         ->assertSee($contacts[0]->first_name)
         ->assertSee($contacts[1]->first_name)
         ->assertSee($contacts[2]->first_name);
-
-    /*    \Pest\Laravel\assertDatabaseHas('projects',
-        ['name'=>'Projet Client',
-        ]);*/
 }
 );
 

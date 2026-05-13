@@ -17,15 +17,11 @@ it('renders successfully', function () {
         ->assertStatus(200);
 });
 
-
-
 it('verifies that the projects create page is showing content elements in the right order', function () {
     Livewire::test('pages::projects.create')
         ->assertStatus(200)
-        ->assertSee(['Informations générales', 'Nom projet', 'Type projet', 'Description', 'Créer le projet']);
+        ->assertSeeInOrder(['Informations générales', 'Nom projet', 'Type projet', 'Description', 'Créer le projet']);
 });
-
-
 
 it('redirects to the projects index route after the successfull creation of a project',
     function () {
@@ -47,7 +43,6 @@ it('redirects to the projects index route after the successfull creation of a pr
             ->assertRedirect(route('pages::projects.index', ['locale' => __('general.currentLocale')]));
     }
 );
-
 
 it(
     'verifies that the projects.create route displays a form to create a project',
