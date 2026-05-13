@@ -60,7 +60,7 @@ it('verifies that the orders show page is showing content elements in the right 
         'order' => $order->id,
     ])
         ->assertStatus(200)
-        ->assertSee(['Informations générales', 'Pour qui', 'Nom du projet', 'Produits commandés', 'Modifier', 'Supprimer', 'Imprimer']);
+        ->assertSeeInOrder(['Informations générales', 'Pour qui', 'Nom du projet', 'Produits commandés', 'Modifier', 'Supprimer', 'Imprimer']);
 });
 
 
