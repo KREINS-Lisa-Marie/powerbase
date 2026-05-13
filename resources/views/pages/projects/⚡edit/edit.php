@@ -8,8 +8,7 @@ new class extends Component
     public Project $project;
 
     public string $project_name = '';
-    public string $person_in_charge = '';
-    public string $phone_in_charge = '' ;
+    public string $user_id = '';
     public string $project_type ='';
     public string $client_name ='';
     public string $project_address ='';
@@ -20,8 +19,7 @@ new class extends Component
     {
         $this->project = $project;
         $this->project_name = $project->project_name;
-        $this->person_in_charge = $project->person_in_charge;
-        $this->phone_in_charge = $project->phone_in_charge;
+        $this->user_id = $project->user_id;
         $this->project_type = $project->project_type ?? '';
         $this->client_name = $project->client_name ?? '';
         $this->project_address = $project->project_address ?? '';
@@ -33,8 +31,7 @@ new class extends Component
     {
         $validated_data= $this->validate([
             'project_name'=>'required|string|max:255',
-            'person_in_charge'=>'string|required|max:255',
-            'phone_in_charge'=>'required|string|max:255',
+            'user_id'=>'integer|required|max:255',
             'project_type'=>'required|string',
             'client_name'=>'required|string',
             'project_address'=>'required|string',
@@ -43,8 +40,7 @@ new class extends Component
 
         $this->project->update([
             'project_name'=>$validated_data['project_name'],
-            'person_in_charge'=>$validated_data['person_in_charge'],
-            'phone_in_charge' => $validated_data['phone_in_charge'],
+            'user_id'=>$validated_data['user_id'],
             'project_type'=>$validated_data['project_type'],
             'client_name'=>$validated_data['client_name'],
             'project_address'=>$validated_data['project_address'],

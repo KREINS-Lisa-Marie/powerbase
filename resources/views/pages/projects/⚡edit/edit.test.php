@@ -22,8 +22,7 @@ it('renders successfully', function () {
 
 
     $project = Project::factory()->create([
-        'person_in_charge' => $worker->id,
-        'phone_in_charge' => $worker->phone,
+        'user_id' => $worker->id,
         'project_type' => $random_project_state,
 
     ]);
@@ -44,8 +43,7 @@ it('verifies that the projects edit page is showing content elements in the righ
 
 
     $project = Project::factory()->create([
-        'person_in_charge' => $worker->id,
-        'phone_in_charge' => $worker->phone,
+        'user_id' => $worker->id,
         'project_type' => $random_project_state,
 
     ]);
@@ -68,8 +66,7 @@ it('redirects to the projects show route after the successfull edit of a project
 
 
         $project = Project::factory()->create([
-            'person_in_charge' => $worker->id,
-            'phone_in_charge' => $worker->phone,
+            'user_id' => $worker->id,
             'project_type' => $random_project_state,
 
         ]);
@@ -78,8 +75,7 @@ it('redirects to the projects show route after the successfull edit of a project
             'project' => $project,
         ])
             ->set('project_name', 'Project1')
-            ->set('person_in_charge', $worker->id)
-            ->set('phone_in_charge', $worker->phone)
+            ->set('user_id', $worker->id)
             ->set('project_type', $random_project_state)
             ->set('client_name', 'Mr. Muller')
             ->set('project_address', 'Rue de l’école 2')
@@ -104,8 +100,7 @@ it(
 
         \Illuminate\Support\Facades\App::setLocale($locale);
         $project = Project::factory()->create([
-            'person_in_charge' => $worker->id,
-            'phone_in_charge' => $worker->phone,
+            'user_id' => $worker->id,
             'project_type' => $random_project_state,
 
         ]);
