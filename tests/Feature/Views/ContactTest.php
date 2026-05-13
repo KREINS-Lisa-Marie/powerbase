@@ -1,7 +1,18 @@
 <?php
 
+use App\Models\User;
+use function Pest\Laravel\actingAs;
+
 test('the application returns a successful response', function () {
-    $response = $this->get('/fr');
+
+
+    $user = User::factory()->create();
+    $locale = app()->getLocale();
+    actingAs($user);
+
+    $products = \App\Models\Product::factory(5)->create();
+
+    $response = $this->get("/$locale");
 
     $response->assertStatus(200);
 });
@@ -10,7 +21,11 @@ test('the application returns a successful response', function () {
 it('verifies that the contact page is showing it’s contents', function () {
 
 
-    $response = $this->get(route('worker.contact', ['locale' => __('general.currentLocale')]));
+    $user = User::factory()->create();
+    $locale = app()->getLocale();
+    actingAs($user);
+
+    $response = $this->get(route('worker.contact', ['locale' => $locale]));
 
     $response->assertStatus(200)
         ->assertSeeInOrder(["Contact", "Magasin", "Email"]);
