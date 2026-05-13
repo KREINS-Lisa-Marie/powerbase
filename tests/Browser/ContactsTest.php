@@ -136,7 +136,13 @@ it('can edit a contact and redirect to the show page', function () {
 
     visit($route)
         ->assertSee('Modifier les données')
+        ->fill('first_name', $contact->first_name)
+        ->fill('last_name', $contact->last_name)
+        ->fill('email', $contact->email)
         ->fill('phone', '5269436529')
+        ->fill('private_phone', $contact->private_phone)
+        ->fill('private_address', $contact->private_address)
+        ->select('job', 'admin')
         ->select('car_type', '1')
         ->fill('car_plate', 'ecbd84333')
         ->click('Enregistrer')
