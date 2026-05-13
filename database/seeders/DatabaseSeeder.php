@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Order;
+use App\Models\OrderItem;
 use App\Models\Product;
 use App\Models\Project;
 use App\Models\User;
@@ -19,7 +20,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+
+        $this->call(ProductsSeeder::class);
 
         User::factory()->create([
             'first_name' => 'Test User',
@@ -43,12 +45,28 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('test'),
         ]);
 
-        $user2 = User::factory(15)->create();
+        $users = User::factory(15)->create();
+        $workers = User::factory(15)->create(['job'=>'worker']);
 
-        //$products = Product::factory(15)->create();
-        //var_dump(User::where('job', 'worker')->pluck('id'));
-        $this->call(ProductsSeeder::class);
-        $projects = Project::factory(15)->create();
-        $orders = Order::factory(15)->create();
+
+
+        $projects = Project::factory(15)->create([
+            'user_id'=>$workers->random()->id,
+        ]);
+        $orders = Order::factory(15)->create([
+            'user_id'=>$workers->random()->id,
+            'project_id'=>$projects->random()->id,
+        ]);
+
+        $products = Product::all();
+
+        $order_items = OrderItem::factory(15)->create([
+            'order_id'=>$orders->random()->id,
+            'product_id'=>$products->random()->id,
+        ]);
     }
 }
+
+
+//$products = Product::factory(15)->create();
+//var_dump(User::where('job', 'worker')->pluck('id'));
