@@ -1,6 +1,13 @@
 <?php
 
+use App\Models\User;
 use Livewire\Livewire;
+
+
+beforeEach(function(){
+    $this-> user = User::factory()-> create();
+    \Pest\Laravel\actingAs($this-> user);});
+
 
 it('renders successfully', function () {
     Livewire::test('pages::dashboard.index')
