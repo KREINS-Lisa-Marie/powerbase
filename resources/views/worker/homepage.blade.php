@@ -1,6 +1,6 @@
 <x-worker.app>
     <x-worker.page-title>
-        {{__('worker/homepage.hello')}} Eric
+        {{__('worker/homepage.hello')}} {{$user->first_name}}
     </x-worker.page-title>
         <section class="product-section section-end-128">
             <x-worker.title>

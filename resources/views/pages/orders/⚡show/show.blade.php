@@ -15,7 +15,7 @@
     ];
 
     $order = \App\Models\Order::findOrFail($order_id);
-    $user = \App\Models\User::findOrFail($order->for_who);
+    $user = \App\Models\User::findOrFail($order->user_id);
 @endphp
 
 <main class="admin project-show" id="content">

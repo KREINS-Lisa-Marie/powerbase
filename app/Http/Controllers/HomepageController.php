@@ -10,11 +10,12 @@ class HomepageController extends Controller
 {
     public function index()
     {
+        $user = auth()->user();
         $products = Product::where('quantity', '>', 0)->paginate(20);
 
         $newest_products = Product::orderBy('created_at', 'desc')
             ->limit(4)->get();
 
-        return view('worker.homepage', compact('products', 'newest_products'));
+        return view('worker.homepage', compact('products', 'newest_products', 'user'));
     }
 }

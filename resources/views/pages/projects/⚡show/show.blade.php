@@ -15,7 +15,7 @@ $filter_options =[
     ];
 
     $project = \App\Models\Project::findOrFail($project_id);
-    $user = \App\Models\User::findOrFail($project->person_in_charge)
+    $user = \App\Models\User::findOrFail($project->user_id)
 @endphp
 
 <main class="admin project-show" id="content">
@@ -51,7 +51,7 @@ $filter_options =[
                             {{__('admin/projects.phone_person_in_charge')}}
                         </x-admin.components.definition-term>
                         <x-admin.components.definition>
-                            {{$project->phone_in_charge}}
+                            {{$user->phone}}
                         </x-admin.components.definition>
                     </div>
                 </dl>
@@ -64,6 +64,14 @@ $filter_options =[
                         </x-admin.components.definition-term>
                         <x-admin.components.definition>
                             {{$project->project_type == 'corporate' ? __('admin/projects.corporate') : __('admin/projects.private')}}
+                        </x-admin.components.definition>
+                    </div>
+                    <div>
+                        <x-admin.components.definition-term>
+                            {{__('admin/projects.project_type')}}
+                        </x-admin.components.definition-term>
+                        <x-admin.components.definition>
+                            {{$project->project_state == 'open' ? __('admin/projects.open') : __('admin/projects.closed')}}
                         </x-admin.components.definition>
                     </div>
 

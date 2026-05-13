@@ -42,19 +42,19 @@
                             </x-admin.components.fields.text>
                         </div>
                         <div>
-                            <x-admin.components.fields.select select_name="person_in_charge"
+                            <x-admin.components.fields.select select_name="user_id"
                                                               label="{{__('admin/projects.person_in_charge')}}"
-                                                              :options="$in_charge_options" wire="person_in_charge">
+                                                              :options="$in_charge_options" wire="user_id">
                             </x-admin.components.fields.select>
                         </div>
 
-                        <div>
+                        {{--<div>
                             <x-admin.components.fields.phone wire="phone_in_charge" name="phone_in_charge"
                                                              id="phone_in_charge" value=""
                                                              placeholder="048383903">
                                 {{__('admin/projects.phone_person_in_charge')}}
                             </x-admin.components.fields.phone>
-                        </div>
+                        </div>--}}
                     </div>
 
                     <div>

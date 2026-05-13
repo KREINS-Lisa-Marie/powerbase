@@ -135,7 +135,7 @@
     <nav class="nav__header text-white bold" role="navigation" aria-label="Main">
         <h2 class="sro" aria-level="2" role="heading">{{__('navigation.main_navigation')}}</h2>
 
-        <a href="/"
+        <a href="/{{app()->getLocale()}}"
            lang=""
            hreflang=""
            class="languages__link nav__link__header small-logo"
@@ -143,7 +143,7 @@
            aria-label="{{__('navigation.go_home')}}">
             svg logo klein
         </a>
-        <a href="/"
+        <a href="/{{app()->getLocale()}}"
            lang=""
            hreflang=""
            class="languages__link nav__link__header d-flex flex-r flex-gap-24 flex-a-i-center big-logo"

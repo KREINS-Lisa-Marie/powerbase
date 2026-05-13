@@ -23,11 +23,10 @@ new class extends Component
     {
         return view('pages.orders.⚡index.index', [
             'orders' => \App\Models\Order::query()
-                ->where('for_who', 'like', '%' . $this->search . '%')
-                ->orWhere('phone', 'like', '%' . $this->search . '%')
+                ->where('user_id', 'like', '%' . $this->search . '%')
                 ->orWhere('ordered_at', 'like', '%' . $this->search . '%')
                 ->orWhere('order_state', 'like', '%' . $this->search . '%')
-                ->orderBy('for_who', 'asc')
+                ->orderBy('user_id', 'asc')
                 ->paginate(10),
         ]);
     }
