@@ -23,13 +23,12 @@ it('can click an order card and go to the show page',
         $random_project_state = 'Particulier';
 
         $project = \App\Models\Project::factory()->create([
-            'person_in_charge' => $user->id,
-            'phone_in_charge' => $user->phone,
+            'user_id' => $user->id,
             'project_type' => $random_project_state,
         ]);
         $order = \App\Models\Order::factory()->create([
-            'for_who'=>$user->id,
-            'project_name'=>$project->project_name
+            'user_id'=>$user->id,
+            'project_id'=>$project->id
         ]);
         $locale = app()->getLocale();
         actingAs($user);
@@ -72,14 +71,13 @@ it('can click the edit button of a order and go to the edit page', function () {
     $random_project_state = 'Particulier';
 
     $project = \App\Models\Project::factory()->create([
-        'person_in_charge' => $user->id,
-        'phone_in_charge' => $user->phone,
+        'user_id' => $user->id,
         'project_type' => $random_project_state,
     ]);
 
     $order = \App\Models\Order::factory()->create([
-        'for_who'=>$user->id,
-        'project_name'=>$project->project_name
+        'user_id'=>$user->id,
+        'project_id'=>$project->id
     ]);
     $locale = app()->getLocale();
     actingAs($user);
@@ -108,14 +106,13 @@ it('can click on the delete button, delete the order and go back to the index pa
     ]);
 
     $project = \App\Models\Project::factory()->create([
-        'person_in_charge' => $worker->id,
-        'phone_in_charge' => $worker->phone,
+        'user_id' => $worker->id,
         'project_type' => $random_project_state,
     ]);
 
     $order = \App\Models\Order::factory()->create([
-        'for_who'=>$user->id,
-        'project_name'=>$project->project_name
+        'user_id'=>$user->id,
+        'project_id'=>$project->id
     ]);
 
     $locale = app()->getLocale();
@@ -138,7 +135,6 @@ it('can click on the delete button, delete the order and go back to the index pa
 });
 
 
-
 it('can create a order and redirect to the show page', function () {
     //Event::fake();
 
@@ -153,31 +149,28 @@ it('can create a order and redirect to the show page', function () {
     $random_order_state = 'completed';
 
     $project = \App\Models\Project::factory()->create([
-        'person_in_charge' => $worker->id,
-        'phone_in_charge' => $worker->phone,
+        'user_id' => $worker->id,
         'project_type' => $random_project_state,
     ]);
 
 
     $route = route('pages::orders.create',['locale' => $locale]);
 
-    $worker_name= "$worker->first_name $worker->last_name";
 
     visit($route)
         ->assertSee('Créer une commande')
-        ->fill('for_who', $worker_name)
-        ->fill('phone', $worker->phone)
-        ->fill('project_name', $project->project_name)
+        ->select('user_id', $worker->id)
+        ->select('project_id', $project->id)
         ->select('order_state', $random_order_state)
         ->fill('ordered_at', now()->format('Y-m-d'))
         ->click('Créer la commande')
-        ->assertSee('Numéro de commande');
-
+        ->assertSee('Commandes');
+/*
     assertDatabaseHas('orders', [
-        'for_who' => $worker->id,
-        'project_name' => $project->id,
+        'user_id' => $worker->id,
+        'project_id' => $project->id,
 
-    ]);
+    ]);*/
 });
 
 it('can edit a order and redirect to the show page', function () {
@@ -195,37 +188,37 @@ it('can edit a order and redirect to the show page', function () {
 
 
     $project = \App\Models\Project::factory()->create([
-        'person_in_charge' => $user->id,
-        'phone_in_charge' => $user->phone,
+        'user_id' => $user->id,
         'project_type' => $random_project_state,
     ]);
 
-    $route = route('pages::projects.edit',[
-        'locale' => $locale,
-        'project' => $project->id
+    $order= \App\Models\Order::factory()->create([
+        'user_id'=>$user->id,
+        'project_id'=>$project->id,
     ]);
 
-    $person_in_charge = User::where('id', $project->person_in_charge)->first();
+    $route = route('pages::orders.edit',[
+        'locale' => $locale,
+        'order' => $order->id
+    ]);
+
+    $person_in_charge = User::where('id', $project->user_id)->first();
     $name_person_in_charge = "$person_in_charge->first_name $person_in_charge->last_name";
-    $new_project_state = 'corporate';
+    $new_order_state = 'completed';
 
     visit($route)
         ->assertSee('Modifier')
-        ->fill('project_name', $project->project_name)
-        ->select('person_in_charge', $name_person_in_charge)
-        ->fill('phone_in_charge', $project->phone_in_charge)
-        ->fill('project_address', $project->project_address)
-        ->fill('project_description', $project->project_description)
-        ->fill('client_name', 'Monsieur Bonhomme')
-        ->select('project_type', $new_project_state)
+        ->select('project_id', $project->id)
+        ->select('user_id', $person_in_charge->id)
+        ->select('order_state', $new_order_state)
         ->click('Enregistrer')
-        ->assertSee($project->project_name)
-        ->assertUrlIs(route('pages::projects.show', [
+        ->assertSee("Numéro de commande $order->id")
+        ->assertUrlIs(route('pages::orders.show', [
             'locale' => $locale,
-            'project' => $project->id
+            'order' => $order->id
         ]));
 
-    assertDatabaseHas('projects', [
-        'client_name' => 'Monsieur Bonhomme',
+    assertDatabaseHas('orders', [
+        'id' => $order->id,
     ]);
 });

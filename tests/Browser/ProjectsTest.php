@@ -21,8 +21,7 @@ it('can click a project card and go to the show page', function () {
     $random_project_state = 'Particulier';
 
     $project = \App\Models\Project::factory()->create([
-        'person_in_charge' => $user->id,
-        'phone_in_charge' => $user->phone,
+        'user_id' => $user->id,
         'project_type' => $random_project_state,
     ]);
 
@@ -66,8 +65,7 @@ it('can click the edit button of a project and go to the edit page', function ()
     $random_project_state = 'Particulier';
 
     $project = \App\Models\Project::factory()->create([
-        'person_in_charge' => $user->id,
-        'phone_in_charge' => $user->phone,
+        'user_id' => $user->id,
         'project_type' => $random_project_state,
     ]);
     $locale = app()->getLocale();
@@ -96,8 +94,7 @@ it('can click on the delete button, delete the project and go back to the index 
     $random_project_state = 'Particulier';
 
     $project = \App\Models\Project::factory()->create([
-        'person_in_charge' => $user->id,
-        'phone_in_charge' => $user->phone,
+        'user_id' => $user->id,
         'project_type' => $random_project_state,
     ]);
     $locale = app()->getLocale();
@@ -140,8 +137,8 @@ it('can create a project and redirect to the show page', function () {
     visit($route)
         ->assertSee('Créer un projet')
         ->fill('project_name', 'Panneaux PV Colignon')
-        ->select('person_in_charge', $worker->id)
-        ->fill('phone_in_charge', $worker->phone)
+        ->select('user_id', $worker->id)
+        ->select('project_state', 'open')
         ->select('project_type', $random_project_state)
         ->fill('client_name', 'Madame Colignon')
         ->fill('project_address', 'Rue de l’école 2')
@@ -169,8 +166,7 @@ it('can edit a project and redirect to the show page', function () {
 
 
     $project = \App\Models\Project::factory()->create([
-        'person_in_charge' => $user->id,
-        'phone_in_charge' => $user->phone,
+        'user_id' => $user->id,
         'project_type' => $random_project_state,
     ]);
 
@@ -179,15 +175,14 @@ it('can edit a project and redirect to the show page', function () {
         'project' => $project->id
     ]);
 
-    $person_in_charge = User::where('id', $project->person_in_charge)->first();
+    $person_in_charge = User::where('id', $project->user_id)->first();
     $name_person_in_charge = "$person_in_charge->first_name $person_in_charge->last_name";
     $new_project_state = 'corporate';
 
     visit($route)
         ->assertSee('Modifier')
         ->fill('project_name', $project->project_name)
-        ->select('person_in_charge', $name_person_in_charge)
-        ->fill('phone_in_charge', $project->phone_in_charge)
+        ->select('user_id', $name_person_in_charge)
         ->fill('project_address', $project->project_address)
         ->fill('project_description', $project->project_description)
         ->fill('client_name', 'Monsieur Bonhomme')

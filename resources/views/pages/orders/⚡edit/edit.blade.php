@@ -9,8 +9,33 @@
             'value' =>'completed',
         ],
 ];
-@endphp
 
+
+       $users = \App\Models\User::all();
+
+       $orders_users_options = [];
+
+            foreach ($users as $user){
+             $orders_users_options[] =
+                 [
+            'name' => "$user->first_name $user->last_name",
+        'value' => $user->id,
+        ];
+            }
+
+    $projects = \App\Models\Project::all();
+
+            $orders_project_options = [];
+
+            foreach ($projects as $project){
+             $orders_project_options[] =
+                 [
+            'name' => $project->project_name,
+        'value' => $project->id,
+        ];
+            }
+
+@endphp
 
 
 <main class="admin project-show" id="content">
@@ -18,7 +43,7 @@
         {{__('admin/orders.modify_order')}}
     </x-admin.page-bar>
     <div class="main-container">
-        <form wire:submit.prevent="store" class="profile-form volunteers-edit">
+        <form wire:submit.prevent="save" class="profile-form volunteers-edit">
             @csrf
             <fieldset class="project-information max-w-admin-web big-section">
                 <x-admin.components.subtitle>
@@ -27,16 +52,16 @@
                 <div class="contact-information-list">
                     <div>
                         <div>
-                            <x-admin.components.fields.text name="first_name" value="" placeholder="John" wire=""
-                                                            id="first_name">
-                                {{__('admin/orders.for_who')}}
-                            </x-admin.components.fields.text>
+                            <x-admin.components.fields.select select_name="user_id"
+                                                              label="{{__('admin/orders.for_who')}}"
+                                                              :options="$orders_users_options" wire="user_id">
+                            </x-admin.components.fields.select>
                         </div>
                         <div>
-                            <x-admin.components.fields.phone wire="" name="general_phone" id="general_phone" value=""
-                                                             placeholder="048383903">
-                                {{__('admin/orders.phone_person_order')}}
-                            </x-admin.components.fields.phone>
+                            <x-admin.components.fields.select select_name="project_id"
+                                                              label="{{__('admin/orders.project_name')}}"
+                                                              :options="$orders_project_options" wire="project_id">
+                            </x-admin.components.fields.select>
                         </div>
 
 
@@ -44,15 +69,9 @@
 
                     <div>
                         <div>
-                            <x-admin.components.fields.text name="last_name" value="" placeholder="John" wire=""
-                                                            id="last_name">
-                                {{__('admin/orders.project_name')}}
-                            </x-admin.components.fields.text>
-                        </div>
-                        <div>
-                            <x-admin.components.fields.select select_name="project_type"
+                            <x-admin.components.fields.select select_name="order_state"
                                                               label="{{__('admin/orders.order_state')}}"
-                                                              :options="$orders_state_options" wire="project_type">
+                                                              :options="$orders_state_options" wire="order_state">
                             </x-admin.components.fields.select>
                         </div>
                     </div>
@@ -60,7 +79,7 @@
             </fieldset>
 
             <div class="split-row">
-                <fieldset class="small-section">
+          {{--      <fieldset class="small-section">
                     <x-admin.components.subtitle>
                         {{__('admin/orders.products_used')}}
                     </x-admin.components.subtitle>
@@ -83,11 +102,11 @@
                         </x-admin.components.fields.select>
                     </div>
 
-                </fieldset>
+                </fieldset>--}}
                 <div class="admin-information-buttons">
-                    <x-admin.components.admin-primary-button href="" title="" href="" class="">
+                    <x-admin.components.submit-button class="">
                         {{__('admin/orders.save')}}
-                    </x-admin.components.admin-primary-button>
+                    </x-admin.components.submit-button>
                 </div>
             </div>
         </form>

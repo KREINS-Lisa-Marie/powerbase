@@ -1,6 +1,16 @@
 <?php
 
+use App\Models\User;
 use Livewire\Livewire;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+
+uses(RefreshDatabase::class);
+
+
+beforeEach(function(){
+    $this-> user = User::factory()-> create();
+    \Pest\Laravel\actingAs($this-> user);});
+
 
 it('renders successfully', function () {
     Livewire::test('pages::orders.create')

@@ -91,14 +91,13 @@ it('can click on one of the 5 last orders link on the dashboard and go to the or
     ]);
 
     $project = \App\Models\Project::factory()->create([
-        'person_in_charge' => $worker->id,
-        'phone_in_charge' => $worker->phone,
+        'user_id' => $worker->id,
         'project_type' => $random_project_state,
     ]);
 
     $orders = \App\Models\Order::factory(10)->create([
-        'for_who'=>$user->id,
-        'project_name'=>$project->project_name
+        'user_id'=>$user->id,
+        'project_id'=>$project->id
     ]);
 
     $order = $orders->first();
@@ -174,20 +173,19 @@ it('shows the number of orders to complete on the dashboard ', function () {
     ]);
 
     $project = \App\Models\Project::factory()->create([
-        'person_in_charge' => $worker->id,
-        'phone_in_charge' => $worker->phone,
+        'user_id' => $worker->id,
         'project_type' => $random_project_state,
     ]);
 
     $orders = \App\Models\Order::factory(10)->create([
-        'for_who'=>$user->id,
-        'project_name'=>$project->project_name,
+        'user_id'=>$user->id,
+        'project_id'=>$project->id,
         'order_state' => 'completed'
     ]);
 
     $orders = \App\Models\Order::factory(5)->create([
-        'for_who'=>$user->id,
-        'project_name'=>$project->project_name,
+        'user_id'=>$user->id,
+        'project_id'=>$project->id,
         'order_state' => 'pending'
     ]);
 
@@ -263,8 +261,7 @@ it('can click on the projects link and go to the projects page', function () {
     $random_project_state = 'Particulier';
 
     $project = \App\Models\Project::factory(5)->create([
-        'person_in_charge' => $user->id,
-        'phone_in_charge' => $user->phone,
+        'user_id' => $user->id,
         'project_type' => $random_project_state,
     ]);
 
@@ -313,14 +310,13 @@ it('can click on the orders link and go to the orders page', function () {
     ]);
 
     $project = \App\Models\Project::factory()->create([
-        'person_in_charge' => $worker->id,
-        'phone_in_charge' => $worker->phone,
+        'user_id' => $worker->id,
         'project_type' => $random_project_state,
     ]);
 
     $orders = \App\Models\Order::factory(10)->create([
-        'for_who'=>$user->id,
-        'project_name'=>$project->project_name
+        'user_id'=>$user->id,
+        'project_id'=>$project->id
     ]);
 
     $locale = app()->getLocale();

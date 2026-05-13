@@ -11,16 +11,28 @@
 
 
 ];
-            $project_options = [
-            [
-            'name' => 'Projet 1',
-        'value' => 'project_one',
-        ],
-        [
-            'name' => 'Projet 2',
-            'value' =>'project_two',
-        ],
-];
+
+$projects = \App\Models\Project::all();
+$orders_project_options = [];
+            foreach ($projects as $project){
+             $orders_project_options[] =
+                 [
+            'name' => $project->project_name,
+        'value' => $project->id,
+        ];
+            }
+
+
+            $users = \App\Models\User::all();
+
+            $orders_users_options = [];
+            foreach ($users as $user){
+             $orders_users_options[] =
+                 [
+            'name' => "$user->first_name $user->last_name",
+        'value' => $user->id,
+        ];
+            }
 
 @endphp
 
@@ -40,17 +52,23 @@
                 <div class="contact-information-list">
                     <div>
                         <div>
-                            <x-admin.components.fields.text name="for_who" value="" placeholder="John" wire="for_who"
-                                                            id="for_who">
-                                {{__('admin/orders.for_who')}}
+                            <x-admin.components.fields.select select_name="user_id"
+                                                              label="{{__('admin/orders.for_who')}}"
+                                                              :options="$orders_users_options" wire="user_id">
+                            </x-admin.components.fields.select>
+                        </div>
+                        <div>
+                            <x-admin.components.fields.text name="ordered_at" value="" placeholder="22.02.2022" wire="ordered_at"
+                                                            id="ordered_at">
+                                {{__('admin/orders.ordered_at')}}
                             </x-admin.components.fields.text>
                         </div>
 
                         <div>
-                            <x-admin.components.fields.phone wire="phone" name="phone" id="phone" value=""
-                                                             placeholder="048383903">
-                                {{__('admin/orders.phone_person_order')}}
-                            </x-admin.components.fields.phone>
+                            <x-admin.components.fields.select select_name="project_id"
+                                                              label="{{__('admin/orders.project_name')}}"
+                                                              :options="$orders_project_options" wire="project_id">
+                            </x-admin.components.fields.select>
                         </div>
                     </div>
 
@@ -61,24 +79,17 @@
                                                               :options="$orders_state_options" wire="order_state">
                             </x-admin.components.fields.select>
                         </div>
-
-                        <div>
-                            <x-admin.components.fields.select select_name="project_name"
-                                                              label="{{__('admin/orders.project_name')}}"
-                                                              :options="$project_options" wire="project_name">
-                            </x-admin.components.fields.select>
-                        </div>
                     </div>
 
                 </div>
             </fieldset>
 
             <div class="split-row">
-                <fieldset class="small-section">
+               <fieldset class="small-section">
                     <x-admin.components.subtitle>
                         {{__('admin/orders.products_to_order')}}
                     </x-admin.components.subtitle>
-                    <div>
+                    {{-- <div>
                         <x-admin.components.fields.select select_name="vehicle_type"
                                                           label="{{__('admin/contacts.vehicle_type')}}"
                                                           wire="vehicle_type">
@@ -103,18 +114,18 @@
                         </x-admin.components.fields.text>
                     </div>
 
-                    {{--
+                    --}}{{--
 
                     HELP NEEDED
 
-                    --}}
+                    --}}{{--
 
-
+--}}
                 </fieldset>
                 <div class="admin-information-buttons">
-                    <x-admin.components.form-button>
+                    <x-admin.components.submit-button class="">
                         {{__('admin/orders.create_order')}}
-                    </x-admin.components.form-button>
+                    </x-admin.components.submit-button>
                 </div>
             </div>
         </form>
