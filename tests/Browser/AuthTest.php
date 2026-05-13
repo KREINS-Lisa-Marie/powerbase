@@ -68,7 +68,7 @@ it('redirects to the reset password page when clicked on the link', function () 
         ->assertSee('Se connecter')
         ->click('Mot de passe oublié?')
         ->assertUrlIs(route('auth.forgot-password', ['locale' => $locale]));
-    
+
 });
 
 
