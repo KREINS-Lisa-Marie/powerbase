@@ -21,8 +21,7 @@ it('renders successfully', function () {
     $random_project_state = 'Particulier';
 
     $project = Project::factory()->create([
-        'person_in_charge' => $worker->id,
-        'phone_in_charge' => $worker->phone,
+        'user_id' => $worker->id,
         'project_type' => $random_project_state,
 
     ]);
@@ -44,8 +43,7 @@ it('verifies that the projects show page is showing content elements in the righ
     $random_project_state = 'Particulier';
 
     $project = Project::factory()->create([
-        'person_in_charge' => $worker->id,
-        'phone_in_charge' => $worker->phone,
+        'user_id' => $worker->id,
         'project_type' => $random_project_state,
 
     ]);
@@ -66,22 +64,26 @@ it('displays a detail page of a project and verifies if there is data', function
         'job' => 'worker',
     ]);
 
-    $random_project_state = 'Particulier';
+    $random_project_state = 'Clôturé';
+    $random_project_type = 'Privé';
 
     $project = Project::factory()->create([
-        'person_in_charge' => $worker->id,
-        'phone_in_charge' => $worker->phone,
-        'project_type' => $random_project_state,
+        'user_id' => $worker->id,
+        'project_type' => $random_project_type,
+        'project_state' => $random_project_state,
+        'client_name' => "Random name",
+        'project_address' => "Nouvelle adresse",
+        'project_description' => "Description",
 
     ]);
 
     Livewire::test('pages::projects.show', [
-        'project' => $project->id,
+        'project' => $project,
     ])
         ->assertSee($project->project_name)
-        ->assertSee($project->person_in_charge)
-        ->assertSee($project->phone_in_charge)
-        ->assertSee('Particulier')
+        ->assertSee($project->user_id)
+        ->assertSee($project->project_type)
+        ->assertSee($project->project_state)
         ->assertSee($project->client_name)
         ->assertSee($project->project_address)
         ->assertSee($project->project_description);
