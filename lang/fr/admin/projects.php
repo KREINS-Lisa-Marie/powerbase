@@ -35,4 +35,7 @@ return [
     'go_to_create_project'=>"Aller sur la page 'Créer un projet'",
     'go_to_project_page'=>"Aller vers la page du projet",
 
+    'closed'=>' Clôturé',
+    'open'=>' Ouvert',
+
 ];
