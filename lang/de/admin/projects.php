@@ -34,4 +34,8 @@ return [
     'most_recent' => 'Neueste',
     'go_to_create_project' => "Gehen Sie zur Seite 'Projekt erstellen'",
     'go_to_project_page' => "Gehen Sie zur Projektseite",
+
+
+    'closed'=>' Abgeschlossen',
+    'open'=>' Offen',
 ];
