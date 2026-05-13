@@ -22,14 +22,13 @@ it('renders successfully', function () {
         'job' => 'worker',
     ]);
     $project = Project::factory()->create([
-        'person_in_charge' => $worker->id,
-        'phone_in_charge' => $worker->phone,
+        'user_id' => $worker->id,
         'project_type' => $random_project_state,
 ]);
 
     $order = Order::factory()->create([
-        'for_who'=>$worker->id,
-        'project_name'=>$project->project_name
+        'user_id'=>$worker->id,
+        'project_id'=>$project->id
     ]);
 
     Livewire::test('pages::orders.show',
@@ -48,14 +47,13 @@ it('verifies that the orders show page is showing content elements in the right 
         'job' => 'worker',
     ]);
     $project = Project::factory()->create([
-        'person_in_charge' => $worker->id,
-        'phone_in_charge' => $worker->phone,
+        'user_id' => $worker->id,
         'project_type' => $random_project_state,
     ]);
 
     $order = Order::factory()->create([
-        'for_who'=>$worker->id,
-        'project_name'=>$project->project_name,
+        'user_id'=>$worker->id,
+        'project_id'=>$project->id,
     ]);
 
     Livewire::test('pages::orders.show', [
@@ -75,14 +73,13 @@ it('displays a detail page of a orders and verifies if there is data', function 
         'job' => 'worker',
     ]);
     $project = Project::factory()->create([
-        'person_in_charge' => $worker->id,
-        'phone_in_charge' => $worker->phone,
+        'user_id' => $worker->id,
         'project_type' => $random_project_state,
     ]);
     $order = Order::factory()->create(
         [
-            'for_who'=>$worker->id,
-            'project_name'=>$project->project_name,
+            'user_id'=>$worker->id,
+            'project_id'=>$project->id,
         ]
     );
 
