@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\ProjectStates;
 use App\Enums\ProjectTypes;
 use App\Models\User;
 use Livewire\Livewire;
@@ -30,15 +31,16 @@ it('redirects to the projects index route after the successfull creation of a pr
     function () {
 
         $user = User::factory()->create();
-        $random_project_state = rand(0, 1) ? ProjectTypes::Private->value : ProjectTypes::Corporate->value;
+        $random_project_type = rand(0, 1) ? ProjectTypes::Private->value : ProjectTypes::Corporate->value;
+        $random_project_state = rand(0, 1) ? ProjectStates::Closed->value : ProjectStates::Open->value;
 
         Livewire::test('pages::projects.create')
             ->set('project_name', 'Project1')
-            ->set('person_in_charge', $user->id)
-            ->set('phone_in_charge', $user->phone)
-            ->set('project_type', $random_project_state)
+            ->set('user_id', $user->id)
+            ->set('project_type', $random_project_type)
             ->set('client_name', 'Mr. Muller')
             ->set('project_address', 'Rue de l’école 2')
+            ->set('project_state', $random_project_state)
             ->set('project_description', 'Travail à faire')
             ->call('store')
             ->assertHasNoErrors()

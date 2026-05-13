@@ -8,10 +8,10 @@ new class extends Component
 {
 
     public string $project_name = '';
-    public string $person_in_charge = '';
-    public string $phone_in_charge = '';
+    public string $user_id = '';
 
     public string $project_type= '' ;
+    public string $project_state = '' ;
     public string $client_name ='';
     public string $project_address ='';
     public string $project_description= '';
@@ -27,9 +27,9 @@ new class extends Component
     {
         $validated_data= $this->validate([
             'project_name'=>'required|string|max:255',
-            'person_in_charge'=>'int|required',
-            'phone_in_charge' => 'required|string',
+            'user_id'=>'int|required',
             'project_type'=>'required|string|max:255',
+            'project_state'=>'required|string|max:255',
             'client_name'=>'required|string|max:255',
             'project_address'=>'required|string',
             'project_description'=>'required|string',
@@ -38,9 +38,9 @@ new class extends Component
 
         $project = Project::create([
             'project_name'=>$validated_data['project_name'],
-            'person_in_charge'=>$validated_data['person_in_charge'],
-            'phone_in_charge'=>$validated_data['phone_in_charge'],
+            'user_id'=>$validated_data['user_id'],
             'project_type'=>$validated_data['project_type'],
+            'project_state'=>$validated_data['project_state'],
             'client_name'=>$validated_data['client_name'],
             'project_address'=>$validated_data['project_address'],
             'project_description'=>$validated_data['project_description'],

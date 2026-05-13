@@ -9,6 +9,16 @@
              'value' => \App\Enums\ProjectTypes::Corporate->value,
          ],
     ];
+    $project_state = [
+         [
+             'name' => __('admin/projects.closed'),
+             'value' => \App\Enums\ProjectStates::Closed->value,
+         ],
+         [
+             'name' => __('admin/projects.open'),
+             'value' => \App\Enums\ProjectStates::Open->value,
+         ],
+    ];
 
     $in_charge_options = [];
      $users =  App\Models\User::get();
@@ -42,19 +52,25 @@
                             </x-admin.components.fields.text>
                         </div>
                         <div>
-                            <x-admin.components.fields.select select_name="person_in_charge"
+                            <x-admin.components.fields.select select_name="user_id"
                                                               label="{{__('admin/projects.person_in_charge')}}"
-                                                              :options="$in_charge_options" wire="person_in_charge">
+                                                              :options="$in_charge_options" wire="user_id">
+                            </x-admin.components.fields.select>
+                        </div>
+                        <div>
+                            <x-admin.components.fields.select select_name="project_state"
+                                                              label="{{__('admin/projects.project_state')}}"
+                                                              :options="$project_state" wire="project_state">
                             </x-admin.components.fields.select>
                         </div>
 
-                        <div>
+                        {{--<div>
                             <x-admin.components.fields.phone wire="phone_in_charge" name="phone_in_charge"
                                                              id="phone_in_charge" value=""
                                                              placeholder="048383903">
                                 {{__('admin/projects.phone_person_in_charge')}}
                             </x-admin.components.fields.phone>
-                        </div>
+                        </div>--}}
                     </div>
 
                     <div>
