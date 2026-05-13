@@ -13,25 +13,31 @@ class Order extends Model
     use HasFactory;
 
     protected $fillable = [
-        'for_who',
-        'phone',
-        'project_name',
+        'user_id',
+        'project_id',
         'order_state',
         'ordered_at'
     ];
 
-    public function products():BelongsToMany
+
+    //Weil die sind ja jetzt in orderitems
+/*    public function products():BelongsToMany
     {
         return $this->belongsToMany(Product::class);
-    }
+    }*/
 
-    public function projects():BelongsTo
+    public function project():BelongsTo
     {
         return $this->belongsTo(Project::class);
     }
 
-    public function users():BelongsTo
+    public function user():BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function orderItems() :HasMany
+    {
+        return $this->hasMany(OrderItem::class);
     }
 }

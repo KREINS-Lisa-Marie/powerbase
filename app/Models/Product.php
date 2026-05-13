@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Product extends Model
 {
-    //use SoftDeletes;
     use HasFactory;
 
     protected $fillable = [
@@ -24,18 +23,20 @@ class Product extends Model
         'product_image'
     ];
 
-    public function orders():HasMany
+
+    // braucht nicht weil ja über order items geht
+/*    public function orders():HasMany
     {
         return $this->hasMany(Order::class);
-    }
-
-    public function users():HasMany
+    }*/
+//gehören ja keinem user    zeig ja immer alles an
+/*    public function users():HasMany
     {
         return $this->hasMany(User::class);
-    }
-    public function orderedItems():HasMany
+    }*/
+    public function orderItems():HasMany
     {
-        return $this->hasMany(OrderedItems::class);
+        return $this->hasMany(OrderItem::class);
     }
 
 
