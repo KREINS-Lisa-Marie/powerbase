@@ -1,6 +1,7 @@
 @props(
     [
         'productname',
+        'product_image',
         'product_id',
 ]
 )
@@ -38,7 +39,15 @@
         <h3 class="card-productname bold text-white uppercase" aria-level="3" role="heading">
             {{$productname}}
         </h3>
-        <img src="{!! asset('assets/img/spax.jpg') !!}" alt="" height="1200" width="1200" class="">
+        @if($product_image)
+            <img src="{!! asset('storage/images/products/variants/288x288/'.basename($product_image)) !!}" alt="{{__('admin/products.the_product_image')}}"
+                 class="border-radius-16 product-img">
+        @else
+            <img src="{!! asset('assets/img/default.jpg') !!}" alt="{{__('admin/products.the_product_image')}}"
+                 class="border-radius-16 product-img" height="1200" width="1200">
+        @endif
+
+{{--        <img src="{!! asset('assets/img/spax.jpg') !!}" alt="" height="1200" width="1200" class="">--}}
     </div>
     <a href="{{ route('worker.product', ['locale' => __('general.currentLocale'), 'product' => $product_id]) }}" title="aller vers la page du produit" class="card-link">
     </a>

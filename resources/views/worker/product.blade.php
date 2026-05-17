@@ -5,8 +5,8 @@
         </h2>
         <div class="product-details">
             <div class="img-button">
-                <img src="{!! asset('assets/img/spax.jpg') !!}" alt="" width="1200" height="1200"
-                     class="border-radius-16 product-detail-img mb-64">
+                <img src="{!! asset('storage/images/products/variants/392x392/'.basename($product->product_image)) !!}" alt="{{__('admin/products.the_product_image')}}"
+                     class="border-radius-16 product-img" width="392" height="392">
 
                 <!-- BUTTON TO ADD TO CART -->
 

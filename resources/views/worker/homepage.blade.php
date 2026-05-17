@@ -8,7 +8,7 @@
             </x-worker.title>
             <div class="d-flex flex-wrap flex-gap-24">
                 @forelse($newest_products as $newest_product)
-                <x-worker.product-card productname="{{$newest_product->product_name}}" product_id="{{$newest_product->id}}"/>
+                <x-worker.product-card productname="{{$newest_product->product_name}}" product_id="{{$newest_product->id}}" product_image="{{$newest_product->product_image}}"  />
                 @empty
                     <x-worker.product-card productname="{{__('worker/homepage.no_product_found')}}" product_id="null"/>
                 @endforelse
@@ -22,7 +22,7 @@
             <div class="d-flex flex-wrap flex-gap-24">
                 {{--most ordered à faire !--}}
                 @forelse($products as $product)
-                    <x-worker.product-card productname="{{$product->product_name}}" product_id="{{$product->id}}"/>
+                    <x-worker.product-card productname="{{$product->product_name}}" product_image="{{$product->product_image}}" product_id="{{$product->id}}"/>
                 @empty
                     <x-worker.product-card productname="{{__('worker/homepage.no_product_found')}}" product_id=""/>
                 @endforelse
