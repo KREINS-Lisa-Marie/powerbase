@@ -77,8 +77,13 @@
                         {{__('admin/products.image')}}
                     </x-admin.components.definition-term>
                     <x-admin.components.definition>
-                        <img src="{!! asset('assets/img/spax.jpg') !!}" alt="{{__('admin/products.the_product_image')}}"
-                             class="border-radius-16 product-img">
+                        @if($product->product_image)
+                            <img src="{!! asset('storage/images/products/variants/288x288/'.basename($product->product_image)) !!}" alt="{{__('admin/products.the_product_image')}}"
+                                 class="border-radius-16 product-img">
+                        @else
+                            <img src="{!! asset('assets/img/default.jpg') !!}" alt="{{__('admin/products.the_product_image')}}"
+                                 class="border-radius-16 product-img">
+                        @endif
                     </x-admin.components.definition>
                 </dl>
             </div>

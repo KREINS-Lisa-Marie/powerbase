@@ -1181,6 +1181,8 @@ body:has(.login-section) {
         height: auto;
         aspect-ratio: 1/1;
         border-radius: var(--borderradius-16);
+        overflow: hidden;
+        object-fit: cover;
     }
 
     .product-information-list {
@@ -1479,4 +1481,22 @@ td img {
     max-width: var(--max-w-table-column-desktop);
     white-space: nowrap;
     text-overflow: ellipsis;
+}
+
+
+.product-img{
+    aspect-ratio: 1/1;
+    overflow: hidden;
+}
+
+
+.product-card div{
+    position: relative;
+
+    h3{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+    }
 }

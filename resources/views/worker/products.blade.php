@@ -10,7 +10,7 @@
         <ul class="d-flex flex-wrap flex-gap-24">
                 @forelse($products as $product)
                     <li>
-                    <x-worker.product-card productname="{{$product->product_name}}" product_id="{{$product->id}}"/>
+                    <x-worker.product-card productname="{{$product->product_name}}"  product_image="{{$product->product_image}}"  product_id="{{$product->id}}"/>
                     </li>
 
                 @empty

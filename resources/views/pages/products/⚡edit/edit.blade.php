@@ -35,7 +35,7 @@
         {{$product->product_name}}
     </x-admin.page-bar>
     <div class="main-container">
-        <form wire:submit="save" class="profile-form volunteers-edit">
+        <form wire:submit="save" class="profile-form volunteers-edit" enctype="multipart/form-data">
             @csrf
             <fieldset class="contact-information max-w-admin-web big-section">
                 <x-admin.components.subtitle>

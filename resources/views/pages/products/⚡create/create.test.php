@@ -1,8 +1,11 @@
 <?php
 
 use App\Models\User;
+use Intervention\Image\Laravel\Facades\Image;
 use Livewire\Livewire;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 
 uses(RefreshDatabase::class);
 
@@ -28,6 +31,9 @@ it('verifies that the products create page is showing content elements in the ri
 it('redirects to the products index route after the successfull creation of a product',
     function () {
 
+    Storage::fake('public');
+    $product_image = UploadedFile::fake()->image('product.jpg');
+
         Livewire::test('pages::products.create')
             ->set('product_name', 'Vis')
             ->set('product_description', 'Description')
@@ -36,10 +42,19 @@ it('redirects to the products index route after the successfull creation of a pr
             ->set('brand', 'Amax')
             ->set('ref_article', 'AF23DJE87')
             ->set('gtin', '2387738402832')
-            ->set('product_image', 'image.jpeg')
-            ->call('store')
-            ->assertHasNoErrors()
-            ->assertRedirect(route('pages::products.index', ['locale' => __('general.currentLocale')]));
+            ->set('product_image', $product_image)
+            ->call('store');
+
+        $new_product = \App\Models\Product::where('gtin', '2387738402832')->first();
+        expect($new_product->product_image)->not()->toBeNull();
+        Storage::disk('public')->assertExists($new_product->product_image);
+
+        $image = Image::decode(Storage::disk('public')->get($new_product->product_image));
+
+        expect($image->width())
+            ->toBeLessThanOrEqual(392)
+            ->and($image->height())
+            ->toBeLessThanOrEqual(392);
     }
 );
 
