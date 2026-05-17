@@ -34,9 +34,10 @@
         {{__('admin/products.create_a_product')}}
     </x-admin.page-bar>
     <div class="main-container">
-        <form wire:submit.prevent="store" class="profile-form volunteers-edit">
+        <form wire:submit.prevent="store" class="profile-form volunteers-edit" enctype="multipart/form-data">
             @csrf
             <fieldset class="contact-information max-w-admin-web big-section">
+
                 <x-admin.components.subtitle>
                     {{__('admin/products.general_information')}}
                 </x-admin.components.subtitle>
