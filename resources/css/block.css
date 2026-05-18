@@ -1500,3 +1500,32 @@ td img {
         width: 100%;
     }
 }
+
+
+.change-lang{
+    input:not(:checked) ~ .text__container{
+        position: absolute;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        width: 1px;
+        margin: -1px;
+        padding: 0;
+        border: 0;
+    }
+    input:not(:checked) ~ .change-lang--label::after{
+        content: '▼';
+    }
+    input:checked ~ .change-lang--label::after{
+        content: '▲';
+    }
+
+    .text__container{
+        margin-top: var(--margin-padding-32);
+        font-size: var(--desktop16);
+        display: flex;
+        gap: 1rem;
+        flex-direction: column;
+    }
+
+}

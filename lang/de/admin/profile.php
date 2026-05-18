@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'change_language' => 'Sprache ändern — ',
+    'change_language' => 'Sprache ändern',
     'logout' => 'Abmelden',
     'profile' => 'Profil',
     'my_profile' => 'Mein Profil',
@@ -13,4 +13,11 @@ return [
     'reenter_a_password' => 'Geben Sie Ihr Passwort erneut ein',
     'go_to_change_password' => "Gehen Sie zur Seite 'Passwort ändern'",
     'change_language_to' => "Sprache ändern zu",
+
+    'change_language_to_french' => "Sprache zu 'Französisch' ändern",
+    'change_language_to_german' => "Sprache zu 'Deutsch' ändern",
+    'change_language_to_english' => "Sprache zu 'Englisch' ändern",
+    'french' => "Französisch",
+    'german' => "Deutsch",
+    'english' => "Englisch",
 ];
