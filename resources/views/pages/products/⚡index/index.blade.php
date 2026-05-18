@@ -1,19 +1,3 @@
-@php
-    $filter_options =[
-           [
-            'name' => 'ABC',
-        'value' =>'abc',
-        ],
-                   [
-            'name' => 'ZYX',
-        'value' =>'zyx',
-        ],
-                   [
-            'name' => __('admin/products.most_recent'),
-        'value' =>'latest',
-        ],
-    ]
-@endphp
 <main class="admin products-index-page" id="content">
     <x-admin.page-bar>
         {{__('admin/products.products')}}
@@ -26,7 +10,6 @@
                 </x-admin.components.admin-primary-button>
             </div>
             <div class="bottom-row">
-                <x-admin.components.fields.select select_name="filtering" label="Trier" :options="$filter_options" wire="filtering"/>
                 <x-admin.components.fields.search/>
             </div>
         </div>
@@ -37,16 +20,16 @@
             <table class="table max-w-admin-web">
                 <thead>
                 <tr>
-                    <x-admin.components.table.table-th scope="col">
+                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('product_name')" :direction="$sortField === 'product_name'? $sortDirection : null">
                         {{__('admin/products.product_name')}}
                     </x-admin.components.table.table-th>
-                    <x-admin.components.table.table-th scope="col">
+                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('quantity')" :direction="$sortField === 'quantity'? $sortDirection : null">
                         {{__('admin/products.stock_number')}}
                     </x-admin.components.table.table-th>
-                    <x-admin.components.table.table-th scope="col">
+                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('created_at')" :direction="$sortField === 'created_at'? $sortDirection : null">
                         {{__('admin/products.in_stock_since')}}
                     </x-admin.components.table.table-th>
-                    <x-admin.components.table.table-th scope="col">
+                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('updated_at')" :direction="$sortField === 'updated_at'? $sortDirection : null">
                         {{__('admin/products.updated_at')}}
                     </x-admin.components.table.table-th>
                 </tr>

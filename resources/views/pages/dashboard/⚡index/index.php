@@ -23,6 +23,23 @@ new #[Layout('layouts.app')] class extends Component
     public $today_projects;
     public $today_products;
 
+//tri
+    public $sortField = 'ordered_at';
+    public $sortDirection = 'asc';
+
+    protected $queryString =['sortField', 'sortDirection'];
+
+    public function sortBy($field)
+    {
+        if ($this->sortField === $field){
+            $this->sortDirection = $this->sortDirection === 'asc' ? 'desc' : 'asc';
+        }else{
+            $this->sortDirection = 'asc';
+        }
+
+        $this->sortField = $field;
+    }
+
     public function mount()         //avant de render ( 1x seulement)
     {
         $this->user = Auth::user();

@@ -1,19 +1,3 @@
-@php
-    $filter_options =[
-           [
-            'name' => 'ABC',
-        'value' =>'abc',
-        ],
-                   [
-            'name' => 'ZYX',
-        'value' =>'zyx',
-        ],
-                   [
-            'name' => __('admin/orders.latest'),
-        'value' =>'most recent',
-        ],
-    ];
-@endphp
 <main class="admin orders-index-page" id="content">
     <x-admin.page-bar>
         {{__('admin/orders.orders')}}
@@ -28,8 +12,6 @@
                 </x-admin.components.admin-primary-button>
             </div>
             <div class="bottom-row">
-                <x-admin.components.fields.select select_name="filtering" label="Trier" :options="$filter_options"
-                                                  wire="filtering"/>
                 <x-admin.components.fields.search/>
             </div>
         </div>
@@ -41,16 +23,16 @@
             <table class="table max-w-admin-web">
                 <thead>
                 <tr>
-                    <x-admin.components.table.table-th scope="col">
+                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('user_id')" :direction="$sortField === 'user_id'? $sortDirection : null">
                         {{__('admin/orders.ordered_by')}}
                     </x-admin.components.table.table-th>
-                    <x-admin.components.table.table-th scope="col">
+                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('product_name')" :direction="$sortField === 'product_name'? $sortDirection : null">
                         {{__('admin/orders.product_quantity')}}
                     </x-admin.components.table.table-th>
-                    <x-admin.components.table.table-th scope="col">
+                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('ordered_at')" :direction="$sortField === 'ordered_at'? $sortDirection : null">
                         {{__('admin/orders.ordered_at')}}
                     </x-admin.components.table.table-th>
-                    <x-admin.components.table.table-th scope="col">
+                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('order_state')" :direction="$sortField === 'order_state'? $sortDirection : null">
                         {{__('admin/orders.state')}}
                     </x-admin.components.table.table-th>
                 </tr>
@@ -68,9 +50,8 @@
                         </x-admin.components.table.table-td>
                         <x-admin.components.table.table-td class="table-name fw-medium">
                             <span
-                                class="show-web">{{__('admin/orders.product_quantity')}}</span>{{--{!! $volunteer->last_name !!} {!! $volunteer->first_name !!}--}}
+                                class="show-web">{{__('admin/orders.product_quantity')}}</span>
                             john@doe.com
-
                         </x-admin.components.table.table-td>
                         <x-admin.components.table.table-td class="table-state">
                             <span
