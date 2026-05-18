@@ -29,7 +29,7 @@ it('verifies that the contact edit page is showing content elements in the right
         'contact' => $contact,
     ])
         ->assertStatus(200)
-        ->assertSeeInOrder(['Informations générales', 'Prénom', 'Nom', 'Adresse privée', 'Voiture', 'Plaque', 'Modifier les données']);
+        ->assertSeeInOrder(['Informations générales', 'Prénom', 'Nom', 'Adresse privée', 'Voiture', 'Plaque', 'Enregistrer']);
 });
 
 
