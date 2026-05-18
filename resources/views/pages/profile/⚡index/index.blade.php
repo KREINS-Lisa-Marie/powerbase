@@ -8,9 +8,18 @@
             <h2 class="sro">
                 {{__('admin/profile.profile')}}
             </h2>
-            <x-admin.components.admin-primary-button href="{{__('admin/profile.change_language')}}" title="{{__('admin/profile.change_language_to')}}" class="">
-                {{__('admin/profile.change_language')}}DE
-            </x-admin.components.admin-primary-button>
+            <div class="change-lang text-white border-radius-16 admin-primary-button bold t-a-center">
+                <input type="checkbox" id="lang-switch"
+                          class="change-lang--input sro">
+                <label class="change-lang--label" for="lang-switch" itemprop="name">
+                    {{__('admin/profile.change_language')}}
+                </label>
+                <div class="text__container">
+                    <a href="{{route('pages::profile.index', ['locale' => 'en'])}}" title="{{__('admin/profile.change_language_to_english')}}" class="d-block">{{__('admin/profile.english')}}</a>
+                    <a href="{{route('pages::profile.index', ['locale' => 'de'])}}" title="{{__('admin/profile.change_language_to_german')}}" class="d-block">{{__('admin/profile.german')}}</a>
+                    <a href="{{route('pages::profile.index', ['locale' => 'fr'])}}" title="{{__('admin/profile.change_language_to_french')}}" class="d-block">{{__('admin/profile.french')}}</a>
+                </div>
+            </div>
             <x-admin.components.admin-primary-button href="{{route('pages::profile.edit', ['locale' => __('general.currentLocale'), $user->id])}}" title="{{__('admin/profile.go_to_change_password')}}" class="">
                 {{__('admin/profile.change_password')}}
             </x-admin.components.admin-primary-button>
