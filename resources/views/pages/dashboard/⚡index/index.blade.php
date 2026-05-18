@@ -110,16 +110,16 @@
         <table class="table max-w-admin-web">
             <thead>
             <tr>
-                <x-admin.components.table.table-th scope="col">
+                <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('user_id')" :direction="$sortField === 'user_id'? $sortDirection : null">
                     {{__('admin/orders.ordered_by')}}
                 </x-admin.components.table.table-th>
-                <x-admin.components.table.table-th scope="col">
+                <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('quantity')" :direction="$sortField === 'quantity'? $sortDirection : null">
                     {{__('admin/orders.product_quantity')}}
                 </x-admin.components.table.table-th>
-                <x-admin.components.table.table-th scope="col">
+                <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('ordered_at')" :direction="$sortField === 'ordered_at'? $sortDirection : null">
                     {{__('admin/orders.ordered_at')}}
                 </x-admin.components.table.table-th>
-                <x-admin.components.table.table-th scope="col">
+                <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('order_state')" :direction="$sortField === 'order_state'? $sortDirection : null">
                     {{__('admin/orders.state')}}
                 </x-admin.components.table.table-th>
             </tr>
@@ -130,7 +130,7 @@
                 <tr class="table-row position-relative">
                     <x-admin.components.table.table-td class="table-full_name">
                         <span class="show-web">{{__('admin/orders.ordered_by')}}</span>
-                        {{\App\Models\User::where('id', $order->for_who)->value('first_name')}} {{\App\Models\User::where('id', $order->for_who)->value('last_name')}}
+                        {{\App\Models\User::where('id', $order->user_id)->value('first_name')}} {{\App\Models\User::where('id', $order->user_id)->value('last_name')}}
                     </x-admin.components.table.table-td>
                     <x-admin.components.table.table-td class="table-name fw-medium">
                         <span class="show-web">{{__('admin/orders.product_quantity')}}</span>
