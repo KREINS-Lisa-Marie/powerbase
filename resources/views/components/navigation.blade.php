@@ -199,9 +199,6 @@
             <li class="nav__item__header">
                 <a href="{{route('worker.profile', ['locale' => __('general.currentLocale')])}}" class="nav__link__header" title="{{__('navigation.go_profile')}}" aria-label="{{__('navigation.go_profile')}}">{{__('navigation.profile')}}</a>
             </li>
-            <li class="nav__item__header">
-                <a href="{{route('worker.contact', ['locale' => __('general.currentLocale')])}}" class="nav__link__header" title="{{__('navigation.change_language')}}" aria-label="{{__('navigation.change_language')}}">EN</a>
-            </li>
         </ul>
     </nav>
 
