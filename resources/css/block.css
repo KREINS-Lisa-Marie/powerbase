@@ -768,15 +768,7 @@ body:has(.login-section) {
     border: 1px solid var(--dark-red);
 }
 
-.products-page-section {
-    input[type="search"] {
-        background-color: var(--white);
-        border-radius: var(--borderradius-16);
-        padding: var(--margin-padding-16);
-        width: 100%;
-        margin-bottom: var(--margin-padding-64);
-    }
-}
+
 
 
 .page-bar {
@@ -1528,4 +1520,28 @@ td img {
         flex-direction: column;
     }
 
+}
+
+
+
+.products-page-section {
+    .search-products-form{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+        margin-bottom: var(--margin-padding-64);
+        gap: var(--margin-padding-24);
+    }
+    #search {
+        background-color: var(--white);
+        border-radius: var(--borderradius-16);
+        padding: var(--margin-padding-16);
+        /*//width: 100%;*/
+        flex: 1;
+
+    }
+    button{
+        padding: var(--margin-padding-16);
+    }
 }

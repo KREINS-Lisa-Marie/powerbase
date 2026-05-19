@@ -4,8 +4,16 @@
             {{__('worker/products.products')}}
         </x-worker.title>
 
-        <label for="search"></label>
-        <input type="search" name="search" id="search" placeholder="{{__('worker/products.placeholder')}}">
+        {{-- GET parce que c'est pas vraiment des données secrètes ou qui ne peuvent pas passer dans l'url --}}
+        <form method="GET" action="" class="search-products-form">
+            <label for="search" class="sro">
+                {{__('admin/contacts.search')}}
+            </label>
+            <input type="text" name="search" id="search" class="" placeholder="{{__('admin/contacts.searching')}}" value="{{request('search')}}">       {{--ça garde le mot cherché --}}
+            <button type="submit" class="uppercase bold d-block  background-light-red text-white border-radius-16">
+                {{__('admin/contacts.searching')}}
+            </button>
+        </form>
 
         <ul class="d-flex flex-wrap flex-gap-24">
                 @forelse($products as $product)
