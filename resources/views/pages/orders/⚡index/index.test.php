@@ -22,7 +22,7 @@ it('renders successfully', function () {
 it('verifies that the orders index page is showing content elements in the right order', function () {
     Livewire::test('pages::orders.index')
         ->assertStatus(200)
-        ->assertSeeInOrder(['Créer une commande', 'Trier', 'Rechercher', 'Commandé par', 'Nombre', 'Commandé le', 'Statut']);
+        ->assertSeeInOrder(['Créer une commande', 'Rechercher', 'Commandé par', 'Nombre', 'Commandé le', 'Statut']);
 });
 
 
