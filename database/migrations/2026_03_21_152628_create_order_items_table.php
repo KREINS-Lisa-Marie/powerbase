@@ -12,6 +12,7 @@ return new class extends Migration {
             $table->foreignId('order_id')->constrained()->cascadeOnDelete();
             $table->foreignId('product_id')->constrained()->cascadeOnDelete();
             $table->integer('quantity');
+            $table->unique(['order_id', 'product_id']);     // comme ça un produit peut seulement apparâitre 1x dans une commande. ça évite les duplicats
             $table->timestamps();
         });
     }

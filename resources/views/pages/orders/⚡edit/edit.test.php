@@ -69,7 +69,6 @@ it('redirects to the orders show route after the successfull edit of an order',
         ])
             ->set('user_id', $order->user_id)
             ->set('project_id', $project2->id)
-            ->set('ordered_at', $order->ordered_at)
             ->set('order_state', 'completed')
             ->call('save')
             ->assertHasNoErrors()

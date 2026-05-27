@@ -79,30 +79,73 @@
             </fieldset>
 
             <div class="split-row">
-          {{--      <fieldset class="small-section">
+          <fieldset class="small-section">
                     <x-admin.components.subtitle>
                         {{__('admin/orders.products_used')}}
                     </x-admin.components.subtitle>
-                    <div>
-                        <x-admin.components.fields.select select_name="vehicle_type"
-                                                          label="{{__('admin/contacts.vehicle_type')}}"
-                                                          wire="vehicle_type">
-                        </x-admin.components.fields.select>
-                    </div>
-                    <div>
-                        <x-admin.components.fields.select select_name="vehicle_type"
-                                                          label="{{__('admin/contacts.vehicle_type')}}"
-                                                          wire="vehicle_type">
-                        </x-admin.components.fields.select>
-                    </div>
-                    <div>
-                        <x-admin.components.fields.select select_name="vehicle_type"
-                                                          label="{{__('admin/contacts.vehicle_type')}}"
-                                                          wire="vehicle_type">
-                        </x-admin.components.fields.select>
-                    </div>
 
-                </fieldset>--}}
+
+
+                {{-- search and add products to order --}}
+                @if(!empty($cart))
+                    <ul>
+                        @foreach($cart as $productId => $item)
+                            <li class="order-item bold mb-12">
+                                {{$item['name']}}
+                            </li>
+                            <li class="order-item-quantity">
+                                <div>
+{{--
+                                    <label for="quantity" class=" mb-12 d-block">
+                                        {{__('admin/orders.product_order_quantity')}}
+                                    </label>
+                                    <input type="number" name="quantity" class="field__input" aria-required="true" value="{{$item['quantity']}}">--}}
+                                    <x-admin.components.fields.number name="quantity" wire="cart.{{$productId}}.quantity" id="quantity-{{$productId}}" value="{{$item['quantity']}}" placeholder="" >
+                                        {{__('admin/orders.product_order_quantity')}}
+                                    </x-admin.components.fields.number>
+                                    <a href="#" wire:click="removeFromOrder({{$productId}})" class="d-block bold m-b-32 m-t-neg-16" >
+                                        {{__('admin/orders.delete')}}
+                                    </a>
+                                </div>
+                            </li>
+                        @endforeach
+                    </ul>
+
+                @endif
+                <x-admin.components.fields.search/>
+                @if($search)
+                    <ul class="search-results m-t-32">
+                        @foreach($searchedProduct as $product)
+                            <li class="searched-items">
+                                <p>
+                                    {{$product->product_name}}
+                                </p>
+                                <a href="#" wire:click="addToOrder({{$product->id}})" class="add-button bold">
+                                    {{__('admin/orders.add')}}
+                                </a>
+                            </li>
+                        @endforeach
+                    </ul>
+              @elseif(!empty($cart))
+                  <ul class="search-results m-t-32">
+                      @foreach($searchedProduct as $product)
+                          <li class="searched-items">
+                              <p>
+                                  {{$product->product_name}}
+                              </p>
+                              <a href="#" wire:click="addToOrder({{$product->id}})" class="add-button bold">
+                                  {{__('admin/orders.add')}}
+                              </a>
+                          </li>
+                      @endforeach
+                  </ul>
+                @else
+                    <p class="m-t-32">
+                        {{__('admin/orders.no_product_chosen')}}
+                    </p>
+                @endif
+          </fieldset>
+
                 <div class="admin-information-buttons">
                     <x-admin.components.submit-button class="">
                         {{__('admin/orders.save')}}

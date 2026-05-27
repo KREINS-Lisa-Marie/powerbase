@@ -13,7 +13,6 @@ return new class extends Migration {
             $table->foreignId('project_id')->constrained()->cascadeOnDelete();
             /*$table->string('phone');*/
             $table->string('order_state');
-            $table->timestamp('ordered_at');
             $table->timestamps();
         });
     }

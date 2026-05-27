@@ -1,21 +1,7 @@
 @php
-    $filter_options =[
-           [
-            'name' => 'ABC',
-        'value' =>'abc',
-        ],
-                   [
-            'name' => 'ZYX',
-        'value' =>'zyx',
-        ],
-                   [
-            'name' => __('admin/orders.latest'),
-        'value' =>'most recent',
-        ],
-    ];
-
     $order = \App\Models\Order::findOrFail($order_id);
     $user = \App\Models\User::findOrFail($order->user_id);
+    $project = \App\Models\Project::findOrFail($order->project_id);
 @endphp
 
 <main class="admin project-show" id="content">
@@ -57,13 +43,12 @@
                 </dl>
                 <dl>
 
-
                     <div>
                         <x-admin.components.definition-term>
                             {{__('admin/orders.project_name')}}
                         </x-admin.components.definition-term>
                         <x-admin.components.definition>
-                            {{$order->project_name}}
+                            {{$project->project_name}}
                         </x-admin.components.definition>
                     </div>
 
@@ -80,7 +65,7 @@
                             {{__('admin/orders.ordered_at')}}
                         </x-admin.components.definition-term>
                         <x-admin.components.definition>
-                            {{ date('d/m/Y', strtotime($order->ordered_at)) }}
+                            {{ date('d/m/Y', strtotime($order->created_at)) }}
                         </x-admin.components.definition>
                     </div>
                 </dl>
@@ -97,12 +82,6 @@
                     {{__('admin/orders.ordered_products')}}
                 </x-admin.components.subtitle>
 
-
-                <div class="bottom-row">
-                    <x-admin.components.fields.select select_name="filtering" label="Trier" :options="$filter_options"
-                                                      wire="filtering"/>
-                </div>
-
                 <section class="orders-list">
                     <h2 class="sro">
 
@@ -110,35 +89,44 @@
                     <table class="table max-w-admin-web">
                         <thead>
                         <tr>
-                            <x-admin.components.table.table-th scope="col">
+                            <x-admin.components.table.table-th scope="col" direction="asc">
                                 {{__('admin/orders.product_name')}}
                             </x-admin.components.table.table-th>
-                            <x-admin.components.table.table-th scope="col">
+                            <x-admin.components.table.table-th scope="col" direction="asc">
                                 {{__('admin/orders.quantity')}}
                             </x-admin.components.table.table-th>
                         </tr>
                         </thead>
                         <tbody>
 
-                        @for($i=0; $i<10; $i++)
-                            {{--@foreach($this->searchedUsers() as $volunteer)--}}
+                        @if($this->orderItems->isNotEmpty())
+                            @foreach($this->orderItems as $orderItem)
+                                @php
+                                    $product = \App\Models\Product::findOrFail($orderItem->product_id);
+                                @endphp
+                                <tr class="table-row position-relative">
+                                    <x-admin.components.table.table-td class="table-species">
+                                    <span class="show-web">{{__('admin/orders.product_name')}}
+                                    </span>
+                                        <span>{{$product->product_name}}</span>
+                                        <a href="{{route('pages::products.show',  ['locale' => __('general.currentLocale'),  'product' => $product->id])}}" title="{{__('admin/products.got_to_product_page')}}" class="card-link">
+                                        </a>
+                                    </x-admin.components.table.table-td>
+
+                                    <x-admin.components.table.table-td class="table-full_name">
+                                    <span class="show-web">{{__('admin/orders.quantity')}}
+                                    </span>
+                                        <span>{{$orderItem->quantity}}</span>
+                                    </x-admin.components.table.table-td>
+                                </tr>
+                            @endforeach
+                        @else
                             <tr class="table-row position-relative">
-                                <x-admin.components.table.table-td class="table-species">
-                                    <span
-                                        class="show-web">{{__('admin/orders.product_name')}}</span>{{--{!! $volunteer->is_admin?   __('admin/volunteers.admin'): __('admin/volunteers.volunteer') !!}--}}
-                                    Vis 100
-                                    <a href="{{--{{route('pages::volunteers.show',  ['locale' => __('general.currentLocale'),  'volunteer' => $volunteer->id])}}--}}"
-                                       title="{{__('admin/orders.go_to_detail_page')}}" class="card-link">
-                                    </a>
-                                </x-admin.components.table.table-td>
-                                <x-admin.components.table.table-td class="table-full_name">
-                                    <span class="show-web">{{__('admin/orders.quantity')}}</span>
-                                    2
-                                    {{--<img src="{!! asset('assets/img/border-collie.jpg') !!}" alt="image du chien" class="border-r-big">--}}
+                                <x-admin.components.table.table-td class="">
+                                    {{__('admin/orders.no_product_chosen')}}
                                 </x-admin.components.table.table-td>
                             </tr>
-                            {{--@endforeach--}}
-                        @endfor
+                        @endif
                         </tbody>
                     </table>
                 </section>
@@ -148,14 +136,6 @@
                 <x-admin.components.admin-primary-button href="{{route('pages::orders.edit', ['locale' => __('general.currentLocale'), 'order' => $order])}}" title="{{__('admin/orders.modify_order')}}"  class="">
                     {{__('admin/orders.modify_order')}}
                 </x-admin.components.admin-primary-button>
-
-                <form wire:submit="destroy" method="post">
-                    @csrf
-                    <x-admin.components.delete-btn title="{{__('admin/orders.delete_order')}}">
-                        {{__('admin/orders.delete_order')}}
-                    </x-admin.components.delete-btn>
-                </form>
-
                 <button onclick="window.print()" class="text-white border-radius-16 admin-secondary-button bold t-a-center">
                     {{__('admin/orders.print_order')}}
                 </button>

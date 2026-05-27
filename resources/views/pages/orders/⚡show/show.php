@@ -6,15 +6,19 @@ use Livewire\Component;
 new class extends Component
 {
 
+    public $orderItems = [];
+
     public int $order_id;
     public function mount(Order $order)         //avant de render ( 1x seulement)
     {
+        $this->orderItems = $order->orderItems;
 
         $this->order_id = $order->id;
     }
 
     public function render()        //à chaque fois que qqch sur la page change
     {
+
         return view('pages.orders.⚡show.show');
     }
 

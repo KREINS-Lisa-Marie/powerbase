@@ -37,7 +37,6 @@ it('redirects to the orders index route after the successfull creation of an ord
             ->set('user_id', $user->id)
             ->set('order_state', $random_order_state)
             ->set('project_id', $project->id)
-            ->set('ordered_at', now()->format('Y-m-d'))
             ->call('store')
             ->assertHasNoErrors()
             ->assertRedirect(route('pages::orders.index', ['locale' => __('general.currentLocale')]));
