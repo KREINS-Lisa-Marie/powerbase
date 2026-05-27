@@ -26,9 +26,9 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             'first_name' => 'Test User',
             'last_name' => 'User',
-            'phone' => fake()->phoneNumber(),
+            'phone' => fake()->e164PhoneNumber(),
             'job' => 'admin',
-            'private_phone'=>fake()->phoneNumber(),
+            'private_phone'=>fake()->e164PhoneNumber(),
             'private_address'=>fake()->address(),
             'email' => 'test@example.com',
             'password' => Hash::make('test'),
@@ -37,9 +37,9 @@ class DatabaseSeeder extends Seeder
         $user = User::factory()->create([
             'first_name' => 'Anika',
             'last_name' => 'Ing',
-            'phone' => fake()->phoneNumber(),
+            'phone' => fake()->e164PhoneNumber(),
             'job' => 'worker',
-            'private_phone'=>fake()->phoneNumber(),
+            'private_phone'=>fake()->e164PhoneNumber(),
             'private_address'=>fake()->address(),
             'email' => 'anika@gmail.com',
             'password' => Hash::make('test'),
@@ -47,26 +47,36 @@ class DatabaseSeeder extends Seeder
 
         $users = User::factory(15)->create();
         $workers = User::factory(15)->create(['job'=>'worker']);
-
-
-
+        
         $projects = Project::factory(15)->create([
             'user_id'=>$workers->random()->id,
         ]);
-        $orders = Order::factory(15)->create([
-            'user_id'=>$workers->random()->id,
-            'project_id'=>$projects->random()->id,
-        ]);
+
+       //j'ai fait for i parce que sinon ça garde le même id pour tous
+        for ($i = 0; $i<15; $i++){
+             Order::factory()->create([
+                'user_id'=>$workers->random()->id,
+                'project_id'=>$projects->random()->id,
+            ]);
+        }
+
+        $orders = Order::all();
 
         $products = Product::all();
 
-        $order_items = OrderItem::factory(15)->create([
-            'order_id'=>$orders->random()->id,
-            'product_id'=>$products->random()->id,
-        ]);
+
+        //Pour chaque commande -> 3 produits
+        foreach ($orders as $order){
+            $random_products = $products->random(3);
+
+            //pour chaque produit, ajouter à la commande
+            foreach ($random_products as $random_product){
+                OrderItem::factory()->create([
+                    'order_id'=>$order->id,
+                    'product_id'=>$random_product->id,
+                    'quantity'=>random_int(1, 15),
+                ]);
+            }
+        }
     }
 }
-
-
-//$products = Product::factory(15)->create();
-//var_dump(User::where('job', 'worker')->pluck('id'));
