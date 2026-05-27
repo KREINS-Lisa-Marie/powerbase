@@ -93,8 +93,17 @@ max-width / centering
 .mb-32{
     margin-bottom: var(--margin-padding-32);
 }
+
 .mb-12{
     margin-bottom: var(--margin-padding-12);
+}
+
+.m-t-32{
+    margin-top: var(--margin-padding-32);
+}
+
+.m-t-neg-16{
+    margin-top: calc(var(--margin-padding-16)*-1);
 }
 
 .min-w-full{
