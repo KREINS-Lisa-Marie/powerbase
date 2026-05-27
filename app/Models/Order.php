@@ -16,7 +16,6 @@ class Order extends Model
         'user_id',
         'project_id',
         'order_state',
-        'ordered_at'
     ];
 
 

@@ -27,7 +27,6 @@ class OrderFactory extends Factory
             //'phone' => $phone_worker,
             'project_id' => fake()->randomElement($random_project),
             'order_state' => $random_state,
-            'ordered_at' => Carbon::now(),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ];
