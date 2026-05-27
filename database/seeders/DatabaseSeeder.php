@@ -47,7 +47,7 @@ class DatabaseSeeder extends Seeder
 
         $users = User::factory(15)->create();
         $workers = User::factory(15)->create(['job'=>'worker']);
-        
+
         $projects = Project::factory(15)->create([
             'user_id'=>$workers->random()->id,
         ]);
