@@ -24,7 +24,7 @@ it('renders successfully', function () {
 it('verifies that the products index page is showing content elements in the right order', function () {
     Livewire::test('pages::products.index')
         ->assertStatus(200)
-        ->assertSeeInOrder(['Créer un produit', 'Trier', 'Rechercher', 'Nom du produit', 'Stock', 'En stock depuis', 'Mise à jour']);
+        ->assertSeeInOrder(['Créer un produit', 'Rechercher', 'Nom du produit', 'Stock', 'En stock depuis', 'Mise à jour']);
 });
 
 

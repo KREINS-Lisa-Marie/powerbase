@@ -84,7 +84,7 @@ it('can click the edit button of a project and go to the edit page', function ()
         ]));
 });
 
-it('can click on the delete button, delete the project and go back to the index page', function () {
+/*it('can click on the delete button, delete the project and go back to the index page', function () {
     //Event::fake();
 
     $user = User::factory()->create();
@@ -114,8 +114,8 @@ it('can click on the delete button, delete the project and go back to the index 
     assertDatabaseMissing('projects', [
         'id' => $project->id,
     ]);
-});
-
+});*/
+/*      No sense in deleting projects - if its wrong the user can still change via edit */
 
 
 

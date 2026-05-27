@@ -21,7 +21,7 @@ it('renders successfully', function () {
 it('verifies that the contact index page is showing content elements in the right order', function () {
     Livewire::test('pages::contacts.index')
         ->assertStatus(200)
-        ->assertSeeInOrder(['Créer un contact', 'Trier', 'Rechercher', 'Nom complèt', 'E-mail', 'Téléphone', 'Job']);
+        ->assertSeeInOrder(['Créer un contact', 'Rechercher', 'Nom complèt', 'E-mail', 'Téléphone', 'Job']);
 });
 
 

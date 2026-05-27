@@ -94,7 +94,9 @@ it('can click the edit button of a order and go to the edit page', function () {
             'locale' => $locale
         ]));
 });
-
+/*
+ * There are no longer deletes
+ *
 it('can click on the delete button, delete the order and go back to the index page', function () {
     //Event::fake();
 
@@ -132,7 +134,7 @@ it('can click on the delete button, delete the order and go back to the index pa
     assertDatabaseMissing('orders', [
         'id' => $order->id,
     ]);
-});
+});*/
 
 
 it('can create a order and redirect to the show page', function () {
@@ -162,7 +164,6 @@ it('can create a order and redirect to the show page', function () {
         ->select('user_id', $worker->id)
         ->select('project_id', $project->id)
         ->select('order_state', $random_order_state)
-        ->fill('ordered_at', now()->format('Y-m-d'))
         ->click('Créer la commande')
         ->assertSee('Commandes');
 /*

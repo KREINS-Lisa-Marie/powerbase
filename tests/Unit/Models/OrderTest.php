@@ -32,7 +32,7 @@ it('belongs to one project', function () {
         'project_id'=>$project->id,
     ]);
 
-    $order_item = \App\Models\OrderItem::factory(5)->create([
+    $order_item = \App\Models\OrderItem::factory()->create([
         'order_id'=> $order->id,
         'product_id'=>$product->id,
     ]);
@@ -43,7 +43,7 @@ it('belongs to one project', function () {
 it('has many order_items who belong to an order', function () {
     $user = \App\Models\User::factory()->create();
 
-    $product = \App\Models\Product::factory(5)->create();
+    $products = \App\Models\Product::factory(5)->create();
 
     $project = \App\Models\Project::factory()->create([
         'user_id'=>$user->id,
@@ -54,10 +54,13 @@ it('has many order_items who belong to an order', function () {
         'project_id'=>$project->id,
     ]);
 
-    $order_item = \App\Models\OrderItem::factory(5)->create([
-        'order_id'=> $order->id,
-        'product_id'=>$product->pluck('id')->random(),
-    ]);
+    $orderitems = [];
+    foreach ($products->random(5) as $product){
+        $orderitems[]= \App\Models\OrderItem::factory()->create([
+            'order_id'=>$order->id,
+            'product_id'=>$product->id
+        ]);
+    }
 
     expect($order->orderItems)->toHaveCount(5);
 });
@@ -76,7 +79,7 @@ it('belongs to one user', function () {
         'project_id'=>$project->id,
     ]);
 
-    $order_item = \App\Models\OrderItem::factory(5)->create([
+    $order_item = \App\Models\OrderItem::factory()->create([
         'order_id'=> $order->id,
         'product_id'=>$product->pluck('id')->random(),
     ]);

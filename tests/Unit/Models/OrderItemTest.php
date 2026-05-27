@@ -22,17 +22,19 @@ it('can create orderItems', function () {
 
     $user = \App\Models\User::factory()->create(['job'=>'worker']);
     $products = \App\Models\Product::factory(10)->create();
-    $random_product = fake()->randomElement($products);
     $project = \App\Models\Project::factory()->create(['project_name'=>'leprojet']);
     $order = \App\Models\Order::factory()->create([
         'user_id'=>$user->id,
         'project_id'=>$project->id
     ]);
 
-    $orderitems = \App\Models\OrderItem::factory(5)->create([
-        'order_id'=>$order->id,
-        'product_id'=>$random_product->id
-    ]);
+    $orderitems = [];
+    foreach ($products->random(5) as $product){
+        $orderitems[]= \App\Models\OrderItem::factory()->create([
+            'order_id'=>$order->id,
+            'product_id'=>$product->id
+        ]);
+    }
 
     expect($orderitems)->toHaveCount(5);
 });
