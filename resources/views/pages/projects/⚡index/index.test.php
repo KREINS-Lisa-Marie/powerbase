@@ -25,7 +25,7 @@ it('renders successfully', function () {
 it('verifies that the projects index page is showing content elements in the right order', function () {
     Livewire::test('pages::projects.index')
         ->assertStatus(200)
-        ->assertSeeInOrder(['Créer un projet', 'Trier', 'Rechercher', 'Nom projet', 'Adresse', 'Crée le', 'Cloturé le']);
+        ->assertSeeInOrder(['Créer un projet', 'Rechercher', 'Nom projet', 'Adresse', 'Crée le', 'Etat du projet']);
 });
 
 
