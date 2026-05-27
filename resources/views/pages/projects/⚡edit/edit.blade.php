@@ -47,24 +47,15 @@
                                                               :options="$in_charge_options" wire="user_id">
                             </x-admin.components.fields.select>
                         </div>
-
-                        {{--<div>
-                            <x-admin.components.fields.phone wire="phone_in_charge" name="phone_in_charge"
-                                                             id="phone_in_charge" value=""
-                                                             placeholder="048383903">
-                                {{__('admin/projects.phone_person_in_charge')}}
-                            </x-admin.components.fields.phone>
-                        </div>--}}
-                    </div>
-
-                    <div>
                         <div>
                             <x-admin.components.fields.select select_name="project_type"
                                                               label="{{__('admin/projects.project_type')}}"
                                                               :options="$project_options" wire="project_type">
                             </x-admin.components.fields.select>
                         </div>
+                    </div>
 
+                    <div>
                         <div>
                             <x-admin.components.fields.text name="client_name" value="" placeholder="John Dupont"
                                                             wire="client_name"
@@ -93,43 +84,6 @@
             </fieldset>
 
             <div class="split-row">
-                <fieldset class="small-section">
-                    <x-admin.components.subtitle>
-                        {{__('admin/projects.products_used')}}
-                    </x-admin.components.subtitle>
-                    <div>
-                        <x-admin.components.fields.select select_name="vehicle_type"
-                                                          label="{{__('admin/contacts.vehicle_type')}}"
-                                                          wire="vehicle_type">
-                        </x-admin.components.fields.select>
-                    </div>
-                    <div>
-                        <x-admin.components.fields.select select_name="vehicle_type"
-                                                          label="{{__('admin/contacts.vehicle_type')}}"
-                                                          wire="vehicle_type">
-                        </x-admin.components.fields.select>
-                    </div>
-                    <div>
-                        <x-admin.components.fields.select select_name="vehicle_type"
-                                                          label="{{__('admin/contacts.vehicle_type')}}"
-                                                          wire="vehicle_type">
-                        </x-admin.components.fields.select>
-                    </div>
-                    <div>
-                        <x-admin.components.fields.text name="license_plate" value="" placeholder="79327HD" wire=""
-                                                        id="license_plate">
-                            {{__('admin/projects.products_to_add')}}
-                        </x-admin.components.fields.text>
-                    </div>
-
-                    {{--
-
-                    HELP NEEDED
-
-                    --}}
-
-
-                </fieldset>
                 <div class="admin-information-buttons">
                     {{--                    <x-admin.components.admin-primary-button href="" title="" href="" class="">
                         {{__('admin/projects.save')}}

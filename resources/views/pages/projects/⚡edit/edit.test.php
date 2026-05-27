@@ -52,7 +52,7 @@ it('verifies that the projects edit page is showing content elements in the righ
         'project' => $project,
     ])
         ->assertStatus(200)
-        ->assertSeeInOrder(['Informations générales', 'Nom projet', 'Type projet', 'Description', 'Produits utilisés', 'Ajouter',  'Enregistrer']);
+        ->assertSeeInOrder(['Informations générales', 'Nom projet', 'Type projet', 'Description', 'Enregistrer']);
 });
 
 
