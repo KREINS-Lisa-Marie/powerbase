@@ -1,10 +1,11 @@
-<main class="" id="content">
+<main class="admin" id="content">
     <x-admin.page-bar>
         {{__('admin/profile.my_profile')}}
     </x-admin.page-bar>
 
     <div class="main-container">
-        <section class="admin-profile">
+        <div class="split-row">
+        <section class="admin-profile admin-profile-buttons">
             <h2 class="sro">
                 {{__('admin/profile.profile')}}
             </h2>
@@ -32,5 +33,55 @@
             </form>
 
         </section>
+        <section class="admin-profile-info small-section ">
+                <x-admin.components.subtitle>
+                    {{__('admin/profile.my_information')}}
+                </x-admin.components.subtitle>
+                <div class="project-information-list ">
+                    <dl>
+                        <div>
+                            <x-admin.components.definition-term>
+                                {{__('admin/profile.my_name')}}
+                            </x-admin.components.definition-term>
+                            <x-admin.components.definition>
+                                {{$user->first_name}} {{$user->last_name}}
+                            </x-admin.components.definition>
+                        </div>
+                        <div>
+                            <x-admin.components.definition-term>
+                                {{__('admin/profile.phone')}}
+                            </x-admin.components.definition-term>
+                            <x-admin.components.definition>
+                                {{$user->phone}}
+                            </x-admin.components.definition>
+                        </div>
+                        <div>
+                            <x-admin.components.definition-term>
+                                {{__('admin/profile.email')}}
+                            </x-admin.components.definition-term>
+                            <x-admin.components.definition>
+                                {{$user->email}}
+                            </x-admin.components.definition>
+                        </div>
+                        <div>
+                            <x-admin.components.definition-term>
+                                {{__('admin/profile.my_car')}}
+                            </x-admin.components.definition-term>
+                            <x-admin.components.definition>
+                                {{$user->car_type}}
+                            </x-admin.components.definition>
+                        </div>
+                        <div>
+                            <x-admin.components.definition-term>
+                                {{__('admin/profile.my_car_plates')}}
+                            </x-admin.components.definition-term>
+                            <x-admin.components.definition>
+                                {{$user->car_plate}}
+                            </x-admin.components.definition>
+                        </div>
+                    </dl>
+                    </div>
+            </section>
+        </div>
     </div>
 </main>
