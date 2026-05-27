@@ -20,4 +20,11 @@ return [
     'french' => "Französisch",
     'german' => "Deutsch",
     'english' => "Englisch",
+
+    'my_car_plates' => 'Mein Kennzeichen',
+    'my_car'        => 'Mein Fahrzeug',
+    'phone'         => 'Meine Telefonnummer',
+    'my_name'       => 'Mein Name',
+    'email'         => 'Meine E-Mail',
+    'my_information' => 'Informationen über mich',
 ];

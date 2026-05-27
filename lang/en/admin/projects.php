@@ -37,4 +37,7 @@ return [
 
     'closed'=>' Closed',
     'open'=>' Open',
+
+    'project_state' => 'Project status',
+    'no_product_found' => 'No products chosen',
 ];
