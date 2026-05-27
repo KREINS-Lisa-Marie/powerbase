@@ -38,4 +38,7 @@ return [
     'closed'=>' Clôturé',
     'open'=>' Ouvert',
 
+    'project_state' =>'Etat du projet',
+    'no_product_found' =>'Pas de produits choisis',
+
 ];
