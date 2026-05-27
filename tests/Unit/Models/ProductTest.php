@@ -20,13 +20,21 @@ it('has many order_items', function () {
     $project = \App\Models\Project::factory()->create([
         'user_id'=>$user->id,
     ]);
-    $order = \App\Models\Order::factory()->create([
+    $order1 = \App\Models\Order::factory()->create([
         'user_id'=>$user->id,
         'project_id'=>$project->id
     ]);
-    $order_items = \App\Models\OrderItem::factory(2)->create([
+    $order2 = \App\Models\Order::factory()->create([
+        'user_id'=>$user->id,
+        'project_id'=>$project->id
+    ]);
+    $order_items1 = \App\Models\OrderItem::factory()->create([
         'product_id' => $product->id,
-        'order_id'=>$order->id
+        'order_id'=>$order1->id
+    ]);
+    $order_items2 = \App\Models\OrderItem::factory()->create([
+        'product_id' => $product->id,
+        'order_id'=>$order2->id
     ]);
 
     expect($product->orderItems)->toHaveCount(2);
