@@ -1,19 +1,4 @@
 @php
-$filter_options =[
-           [
-            'name' => 'ABC',
-        'value' =>'abc',
-        ],
-                   [
-            'name' => 'ZYX',
-        'value' =>'zyx',
-        ],
-                   [
-            'name' => __('admin/projects.most_recent'),
-        'value' =>'latest',
-        ],
-    ];
-
     $project = \App\Models\Project::findOrFail($project_id);
     $user = \App\Models\User::findOrFail($project->user_id)
 @endphp
@@ -54,10 +39,6 @@ $filter_options =[
                             {{$user->phone}}
                         </x-admin.components.definition>
                     </div>
-                </dl>
-                <dl>
-
-
                     <div>
                         <x-admin.components.definition-term>
                             {{__('admin/projects.project_type')}}
@@ -66,9 +47,14 @@ $filter_options =[
                             {{$project->project_type == 'corporate' ? __('admin/projects.corporate') : __('admin/projects.private')}}
                         </x-admin.components.definition>
                     </div>
+                </dl>
+                <dl>
+
+
+
                     <div>
                         <x-admin.components.definition-term>
-                            {{__('admin/projects.project_type')}}
+                            {{__('admin/projects.project_state')}}
                         </x-admin.components.definition-term>
                         <x-admin.components.definition>
                             {{$project->project_state == 'open' ? __('admin/projects.open') : __('admin/projects.closed')}}
@@ -92,7 +78,7 @@ $filter_options =[
                         </x-admin.components.definition>
                     </div>
                 </dl>
-                <dl>
+                <dl class="project-information-list-description">
                     <div>
                         <x-admin.components.definition-term>
                             {{__('admin/projects.project_description')}}
@@ -112,50 +98,51 @@ $filter_options =[
                     {{__('admin/projects.ordered_products')}}
                 </x-admin.components.subtitle>
 
-
-                <div class="bottom-row">
-                    <x-admin.components.fields.select select_name="filtering" label="Trier" :options="$filter_options"
-                                                      wire="filtering"/>
-                </div>
-
                 <section class="orders-list">
                     <h2 class="sro">
 
                     </h2>
-                    <table class="table max-w-admin-web">
+                    <table class="table max-w-admin-web split-table">
                         <thead>
                         <tr>
-                            <x-admin.components.table.table-th scope="col">
+                            <th scope="col" class="bold" direction="asc">
                                 {{__('admin/projects.product_name')}}
-                            </x-admin.components.table.table-th>
-                            <x-admin.components.table.table-th scope="col">
+                            </th>
+                            <th scope="col" class="bold" direction="asc">
                                 {{__('admin/projects.quantity')}}
-                            </x-admin.components.table.table-th>
+                            </th>
                         </tr>
                         </thead>
                         <tbody>
 
-                        @for($i=0; $i<10; $i++)
-                            {{--@foreach($this->searchedUsers() as $volunteer)--}}
+                        @if($products)
+                            @foreach($products as $product)
+                                <tr class="table-row position-relative">
+                                    <x-admin.components.table.table-td class="table-species">
+                                    <span class="show-web">{{__('admin/projects.product_name')}}
+                                    </span>
+                                        <span>{{$product['product']->product_name}}</span>
+                                        <a href="{{route('pages::products.show',  ['locale' => __('general.currentLocale'),  'product' => $product['product']->id])}}" title="{{__('admin/products.got_to_product_page')}}" class="card-link">
+                                        </a>
+                                    </x-admin.components.table.table-td>
+
+                                    <x-admin.components.table.table-td class="table-full_name">
+                                    <span class="show-web">{{__('admin/projects.quantity')}}
+                                    </span>
+                                        <span>{{$product['product_qt']}}</span>
+                                    </x-admin.components.table.table-td>
+                                </tr>
+                            @endforeach
+                        @else
                             <tr class="table-row position-relative">
-                                <x-admin.components.table.table-td class="table-species">
-                                    <span
-                                        class="show-web">{{__('admin/projects.product_name')}}</span>{{--{!! $volunteer->is_admin?   __('admin/volunteers.admin'): __('admin/volunteers.volunteer') !!}--}}
-                                    Vis 100
-                                    <a href="{{--{{route('pages::volunteers.show',  ['locale' => __('general.currentLocale'),  'volunteer' => $volunteer->id])}}--}}"
-                                       title="aller vers la fiche du produit" class="card-link">
-                                    </a>
-                                </x-admin.components.table.table-td>
-                                <x-admin.components.table.table-td class="table-full_name">
-                                    <span class="show-web">{{__('admin/projects.quantity')}}</span>
-                                    2
-                                    {{--<img src="{!! asset('assets/img/border-collie.jpg') !!}" alt="image du chien" class="border-r-big">--}}
+                                <x-admin.components.table.table-td class="">
+                                    {{__('admin/projects.no_product_found')}}
                                 </x-admin.components.table.table-td>
                             </tr>
-                            {{--@endforeach--}}
-                        @endfor
+                        @endif
                         </tbody>
                     </table>
+
                 </section>
 
             </section>
@@ -163,16 +150,6 @@ $filter_options =[
                 <x-admin.components.admin-primary-button href="{{route('pages::projects.edit', ['locale' => __('general.currentLocale'), 'project' => $project])}}" title="{{__('admin/projects.modify_project')}}"  class="">
                     {{__('admin/projects.modify_project')}}
                 </x-admin.components.admin-primary-button>
-
-  {{--              <x-admin.components.admin-secondary-button href="" title="" href="" class="">
-                    {{__('admin/projects.delete_project')}}
-                </x-admin.components.admin-secondary-button>--}}
-                <form wire:submit="destroy" method="post">
-                    @csrf
-                    <x-admin.components.delete-btn title="{{__('admin/projects.delete_project')}}">
-                        {{__('admin/projects.delete_project')}}
-                    </x-admin.components.delete-btn>
-                </form>
 
                 <button onclick="window.print()" class="text-white border-radius-16 admin-secondary-button bold t-a-center">
                     {{__('admin/projects.print_project')}}
