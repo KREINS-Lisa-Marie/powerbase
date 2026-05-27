@@ -20,4 +20,11 @@ return [
     'french' => "French",
     'german' => "German",
     'english' => "English",
+
+    'my_car_plates' => 'My license plate',
+    'my_car'        => 'My vehicle',
+    'phone'         => 'My phone number',
+    'my_name'       => 'My name',
+    'email'         => 'My email',
+    'my_information' => 'Information about me',
 ];

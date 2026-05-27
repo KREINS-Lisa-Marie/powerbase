@@ -20,4 +20,11 @@ return [
     'french'=>"Français",
     'german'=>"Allemand",
     'english'=>"Anglais",
+
+    'my_car_plates'=>'Ma plaque',
+    'my_car'=>'Mon véhicule',
+    'phone'=>'Mon nr. téléphone',
+    'my_name'=>'Mon nom',
+    'email'=>'Mon email',
+    'my_information'=>'Informations sur moi',
 ];
