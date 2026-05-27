@@ -52,7 +52,7 @@ it('verifies that the projects show page is showing content elements in the righ
         'project' => $project->id,
     ])
         ->assertStatus(200)
-        ->assertSeeInOrder(['Informations générales', 'Nom projet', 'Type projet', 'Description', 'Trier', /*'Produits commandés',*/  'Modifier', 'Supprimer', 'Imprimer']);
+        ->assertSeeInOrder(['Informations générales', 'Nom projet', 'Type projet', 'Description', 'Produits commandés',  'Modifier', 'Imprimer']);
 });
 
 
