@@ -37,4 +37,9 @@ return [
     'oders_list' => 'Liste des commandes',
     'go_to_detail_page' => 'Aller vers la page de détail',
 
+    'delete'=>'Supprimer',
+    'product_order_quantity'=>'Quantité',
+    'add'=>'Ajouter',
+    'no_product_chosen'=>'Pas de produit choisi',
+    'no_result'=>'Pas de commande trouvé',
 ];

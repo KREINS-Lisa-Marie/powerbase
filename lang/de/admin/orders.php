@@ -29,5 +29,16 @@ return [
     'completed' => 'Fertig',
     'order_number_title' => 'Bestellung n°',
 
+    'latest' => 'Neueste',
+    'go_to_create_order' => "Zur Seite 'Bestellung erstellen' gehen",
+    'go_to_order_page' => 'Zur Bestellungsseite gehen',
+    'oders_list' => 'Liste der Bestellungen',
+    'go_to_detail_page' => 'Zur Detailseite gehen',
     'orders' => 'Bestellungen',
+
+    'delete' => 'Löschen',
+    'product_order_quantity' => 'Menge',
+    'add' => 'Hinzufügen',
+    'no_product_chosen' => 'Kein Produkt ausgewählt',
+    'no_result'=>'Keine Bestellung gefunden',
 ];
