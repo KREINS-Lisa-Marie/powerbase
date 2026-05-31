@@ -21,7 +21,7 @@
             </x-worker.title>
             <div class="d-flex flex-wrap flex-gap-24">
                 {{--most ordered à faire !--}}
-                @forelse($products as $product)
+                @forelse($random_products as $product)
                     <x-worker.product-card productname="{{$product->product_name}}" product_image="{{$product->product_image}}" product_id="{{$product->id}}"/>
                 @empty
                     <x-worker.product-card productname="{{__('worker/homepage.no_product_found')}}" product_id=""/>
