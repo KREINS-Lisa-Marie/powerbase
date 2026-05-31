@@ -16,6 +16,8 @@ class HomepageController extends Controller
         $newest_products = Product::orderBy('created_at', 'desc')
             ->limit(4)->get();
 
-        return view('worker.homepage', compact('products', 'newest_products', 'user'));
+        $random_products = Product::inRandomOrder()->limit(4)->get();
+
+        return view('worker.homepage', compact('products', 'newest_products', 'user', 'random_products'));
     }
 }
