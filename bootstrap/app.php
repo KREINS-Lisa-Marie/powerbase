@@ -12,8 +12,14 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->use([
-            \App\Http\Middleware\SetLocale::class
+            \App\Http\Middleware\SetLocale::class,
         ]);
+
+            $middleware->alias([
+                'isAdmin'=>\App\Http\Middleware\IsAdmin::class,
+                'isStorekeeper'=>\App\Http\Middleware\IsStorekeeper::class,
+                'isWorker'=>\App\Http\Middleware\IsWorker::class,        'isAdminOrStorekeeper'=>\App\Http\Middleware\IsAdminOrStorekeeper::class,
+            ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
