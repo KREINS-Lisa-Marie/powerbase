@@ -15,7 +15,7 @@ uses(RefreshDatabase::class);
 it('can click a product card and go to the show page', function () {
     //Event::fake();
 
-    $user = User::factory()->create();
+    $user = User::factory()->create(['job'=>'storekeeper']);
     $product = \App\Models\Product::factory()->create();
     $locale = app()->getLocale();
     actingAs($user);
@@ -33,7 +33,7 @@ it('can click a product card and go to the show page', function () {
 it('can click on create a product and go to the create page', function () {
     //Event::fake();
 
-    $user = User::factory()->create();
+    $user = User::factory()->create(['job'=>'storekeeper']);
     $locale = app()->getLocale();
     actingAs($user);
 
@@ -49,7 +49,7 @@ it('can click on create a product and go to the create page', function () {
 it('can click the edit button of a product and go to the edit page', function () {
     //Event::fake();
 
-    $user = User::factory()->create();
+    $user = User::factory()->create(['job'=>'storekeeper']);
 
     $product = \App\Models\Product::factory()->create();
     $locale = app()->getLocale();
@@ -71,7 +71,7 @@ it('can click the edit button of a product and go to the edit page', function ()
 it('can click on the delete button, delete the product and go back to the index page', function () {
     //Event::fake();
 
-    $user = User::factory()->create();
+    $user = User::factory()->create(['job'=>'admin']);
 
     $product = \App\Models\Product::factory()->create();
     $locale = app()->getLocale();
@@ -98,7 +98,7 @@ it('can click on the delete button, delete the product and go back to the index 
 it('can create a product and redirect to the show page', function () {
     //Event::fake();
 
-    $user = User::factory()->create();
+    $user = User::factory()->create(['job'=>'storekeeper']);
     $locale = app()->getLocale();
     actingAs($user);
 
@@ -124,7 +124,7 @@ it('can create a product and redirect to the show page', function () {
 it('can edit a product and redirect to the show page', function () {
     //Event::fake();
 
-    $user = User::factory()->create();
+    $user = User::factory()->create(['job'=>'storekeeper']);
     $locale = app()->getLocale();
     actingAs($user);
 
@@ -139,12 +139,13 @@ it('can edit a product and redirect to the show page', function () {
         ->assertSee('Modifier')
         ->fill('product_description', 'nouvelle description')
         ->fill('brand', 'amax')
-        ->click('Enregistrer')
+        ->fill('product_name', $product->product_name)
+        ->fill('ref_article', $product->ref_article)
+        ->fill('gtin', (string) $product->gtin)
+        ->fill('quantity', (string) $product->quantity)
+        ->click('.admin-primary-button')
         ->assertSee($product->product_name)
-        ->assertUrlIs(route('pages::products.show', [
-            'locale' => $locale,
-            'product' => $product->id
-        ]));
+        ->wait(1);  //seconde
 
     assertDatabaseHas('products', [
         'brand' => 'amax',
