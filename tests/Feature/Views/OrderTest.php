@@ -5,7 +5,7 @@ use function Pest\Laravel\actingAs;
 
 test('the application returns a successful response', function () {
 
-    $user = User::factory()->create();
+    $user = User::factory()->create(['job'=>'worker']);
     $locale = app()->getLocale();
     actingAs($user);
 
@@ -18,13 +18,13 @@ test('the application returns a successful response', function () {
 
 it('verifies that the order page is showing it’s contents', function () {
 
-    $user = User::factory()->create();
+    $user = User::factory()->create(['job'=>'worker']);
     $locale = app()->getLocale();
     actingAs($user);
 
-    $response = $this->get(route('worker.order', ['locale' => __('general.currentLocale')]));
+    $response = $this->get(route('worker::order', ['locale' => __('general.currentLocale')]));
 
     $response->assertStatus(200)
-        ->assertSeeInOrder(["Commande", "Nom du projet", "Nom produit", "Toutes mes commandes", "Nombre de produits"]);
+        ->assertSeeInOrder(["Commande", "Nom du projet", "Confirmer la commande", "Toutes mes commandes"]);
 
 });

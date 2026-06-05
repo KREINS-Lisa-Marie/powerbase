@@ -25,7 +25,7 @@ it('verifies that the product page is showing it’s contents', function () {
 
     $product = \App\Models\Product::factory()->create();
 
-    $response = $this->get(route('worker.product', ['locale' => __('general.currentLocale'), 'product' => 1]));
+    $response = $this->get(route('worker::product', ['locale' => __('general.currentLocale'), 'product' => 1]));
 
     $response->assertStatus(200)
         ->assertSeeInOrder(["$product->product_name", "<img", "Mettre dans le panier", "Description", "Notes", "Stock restant"]);
