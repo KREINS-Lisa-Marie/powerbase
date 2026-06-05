@@ -1,5 +1,6 @@
 @php
     $product = \App\Models\Product::findOrFail($product_id);
+    $user = auth()->user();
     @endphp
 <main class="admin product" id="content">
     <x-admin.page-bar>
@@ -95,12 +96,14 @@
                     {{__('admin/products.modify_product')}}
                 </x-admin.components.admin-primary-button>
 
+                @if($user->job == 'admin' )
                 <form wire:submit="destroy" method="post">
                     @csrf
                     <x-admin.components.delete-btn title="{{__('admin/products.delete_product')}}">
                         {{__('admin/products.delete_product')}}
                     </x-admin.components.delete-btn>
                 </form>
+                @endif
             </div>
         </div>
     </div>

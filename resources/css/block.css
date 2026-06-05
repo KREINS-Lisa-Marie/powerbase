@@ -686,6 +686,8 @@ select {
 .increment_fields {
     color: var(--black);
     width: 100%;
+    gap: var(--gap-32);
+    margin-top: var(--gap-32);;
 }
 
 .border-b-dark {
@@ -1577,3 +1579,31 @@ body:has(.login-section) {
     width: 100%;
     max-width: var(--max-w-column-desktop);
 }
+
+/*  worker order select     */
+.worker-select{
+    label{
+        color: var(--white);
+    }
+    select{
+        color: var(--black);
+    }
+}
+
+.success{
+    animation: success linear 3s forwards;
+}
+
+@keyframes success {
+    0%{
+        opacity: 1;
+    }
+    90%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+
+

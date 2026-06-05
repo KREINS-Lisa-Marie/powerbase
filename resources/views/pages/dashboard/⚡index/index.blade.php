@@ -139,7 +139,7 @@
                     </x-admin.components.table.table-td>
                     <x-admin.components.table.table-td class="table-state">
                         <span class="show-web">{{__('admin/orders.ordered_at')}}</span>
-                        {{ date('d/m/Y', strtotime($order->ordered_at)) }}
+                        {{$order->created_at->format('d/m/Y')}}
                     </x-admin.components.table.table-td>
                     <x-admin.components.table.table-td class="table-species">
                         <span class="show-web">{{__('admin/orders.state')}}</span>

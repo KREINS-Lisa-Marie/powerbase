@@ -6,7 +6,7 @@
     <nav class="nav__header text-white bold" role="navigation" aria-label="Main">
         <h2 class="sro" aria-level="2" role="heading">{{__('navigation.main_navigation')}}</h2>
 
-        <a href="{{ route('pages::dashboard.index', ['locale' => __('general.currentLocale')]) }}"
+        <a href="{{ route('worker.homepage', ['locale' => __('general.currentLocale')]) }}"
            lang="{{app()->getLocale()}}"
            hreflang="{{app()->getLocale()}}"
            class="logo-link small-logo"
@@ -18,7 +18,7 @@
             </svg>
         </a>
 
-        <a href="{{route('pages::dashboard.index', ['locale' => __('general.currentLocale')])}}"
+        <a href="{{route('worker.homepage', ['locale' => __('general.currentLocale')])}}"
            lang="{{app()->getLocale()}}"
            hreflang="{{app()->getLocale()}}"
            class="logo-link big-logo"
@@ -50,7 +50,7 @@
             <a href="{{route('worker.products', ['locale' => __('general.currentLocale')])}}" title="{{__('navigation.go_products')}}" class="nav__link__header" aria-label="{{__('navigation.go_products')}}">{{__('navigation.products')}}</a>
         </li>
         <li class="nav__item__header">
-            <a href="{{route('worker.order', ['locale' => __('general.currentLocale')])}}" class="nav__link__header" title="{{__('navigation.go_order')}}" aria-label="{{__('navigation.go_order')}}">{{__('navigation.order')}}</a>
+            <a href="{{route('worker::order', ['locale' => __('general.currentLocale')])}}" class="nav__link__header" title="{{__('navigation.go_order')}}" aria-label="{{__('navigation.go_order')}}">{{__('navigation.order')}}</a>
         </li>
             <li class="nav__item__header">
                 <a href="{{route('worker.contact', ['locale' => __('general.currentLocale')])}}" class="nav__link__header" title="{{__('navigation.go_contact')}}" aria-label="{{__('navigation.go_contact')}}">{{__('navigation.contact')}}</a>
