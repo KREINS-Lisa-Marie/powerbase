@@ -10,4 +10,5 @@ return [
     'brand' => 'Marque',
     'gtin' => 'GTIN13',
 
+    'added_to_cart'=>'Produit ajouté à la commande',
 ];
