@@ -60,6 +60,13 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
+        for ($i = 0; $i<3; $i++) {
+            $orders_anika = Order::factory()->create([
+                'user_id' => $user->id,
+                'project_id' => $projects->random()->id,
+            ]);
+        }
+
         $orders = Order::all();
 
         $products = Product::all();
