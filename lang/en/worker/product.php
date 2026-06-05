@@ -9,4 +9,7 @@ return [
     'ref_article' => 'Reference',
     'brand' => 'Brand',
     'gtin' => 'GTIN13',
+
+    'added_to_cart' => 'Product added to the order',
+
 ];
