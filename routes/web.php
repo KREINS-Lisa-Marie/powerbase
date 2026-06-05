@@ -4,10 +4,6 @@ use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
-/*Route::get('/', function () {
-    return view('welcome');
-});*/
-
 Route::get('/{locale}',  [HomepageController::class, 'index'])->name('worker.homepage')->middleware([
     'auth', 'isWorker',
 ]);
@@ -18,16 +14,9 @@ Route::get('/{locale}/contact', function () {
     'auth', 'isWorker',
 ]);
 
-/*Route::get('/{locale}/order', function () {
-    return view('worker.order');
-})->name('worker.order')->middleware([
-    'auth',
-]);*/
-
-Route::livewire('/{locale}/order', 'worker::order.create')->name('worker::order.create')->middleware([
+Route::livewire('/{locale}/order', 'worker::order')->name('worker::order')->middleware([
     'auth', 'isWorker',
 ]);
-
 
 Route::get('/{locale}/profile', function () {
     return view('worker.profile');
@@ -40,13 +29,11 @@ Route::get('/{locale}/products',  [ProductController::class, 'index']
     'auth', 'isWorker',
 ]);
 
-/*Route::get('/{locale}/products/{product}', [ProductController::class, 'show'])->name('worker.product')->middleware([
-    'auth',
-]);*/
-
-Route::livewire('/{locale}/products/{product}/show', 'worker::product.show')->name('worker::product.show')->middleware([
-    'auth',
+Route::livewire('/{locale}/products/{product}', 'worker::product')->name('worker::product')->middleware([
+    'auth', 'isWorker',
 ]);
+
+
 
 Route::get('/{locale}/login', function () {
     return view('auth.login');
