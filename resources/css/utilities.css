@@ -78,6 +78,10 @@ Hintergrundfarb-Hilfen
     justify-content: center;
 }
 
+.j-c-space-b{
+    justify-content: space-between;
+}
+
 
 .text-black{
     color: var(--black);
@@ -95,6 +99,10 @@ Hintergrundfarb-Hilfen
 
 .italic{
     font-style: italic;
+}
+
+.regular{
+    font-weight: 400;
 }
 
 
