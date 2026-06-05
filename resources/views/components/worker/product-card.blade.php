@@ -49,6 +49,6 @@
 
 {{--        <img src="{!! asset('assets/img/spax.jpg') !!}" alt="" height="1200" width="1200" class="">--}}
     </div>
-    <a href="{{ route('worker.product', ['locale' => __('general.currentLocale'), 'product' => $product_id]) }}" title="aller vers la page du produit" class="card-link">
+    <a href="{{ route('worker::product', ['locale' => __('general.currentLocale'), 'product' => $product_id]) }}" title="aller vers la page du produit" class="card-link">
     </a>
 </article>
