@@ -68,7 +68,7 @@ it(
             'product' => $product,
         ])
             ->assertSee("$main_heading", false)
-            ->assertSeeHtml('<form wire:submit="save"')
+            ->assertSeeHtml('wire:submit.prevent="save"')
             ->assertSee($button_text, false);
     }
 )->with(

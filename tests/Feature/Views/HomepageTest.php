@@ -6,7 +6,7 @@ use function Pest\Laravel\actingAs;
 
 test('the application returns a successful response', function () {
 
-    $user = User::factory()->create();
+    $user = User::factory()->create(['job'=>'worker']);
     $locale = app()->getLocale();
     actingAs($user);
     $products = \App\Models\Product::factory(5)->create();
@@ -19,7 +19,7 @@ test('the application returns a successful response', function () {
 
 it('verifies that the homepage is showing it’s main title and two other titles', function () {
 
-    $user = User::factory()->create();
+    $user = User::factory()->create(['job'=>'worker']);
     $locale = app()->getLocale();
     actingAs($user);
 

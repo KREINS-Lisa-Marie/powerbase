@@ -13,7 +13,7 @@ uses(RefreshDatabase::class);
 it('can click a contact card and go to the show page', function () {
     //Event::fake();
 
-    $user = User::factory()->create();
+    $user = User::factory()->create(['job'=>'storekeeper']);
     $contact = $user;
     $locale = app()->getLocale();
     actingAs($user);
@@ -31,7 +31,7 @@ it('can click a contact card and go to the show page', function () {
 it('can click on create a contact and go to the create page', function () {
     //Event::fake();
 
-    $user = User::factory()->create();
+    $user = User::factory()->create(['job'=>'admin']);
     $locale = app()->getLocale();
     actingAs($user);
 
@@ -47,7 +47,7 @@ it('can click on create a contact and go to the create page', function () {
 it('can click the edit button and go to the edit page', function () {
     //Event::fake();
 
-    $user = User::factory()->create();
+    $user = User::factory()->create(['job'=>'admin']);
     $contact = $user;
     $locale = app()->getLocale();
     actingAs($user);
@@ -68,7 +68,7 @@ it('can click the edit button and go to the edit page', function () {
 it('can click on the delete button, delete the contact and go back to the index page', function () {
     //Event::fake();
 
-    $user = User::factory()->create();
+    $user = User::factory()->create(['job'=>'admin']);
     $contact = $user;
     $locale = app()->getLocale();
     actingAs($user);
@@ -93,7 +93,7 @@ it('can click on the delete button, delete the contact and go back to the index 
 it('can create a contact and redirect to the show page', function () {
     //Event::fake();
 
-    $user = User::factory()->create();
+    $user = User::factory()->create(['job'=>'admin']);
     $locale = app()->getLocale();
     actingAs($user);
 
@@ -123,7 +123,7 @@ it('can create a contact and redirect to the show page', function () {
 it('can edit a contact and redirect to the show page', function () {
     //Event::fake();
 
-    $user = User::factory()->create();
+    $user = User::factory()->create(['job'=>'admin']);
     $locale = app()->getLocale();
     actingAs($user);
 

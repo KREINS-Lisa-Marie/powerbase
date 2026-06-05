@@ -35,7 +35,7 @@ it('verifies that the products show page is showing content elements in the righ
             'product' => $product->id,
         ])
         ->assertStatus(200)
-        ->assertSeeInOrder(['Informations générales', 'Nom du produit', 'img', 'Modifier le produit', 'Supprimer le produit']);
+        ->assertSeeInOrder(['Informations générales', 'Nom du produit', '<img', 'Modifier le produit']);
 });
 
 

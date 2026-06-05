@@ -17,7 +17,7 @@ class ProductFactory extends Factory
             'product_description' => $this->faker->realText(),
             'product_notes' => $this->faker->text(),
             'quantity' => $this->faker->numberBetween(0, 150),
-            'product_image' => $this->faker->image(),
+            'product_image' => null,
             'brand'=>$this->faker->name(),
             'ref_article'=>$this->faker->regexify('[A-Z]{5}[0-4]{3}'),
             'gtin'=>$this->faker->randomNumber(),

@@ -15,7 +15,7 @@ it('can click an order card and go to the show page',
     function () {
         //Event::fake();
 
-        $user = User::factory()->create();
+        $user = User::factory()->create(['job'=>'storekeeper']);
 
         $worker = User::factory()->create([
             'job' => 'worker',
@@ -62,7 +62,7 @@ it('can click on create an order and go to the create page', function () {
 it('can click the edit button of a order and go to the edit page', function () {
     //Event::fake();
 
-    $user = User::factory()->create();
+    $user = User::factory()->create(['job'=>'storekeeper']);
 
 
     $worker = User::factory()->create([
@@ -177,7 +177,7 @@ it('can create a order and redirect to the show page', function () {
 it('can edit a order and redirect to the show page', function () {
     //Event::fake();
 
-    $user = User::factory()->create();
+    $user = User::factory()->create(['job'=>'storekeeper']);
     $locale = app()->getLocale();
     actingAs($user);
 

@@ -12,7 +12,7 @@ uses(RefreshDatabase::class);
 it('can click on the create project link on the dashboard and go to the create project page', function () {
     //Event::fake();
 
-    $user = User::factory()->create();
+    $user = User::factory()->create(['job'=>'storekeeper']);
 
     $locale = app()->getLocale();
     actingAs($user);
@@ -29,7 +29,7 @@ it('can click on the create project link on the dashboard and go to the create p
 it('can click on the create product link on the dashboard and go to the create product page', function () {
     //Event::fake();
 
-    $user = User::factory()->create();
+    $user = User::factory()->create(['job'=>'storekeeper']);
 
     $locale = app()->getLocale();
     actingAs($user);
@@ -46,7 +46,7 @@ it('can click on the create product link on the dashboard and go to the create p
 it('can click on the see orders link on the dashboard and go to the orders index page', function () {
     //Event::fake();
 
-    $user = User::factory()->create();
+    $user = User::factory()->create(['job'=>'storekeeper']);
 
     $locale = app()->getLocale();
     actingAs($user);
@@ -63,7 +63,7 @@ it('can click on the see orders link on the dashboard and go to the orders index
 it('can click on the see contacts link on the dashboard and go to the contacts index page', function () {
     //Event::fake();
 
-    $user = User::factory()->create();
+    $user = User::factory()->create(['job'=>'storekeeper']);
 
     $locale = app()->getLocale();
     actingAs($user);
@@ -82,7 +82,7 @@ it('can click on the see contacts link on the dashboard and go to the contacts i
 it('can click on one of the 5 last orders link on the dashboard and go to the order page', function () {
     //Event::fake();
 
-    $user = User::factory()->create();
+    $user = User::factory()->create(['job'=>'storekeeper']);
 
 
     $random_project_state = 'Particulier';
@@ -120,7 +120,7 @@ it('can click on one of the 5 last orders link on the dashboard and go to the or
 it('shows the number of products in stock on the dashboard ', function () {
     //Event::fake();
 
-    $user = User::factory()->create();
+    $user = User::factory()->create(['job'=>'storekeeper']);
 
     $products = \App\Models\Product::factory(15)->create();
 
@@ -139,7 +139,7 @@ it('shows the number of products in stock on the dashboard ', function () {
 it('shows the number of products <5 pieces in stock on the dashboard ', function () {
     //Event::fake();
 
-    $user = User::factory()->create();
+    $user = User::factory()->create(['job'=>'storekeeper']);
 
     $products = \App\Models\Product::factory(15)->create([
         'quantity'=> 24
@@ -165,7 +165,7 @@ it('shows the number of products <5 pieces in stock on the dashboard ', function
 it('shows the number of orders to complete on the dashboard ', function () {
     //Event::fake();
 
-    $user = User::factory()->create();
+    $user = User::factory()->create(['job'=>'storekeeper']);
 
     $random_project_state = 'Particulier';
     $worker = User::factory()->create([
@@ -212,7 +212,7 @@ it('shows the number of orders to complete on the dashboard ', function () {
 it('can click on the dashboard link and go to the dashboard page', function () {
     //Event::fake();
 
-    $user = User::factory()->create();
+    $user = User::factory()->create(['job'=>'storekeeper']);
 
     $contacts = User::factory(5)->create();
 
@@ -231,7 +231,7 @@ it('can click on the dashboard link and go to the dashboard page', function () {
 it('can click on the products link and go to the products page', function () {
     //Event::fake();
 
-    $user = User::factory()->create();
+    $user = User::factory()->create(['job'=>'storekeeper']);
 
     $contacts = User::factory(5)->create();
     $products = \App\Models\Product::factory(5)->create();
@@ -251,7 +251,7 @@ it('can click on the products link and go to the products page', function () {
 it('can click on the projects link and go to the projects page', function () {
     //Event::fake();
 
-    $user = User::factory()->create();
+    $user = User::factory()->create(['job'=>'storekeeper']);
 
     $contacts = User::factory(5)->create();
 
@@ -280,7 +280,7 @@ it('can click on the projects link and go to the projects page', function () {
 it('can click on the contacts link and go to the contacts page', function () {
     //Event::fake();
 
-    $user = User::factory()->create();
+    $user = User::factory()->create(['job'=>'storekeeper']);
 
     $contacts = User::factory(5)->create();
     $products = \App\Models\Product::factory(5)->create();
@@ -300,7 +300,7 @@ it('can click on the contacts link and go to the contacts page', function () {
 it('can click on the orders link and go to the orders page', function () {
     //Event::fake();
 
-    $user = User::factory()->create();
+    $user = User::factory()->create(['job'=>'storekeeper']);
 
     $contacts = User::factory(5)->create();
 
@@ -334,7 +334,7 @@ it('can click on the orders link and go to the orders page', function () {
 it('can click on the profile link and go to the profile page', function () {
     //Event::fake();
 
-    $user = User::factory()->create();
+    $user = User::factory()->create(['job'=>'storekeeper']);
 
     $contacts = User::factory(5)->create();
 
@@ -353,7 +353,7 @@ it('can click on the profile link and go to the profile page', function () {
 it('can click on the disconnect link and disconnect the user and afterwards redirect to the login page', function () {
     //Event::fake();
 
-    $user = User::factory()->create();
+    $user = User::factory()->create(['job'=>'storekeeper']);
 
     $locale = app()->getLocale();
     actingAs($user);

@@ -10,7 +10,7 @@ uses(RefreshDatabase::class);
 
 test('the application returns a successful response', function () {
 
-    $user = User::factory()->create();
+    $user = User::factory()->create(['job'=>'worker']);
     $locale = app()->getLocale();
     actingAs($user);
 
@@ -24,7 +24,7 @@ test('the application returns a successful response', function () {
 
 it('verifies that the profile page is showing it’s contents', function () {
 
-    $user = User::factory()->create();
+    $user = User::factory()->create(['job'=>'worker']);
     $locale = app()->getLocale();
     actingAs($user);
 
