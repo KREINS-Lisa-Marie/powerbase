@@ -26,10 +26,10 @@
                     <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('user_id')" :direction="$sortField === 'user_id'? $sortDirection : null">
                         {{__('admin/orders.ordered_by')}}
                     </x-admin.components.table.table-th>
-                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('product_name')" :direction="$sortField === 'product_name'? $sortDirection : null">
+                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('order_items_count')" :direction="$sortField === 'order_items_count'? $sortDirection : null">        {{--order_items_count se fait automatiquement quand je fais un withcount    -> nom model_count --}}
                         {{__('admin/orders.product_quantity')}}
                     </x-admin.components.table.table-th>
-                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('ordered_at')" :direction="$sortField === 'ordered_at'? $sortDirection : null">
+                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('created_at')" :direction="$sortField === 'created_at'? $sortDirection : null">
                         {{__('admin/orders.ordered_at')}}
                     </x-admin.components.table.table-th>
                     <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('order_state')" :direction="$sortField === 'order_state'? $sortDirection : null">
@@ -51,12 +51,12 @@
                         <x-admin.components.table.table-td class="table-name fw-medium">
                             <span
                                 class="show-web">{{__('admin/orders.product_quantity')}}</span>
-                            john@doe.com
+                            {{$order->orderItems()->count()}}
                         </x-admin.components.table.table-td>
                         <x-admin.components.table.table-td class="table-state">
                             <span
                                 class="show-web">{{__('admin/orders.ordered_at')}}</span>
-                            {{ date('d/m/Y', strtotime($order->ordered_at)) }}
+                            {{ date('d/m/Y', strtotime($order->created_at)) }}
                         </x-admin.components.table.table-td>
                         <x-admin.components.table.table-td class="table-species">
                             <span
@@ -70,7 +70,7 @@
                         @empty
                             <tr class="table-row position-relative">
                                 <x-admin.components.table.table-td class="table-full_name">
-                                    {{__('admin/projects.no_result')}}
+                                    {{__('admin/orders.no_result')}}
                                 </x-admin.components.table.table-td>
                             </tr>
                         @endforelse
