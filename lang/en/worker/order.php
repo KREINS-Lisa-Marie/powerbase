@@ -8,4 +8,11 @@ return [
     'confirm_order' => 'Confirm order',
     'all_orders' => 'All my orders',
     'product_number' => 'Number of products',
+
+    'no_order_found' => 'No previous orders',
+    'products' => 'products',
+    'quantity' => 'Quantity',
+    'delete_product' => 'Delete product',
+    'wanted_quantity' => 'Desired quantity',
+    'no_products_found'=>'No product chosen',
 ];
