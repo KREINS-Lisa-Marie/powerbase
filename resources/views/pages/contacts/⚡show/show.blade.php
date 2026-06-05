@@ -1,5 +1,6 @@
 @php
     $contact = \App\Models\User::findOrFail($contact_id);
+    $user = auth()->user();
  @endphp
 <main class="admin contacts" id="content">
     <x-admin.page-bar>
@@ -95,6 +96,7 @@
                     </div>
                 </dl>
             </section>
+            @if($user->job == 'admin' )
             <div class="admin-information-buttons">
                 <x-admin.components.admin-primary-button href="{{route('pages::contacts.edit', ['locale' => __('general.currentLocale'), 'contact' => $contact])}}" title="{{__('admin/contacts.modify_the_data')}}"  class="">
                     {{__('admin/contacts.modify_contact')}}
@@ -107,6 +109,7 @@
                     </x-admin.components.delete-btn>
                 </form>
             </div>
+            @endif
         </div>
     </div>
 </main>
