@@ -50,8 +50,6 @@
                 </dl>
                 <dl>
 
-
-
                     <div>
                         <x-admin.components.definition-term>
                             {{__('admin/projects.project_state')}}
@@ -102,7 +100,7 @@
                     <h2 class="sro">
 
                     </h2>
-                    <table class="table max-w-admin-web split-table">
+                    <table class="max-w-admin-web split-table">
                         <thead>
                         <tr>
                             <th scope="col" class="bold" direction="asc">

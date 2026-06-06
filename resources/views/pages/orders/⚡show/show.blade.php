@@ -32,6 +32,9 @@
                             {{$user->first_name}} {{$user->last_name}}
                         </x-admin.components.definition>
                     </div>
+
+                </dl>
+                <dl>
                     <div>
                         <x-admin.components.definition-term>
                             {{__('admin/orders.phone_person_order')}}
@@ -40,9 +43,6 @@
                             {{$user->phone}}
                         </x-admin.components.definition>
                     </div>
-                </dl>
-                <dl>
-
                     <div>
                         <x-admin.components.definition-term>
                             {{__('admin/orders.project_name')}}
@@ -51,7 +51,8 @@
                             {{$project->project_name}}
                         </x-admin.components.definition>
                     </div>
-
+                </dl>
+                <dl>
                     <div>
                         <x-admin.components.definition-term>
                             {{__('admin/orders.order_state')}}
@@ -69,9 +70,6 @@
                         </x-admin.components.definition>
                     </div>
                 </dl>
-                <dl>
-
-                </dl>
             </div>
 
         </section>
@@ -86,7 +84,7 @@
                     <h2 class="sro">
 
                     </h2>
-                    <table class="table max-w-admin-web">
+                    <table class="table max-w-admin-web split-table">
                         <thead>
                         <tr>
                             <x-admin.components.table.table-th scope="col" direction="asc">
