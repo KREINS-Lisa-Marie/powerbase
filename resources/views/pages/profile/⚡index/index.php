@@ -11,13 +11,4 @@ new class extends Component
     {
         $this->user = \Auth::user();
     }
-
-    public function destroy(): \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
-    {
-        $user= Auth::user();
-        $user->delete();
-        $locale =  __('general.currentLocale');
-
-        return redirect(route("/$locale/login"));
-    }
 };

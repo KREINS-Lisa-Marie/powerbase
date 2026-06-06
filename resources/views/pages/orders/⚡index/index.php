@@ -37,7 +37,6 @@ new class extends Component
                 ->orWhere('users.first_name', 'like', '%' . $search . '%')
                 ->orWhere('users.last_name', 'like', '%' . $search . '%')
                 ->orWhere('orders.created_at', 'like', '%' . $search . '%')
-                ->orWhere('orders.order_state', 'like', '%' . $search . '%')
                 ->orderBy($this->sortField, $this->sortDirection)
                 ->paginate(10),
             ]);
