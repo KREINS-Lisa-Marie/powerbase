@@ -70,17 +70,5 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::resetPasswordView(function (Request $request) {
             return view('auth.reset-password', ['request' => $request]);
         });
-
-/*        //remember me
-
-        Fortify::authenticateUsing(function (LoginRequest $request) {
-            $credentials = $request->only(Fortify::username(), 'password');
-
-            if (Auth::attempt($credentials, $request->boolean('remember'))) {
-                return $request->user();
-            }
-        }
-        );*/
-
     }
 }

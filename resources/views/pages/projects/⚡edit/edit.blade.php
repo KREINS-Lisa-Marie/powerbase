@@ -85,9 +85,6 @@
 
             <div class="split-row">
                 <div class="admin-information-buttons">
-                    {{--                    <x-admin.components.admin-primary-button href="" title="" href="" class="">
-                        {{__('admin/projects.save')}}
-                    </x-admin.components.admin-primary-button>--}}
                     <x-admin.components.submit-button class="">
                         {{__('admin/projects.save')}}
                     </x-admin.components.submit-button>

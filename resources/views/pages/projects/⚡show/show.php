@@ -8,9 +8,6 @@ new class extends Component
     public $project_id;
 
 
-
-
-
     public function mount(Project $project)         //avant de render ( 1x seulement)
     {
         $this->project_id = $project->id;
@@ -69,12 +66,4 @@ new class extends Component
     // Asort parce que c'est un Associative array
     //les autres c'est pour non associativ ou selon index (selon Stackoverflow)
 
-/*          Pas vraiment nécessaire
-
- *     public function destroy()
-    {
-        $project = Project::findOrFail($this->project_id);
-        $project->delete();
-        return redirect(route('pages::projects.index', ['locale' => app()->getLocale()]));
-    }*/
 };

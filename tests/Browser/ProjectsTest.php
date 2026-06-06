@@ -11,7 +11,6 @@ uses(RefreshDatabase::class);
 // Projects
 
 it('can click a project card and go to the show page', function () {
-    //Event::fake();
 
     $user = User::factory()->create(['job'=>'storekeeper']);
 
@@ -39,7 +38,6 @@ it('can click a project card and go to the show page', function () {
 });
 
 it('can click on create a project and go to the create page', function () {
-    //Event::fake();
 
     $user = User::factory()->create(['job'=>'storekeeper']);
     $locale = app()->getLocale();
@@ -55,7 +53,6 @@ it('can click on create a project and go to the create page', function () {
 });
 
 it('can click the edit button of a project and go to the edit page', function () {
-    //Event::fake();
 
     $user = User::factory()->create(['job'=>'storekeeper']);
 
@@ -84,43 +81,11 @@ it('can click the edit button of a project and go to the edit page', function ()
         ]));
 });
 
-/*it('can click on the delete button, delete the project and go back to the index page', function () {
-    //Event::fake();
-
-    $user = User::factory()->create();
-    $worker = User::factory()->create([
-        'job' => 'worker',
-    ]);
-    $random_project_state = 'Particulier';
-
-    $project = \App\Models\Project::factory()->create([
-        'user_id' => $user->id,
-        'project_type' => $random_project_state,
-    ]);
-    $locale = app()->getLocale();
-    actingAs($user);
-
-    $route = route('pages::projects.show',[
-        'locale' => $locale,
-        'project' => $project->id,
-    ]);
-
-    visit($route)
-        ->click("#delete-element")
-        ->assertUrlIs(route('pages::projects.index', [
-            'locale' => $locale
-        ]));
-
-    assertDatabaseMissing('projects', [
-        'id' => $project->id,
-    ]);
-});*/
 /*      No sense in deleting projects - if its wrong the user can still change via edit */
 
 
 
 it('can create a project and redirect to the show page', function () {
-    //Event::fake();
 
     $user = User::factory()->create(['job'=>'storekeeper']);
     $locale = app()->getLocale();
@@ -152,7 +117,6 @@ it('can create a project and redirect to the show page', function () {
 });
 
 it('can edit a project and redirect to the show page', function () {
-    //Event::fake();
 
     $user = User::factory()->create(['job'=>'storekeeper']);
     $locale = app()->getLocale();

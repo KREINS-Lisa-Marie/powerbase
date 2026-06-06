@@ -25,8 +25,6 @@
             'value' =>'admin',
         ],
 ];
-
-    //$product = \App\Models\Product::findOrFail($product_id);
 @endphp
 
 <main class=" admin product" id="content">

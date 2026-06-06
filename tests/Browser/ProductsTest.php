@@ -13,7 +13,6 @@ uses(RefreshDatabase::class);
 // Products
 
 it('can click a product card and go to the show page', function () {
-    //Event::fake();
 
     $user = User::factory()->create(['job'=>'storekeeper']);
     $product = \App\Models\Product::factory()->create();
@@ -31,7 +30,6 @@ it('can click a product card and go to the show page', function () {
 });
 
 it('can click on create a product and go to the create page', function () {
-    //Event::fake();
 
     $user = User::factory()->create(['job'=>'storekeeper']);
     $locale = app()->getLocale();
@@ -47,7 +45,6 @@ it('can click on create a product and go to the create page', function () {
 });
 
 it('can click the edit button of a product and go to the edit page', function () {
-    //Event::fake();
 
     $user = User::factory()->create(['job'=>'storekeeper']);
 
@@ -69,7 +66,6 @@ it('can click the edit button of a product and go to the edit page', function ()
 });
 
 it('can click on the delete button, delete the product and go back to the index page', function () {
-    //Event::fake();
 
     $user = User::factory()->create(['job'=>'admin']);
 
@@ -96,7 +92,6 @@ it('can click on the delete button, delete the product and go back to the index 
 
 
 it('can create a product and redirect to the show page', function () {
-    //Event::fake();
 
     $user = User::factory()->create(['job'=>'storekeeper']);
     $locale = app()->getLocale();
@@ -122,7 +117,6 @@ it('can create a product and redirect to the show page', function () {
 });
 
 it('can edit a product and redirect to the show page', function () {
-    //Event::fake();
 
     $user = User::factory()->create(['job'=>'storekeeper']);
     $locale = app()->getLocale();

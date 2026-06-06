@@ -22,12 +22,6 @@ class Project extends Model
         'project_description',
     ];
 
-    // über orders
-/*    public function products():HasMany
-    {
-        return $this->hasMany(Product::class);
-    }*/
-
     public function orders():HasMany
     {
         return $this->hasMany(Order::class);

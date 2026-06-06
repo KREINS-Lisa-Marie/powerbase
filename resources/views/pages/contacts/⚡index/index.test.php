@@ -27,7 +27,6 @@ it('verifies that the contact index page is showing content elements in the righ
 
 it('displays a list of Contacts on the contact index page', function () {
 
-    //Event::fake();
     $contacts = User::factory(3)->create();
 
     Livewire::test('pages::contacts.index')
@@ -36,20 +35,3 @@ it('displays a list of Contacts on the contact index page', function () {
         ->assertSee($contacts[2]->first_name);
 }
 );
-
-
-/* Kann nie gehen weil immer ein user eingeloggt ist
-
-it('verifies if there are no contacts and displays an error message if there are none', function () {
-
-    User::truncate();
-
-    $user = User::factory()->create();
-    actingAs($user);
-
-    User::where('id', '!=', $user->id)->delete(); // supprime tous sauf user qui est loggé
-
-    Livewire::test('pages::contacts.index')
-        ->assertSee('Pas de résultat');
-}
-);*/

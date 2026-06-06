@@ -15,7 +15,6 @@ new #[Layout('layouts.app')] class extends Component
     public $users;
     public $orders_to_finish;
     public $products_low_quantity;
-    //public $projects_not_finished;
     public $products_in_stock;
     public $five_latest_orders;
     public $daily_orders;

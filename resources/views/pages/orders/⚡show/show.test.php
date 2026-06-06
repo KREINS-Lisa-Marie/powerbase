@@ -66,7 +66,6 @@ it('verifies that the orders show page is showing content elements in the right 
 
 it('displays a detail page of a orders and verifies if there is data', function () {
 
-    //Event::fake();
     $random_project_state = 'Particulier';
 
     $worker = User::factory()->create([

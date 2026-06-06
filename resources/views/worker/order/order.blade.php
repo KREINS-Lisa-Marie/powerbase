@@ -85,27 +85,12 @@ $orders_project_options = [];
                 </div>
             </fieldset>
 
-
-
-
-
-
-
             <button type="submit"
                     class="background-light-red text-white uppercase p-t-b-16 border-radius-16 max-w-560 bold submit-order-btn d-block m-l-auto w-100">
                 {{__('worker/order.confirm_order')}}
             </button>
         </form>
     </section>
-
-
-
-
-
-
-
-
-
 
 
     <section class="background-dark text-white section-end-128">

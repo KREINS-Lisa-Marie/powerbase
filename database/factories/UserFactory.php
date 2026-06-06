@@ -25,9 +25,7 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
-
         $job = [UserRoles::Worker->value, UserRoles::Admin->value, UserRoles::Storekeeper->value];
-
 
         return [
             'first_name' => fake()->firstName(),
