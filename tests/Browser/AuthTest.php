@@ -11,7 +11,6 @@ uses(RefreshDatabase::class);
 //login
 
 it('can sign in the user', function () {
-    //Event::fake();
 
     User::factory()->create([
         'first_name' => 'Test User',
@@ -39,7 +38,6 @@ it('can sign in the user', function () {
 });
 
 it('doesnt sign in the user if the credentials are wrong', function () {
-    //Event::fake();
 
     User::factory()->create([
         'email' => 'bob@test.com',
@@ -60,7 +58,6 @@ it('doesnt sign in the user if the credentials are wrong', function () {
 });
 
 it('redirects to the reset password page when clicked on the link', function () {
-    //Event::fake();
 
     $locale = app()->getLocale();
 
@@ -68,14 +65,12 @@ it('redirects to the reset password page when clicked on the link', function () 
         ->assertSee('Se connecter')
         ->click('Mot de passe oublié?')
         ->assertUrlIs(route('auth.forgot-password', ['locale' => $locale]));
-
 });
 
 
 // Reset password
 
 it('resets the password', function () {
-    //Event::fake();
 
     User::factory()->create([
         'email' => 'bob@test.com',
@@ -93,7 +88,6 @@ it('resets the password', function () {
 });
 
 it('gives an error if reset password takes an email of someone who isnt a user', function () {
-    //Event::fake();
 
     User::factory()->create([
         'email' => 'bob@test.com',
@@ -108,12 +102,9 @@ it('gives an error if reset password takes an email of someone who isnt a user',
         ->fill('email', 'bob@hotmail.com')
         ->click('button[type="submit"]')
         ->assertSee("Nous ne trouvons aucun utilisateur ");
-
-
 });
 
 it('redirects to the login page when clicked on the return link', function () {
-    //Event::fake();
 
     $locale = app()->getLocale();
 

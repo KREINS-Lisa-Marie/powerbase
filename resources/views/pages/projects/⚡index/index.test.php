@@ -31,7 +31,6 @@ it('verifies that the projects index page is showing content elements in the rig
 
 it('displays a list of projects on the project index page', function () {
 
-    //Event::fake();
     $users = User::factory(3)->create([
         'job' => 'worker',
     ]);

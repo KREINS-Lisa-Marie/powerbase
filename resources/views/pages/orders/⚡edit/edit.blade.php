@@ -95,11 +95,6 @@
                             </li>
                             <li class="order-item-quantity">
                                 <div>
-{{--
-                                    <label for="quantity" class=" mb-12 d-block">
-                                        {{__('admin/orders.product_order_quantity')}}
-                                    </label>
-                                    <input type="number" name="quantity" class="field__input" aria-required="true" value="{{$item['quantity']}}">--}}
                                     <x-admin.components.fields.number name="quantity" wire="cart.{{$productId}}.quantity" id="quantity-{{$productId}}" value="{{$item['quantity']}}" placeholder="" >
                                         {{__('admin/orders.product_order_quantity')}}
                                     </x-admin.components.fields.number>

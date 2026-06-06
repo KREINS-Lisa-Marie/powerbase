@@ -58,8 +58,6 @@ it('verifies that the projects show page is showing content elements in the righ
 
 it('displays a detail page of a project and verifies if there is data', function () {
 
-    //Event::fake();
-
     $worker = User::factory()->create([
         'job' => 'worker',
     ]);

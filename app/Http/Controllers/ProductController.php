@@ -25,8 +25,4 @@ class ProductController extends Controller
         ->paginate(20),
         ]);
     }
-/*    public function show(  String $locale, Product $product)
-    {
-        return view('worker.⚡product.product', compact('product'));
-    }*/
 }

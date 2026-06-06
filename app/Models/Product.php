@@ -23,17 +23,6 @@ class Product extends Model
         'product_image'
     ];
 
-
-    // braucht nicht weil ja über order items geht
-/*    public function orders():HasMany
-    {
-        return $this->hasMany(Order::class);
-    }*/
-//gehören ja keinem user    zeig ja immer alles an
-/*    public function users():HasMany
-    {
-        return $this->hasMany(User::class);
-    }*/
     public function orderItems():HasMany
     {
         return $this->hasMany(OrderItem::class);

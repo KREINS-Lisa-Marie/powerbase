@@ -34,7 +34,6 @@ it('verifies that the contact show page is showing content elements in the right
 
 it('displays a detail page of a contact and verifies if there is data', function () {
 
-    //Event::fake();
     $contact = User::factory()->create(
         [
             'job' => 'admin',

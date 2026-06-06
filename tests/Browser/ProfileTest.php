@@ -11,7 +11,6 @@ uses(RefreshDatabase::class);
 // Profile
 
 it('can click the edit password button of the profile and go to the edit page', function () {
-    //Event::fake();
 
     $user = User::factory()->create(['job'=>'storekeeper']);
 
@@ -32,7 +31,6 @@ it('can click the edit password button of the profile and go to the edit page', 
 });
 
 it('will disconnect the user when clicking on the disconnect button and redirect to the login page', function () {
-    //Event::fake();
 
     $user = User::factory()->create(['job'=>'storekeeper']);
 

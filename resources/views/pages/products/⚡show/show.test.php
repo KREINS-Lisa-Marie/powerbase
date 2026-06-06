@@ -41,7 +41,6 @@ it('verifies that the products show page is showing content elements in the righ
 
 it('displays a detail page of a product and verifies if there is data', function () {
 
-    //Event::fake();
     $product = Product::factory()->create();
 
     Livewire::test('pages::products.show', [

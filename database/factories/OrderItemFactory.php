@@ -13,12 +13,9 @@ class OrderItemFactory extends Factory
 
     public function definition(): array
     {
-
-
         $product_id =  Product::exists() ? Product::all()->pluck('id')->random() : Product::factory()->create()->id;
         $random_order = Order::exists() ? Order::all()->pluck('id')->random() : Order::factory()->create()->id;
         $quantity = rand(0, 150);
-
 
         return [
             'order_id' => $random_order,

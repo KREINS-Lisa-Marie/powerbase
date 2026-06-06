@@ -19,14 +19,11 @@ class ProjectFactory extends Factory
         $worker_id =  User::factory([
             'job'=>'worker'
         ])->create();
-        //$random_worker = fake()->randomElement($worker_id);
         $random_project_type = rand(0, 1) ? ProjectTypes::Private->value : ProjectTypes::Corporate->value;
         $random_project_state = rand(0, 1) ? ProjectStates::Open->value : ProjectStates::Closed->value;
 
         return [
             'project_name'=>fake()->titleMale,
-            /*'person_in_charge' => $worker_id->id,
-            'phone_in_charge' => $worker_id->phone,*/
             'user_id'=>$worker_id->id,
             'project_type'=> $random_project_type,
             'project_state'=> $random_project_state,

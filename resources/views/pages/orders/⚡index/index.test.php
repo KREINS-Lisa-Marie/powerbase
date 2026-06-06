@@ -29,8 +29,6 @@ it('verifies that the orders index page is showing content elements in the right
 
 it('displays a list of orders on the orders index page', function () {
 
-    //Event::fake();
-
     $user = User::factory()->create();
     $project = Project::factory()->create();
 

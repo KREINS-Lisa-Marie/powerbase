@@ -13,7 +13,6 @@ uses(RefreshDatabase::class);
 
 it('can click an order card and go to the show page',
     function () {
-        //Event::fake();
 
         $user = User::factory()->create(['job'=>'storekeeper']);
 
@@ -44,7 +43,6 @@ it('can click an order card and go to the show page',
     });
 
 it('can click on create an order and go to the create page', function () {
-    //Event::fake();
 
     $user = User::factory()->create();
     $locale = app()->getLocale();
@@ -60,7 +58,6 @@ it('can click on create an order and go to the create page', function () {
 });
 
 it('can click the edit button of a order and go to the edit page', function () {
-    //Event::fake();
 
     $user = User::factory()->create(['job'=>'storekeeper']);
 
@@ -94,51 +91,9 @@ it('can click the edit button of a order and go to the edit page', function () {
             'locale' => $locale
         ]));
 });
-/*
- * There are no longer deletes
- *
-it('can click on the delete button, delete the order and go back to the index page', function () {
-    //Event::fake();
-
-    $user = User::factory()->create();
-
-    $random_project_state = 'Particulier';
-    $worker = User::factory()->create([
-        'job' => 'worker',
-    ]);
-
-    $project = \App\Models\Project::factory()->create([
-        'user_id' => $worker->id,
-        'project_type' => $random_project_state,
-    ]);
-
-    $order = \App\Models\Order::factory()->create([
-        'user_id'=>$user->id,
-        'project_id'=>$project->id
-    ]);
-
-    $locale = app()->getLocale();
-    actingAs($user);
-
-    $route = route('pages::orders.show',[
-        'locale' => $locale,
-        'order' => $order->id,
-    ]);
-
-    visit($route)
-        ->click("#delete-element")
-        ->assertUrlIs(route('pages::orders.index', [
-            'locale' => $locale
-        ]));
-
-    assertDatabaseMissing('orders', [
-        'id' => $order->id,
-    ]);
-});*/
 
 
 it('can create a order and redirect to the show page', function () {
-    //Event::fake();
 
     $user = User::factory()->create();
     $locale = app()->getLocale();
@@ -166,16 +121,9 @@ it('can create a order and redirect to the show page', function () {
         ->select('order_state', $random_order_state)
         ->click('Créer la commande')
         ->assertSee('Commandes');
-/*
-    assertDatabaseHas('orders', [
-        'user_id' => $worker->id,
-        'project_id' => $project->id,
-
-    ]);*/
 });
 
 it('can edit a order and redirect to the show page', function () {
-    //Event::fake();
 
     $user = User::factory()->create(['job'=>'storekeeper']);
     $locale = app()->getLocale();

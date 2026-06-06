@@ -18,13 +18,6 @@ class Order extends Model
         'order_state',
     ];
 
-
-    //Weil die sind ja jetzt in orderitems
-/*    public function products():BelongsToMany
-    {
-        return $this->belongsToMany(Product::class);
-    }*/
-
     public function project():BelongsTo
     {
         return $this->belongsTo(Project::class);

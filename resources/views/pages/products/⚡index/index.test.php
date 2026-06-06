@@ -30,7 +30,6 @@ it('verifies that the products index page is showing content elements in the rig
 
 it('displays a list of Products on the product index page', function () {
 
-    //Event::fake();
     $products = \App\Models\Product::factory(3)->create();
 
     Livewire::test('pages::products.index')

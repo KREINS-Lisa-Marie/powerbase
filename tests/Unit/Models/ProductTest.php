@@ -39,15 +39,3 @@ it('has many order_items', function () {
 
     expect($product->orderItems)->toHaveCount(2);
 });
-
-/*it('belongsto many cart_items who belong an order', function () {
-
-    $product = Product::factory()->create();
-    $requests = Request::factory(2)->create([
-        'animal_id' => $product->id
-    ]);
-
-    expect($product->requests)->toHaveCount(2);
-});*/
-
-//has many order_items who belong to an order
