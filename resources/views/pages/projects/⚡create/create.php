@@ -15,7 +15,7 @@ new class extends Component
     public string $client_name ='';
     public string $project_address ='';
     public string $project_description= '';
-    public string $users;
+    public $users;
 
     public function mount()
     {
@@ -46,6 +46,6 @@ new class extends Component
             'project_description'=>$validated_data['project_description'],
         ]);
 
-        $this->redirect(route('pages::projects.index', ['locale' => __('general.currentLocale')]));
+        $this->redirect(route('pages::projects.index', ['locale' => __('general.currentLocale'), 'users'=>$this->users]));
     }
 };

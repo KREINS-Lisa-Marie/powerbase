@@ -129,7 +129,8 @@
                 <tr class="table-row position-relative">
                     <x-admin.components.table.table-td class="table-full_name">
                         <span class="show-web">{{__('admin/orders.ordered_by')}}</span>
-                        {{\App\Models\User::where('id', $order->user_id)->value('first_name')}} {{\App\Models\User::where('id', $order->user_id)->value('last_name')}}
+                        {{$order->user->first_name}} {{$order->user->last_name}}
+
                     </x-admin.components.table.table-td>
                     <x-admin.components.table.table-td class="table-name fw-medium">
                         <span

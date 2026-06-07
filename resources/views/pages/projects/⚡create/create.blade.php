@@ -21,7 +21,7 @@
     ];
 
     $in_charge_options = [];
-     $users =  App\Models\User::get();
+
      foreach ($users as $user) {
         $in_charge_options[] = [
             'name'  => "$user->first_name $user->last_name",

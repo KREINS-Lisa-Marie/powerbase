@@ -1,7 +1,3 @@
-@php
-    $contact = \App\Models\User::findOrFail($contact_id);
-    $user = auth()->user();
- @endphp
 <main class="admin contacts" id="content">
     <x-admin.page-bar>
         {{$contact->first_name}} {{$contact->last_name}}

@@ -15,8 +15,8 @@ new class extends Component
 
     public function render()        //à chaque fois que qqch sur la page change
     {
-
         $project = Project::findOrFail($this->project_id);
+        $user = \App\Models\User::findOrFail($project->user_id);
         $orders = $project->orders;
 
         $project_products= [];          //tous les produits/orderitems de tous les commandes
@@ -59,7 +59,7 @@ new class extends Component
 
 
         return view('pages.projects.⚡show.show', [
-            'products' => $sorted
+            'products' => $sorted, 'user' => $user, 'project' => $project
         ]);
     }
 

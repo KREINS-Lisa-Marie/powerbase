@@ -58,9 +58,34 @@ new class extends Component
 
     public function render()
     {
+        $projects = \App\Models\Project::all();
+
+        $orders_project_options = [];
+        foreach ($projects as $project){
+            $orders_project_options[] =
+                [
+                    'name' => $project->project_name,
+                    'value' => $project->id,
+                ];
+        }
+
+
+/*        $users = \App\Models\User::all();
+
+        $orders_users_options = [];
+        foreach ($users as $user){
+            $orders_users_options[] =
+                [
+                    'name' => "$user->first_name $user->last_name",
+                    'value' => $user->id,
+                ];
+        }*/
+
+
+
         $user = auth()->user()->id;
         $old_orders = \App\Models\Order::where('user_id', '=', $user)->orderByDesc('id')->get();
 
-        return view('worker::order.order', compact('old_orders', 'user'))->layout('components.worker.app');
+        return view('worker::order.order', compact('old_orders', 'user', 'projects', 'orders_project_options'/*, 'orders_users_options'*/))->layout('components.worker.app');
     }
 };

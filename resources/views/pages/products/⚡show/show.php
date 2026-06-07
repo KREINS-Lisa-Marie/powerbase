@@ -16,7 +16,9 @@ new class extends Component
 
     public function render()        //à chaque fois que qqch sur la page change
     {
-        return view('pages.products.⚡show.show');
+        $product = Product::findOrFail($this->product_id);
+        $user = auth()->user();
+        return view('pages.products.⚡show.show',['product' => $product, 'user' => $user] );
     }
 
     public function destroy()

@@ -9,13 +9,15 @@ new class extends Component
 
     public function mount(User $contact)         //avant de render ( 1x seulement)
     {
-
         $this->contact_id = $contact->id;
     }
 
     public function render()        //à chaque fois que qqch sur la page change
     {
-        return view('pages.contacts.⚡show.show');
+        $contact = \App\Models\User::findOrFail($this->contact_id);
+        $user = auth()->user();
+
+        return view('pages.contacts.⚡show.show', ['contact' => $contact, 'user' => $user]);
     }
 
     public function destroy()

@@ -1,9 +1,3 @@
-@php
-    $order = \App\Models\Order::findOrFail($order_id);
-    $user = \App\Models\User::findOrFail($order->user_id);
-    $project = \App\Models\Project::findOrFail($order->project_id);
-@endphp
-
 <main class="admin project-show" id="content">
     <x-admin.page-bar>
         {{__('admin/orders.order_number_title')}} {{$order->id}}

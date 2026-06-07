@@ -18,8 +18,11 @@ new class extends Component
 
     public function render()        //à chaque fois que qqch sur la page change
     {
+        $order = \App\Models\Order::findOrFail($this->order_id);
+        $user = \App\Models\User::findOrFail($order->user_id);
+        $project = \App\Models\Project::findOrFail($order->project_id);
 
-        return view('pages.orders.⚡show.show');
+        return view('pages.orders.⚡show.show', ['order' => $order, 'user' => $user, 'project' => $project]);
     }
 
     public function destroy()
