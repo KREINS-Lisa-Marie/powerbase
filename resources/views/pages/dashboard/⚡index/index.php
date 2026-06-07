@@ -45,9 +45,9 @@ new #[Layout('layouts.app')] class extends Component
         $this->user = Auth::user();
         $this->orders_to_finish = Order::where('order_state', '!=', 'completed')->count();
         $this->products_low_quantity = Product::where('quantity', '<', 5)->count();
-        $this->products_in_stock = Product::count();
-        $this->five_latest_orders = Order::withCount('orderItems')->latest()->limit(5)->get();
-        $this->users = User::all();
+        $this->products_in_stock = Product::count();/*
+        $this->five_latest_orders = Order::withCount('orderItems')->latest()->limit(5)->get();*/
+        //$this->users = User::all();
         $this->daily_orders = Order::whereDate('created_at',  Carbon::today())->count();
         $this->completed_orders = Order::whereDate('updated_at', Carbon::today())->where( 'order_state', '=', 'completed')->count();
 
@@ -58,7 +58,7 @@ new #[Layout('layouts.app')] class extends Component
 
     public function render()        //à chaque fois que qqch sur la page change
     {
-        $five_orders = Order::withCount('orderItems')->latest()->limit(5)->get(); //ici parce que ça doit rerender à chaque fois que je change de direction
+        $five_orders = Order::withCount('orderItems')->with('user')->latest()->limit(5)->get(); //ici parce que ça doit rerender à chaque fois que je change de direction
         $this->five_latest_orders =
             $this->sortDirection === 'asc'
             ?$five_orders->sortBy($this->sortField)

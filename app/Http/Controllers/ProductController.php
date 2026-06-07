@@ -10,7 +10,7 @@ class ProductController extends Controller
     {
         $search = request('search', '');        //prend soit ce que je cherche dans search, soit affiche tous les produits
 
-        $products = Product::where('quantity', '>', 0)->paginate(20);
+        //$products = Product::where('quantity', '>', 0)->paginate(20);
 
         return view('worker.products', ['products' => Product::query()
         ->where('product_name', 'like', '%' . $search . '%')

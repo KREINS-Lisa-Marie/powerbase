@@ -87,6 +87,8 @@ new class extends Component
             'product_image'=> $image_path,
         ]);
 
+        $locale = app()->getLocale();
+
         $this->redirect(route('pages::products.show', ['locale' => __('general.currentLocale'), 'product'=>$this->product]));
     }
 };

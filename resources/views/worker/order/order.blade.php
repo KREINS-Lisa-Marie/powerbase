@@ -1,30 +1,3 @@
-@php
-    $projects = \App\Models\Project::all();
-
-
-$orders_project_options = [];
-            foreach ($projects as $project){
-             $orders_project_options[] =
-                 [
-            'name' => $project->project_name,
-        'value' => $project->id,
-        ];
-            }
-
-
-            $users = \App\Models\User::all();
-
-            $orders_users_options = [];
-            foreach ($users as $user){
-             $orders_users_options[] =
-                 [
-            'name' => "$user->first_name $user->last_name",
-        'value' => $user->id,
-        ];
-            }
-
-@endphp
-
 <div>
     <section class="m-b-64 background-dark margin-first-content-top">
         <form action="" method="POST" class="form text-white " wire:submit.prevent="store">

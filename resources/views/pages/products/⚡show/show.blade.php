@@ -1,7 +1,3 @@
-@php
-    $product = \App\Models\Product::findOrFail($product_id);
-    $user = auth()->user();
-    @endphp
 <main class="admin product" id="content">
     <x-admin.page-bar>
         {{$product->product_name}}

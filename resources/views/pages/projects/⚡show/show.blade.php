@@ -1,8 +1,3 @@
-@php
-    $project = \App\Models\Project::findOrFail($project_id);
-    $user = \App\Models\User::findOrFail($project->user_id)
-@endphp
-
 <main class="admin project-show" id="content">
     <x-admin.page-bar>
         {{$project->project_name}}
