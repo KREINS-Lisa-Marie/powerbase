@@ -27,4 +27,6 @@ return [
     'my_name'=>'Mon nom',
     'email'=>'Mon email',
     'my_information'=>'Informations sur moi',
+
+    'my_password'=>'Mon mot de passe',
 ];

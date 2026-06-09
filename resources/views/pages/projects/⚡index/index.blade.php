@@ -18,7 +18,7 @@
 
         <section class="orders-list">
             <h2 class="sro">
-
+                {{__('admin/projects.list_of_projects')}}
             </h2>
             <table class="table max-w-admin-web">
                 <thead>

@@ -75,9 +75,9 @@
                 </x-admin.components.subtitle>
 
                 <section class="orders-list">
-                    <h2 class="sro">
-
-                    </h2>
+                    <h3 class="sro">
+                        {{__('admin/projects.list_of_products')}}
+                    </h3>
                     <table class="table max-w-admin-web split-table">
                         <thead>
                         <tr>

@@ -32,7 +32,7 @@ return [
     'latest' => 'Neueste',
     'go_to_create_order' => "Zur Seite 'Bestellung erstellen' gehen",
     'go_to_order_page' => 'Zur Bestellungsseite gehen',
-    'oders_list' => 'Liste der Bestellungen',
+    'orders_list' => 'Liste der Bestellungen',
     'go_to_detail_page' => 'Zur Detailseite gehen',
     'orders' => 'Bestellungen',
 
