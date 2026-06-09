@@ -12,7 +12,7 @@
         </form>
         <div class="change-lang">
             <input type="checkbox" id="lang-switch" class="change-lang--input sro">
-            <label class="change-lang--label uppercase bold d-block fs-dt" for="lang-switch" itemprop="name">
+            <label class="change-lang--label uppercase bold d-block fs-dt" for="lang-switch">
                 {{__('worker/profile.change_language')}}
             </label>
             <div class="text__container">
