@@ -49,9 +49,11 @@
                                     </li>
                                 @endforeach
                             @else
-                                <p class="text-white">
+                                <li>
+                                    <p class="text-white">
                                     {{__('worker/order.no_products_found')}}
-                                </p>
+                                    </p>
+                                </li>
                             @endif
                         </ul>
                     </div>
