@@ -6,7 +6,7 @@
     <div class="main-container">
         <section class="admin-profile">
             <h2 class="sro">
-                {{__('admin/profile.profile')}}
+                {{__('admin/profile.my_password')}}
             </h2>
             <form wire:submit.prevent="save"
                   class="profile-form split-row ">
