@@ -27,4 +27,6 @@ return [
     'my_name'       => 'Mein Name',
     'email'         => 'Meine E-Mail',
     'my_information' => 'Informationen über mich',
+
+    'my_password'=>'Mein Passwort',
 ];

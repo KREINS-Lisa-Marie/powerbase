@@ -41,4 +41,7 @@ return [
     'project_state' =>'Etat du projet',
     'no_product_found' =>'Pas de produits choisis',
 
+    'list_of_projects' =>'Liste de projets',
+    'list_of_products' =>'Liste de produits',
+
 ];
