@@ -10,6 +10,17 @@
          ],
     ];
 
+        $project_state = [
+         [
+             'name' => __('admin/projects.closed'),
+             'value' => \App\Enums\ProjectStates::Closed->value,
+         ],
+         [
+             'name' => __('admin/projects.open'),
+             'value' => \App\Enums\ProjectStates::Open->value,
+         ],
+    ];
+
     $in_charge_options = [];
      $users =  App\Models\User::get();
      foreach ($users as $user) {
@@ -48,14 +59,21 @@
                             </x-admin.components.fields.select>
                         </div>
                         <div>
+                            <x-admin.components.fields.select select_name="project_state"
+                                                              label="{{__('admin/projects.project_state')}}"
+                                                              :options="$project_state" wire="project_state">
+                            </x-admin.components.fields.select>
+                        </div>
+
+                    </div>
+
+                    <div>
+                        <div>
                             <x-admin.components.fields.select select_name="project_type"
                                                               label="{{__('admin/projects.project_type')}}"
                                                               :options="$project_options" wire="project_type">
                             </x-admin.components.fields.select>
                         </div>
-                    </div>
-
-                    <div>
                         <div>
                             <x-admin.components.fields.text name="client_name" value="" placeholder="John Dupont"
                                                             wire="client_name"
