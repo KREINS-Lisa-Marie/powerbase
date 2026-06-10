@@ -19,36 +19,6 @@ Route::get('/home', function (){
 })->middleware('auth');
 
 
-Route::get('/{locale}',  [HomepageController::class, 'index'])->name('worker.homepage')->middleware([
-    'auth', 'isWorker',
-]);
-
-Route::get('/{locale}/contact', function () {
-    return view('worker.contact');
-})->name('worker.contact')->middleware([
-    'auth', 'isWorker',
-]);
-
-Route::livewire('/{locale}/order', 'worker::order')->name('worker::order')->middleware([
-    'auth', 'isWorker',
-]);
-
-Route::get('/{locale}/profile', function () {
-    return view('worker.profile');
-})->name('worker.profile')->middleware([
-    'auth', 'isWorker',
-]);
-
-Route::get('/{locale}/products',  [ProductController::class, 'index']
-)->name('worker.products')->middleware([
-    'auth', 'isWorker',
-]);
-
-Route::livewire('/{locale}/products/{product}', 'worker::product')->name('worker::product')->middleware([
-    'auth', 'isWorker',
-]);
-
-
 
 Route::get('/{locale}/login', function () {
     return view('auth.login');
@@ -137,4 +107,36 @@ Route::livewire('/{locale}/admin/orders/create', 'pages::orders.create')->name('
 
 Route::livewire('/{locale}/admin/profile/{profile}/edit', 'pages::profile.edit')->name('pages::profile.edit')->middleware([
     'auth', 'isAdminOrStorekeeper'
+]);
+
+
+
+
+Route::get('/{locale}',  [HomepageController::class, 'index'])->name('worker.homepage')->middleware([
+    'auth', 'isWorker',
+]);
+
+Route::get('/{locale}/contact', function () {
+    return view('worker.contact');
+})->name('worker.contact')->middleware([
+    'auth', 'isWorker',
+]);
+
+Route::livewire('/{locale}/order', 'worker::order')->name('worker::order')->middleware([
+    'auth', 'isWorker',
+]);
+
+Route::get('/{locale}/profile', function () {
+    return view('worker.profile');
+})->name('worker.profile')->middleware([
+    'auth', 'isWorker',
+]);
+
+Route::get('/{locale}/products',  [ProductController::class, 'index']
+)->name('worker.products')->middleware([
+    'auth', 'isWorker',
+]);
+
+Route::livewire('/{locale}/products/{product}', 'worker::product')->name('worker::product')->middleware([
+    'auth', 'isWorker',
 ]);
