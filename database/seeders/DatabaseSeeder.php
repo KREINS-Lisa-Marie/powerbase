@@ -26,10 +26,10 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             'first_name' => 'Marc',
             'last_name' => 'Arimont',
-            'phone' => fake()->e164PhoneNumber(),
+            'phone' => '0123456789',
             'job' => 'admin',
-            'private_phone'=>fake()->e164PhoneNumber(),
-            'private_address'=>fake()->address(),
+            'private_phone'=>'1234567890',
+            'private_address'=>'Rue de la maison 2, 4000 Liège',
             'email' => 'marc.arimont@powerbase.com',
             'password' => Hash::make(config('admin.boss_password')),
         ]);
@@ -37,9 +37,9 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             'first_name' => 'General',
             'last_name' => 'Admin',
-            'phone' => fake()->e164PhoneNumber(),
+            'phone' => '9876543210',
             'job' => 'admin',
-            'private_phone'=>fake()->e164PhoneNumber(),
+            'private_phone'=>'0987654321',
             'private_address'=>'Rue de l’église 7, 4000 Liège',
             'email' => 'lisa-marie.kreins@student.hepl.be',
             'password' => Hash::make(config('admin.password')),
