@@ -39,7 +39,7 @@ return [
     'list_of_contacts' => 'Liste de contacts',
     'electrician' => 'Electricien',
     'admin' => 'Admin',
-    'storekeeper' => 'Lagerist',
+    'storekeeper' => 'Magasinier',
     'go_to_contact' => 'Aller sur la page détail du contact',
 
     'most_recent' => 'plus récents',
