@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Order;
-use App\Models\OrderItem;
-use App\Models\Product;
-use App\Models\Project;
+//use App\Models\Order;
+//use App\Models\OrderItem;
+//use App\Models\Product;
+//use App\Models\Project;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -20,10 +20,35 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-
+//real data
         $this->call(ProductsSeeder::class);
 
         User::factory()->create([
+            'first_name' => 'Marc',
+            'last_name' => 'Arimont',
+            'phone' => fake()->e164PhoneNumber(),
+            'job' => 'admin',
+            'private_phone'=>fake()->e164PhoneNumber(),
+            'private_address'=>fake()->address(),
+            'email' => 'marc.arimont@powerbase.com',
+            'password' => Hash::make(config('admin.boss_password')),
+        ]);
+
+        User::factory()->create([
+            'first_name' => 'General',
+            'last_name' => 'Admin',
+            'phone' => fake()->e164PhoneNumber(),
+            'job' => 'admin',
+            'private_phone'=>fake()->e164PhoneNumber(),
+            'private_address'=>'Rue de l’église 7, 4000 Liège',
+            'email' => 'lisa-marie.kreins@student.hepl.be',
+            'password' => Hash::make(config('admin.password')),
+        ]);
+//needed to do this because i dont want the passwords to be online so that everybody can see them.
+
+
+  //Testing Data
+        /*User::factory()->create([
             'first_name' => 'Test User',
             'last_name' => 'User',
             'phone' => fake()->e164PhoneNumber(),
@@ -84,6 +109,6 @@ class DatabaseSeeder extends Seeder
                     'quantity'=>random_int(1, 15),
                 ]);
             }
-        }
+        }*/
     }
 }
