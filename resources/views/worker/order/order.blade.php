@@ -85,7 +85,7 @@
                     {{__('worker/order.order')}} {{$old_order->id}}
                 </x-worker.definitionterm>
                 <x-worker.definition>
-                    {{$old_order->order_state}}
+                    {{$old_order->order_state == 'pending'?__('worker/order.pending'): __('worker/order.completed')}}
                 </x-worker.definition>
 
                 <x-worker.definitionterm>

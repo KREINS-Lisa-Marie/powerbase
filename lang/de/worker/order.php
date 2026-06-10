@@ -15,4 +15,7 @@ return [
     'delete_product' => 'Produkt löschen',
     'wanted_quantity' => 'Gewünschte Menge',
     'no_products_found'=>'Kein Produkt ausgewählt',
+
+    'pending' => 'In Bearbeitung',
+    'completed' => 'Fertig',
 ];

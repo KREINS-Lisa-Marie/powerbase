@@ -15,4 +15,7 @@ return [
     'delete_product' => 'Delete product',
     'wanted_quantity' => 'Desired quantity',
     'no_products_found'=>'No product chosen',
+
+    'pending' => 'Pending',
+    'completed' => 'Completed',
 ];
