@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
 //real data
         $this->call(ProductsSeeder::class);
 
-        User::create([
+        User::updateOrCreate([
             'first_name' => 'Marc',
             'last_name' => 'Arimont',
             'phone' => '0123456789',
@@ -34,7 +34,7 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make(config('admin.boss_password')),
         ]);
 
-        User::create([
+        User::updateOrCreate([
             'first_name' => 'General',
             'last_name' => 'Admin',
             'phone' => '9876543210',
