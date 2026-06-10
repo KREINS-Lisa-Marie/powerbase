@@ -4,6 +4,11 @@ use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/', function () {
+    return redirect()->route('auth.login', ['locale' => __('general.currentLocale')]);
+});
+
+
 Route::get('/{locale}',  [HomepageController::class, 'index'])->name('worker.homepage')->middleware([
     'auth', 'isWorker',
 ]);
