@@ -17,6 +17,9 @@ class IsAdminOrStorekeeper
     {
 
         if (auth()->user()->job != 'storekeeper' && auth()->user()->job != 'admin'){
+            if ($request->routeIs('pages::dashboard.index')) {
+                return redirect()->route('worker.homepage', ['locale' => app()->getLocale() ?? 'fr']);
+            }
             abort(403);
         }
 
