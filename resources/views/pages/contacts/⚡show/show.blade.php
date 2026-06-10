@@ -61,7 +61,7 @@
                         {{__('admin/contacts.private_adress')}}
                     </x-admin.components.definition-term>
                     <x-admin.components.definition>
-                        {{$contact->private_adress}}
+                        {{$contact->private_address}}
                     </x-admin.components.definition>
                 </div>
             </dl>
