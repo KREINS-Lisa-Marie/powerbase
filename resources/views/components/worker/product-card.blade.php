@@ -15,7 +15,7 @@
             <img src="{!! asset('storage/images/products/variants/288x288/'.basename($product_image)) !!}" alt="{{__('admin/products.the_product_image')}}"
                  class="border-radius-16 product-img">
         @else
-            <img src="{!! asset('assets/img/default/default.jpg') !!}" alt="{{__('admin/products.the_product_image')}}"
+            <img src="{!! asset('assets/default/default.jpg') !!}" alt="{{__('admin/products.the_product_image')}}"
                  class="border-radius-16 product-img" height="1200" width="1200">
         @endif
     </div>
