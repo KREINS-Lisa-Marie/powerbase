@@ -23,27 +23,31 @@ class DatabaseSeeder extends Seeder
 //real data
         $this->call(ProductsSeeder::class);
 
-        User::updateOrCreate([
-            'first_name' => 'Marc',
-            'last_name' => 'Arimont',
-            'phone' => '0123456789',
-            'job' => 'admin',
-            'private_phone'=>'1234567890',
-            'private_address'=>'Rue de la maison 2, 4000 Liège',
-            'email' => 'marc.arimont@powerbase.com',
-            'password' => Hash::make(config('admin.boss_password')),
-        ]);
+        if (!User::where('email', 'marc.arimont@powerbase.com')->exists()){
+            User::create([
+                'first_name' => 'Marc',
+                'last_name' => 'Arimont',
+                'phone' => '0123456789',
+                'job' => 'admin',
+                'private_phone'=>'1234567890',
+                'private_address'=>'Rue de la maison 2, 4000 Liège',
+                'email' => 'marc.arimont@powerbase.com',
+                'password' => Hash::make(config('admin.boss_password')),
+            ]);
+        }
+        if (!User::where('email', 'lisa-marie.kreins@student.hepl.be')->exists()) {
+            User::create([
+                'first_name' => 'General',
+                'last_name' => 'Admin',
+                'phone' => '9876543210',
+                'job' => 'admin',
+                'private_phone' => '0987654321',
+                'private_address' => 'Rue de l’église 7, 4000 Liège',
+                'email' => 'lisa-marie.kreins@student.hepl.be',
+                'password' => Hash::make(config('admin.password')),
+            ]);
+        }
 
-        User::updateOrCreate([
-            'first_name' => 'General',
-            'last_name' => 'Admin',
-            'phone' => '9876543210',
-            'job' => 'admin',
-            'private_phone'=>'0987654321',
-            'private_address'=>'Rue de l’église 7, 4000 Liège',
-            'email' => 'lisa-marie.kreins@student.hepl.be',
-            'password' => Hash::make(config('admin.password')),
-        ]);
 //needed to do this because i dont want the passwords to be online so that everybody can see them.
 
 
