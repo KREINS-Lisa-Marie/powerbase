@@ -74,13 +74,16 @@ return [
     */
 
 
-    // si worker alors redirigé vers pages worker et sinon vers admin
-    'home' => function () {
-        return ( auth()->user()->job == 'admin' || auth()->user()->job == 'storekeeper' )
-            ? route( 'pages::dashboard.index', ['locale' => app()->getLocale()])
-            : route( 'worker.homepage', ['locale' => app()->getLocale()]);
-    },
+    /*    // si worker alors redirigé vers pages worker et sinon vers admin
+        'home' => function () {
+            return ( auth()->user()->job == 'admin' || auth()->user()->job == 'storekeeper' )
+                ? route( 'pages::dashboard.index', ['locale' => app()->getLocale()])
+                : route( 'worker.homepage', ['locale' => app()->getLocale()]);
+        },*/
 
+    /*Laravel Cloud n'autorise pas mon code donc retour à ceci :*/
+
+    'home' => '/fr/dashboard',
     /*
     |--------------------------------------------------------------------------
     | Fortify Routes Prefix / Subdomain
