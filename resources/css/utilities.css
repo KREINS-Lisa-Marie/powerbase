@@ -1,0 +1,115 @@
+/*
+Texteigenschaften (Fett, Ausrichtung)
+kurze Abstände
+Sichtbarkeit
+Hintergrundfarb-Hilfen
+*/
+
+
+/* Screenreader only */
+.sro {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+}
+
+.uppercase{
+    text-transform: uppercase;
+}
+
+.text-white{
+    color: var(--white);
+}
+
+.background-black{
+    background-color: var(--black);
+}
+
+.background-light-red{
+    background-color: var(--light-red);
+}
+
+.background-light-grey{
+    background-color: var(--light-grey);
+}
+
+.background-dark-red{
+    background-color: var(--dark-red);
+}
+
+.background-white{
+    background-color: var(--white);
+}
+
+.bold{
+    font-weight: 700;
+}
+
+
+.border-radius-16{
+    border-radius: var(--borderradius-16);
+}
+
+.product-card{
+    position: relative;
+}
+
+.card-link{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+
+.t-a-center{
+    text-align: center;
+}
+
+
+.j-c-center{
+    justify-content: center;
+}
+
+.j-c-space-b{
+    justify-content: space-between;
+}
+
+
+.text-black{
+    color: var(--black);
+}
+
+
+.text-dark-red{
+    color: var(--dark-red);
+}
+
+
+.medium{
+    font-weight: 500;
+}
+
+.italic{
+    font-style: italic;
+}
+
+.regular{
+    font-weight: 400;
+}
+
+
+.background-page-bar{
+    background-color: var(--border-light-red);
+}
+
+.max-w-admin-web{
+    max-width: var(--max-w-big-desktop);
+}
