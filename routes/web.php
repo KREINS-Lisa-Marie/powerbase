@@ -8,15 +8,15 @@ Route::get('/', function () {
     return redirect()->route('auth.login', ['locale' => app()->getLocale()]);
 });
 
-Route::get('/home', function (){
+/*Route::get('/home', function (){
         // si worker alors redirigé vers pages worker et sinon vers admin
     //$locale = app()->getLocale() ?? 'fr';
     //car il n'y a pas encore de locale dans la route home. Je ne peux pas la mettre car sinon laravel cloud n'acceptera pas ma route /home dans fortify
 
     return ( auth()->user()->job == 'admin' || auth()->user()->job == 'storekeeper' )
-        ? redirect()->route( 'pages::dashboard.index', ['locale' => 'fr'])
-        : redirect()->route( 'worker.homepage', ['locale' => 'fr']);
-});
+        ? route( 'pages::dashboard.index', ['locale' => 'fr'])
+        : route( 'worker.homepage', ['locale' => 'fr']);
+});*/
 
 
 
@@ -31,8 +31,19 @@ Route::get('/{locale}/forgot-password', function () {
 Route::get('/{locale}/reset-password', function () {
     return view('auth.reset-password');
 })->name('auth.reset-password');
-
-
+/*
+Route::get('/{locale}/dashboard', function () {
+    $locale = app()->getLocale() ?? 'fr';
+    if (auth()->user()->job == 'worker'){
+        return redirect()->route('worker.homepage', ['locale' => $locale]);
+    }
+    Route::livewire('/{locale}/dashboard', 'pages::dashboard.index')->name('pages::dashboard.index')->middleware([
+        'auth', 'isAdminOrStorekeeper'
+    ]);
+})->name('pages::dashboard.index')->middleware([
+    'auth', 'isAdminOrStorekeeper'
+]);
+*/
 
 Route::livewire('/{locale}/dashboard', 'pages::dashboard.index')->name('pages::dashboard.index')->middleware([
     'auth', 'isAdminOrStorekeeper'
