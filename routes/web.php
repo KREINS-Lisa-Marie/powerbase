@@ -8,6 +8,13 @@ Route::get('/', function () {
     return redirect()->route('auth.login', ['locale' => app()->getLocale()]);
 });
 
+Route::get('/home', function (){
+        // si worker alors redirigé vers pages worker et sinon vers admin
+    return ( auth()->user()->job == 'admin' || auth()->user()->job == 'storekeeper' )
+        ? redirect()->route( 'pages::dashboard.index', ['locale' => app()->getLocale()])
+        : redirect()->route( 'worker.homepage', ['locale' => app()->getLocale()]);
+})->middleware('auth');
+
 
 Route::get('/{locale}',  [HomepageController::class, 'index'])->name('worker.homepage')->middleware([
     'auth', 'isWorker',
