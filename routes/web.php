@@ -10,13 +10,13 @@ Route::get('/', function () {
 
 Route::get('/home', function (){
         // si worker alors redirigé vers pages worker et sinon vers admin
-    $locale = app()->getLocale() ?? 'fr';
+    //$locale = app()->getLocale() ?? 'fr';
     //car il n'y a pas encore de locale dans la route home. Je ne peux pas la mettre car sinon laravel cloud n'acceptera pas ma route /home dans fortify
 
     return ( auth()->user()->job == 'admin' || auth()->user()->job == 'storekeeper' )
-        ? redirect()->route( 'pages::dashboard.index', ['locale' => $locale])
-        : redirect()->route( 'worker.homepage', ['locale' => $locale]);
-})->middleware('auth');
+        ? redirect()->route( 'pages::dashboard.index', ['locale' => 'fr'])
+        : redirect()->route( 'worker.homepage', ['locale' => 'fr']);
+});
 
 
 
