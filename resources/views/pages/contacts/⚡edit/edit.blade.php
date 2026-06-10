@@ -2,11 +2,11 @@
     $vehicle_options = [
         [
             'name' => __('admin/contacts.van'),
-        'value' => '1',
+        'value' => 'van',
         ],
         [
             'name' => __('admin/contacts.car'),
-            'value' =>'0',
+            'value' =>'car',
         ],
 ];
 
@@ -14,11 +14,11 @@
     $job_options = [
         [
             'name' => __('admin/contacts.electrician'),
-        'value' => 'electricien',
+        'value' => 'worker',
         ],
         [
             'name' => __('admin/contacts.storekeeper'),
-            'value' =>'magasinier',
+            'value' =>'storekeeper',
         ],
             [
             'name' => __('admin/contacts.admin'),

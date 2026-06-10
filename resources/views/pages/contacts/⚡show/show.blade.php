@@ -79,7 +79,7 @@
                             {{__('admin/contacts.vehicle_type')}}
                         </x-admin.components.definition-term>
                         <x-admin.components.definition>
-                            {{$contact->car_type}}
+                            {{$contact->car_type == 'van'? __('admin/contacts.van') : __('admin/contacts.car')}}
                         </x-admin.components.definition>
                     </div>
                     <div>
