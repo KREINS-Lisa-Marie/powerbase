@@ -29,4 +29,5 @@ return [
     'my_information' => 'Informationen über mich',
 
     'my_password'=>'Mein Passwort',
+    'password_not_empty'=>'Password kann nicht leer sein',
 ];

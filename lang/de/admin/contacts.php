@@ -43,4 +43,6 @@ return [
 
     'most_recent' => 'Neueste',
     'van' => 'Kleintransporter',
+
+    'repeat_password' => 'Password wiederholen',
 ];

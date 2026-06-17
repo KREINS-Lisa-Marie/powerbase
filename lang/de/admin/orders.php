@@ -41,4 +41,6 @@ return [
     'add' => 'Hinzufügen',
     'no_product_chosen' => 'Kein Produkt ausgewählt',
     'no_result'=>'Keine Bestellung gefunden',
+
+    'choose_product'=>'Produkt auswählen',
 ];

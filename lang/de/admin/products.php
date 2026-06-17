@@ -30,4 +30,7 @@ return [
     'ref_article' => 'Referenz',
     'brand' => 'Marke',
     'gtin' => 'GTIN13',
+
+
+    'no_result'=>'Kein Produkt gefunden',
 ];

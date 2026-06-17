@@ -42,4 +42,6 @@ return [
     'add'=>'Ajouter',
     'no_product_chosen'=>'Pas de produit choisi',
     'no_result'=>'Pas de commande trouvé',
+
+    'choose_product'=>'Choisissez un produit',
 ];
