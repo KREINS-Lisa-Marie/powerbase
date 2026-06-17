@@ -7,6 +7,28 @@
           content="Powerbase, electrician, électricien">
     <meta name="author" content="Lisa-Marie Kreins">
     <meta name="description" content="La page de Powerbase">
+
+    {{--    Flavicon    --}}
+    <link rel="apple-touch-icon" sizes="57x57" href="/resources/img/flavicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/resources/img/flavicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/resources/img/flavicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/resources/img/flavicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/resources/img/flavicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/resources/img/flavicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/resources/img/flavicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/resources/img/flavicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/resources/img/flavicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/resources/img/flavicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/resources/img/flavicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/resources/img/flavicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/resources/img/flavicon/favicon-16x16.png">
+
+    <link rel="manifest" href="/resources/img/flavicon/manifest.json">
+
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
     <title>{{ $title ?? 'Page Title' }}</title>
     @vite(['resources/css/app.css'])
 </head>
