@@ -52,6 +52,10 @@ new class extends Component
             'project_id'=>'required|integer',
         ]);
 
+        if (empty($this->cart)){
+            $this->addError('cart', __('admin/orders.choose_product'));
+            return;
+        }
 
         $order = \App\Models\Order::create([
             'user_id'=>$validated_data['user_id'],
