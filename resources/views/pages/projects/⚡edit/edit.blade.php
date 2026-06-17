@@ -43,24 +43,27 @@
                 <x-admin.components.subtitle>
                     {{__('admin/projects.general_information')}}
                 </x-admin.components.subtitle>
+                <p class="obligations m-b-32 ">
+                    {{__('worker/order.mandatory_field')}}
+                </p>
                 <div class="contact-information-list">
                     <div>
                         <div>
                             <x-admin.components.fields.text name="project_name" value="" placeholder="John"
                                                             wire="project_name"
                                                             id="project_name">
-                                {{__('admin/projects.project_name')}}
+                                {{__('admin/projects.project_name')}}*
                             </x-admin.components.fields.text>
                         </div>
                         <div>
                             <x-admin.components.fields.select select_name="user_id"
-                                                              label="{{__('admin/projects.person_in_charge')}}"
+                                                              label="{{__('admin/projects.person_in_charge')}}*"
                                                               :options="$in_charge_options" wire="user_id">
                             </x-admin.components.fields.select>
                         </div>
                         <div>
                             <x-admin.components.fields.select select_name="project_state"
-                                                              label="{{__('admin/projects.project_state')}}"
+                                                              label="{{__('admin/projects.project_state')}}*"
                                                               :options="$project_state" wire="project_state">
                             </x-admin.components.fields.select>
                         </div>
@@ -70,7 +73,7 @@
                     <div>
                         <div>
                             <x-admin.components.fields.select select_name="project_type"
-                                                              label="{{__('admin/projects.project_type')}}"
+                                                              label="{{__('admin/projects.project_type')}}*"
                                                               :options="$project_options" wire="project_type">
                             </x-admin.components.fields.select>
                         </div>
@@ -78,7 +81,7 @@
                             <x-admin.components.fields.text name="client_name" value="" placeholder="John Dupont"
                                                             wire="client_name"
                                                             id="client_name">
-                                {{__('admin/projects.client_name')}}
+                                {{__('admin/projects.client_name')}}*
                             </x-admin.components.fields.text>
                         </div>
 
@@ -86,7 +89,7 @@
                             <x-admin.components.fields.text name="project_address" value=""
                                                             placeholder="{{__('admin/projects.example_address')}}" wire="project_address"
                                                             id="project_adress">
-                                {{__('admin/projects.project_adress')}}
+                                {{__('admin/projects.project_adress')}}*
                             </x-admin.components.fields.text>
                         </div>
                     </div>
@@ -95,7 +98,7 @@
                         <x-admin.components.fields.textarea wire="project_description" name="project_description" id="project_description"
                                                             value=""
                                                             placeholder=" {{__('admin/projects.example_project_description')}}">
-                            {{__('admin/projects.project_description')}}
+                            {{__('admin/projects.project_description')}}*
                         </x-admin.components.fields.textarea>
                     </div>
                 </div>
