@@ -18,4 +18,7 @@ return [
 
     'pending' => 'Pending',
     'completed' => 'Completed',
+    'project_name_error'=>' The field "Project name" is mandatory',
+    'needs_product'=>'To order, you need to choose a product',
+    'increment_qt'=>'Quantity must be at least 1',
 ];
