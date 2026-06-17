@@ -12,7 +12,7 @@
     <input wire:model.blur="{{$wire}}" type="text" name="{{$name}}" id="{{$id}}" value="{{$value ?? ''}}" class="field__input" placeholder="{{$placeholder}}"
            aria-required="true">
     @error($name)
-    {{$message}}
+    <p class="mb-32 error">{{$message}}</p>
     @enderror
 
     {{--
