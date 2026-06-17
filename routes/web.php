@@ -22,7 +22,7 @@ Route::get('/', function () {
 
 Route::get('/{locale}/login', function () {
     return view('auth.login');
-})->name('auth.login')->middleware('guest');
+})->name('auth.login')->title('Login Powerbase')->middleware('guest');
 
 Route::get('/{locale}/forgot-password', function () {
     return view('auth.forgot-password');
