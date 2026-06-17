@@ -34,6 +34,11 @@
                             {{$successMessage}}
                         </p>
                     @endif
+                    @error('cart')
+                    <p class="error mb-32 m-t-32">
+                        {{$message}}
+                    </p>
+                    @enderror
             </div>
 
             <dl>
@@ -76,7 +81,7 @@
                     {{__('worker/product.remaining_stock')}}
                 </x-worker.definitionterm>
                 <x-worker.definition>
-                    {{$product->quantity}}
+                    {{$product->quantity <= 0 ? "0" : $product->quantity}}
                 </x-worker.definition>
             </dl>
         </div>
