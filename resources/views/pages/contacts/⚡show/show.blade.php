@@ -23,7 +23,9 @@
                         {{__('admin/contacts.email')}}
                     </x-admin.components.definition-term>
                     <x-admin.components.definition>
-                        {{$contact->email}}
+                        <a href="mailto:{{$contact->email}}" title="{{__('admin/contacts.send_mail_to')}}">
+                            {{$contact->email}}
+                        </a>
                     </x-admin.components.definition>
                 </div>
 
@@ -32,7 +34,9 @@
                         {{__('admin/contacts.phone_number')}}
                     </x-admin.components.definition-term>
                     <x-admin.components.definition>
-                        {{$contact->phone}}
+                        <a href="tel:{{$contact->phone}}" title="{{__('admin/contacts.call')}}">
+                            {{$contact->phone}}
+                        </a>
                     </x-admin.components.definition>
                 </div>
 
@@ -51,7 +55,9 @@
                         {{__('admin/contacts.private_phone_number')}}
                     </x-admin.components.definition-term>
                     <x-admin.components.definition>
-                        {{$contact->private_phone}}
+                        <a href="tel:{{$contact->private_phone}}" title="{{__('admin/contacts.call')}}">
+                            {{$contact->private_phone}}
+                        </a>
                     </x-admin.components.definition>
                 </div>
 

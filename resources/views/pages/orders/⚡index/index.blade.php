@@ -26,9 +26,11 @@
                     <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('user_id')" :direction="$sortField === 'user_id'? $sortDirection : null">
                         {{__('admin/orders.ordered_by')}}
                     </x-admin.components.table.table-th>
-                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('order_items_count')" :direction="$sortField === 'order_items_count'? $sortDirection : null">        {{--order_items_count se fait automatiquement quand je fais un withcount    -> nom model_count --}}
+    {{--order_items_count se fait automatiquement quand je fais un withcount    -> nom model_count --}}
+                    <th scope="col" class="bold" {{ $attributes }}>
                         {{__('admin/orders.product_quantity')}}
-                    </x-admin.components.table.table-th>
+                    </th>
+
                     <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('created_at')" :direction="$sortField === 'created_at'? $sortDirection : null">
                         {{__('admin/orders.ordered_at')}}
                     </x-admin.components.table.table-th>
@@ -77,7 +79,7 @@
                 </tbody>
             </table>
         </section>
-        <div class="pagination max-w-admin-web">
+        <div class="pagination-admin max-w-admin-web">
             {{ $orders->links() }}
         </div>
     </div>

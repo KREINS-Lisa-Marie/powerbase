@@ -27,8 +27,8 @@
                 @csrf
                 <input type="hidden" name="token" value="{{ request()->route('token') }}">
                 <x-auth.form.email-input></x-auth.form.email-input>
-                <x-auth.form.password wire="password"></x-auth.form.password>
-                <x-auth.form.password-confirmation wire="password_confirmation"></x-auth.form.password-confirmation>
+                <x-auth.form.password wire="password" class=""></x-auth.form.password>
+                <x-auth.form.password-confirmation wire="password_confirmation" class=""></x-auth.form.password-confirmation>
 
                 <x-auth.form.submit-button>
                     {{__('auth/reset_password.reset_password')}}

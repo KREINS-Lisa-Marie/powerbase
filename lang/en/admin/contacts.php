@@ -43,4 +43,6 @@ return [
 
     'most_recent' => 'Most recent',
     'van' => 'Van',
+
+    'repeat_password' => 'Repeat the password',
     ];

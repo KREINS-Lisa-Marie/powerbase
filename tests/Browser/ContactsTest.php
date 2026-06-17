@@ -105,7 +105,7 @@ it('can create a contact and redirect to the show page', function () {
         ->fill('password_confirmation', 'password')
         ->fill('private_phone', '5269436529')
         ->fill('private_address', '5269436529')
-        ->select('car_type', '1')
+        ->select('car_type', 'van')
         ->fill('car_plate', 'ecbd843')
         ->click('Créer le contact')
         ->assertSee('Kevin');
@@ -137,7 +137,7 @@ it('can edit a contact and redirect to the show page', function () {
         ->fill('private_phone', $contact->private_phone)
         ->fill('private_address', $contact->private_address)
         ->select('job', 'admin')
-        ->select('car_type', '1')
+        ->select('car_type', 'van')
         ->fill('car_plate', 'ecbd84333')
         ->click('Enregistrer')
         ->assertSee($contact->first_name)

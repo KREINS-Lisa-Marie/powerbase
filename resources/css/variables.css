@@ -27,6 +27,8 @@
     --general-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.10);
     --sidebar-shadow: -20px 0 62px 1px rgba(0, 0, 0, 1.0);
     --topbar-shadow: 0 -20px 40px 1px rgba(0, 0, 0, 1.0);
+    --hover-shadow: 0 0 10px 1px rgba(140, 10, 5, 0.20);
+    --hover-dark-shadow: 0 0 10px 1px rgba(140, 10, 5, 0.50);
 }
 
 /*      --      font-sizes      --      */

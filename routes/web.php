@@ -22,15 +22,15 @@ Route::get('/', function () {
 
 Route::get('/{locale}/login', function () {
     return view('auth.login');
-})->name('auth.login');
+})->name('auth.login')->middleware('guest');
 
 Route::get('/{locale}/forgot-password', function () {
     return view('auth.forgot-password');
-})->name('auth.forgot-password');
+})->name('auth.forgot-password')->middleware('guest');
 
 Route::get('/{locale}/reset-password', function () {
     return view('auth.reset-password');
-})->name('auth.reset-password');
+})->name('auth.reset-password')->middleware('guest');
 /*
 Route::get('/{locale}/dashboard', function () {
     $locale = app()->getLocale() ?? 'fr';

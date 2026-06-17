@@ -4,7 +4,7 @@
             {{__('worker/profile.profile')}}
         </h2>
 
-        <form action="{{route('logout')}}" method="POST">
+        <form action="{{route('logout')}}" method="POST" class="worker-profile-disconnect">
             @csrf
             <button type="submit" class="uppercase bold d-block m-b-24 fs-dt">
                 {{__('worker/profile.logout')}}

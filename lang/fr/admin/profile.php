@@ -29,4 +29,5 @@ return [
     'my_information'=>'Informations sur moi',
 
     'my_password'=>'Mon mot de passe',
+    'password_not_empty'=>'Le mot de passe ne peut pas être vide',
 ];

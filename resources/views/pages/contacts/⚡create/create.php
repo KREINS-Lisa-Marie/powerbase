@@ -34,9 +34,9 @@ new class extends Component
             'private_address'=>'required|string',
             'car_type'=>'required|string',
             'car_plate'=>'required|string',
-            'password'=>$this->updatePasswordRules(),
+            'password'=>['required',$this->updatePasswordRules()],
+            'password_confirmation'=>'required|same:password',
         ]);
-
 
         $user = User::create([
             'first_name'=>$validated_data['first_name'],

@@ -11,4 +11,5 @@ return [
     'gtin' => 'GTIN13',
 
     'added_to_cart'=>'Produit ajouté à la commande',
+    'qt_must_be_one'=>'La quantity doit être >0',
 ];
