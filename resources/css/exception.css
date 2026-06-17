@@ -1,15 +1,12 @@
 
-@media (min-width: 1682px) {
-.table{
-    min-width: var(--max-w-big-desktop);
+.project-information textarea{
+    min-height: var(--max-h-textarea);
+}
 
-}
-}
 @media (max-width: 719px){
     .table{
         .table-row{
             max-width: var(--max-w-column-desktop);
-
         }
         tbody{
             display: grid;
@@ -26,7 +23,6 @@
     .table{
         .table-row{
             max-width: var(--max-w-column-desktop);
-
         }
         tbody{
             display: grid;
@@ -42,6 +38,8 @@
     }
 }
 
-.project-information textarea{
-    min-height: var(--max-h-textarea);
+@media (min-width: 1682px) {
+    .table{
+        min-width: var(--max-w-big-desktop);
+    }
 }
