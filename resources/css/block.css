@@ -86,10 +86,19 @@ Variationen durch Modifier (--)
         }
     }
 
+.nav__item__header{
+    margin-bottom: var(--margin-padding-24);
+}
+/*div.nav__container__header{
+    margin-top: var(--margin-padding-64);
+}*/
+.sidebar-nav-links{
+    margin-top: var(--margin-padding-64);
+}
 
-    .nav__header #burger_menu:checked ~ .nav__container__header {
+/*    .nav__header #burger_menu:checked ~ .sidebar-nav {
         min-height: 100vh;
-    }
+    }*/
 
 
     .m-l-r-main {
@@ -460,7 +469,7 @@ Variationen durch Modifier (--)
         font-size: var(--web-footer-content);
 
         form {
-            margin-top: var(--margin-padding-8);
+            margin-top: var(--margin-padding-24);
         }
 
         .nav__item__header:last-of-type {
@@ -1207,8 +1216,6 @@ body:has(.login-section) {
 
 
 /*          table           */
-
-
 @media (max-width: 1199px) {
     .admin {
         thead {
@@ -1277,13 +1284,12 @@ body:has(.login-section) {
 .table-name {
     font-size: var(--mobile-subtitle);
 }
-
+/*
 @media (max-width: 1919px) {
     .table {
         min-width: calc(100% - 48px);
     }
-
-}
+}*/
 
 @media (min-width: 1920px) {
     .table {
@@ -1343,6 +1349,8 @@ body:has(.login-section) {
     margin-top: var(--margin-padding-24);
 }
 
+
+/*  admin profile   */
 .profile-inputs {
     input {
         box-shadow: var(--general-shadow);
@@ -1423,7 +1431,7 @@ body:has(.login-section) {
 }
 
 
-
+/*      nb de commandes sidebar     */
 .numbers{
     color: var(--black);
     background-color: var(--white);
@@ -1431,14 +1439,14 @@ body:has(.login-section) {
     padding: var(--margin-padding-8) var(--margin-padding-16);
 }
 
-.pagination{
+/*.pagination{
     margin-top: var(--margin-padding-16);
     div:last-of-type{
         height: 100%;
         span .relative{
             height: 100%;
             padding: var(--margin-padding-8);
-            /*border: oklch(0.872 0.01 258.338);*/
+            !*border: oklch(0.872 0.01 258.338);*!
             border: 1px solid var(--medium-grey);
             color: var(--placeholder);
         }
@@ -1447,7 +1455,7 @@ body:has(.login-section) {
             font-weight: 600;
         }
     }
-}
+}*/
 
 /*
 .pagination{
@@ -1494,7 +1502,7 @@ body:has(.login-section) {
     }
 }
 
-
+/* Bouton changement de langue */
 .change-lang{
     input:not(:checked) ~ .text__container{
         position: absolute;
@@ -1520,7 +1528,6 @@ body:has(.login-section) {
         gap: 1rem;
         flex-direction: column;
     }
-
 }
 
 
@@ -1540,7 +1547,6 @@ body:has(.login-section) {
         padding: var(--margin-padding-16);
         /*//width: 100%;*/
         flex: 1;
-
     }
     button{
         padding: var(--margin-padding-16);
@@ -1591,6 +1597,7 @@ body:has(.login-section) {
     }
 }
 
+/*      ajout de produit worker       */
 .success{
     animation: success linear 3s forwards;
 }
@@ -1608,3 +1615,254 @@ body:has(.login-section) {
 }
 
 
+
+/*  worker error no product found */
+ul:has(.error-no-product){
+    justify-content: center;
+    background-color: var(--dark-background-transparent);
+    padding: var(--margin-padding-56);
+}
+
+/*      Tous les errors         */
+.error{
+    color: var(--error);
+    font-weight: bold;
+}
+
+/*  Les * devant les obligatoires   */
+.admin .obligations{
+    font-size: var(--mobile-text);
+}
+
+
+
+
+
+/*Pagination worker */
+
+.background-worker .pagination-worker p{
+    color: var(--white);
+}
+
+.pagination-worker nav a,
+.pagination-worker nav span span{
+    width: var(--margin-padding-32);
+    height: var(--margin-padding-32);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+.pagination-worker{
+    margin-top: var(--margin-padding-32);
+
+    nav span[aria-current="page"] span{
+        font-weight: 500;
+        color: var(--black);
+    }
+}
+
+/*  pagination admin   */
+
+.pagination-admin nav a,
+.pagination-admin nav button,
+.pagination-admin nav span span{
+    width: var(--margin-padding-32);
+    height: var(--margin-padding-32);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: none;
+}
+
+.pagination-admin{
+    margin-top: var(--margin-padding-32);
+
+    nav span[aria-current="page"] span{
+        font-weight: 500;
+        color: var(--black);
+    }
+}
+
+.product-card{
+    position: relative;
+}
+
+.card-link{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+
+/*      admin commandes     */
+@media (min-width: 1200px) and (max-width: 1919px) {
+    .orders-list table{
+        min-width: 100%;
+    }
+    .orders-list{
+        max-width: var(--max-w-big-desktop);
+    }
+}
+
+
+/*  animations   */
+
+/*       products        */
+.product-card, .search-products-form button, .submit-order-btn{
+    z-index: 2;
+    transition: transform 0.3s ease;
+}
+.product-card:hover, .search-products-form button:hover, .submit-order-btn:hover{
+    transform: scale(.9);
+    z-index: 2;
+}
+
+/*      Contact page        */
+a[href^="tel:"], a[href^="mailto:"]{
+    z-index: 2;
+    transition: transform 0.3s ease;
+    display: block;
+}
+
+a[href^="tel:"]:hover, a[href^="mailto:"]:hover {
+    transform: translateX(20px);
+    z-index: 2;
+}
+
+
+
+
+/*      link hover        */
+
+/*      nav worker */
+.background-worker .nav__container__header a{
+    z-index: 2;
+    transition: transform 0.3s ease;
+}
+
+.background-worker .nav__container__header a:hover{
+    border-bottom: 4px solid var(--error-border);
+    z-index: 2;
+}
+
+
+/*      profile     */
+.background-worker{
+    .worker-profile-disconnect button, .change-lang--label, .change-lang a{
+        z-index: 2;
+        transition: transform 0.3s ease;
+        display: block;
+    }
+
+
+   .worker-profile-disconnect button:hover, .change-lang--label:hover, .change-lang a:hover{
+        transform: translateX(20px);
+        z-index: 2;
+    }
+}
+
+.background-worker{
+
+
+
+    .product-details button{
+        transition: transform 0.3s ease-in-out;
+    }
+    .product-details button:hover{
+       /*font-size: var(--productname-desktop);*/
+        background-color: var(--dark-red);
+    }
+}
+
+
+.background-worker{
+    .product-details .success{
+        margin-top: var(--margin-padding-16);
+    }
+}
+
+
+.sidebar-nav-links{
+    .nav__item__header a,
+    .nav__container__header a,
+    .nav__item__header button{
+        z-index: 2;
+        transition: transform 0.3s ease;
+    }
+    .nav__item__header a:hover,
+    .nav__container__header a:hover,
+    .nav__item__header button:hover{
+        border-bottom: 3px solid var(--white);
+        z-index: 2;
+    }
+}
+
+.nav__container__header.profile-disconnect-link a.nav__item__header, .nav__container__header.profile-disconnect-link form.nav__item__header button{
+    z-index: 2;
+    transition: transform 0.3s ease;
+}
+.nav__container__header.profile-disconnect-link a.nav__item__header:hover, .nav__container__header.profile-disconnect-link form.nav__item__header button:hover{
+    border-bottom: 3px solid var(--white);
+    z-index: 2;
+}
+.nav__container__header.profile-disconnect-link a.nav__item__header{
+    max-width: fit-content;
+}
+
+
+.admin-primary-button, .dark-button-background{
+    z-index: 2;
+    transition: transform 0.3s ease;
+}
+.admin-primary-button:hover, .dark-button-background:hover{
+    box-shadow: var(--hover-shadow) ;
+    z-index: 2;
+}
+
+.admin-secondary-button, .admin-logout-button{
+    z-index: 2;
+    transition: transform 0.3s ease;
+}
+
+.admin-secondary-button:hover, .admin-logout-button:hover{
+    box-shadow: var(--hover-dark-shadow) ;
+    z-index: 2;
+}
+
+
+.admin{
+    .change-lang .text__container{
+        align-items: center;
+    }
+    .change-lang a{
+        max-width: fit-content;
+
+        z-index: 2;
+        transition: transform 0.3s ease;
+    }
+    .change-lang a:hover{
+        transform: translateX(20px);
+        z-index: 2;
+    }
+}
+
+
+
+@media (min-width: 720px) {
+    .product-information-list dl{
+        max-width: 33%;
+    }
+}
+
+
+/*      Image input     */
+.file-input{
+    box-shadow: var(--general-shadow);
+    width: 100%;
+    padding: var(--margin-padding-16);
+}
