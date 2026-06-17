@@ -33,7 +33,7 @@
                 @csrf
 
                 <x-auth.form.email-input></x-auth.form.email-input>
-                <x-auth.form.password wire="password"></x-auth.form.password>
+                <x-auth.form.password wire="password" class=""></x-auth.form.password>
 
                 <div class="add-info">
                     <a href="{{route('auth.forgot-password', ['locale' => __('general.currentLocale')])}}" class="d-block medium m-b-24">
