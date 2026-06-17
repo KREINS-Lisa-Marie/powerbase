@@ -2,7 +2,7 @@
     $orders_state_options = [
         [
             'name' => __('admin/orders.pending'),
-        'value' => 'waiting',
+        'value' => 'pending',
         ],
         [
             'name' => __('admin/orders.completed'),
@@ -49,17 +49,20 @@
                 <x-admin.components.subtitle>
                     {{__('admin/orders.general_information')}}
                 </x-admin.components.subtitle>
+                <p class="obligations m-b-32 ">
+                    {{__('worker/order.mandatory_field')}}
+                </p>
                 <div class="contact-information-list">
                     <div>
                         <div>
                             <x-admin.components.fields.select select_name="user_id"
-                                                              label="{{__('admin/orders.for_who')}}"
+                                                              label="{{__('admin/orders.for_who')}}*"
                                                               :options="$orders_users_options" wire="user_id">
                             </x-admin.components.fields.select>
                         </div>
                         <div>
                             <x-admin.components.fields.select select_name="project_id"
-                                                              label="{{__('admin/orders.project_name')}}"
+                                                              label="{{__('admin/orders.project_name')}}*"
                                                               :options="$orders_project_options" wire="project_id">
                             </x-admin.components.fields.select>
                         </div>
@@ -70,7 +73,7 @@
                     <div>
                         <div>
                             <x-admin.components.fields.select select_name="order_state"
-                                                              label="{{__('admin/orders.order_state')}}"
+                                                              label="{{__('admin/orders.order_state')}}*"
                                                               :options="$orders_state_options" wire="order_state">
                             </x-admin.components.fields.select>
                         </div>
@@ -85,7 +88,6 @@
                     </x-admin.components.subtitle>
 
 
-
                 {{-- search and add products to order --}}
                 @if(!empty($cart))
                     <ul>
@@ -95,10 +97,19 @@
                             </li>
                             <li class="order-item-quantity">
                                 <div>
-                                    <x-admin.components.fields.number name="quantity" wire="cart.{{$productId}}.quantity" id="quantity-{{$productId}}" value="{{$item['quantity']}}" placeholder="" >
-                                        {{__('admin/orders.product_order_quantity')}}
-                                    </x-admin.components.fields.number>
-                                    <a href="#" wire:click="removeFromOrder({{$productId}})" class="d-block bold m-b-32 m-t-neg-16" >
+                                    <div class="text-field">
+                                        <label for="quantity" class="field__label">
+                                            {{__('admin/orders.product_order_quantity')}}
+                                        </label>
+                                        <input wire:change="updateQuantity($event.target.value, {{$productId}})" type="number" name="quantity" id="quantity-{{$productId}}" value="{{$item['quantity'] ?? ''}}" class="field__input" placeholder="" aria-required="true">
+                                        {{--
+                                       https://livewire.laravel.com/docs/4.x/actions#event
+                                        --}}
+                                        @error('quantity')
+                                        <p class="mb-32 error">{{$message}}</p>
+                                        @enderror
+                                    </div>
+                                    <a href="#" wire:click.prevent="removeFromOrder({{$productId}})" class="d-block bold m-b-32 m-t-neg-16" >
                                         {{__('admin/orders.delete')}}
                                     </a>
                                 </div>
@@ -139,6 +150,11 @@
                         {{__('admin/orders.no_product_chosen')}}
                     </p>
                 @endif
+              @error('cart')
+              <p class="error mb-32 m-t-32">
+                  {{$message}}
+              </p>
+              @enderror
           </fieldset>
 
                 <div class="admin-information-buttons">
