@@ -75,7 +75,7 @@
                 </tbody>
             </table>
         </section>
-        <div class="pagination max-w-admin-web">
+        <div class="pagination-admin max-w-admin-web">
             {{ $contacts->links() }}
         </div>
     </div>
