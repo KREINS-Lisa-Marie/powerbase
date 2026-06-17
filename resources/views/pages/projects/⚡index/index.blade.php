@@ -73,7 +73,7 @@
                 </tbody>
             </table>
         </section>
-        <div class="pagination max-w-admin-web">
+        <div class="pagination-admin max-w-admin-web">
             {{ $projects->links() }}
         </div>
     </div>

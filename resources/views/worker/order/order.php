@@ -29,6 +29,20 @@ new class extends Component
 
     public function store(): void
     {
+
+        if (empty($this->cart) || $this->cart == null){
+            $this->addError('no_product_chosen', __('worker/order.needs_product'));
+            return;
+        }
+        foreach ($this->cart as $productId=>$item){
+            if (empty($item['quantity']) || $item['quantity'] <1 ){
+                $this->addError('qt_over_one', __('worker/order.increment_qt'));
+                return;
+            }
+        }
+
+
+
         $validated_data= $this->validate([
             'project_id'=>'required|integer',
         ]);

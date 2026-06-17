@@ -22,6 +22,7 @@ class ProductController extends Controller
         ->orWhere('ref_article', 'like', '%' . $search . '%')
         ->orWhere('product_description', 'like', '%' . $search . '%')
         ->orWhere('product_notes', 'like', '%' . $search . '%')
+        ->orderBy('product_name', 'asc')
         ->paginate(20),
         ]);
     }

@@ -32,4 +32,6 @@ return [
     'brand' => 'Marque',
     'gtin' => 'GTIN13',
 
+    'no_result'=>'Pas de produit trouvé',
+
 ];

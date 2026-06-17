@@ -2,7 +2,7 @@
     $orders_state_options = [
         [
             'name' => __('admin/orders.pending'),
-        'value' => 'waiting',
+        'value' => 'pending',
         ],
         [
             'name' => __('admin/orders.completed'),
@@ -49,18 +49,21 @@ $orders_project_options = [];
                 <x-admin.components.subtitle>
                     {{__('admin/projects.general_information')}}
                 </x-admin.components.subtitle>
+                <p class="obligations m-b-32 ">
+                    {{__('worker/order.mandatory_field')}}
+                </p>
                 <div class="contact-information-list">
                     <div>
                         <div>
                             <x-admin.components.fields.select select_name="user_id"
-                                                              label="{{__('admin/orders.for_who')}}"
+                                                              label="{{__('admin/orders.for_who')}}*"
                                                               :options="$orders_users_options" wire="user_id">
                             </x-admin.components.fields.select>
                         </div>
 
                         <div>
                             <x-admin.components.fields.select select_name="project_id"
-                                                              label="{{__('admin/orders.project_name')}}"
+                                                              label="{{__('admin/orders.project_name')}}*"
                                                               :options="$orders_project_options" wire="project_id">
                             </x-admin.components.fields.select>
                         </div>
@@ -69,7 +72,7 @@ $orders_project_options = [];
                     <div>
                         <div>
                             <x-admin.components.fields.select select_name="order_state"
-                                                              label="{{__('admin/orders.order_state')}}"
+                                                              label="{{__('admin/orders.order_state')}}*"
                                                               :options="$orders_state_options" wire="order_state">
                             </x-admin.components.fields.select>
                         </div>
@@ -124,7 +127,11 @@ $orders_project_options = [];
                            {{__('admin/orders.no_product_chosen')}}
                        </p>
                    @endif
-
+                   @error('cart')
+                   <p class="error mb-32 m-t-32">
+                       {{$message}}
+                   </p>
+                   @enderror
                 </fieldset>
                 <div class="admin-information-buttons">
                     <x-admin.components.submit-button class="">

@@ -40,54 +40,67 @@
                 <x-admin.components.subtitle>
                     {{__('admin/contacts.general_information')}}
                 </x-admin.components.subtitle>
+                <p class="obligations m-b-32 ">
+                    {{__('worker/order.mandatory_field')}}
+                </p>
                 <div class="contact-information-list">
                     <div>
-                        <x-admin.components.fields.text name="first_name" value="{!! $contact->first_name !!}" placeholder="John" wire="first_name"
-                                                        id="first_name">
-                            {{__('admin/contacts.firstname')}}
-                        </x-admin.components.fields.text>
-                    </div>
-                    <div>
-                        <x-admin.components.fields.text name="last_name" value="{!! $contact->last_name !!}" placeholder="John" wire="last_name"
-                                                        id="last_name">
-                            {{__('admin/contacts.lastname')}}
-                        </x-admin.components.fields.text>
-                    </div>
+                        <div>
+                            <x-admin.components.fields.text name="first_name" value="{!! $contact->first_name !!}"
+                                                            placeholder="John" wire="first_name"
+                                                            id="first_name">
+                                {{__('admin/contacts.firstname')}}
+                            </x-admin.components.fields.text>
+                        </div>
+                        <div>
+                            <x-admin.components.fields.text name="last_name" value="{!! $contact->last_name !!}"
+                                                            placeholder="John" wire="last_name"
+                                                            id="last_name">
+                                {{__('admin/contacts.lastname')}}
+                            </x-admin.components.fields.text>
+                        </div>
 
-                    <div>
-                        <x-admin.components.fields.email value="{!! $contact->email !!}" wire="email">
-                            {{__('admin/contacts.email')}}
-                        </x-admin.components.fields.email>
-                    </div>
-
-                    <div>
-                        <x-admin.components.fields.phone wire="phone" name="phone" id="phone" value="{!! $contact->phone !!}"
-                                                         placeholder="048383903">
-                            {{__('admin/contacts.phone')}}
-                        </x-admin.components.fields.phone>
+                        <div>
+                            <x-admin.components.fields.email value="{!! $contact->email !!}" wire="email">
+                                {{__('admin/contacts.email')}}
+                            </x-admin.components.fields.email>
+                        </div>
                     </div>
 
                     <div>
-                        <x-admin.components.fields.select select_name="job"
-                                                          label="{{__('admin/contacts.job_type')}}"
-                                                          :options="$job_options" wire="job">
-                        </x-admin.components.fields.select>
+                        <div>
+                            <x-admin.components.fields.phone wire="phone" name="phone" id="phone"
+                                                             value="{!! $contact->phone !!}"
+                                                             placeholder="048383903">
+                                {{__('admin/contacts.phone')}}
+                            </x-admin.components.fields.phone>
+                        </div>
+
+                        <div>
+                            <x-admin.components.fields.select select_name="job"
+                                                              label="{{__('admin/contacts.job_type')}}"
+                                                              :options="$job_options" wire="job">
+                            </x-admin.components.fields.select>
+                        </div>
+                        <div>
+                            <x-admin.components.fields.phone wire="private_phone" name="private_phone"
+                                                             id="private_phone" value="{!! $contact->private_phone !!}"
+                                                             placeholder="048383903">
+                                {{__('admin/contacts.private_phone_number')}}
+                            </x-admin.components.fields.phone>
+                        </div>
                     </div>
 
 
                     <div>
-                        <x-admin.components.fields.phone wire="private_phone" name="private_phone" id="private_phone" value="{!! $contact->private_phone !!}"
-                                                         placeholder="048383903">
-                            {{__('admin/contacts.phone')}}
-                        </x-admin.components.fields.phone>
-                    </div>
-
-
-                    <div>
-                        <x-admin.components.fields.text name="private_address" value="{!! $contact->private_address !!}"
-                                                        placeholder="{{__('admin/contacts.address_example')}}" wire="private_address" id="private_address">
-                            {{__('admin/contacts.private_adress')}}
-                        </x-admin.components.fields.text>
+                        <div>
+                            <x-admin.components.fields.text name="private_address"
+                                                            value="{!! $contact->private_address !!}"
+                                                            placeholder="{{__('admin/contacts.address_example')}}"
+                                                            wire="private_address" id="private_address">
+                                {{__('admin/contacts.private_adress')}}
+                            </x-admin.components.fields.text>
+                        </div>
                     </div>
                 </div>
 

@@ -52,7 +52,7 @@
                             {{__('admin/orders.order_state')}}
                         </x-admin.components.definition-term>
                         <x-admin.components.definition>
-                            {{$order->order_state}}
+                            {{$order->order_state == 'pending' ? __('admin/orders.pending') : __('admin/orders.completed')}}
                         </x-admin.components.definition>
                     </div>
                     <div>
@@ -78,7 +78,7 @@
                     <h3 class="sro">
                         {{__('admin/projects.list_of_products')}}
                     </h3>
-                    <table class="table max-w-admin-web split-table">
+                    <table class="split-table">
                         <thead>
                         <tr>
                             <x-admin.components.table.table-th scope="col" direction="asc">

@@ -41,18 +41,21 @@
                 <x-admin.components.subtitle>
                     {{__('admin/products.general_information')}}
                 </x-admin.components.subtitle>
+                <p class="obligations m-b-32 ">
+                    {{__('worker/order.mandatory_field')}}
+                </p>
                 <div class="contact-information-list">
                     <dl>
                         <div>
                             <x-admin.components.fields.text name="product_name" value="" placeholder="John" wire="product_name"
                                                             id="product_name">
-                                {{__('admin/products.product_name')}}
+                                {{__('admin/products.product_name')}}*
                             </x-admin.components.fields.text>
                         </div>
                         <div>
                             <x-admin.components.fields.text name="brand" value="" placeholder="Johnson" wire="brand"
                                                             id="brand">
-                                {{__('admin/products.brand')}}
+                                {{__('admin/products.brand')}}*
                             </x-admin.components.fields.text>
                         </div>
                         <div>
@@ -77,14 +80,14 @@
                             <x-admin.components.fields.text wire="ref_article" name="ref_article"
                                                               id="ref_article"
                                                               value="" placeholder="22">
-                                {{__('admin/products.ref_article')}}
+                                {{__('admin/products.ref_article')}}*
                             </x-admin.components.fields.text>
                         </div>
                         <div>
                             <x-admin.components.fields.number wire="quantity" name="quantity"
                                                               id="quantity"
                                                               value="" placeholder="22">
-                                {{__('admin/products.stock_number')}}
+                                {{__('admin/products.stock_number')}}*
                             </x-admin.components.fields.number>
                         </div>
                     </dl>
@@ -93,7 +96,7 @@
                         <div>
                             <x-admin.components.fields.text name="gtin" value="" placeholder="DHH34HK43BF2" wire="gtin"
                                                             id="gtin">
-                                {{__('admin/products.gtin')}}
+                                {{__('admin/products.gtin')}}*
                             </x-admin.components.fields.text>
                         </div>
                         <div>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use function Pest\Laravel\actingAs;
@@ -135,7 +136,7 @@ it('can edit a order and redirect to the show page', function () {
     ]);
     $random_project_state = 'private';
 
-
+    $product = Product::factory()->create();
     $project = \App\Models\Project::factory()->create([
         'user_id' => $user->id,
         'project_type' => $random_project_state,
@@ -144,6 +145,11 @@ it('can edit a order and redirect to the show page', function () {
     $order= \App\Models\Order::factory()->create([
         'user_id'=>$user->id,
         'project_id'=>$project->id,
+    ]);
+
+    $order_item = \App\Models\OrderItem::factory()->create([
+        'order_id'=> $order->id,
+        'product_id'=>$product->id,
     ]);
 
     $route = route('pages::orders.edit',[

@@ -6,10 +6,17 @@ max-width / centering
 */
 
 
+.d-block{
+    display: block;
+}
+
+.d-block{
+    display: block;
+}
+
 .d-flex{
  display: flex;
 }
-
 
 .flex-gap-24{
     gap: var(--gap-24);
@@ -31,31 +38,25 @@ max-width / centering
     flex-direction: column-reverse;
 }
 
-.d-block{
-    display: block;
+.flex-dir-col{
+    flex-direction: column;
 }
+
+.flex-cr{
+    flex-direction: column-reverse;
+}
+
+.flex-c{
+    flex-direction: column;
+}
+
 
 .m-b-24{
     margin-bottom: var(--margin-padding-24);
 }
 
-
 .mb-64{
     margin-bottom: var(--margin-padding-64);
-}
-
-.m-t-64{
-    margin-top: var(--margin-padding-64);
-}
-
-.p-t-b-16{
-    padding-bottom: var(--margin-padding-16);
-    padding-top: var(--margin-padding-16);
-}
-
-
-.p-12-16{
-    padding: var(--margin-padding-12) var(--margin-padding-16);
 }
 
 .m-b-32{
@@ -69,30 +70,6 @@ max-width / centering
 .m-b-16{
     margin-bottom: var(--margin-padding-16);
 }
-.m-t-16{
-    margin-top: var(--margin-padding-16);
-}
-
-.min-w-100{
-    width: 100%;
-}
-
-
-.flex-dir-col{
-    flex-direction: column;
-}
-
-.m-l-auto{
-    margin-left: auto;
-}
-
-.max-w-560{
-    max-width: var(--max-w-field-desktop);
-}
-
-.flex-cr{
-    flex-direction: column-reverse;
-}
 
 .mb-32{
     margin-bottom: var(--margin-padding-32);
@@ -100,6 +77,18 @@ max-width / centering
 
 .mb-12{
     margin-bottom: var(--margin-padding-12);
+}
+
+.m-t-24{
+    margin-top: var(--margin-padding-24);
+}
+
+.m-t-16{
+    margin-top: var(--margin-padding-16);
+}
+
+.m-t-64{
+    margin-top: var(--margin-padding-64);
 }
 
 .m-t-32{
@@ -110,32 +99,43 @@ max-width / centering
     margin-top: calc(var(--margin-padding-16)*-1);
 }
 
-.min-w-full{
-    min-width: 100%;
-}
-
-.m-t-24{
-    margin-top: var(--margin-padding-24);
-}
-
 .m-l-16{
     margin-left: var(--margin-padding-16);
 }
 
-.flex-c{
-    flex-direction: column;
+.m-l-auto{
+    margin-left: auto;
+}
+
+.p-t-b-16{
+    padding-bottom: var(--margin-padding-16);
+    padding-top: var(--margin-padding-16);
+}
+
+.p-12-16{
+    padding: var(--margin-padding-12) var(--margin-padding-16);
+}
+
+.p-16{
+    padding: var(--margin-padding-16);
+}
+
+.min-w-100{
+    width: 100%;
+}
+
+.max-w-560{
+    max-width: var(--max-w-field-desktop);
+}
+
+.min-w-full{
+    min-width: 100%;
 }
 
 .flex-j-c-space-between{
 justify-content: space-between;
 }
 
-.d-block{
-    display: block;
-}
-.p-16{
-    padding: var(--margin-padding-16);
-}
 .position-relative{
     position: relative;
 }

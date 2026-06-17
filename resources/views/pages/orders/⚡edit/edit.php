@@ -26,12 +26,18 @@ new class extends Component
         $this->order_state = $order->order_state;
         $this->project_id = $order->project_id;
 
-        foreach ($order->orderItems as $orderItem){
-            $this->cart[$orderItem->product_id] = [
-              'name'=>   $orderItem->product->product_name,
-              'quantity'=>   $orderItem->quantity,
-              'originalquantity'=>   $orderItem->quantity,
-            ];
+        //  Faut récuperer le cart de la session -> s'il trouve rien alors c'est null
+        $this->cart = session()->get('cart_order'.$order->id);
+
+        if ($this->cart === [] || $this->cart === null){        //si le panier est vide (parce que j'ouvre cette page p.ex)
+            foreach ($order->orderItems as $orderItem){     //alors j'ajoute ce produit au panier
+                $this->cart[$orderItem->product_id] = [
+                    'name'=>   $orderItem->product->product_name,
+                    'quantity'=>   $orderItem->quantity,
+                    'originalquantity'=>   $orderItem->quantity,
+                ];
+            }
+            session()->put('cart_order'.$order->id, $this->cart);       //sauvegarde le panier dans la session
         }
     }
 
@@ -60,28 +66,35 @@ new class extends Component
         }
         $this->search = '';
         $this->searchedProduct = [];
+        session()->put('cart_order'.$this->order->id, $this->cart);     //sauvegarder panier
     }
 
     public function updateQuantity( int $new_quantity, int $productId)
     {
         $this->cart[$productId]['quantity'] = $new_quantity;
+        session()->put('cart_order'.$this->order->id, $this->cart);     //sauvegarder panier
     }
 
     public function removeFromOrder( int $productId)            //supprimer de la commande
     {
         $product = Product::findOrFail($productId);
-        $product->increment('quantity', $this->cart[$productId]['quantity']);       //augmente le stock du produit supprimé de la commande
-
+        $product->increment('quantity', $this->cart[$productId]['originalquantity']);       //augmente le stock du produit supprimé de la commande par le nombre de la qt originale
         $order = $this->order;
-        $order->orderItems()->where('product_id', $productId)->delete();        //supprime
+        $order->orderItems()->where('product_id', $productId)->delete();         //supprime le produit des orderitems
 
-        unset($this->cart[$productId]);
+        unset($this->cart[$productId]); //retirer le produit du cart mémoire
+
+        session()->put('cart_order'.$this->order->id, $this->cart);     //sauvegarde panier
     }
 
     public function save(): void
     {
-        //je dois faire ça parce que si je ne le fais pas, je peux max changer 1-2 commandes et puis ça ne sauvegarde plus rien parce que order_state etc sont vides
+        //recuperer le panier
+        $this->cart = session()->get('cart_order'.$this->order->id, $this->cart);
+        //si 'cart_order'.$this->order->id n'existe pas, alors ça renvoie $this->cart au lieu de null
+        // https://laravel.com/docs/13.x/session#retrieving-data
 
+        //je dois faire ça parce que si je ne le fais pas, je peux max changer 1-2 commandes et puis ça ne sauvegarde plus rien parce que order_state etc sont vides
         if (empty($this->order_state)){
             $this->order_state = $this->order->order_state;
         }
@@ -91,6 +104,10 @@ new class extends Component
         if (empty($this->project_id)){
             $this->project_id = $this->order->project_id;
         }
+        if (empty($this->cart)){
+            $this->addError('cart', __('admin/orders.choose_product'));
+            return;
+        }           //comme ça on ne peut pas sauver une commande vide
 
 //validation
         $validated_data= $this->validate([
@@ -110,8 +127,9 @@ new class extends Component
 
 
         //update les qt des produits du panier
-        foreach ($this->cart as $productId=>$item){
-            $originalqt = $item['originalquantity'] ?? 0;
+        foreach ($this->cart as $productId=>$item){ //id mit details
+            $originalItem = $order->orderItems()->where('product_id', $productId)->first();//regarder dans ceux qui sont déjà enregistrés
+            $originalqt = $originalItem ? $originalItem->quantity : 0;
             $newqt = $item['quantity'];
 
             $qt_difference = $newqt - $originalqt;
@@ -141,12 +159,20 @@ new class extends Component
             if ($qt_difference>0){
                 $product->decrement('quantity', $qt_difference);
             }elseif($qt_difference<0){
-                $product->increment('quantity', $qt_difference);
+                $product->increment('quantity', abs($qt_difference));       //abs fait de + un -
             }
         }
 
+        session()->forget('cart_order'.$this->order->id);       //supprimer le panier de la session (on en a juste besoin pour cette page)
+        // https://laravel.com/docs/13.x/session#deleting-data
 
         $this->cart= [];
         $this->redirect(route('pages::orders.show', ['locale' => __('general.currentLocale'), 'order'=>$this->order]));
     }
 };
+
+
+// https://laravel.com/docs/13.x/session#storing-data
+// https://livewire.laravel.com/docs/4.x/validation#manually-controlling-validation-errors
+
+// pour search https://livewire.laravel.com/docs/4.x/lifecycle-hooks

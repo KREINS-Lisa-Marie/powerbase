@@ -8,7 +8,9 @@
             {{__('worker/contact.warehouse')}}
         </x-worker.definitionterm>
         <x-worker.definition>
-            00834927394
+            <a href="tel:00834927394" title="{{__('worker/contact.call')}}">
+                00834927394
+            </a>
         </x-worker.definition>
     </dl>
     <dl>
@@ -16,7 +18,9 @@
             {{__('worker/contact.email')}}
         </x-worker.definitionterm>
         <x-worker.definition>
-            info@magasin.be
+            <a href="mailto:info@magasin.be" title="{{__('worker/contact.send_mail_to')}}">
+                info@magasin.be
+            </a>
         </x-worker.definition>
     </dl>
 </section>

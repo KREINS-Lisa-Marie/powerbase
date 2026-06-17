@@ -18,4 +18,7 @@ return [
 
     'pending' => 'In Bearbeitung',
     'completed' => 'Fertig',
+    'project_name_error'=>' Das Feld "Projektname" is Pflicht',
+    'needs_product'=>'Um zu bestellen brauchen Sie ein Produkt',
+    'increment_qt'=>'Menge muss mindestens 1 sein',
 ];

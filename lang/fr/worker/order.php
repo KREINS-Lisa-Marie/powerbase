@@ -18,4 +18,7 @@ return [
 
     'pending' => 'En cours',
     'completed' => 'Prêt',
+    'project_name_error'=>'Le champs "Nom du projet" est obligatoire',
+    'needs_product'=>'Si vous voulez passer une commande, il faut ajouter un produit',
+    'increment_qt'=>'Quantity doit être au minimum 1',
 ];

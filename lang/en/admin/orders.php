@@ -42,4 +42,5 @@ return [
     'no_product_chosen' => 'No product selected',
     'no_result' => 'No order found',
 
+    'choose_product'=>'Choose a product',
 ];

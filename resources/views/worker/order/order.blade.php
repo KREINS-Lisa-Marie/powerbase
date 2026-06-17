@@ -12,15 +12,20 @@
                 </p>
                 <div class="d-flex flex-wrap flex-dir-col uppercase max-w-560 w-100">
                     <div class="worker-select">
-                            <x-admin.components.fields.select select_name="project_id"
-                                                              label="{{__('admin/orders.project_name')}} *" :options="$orders_project_options" wire="project_id" class="text-black">
-
-                            </x-admin.components.fields.select>
-                        @error('project_id')
-                        <p>
-                            {{ $message }}
-                        </p>
-                        @enderror
+                        <div class="text-field">
+                            <label for="project_id" class="field__label">{{__('admin/orders.project_name')}} *</label>
+                            <select name="project_id" id="project_id" class="d-block background-white border-radius-16 p-16" wire:model.blur="project_id">
+                                <option class="m-b-24" value="">{{__('admin/contacts.select_an_option')}}</option>
+                                @foreach($orders_project_options as $option)
+                                    <x-admin.components.fields.select-option :option_value="$option['value']" :option_name="$option['name']"  />
+                                @endforeach
+                            </select>
+                            @error('project_id')
+                            <p class="mb-32 error">
+                                {{__('worker/order.project_name_error')}}
+                            </p>
+                            @enderror
+                        </div>
                     </div>
                     <div>
 
@@ -34,10 +39,11 @@
                                             </p>
                                         @endif
 
-                                        <label for="quantity" class="field__label text-white">
+                                        <label for="quantity-{{$productId}}" class="field__label text-white">
                                             {{__('worker/order.quantity')}} *
                                         </label>
-                                        <input wire:model.live="cart.{{$productId}}.quantity" type="number" name="quantity" id="quantity" value="{{ $item['quantity']?? ''}}" class="t-a-center background-white border-radius-16 p-16 max-w-560 w-100 m-b-32 text-black regular" placeholder="{{__('worker/order.wanted_quantity')}}" min="1" max="100" {{--pas de max parce que parfois faut plus qu'il y a en stock et ça doit être commandé par le magasinier. Le worker peut voir combien il y en a en stock donc il voit combien il aura pour le lendemain--}}
+                                        <input wire:model.live="cart.{{$productId}}.quantity" type="number" name="quantity-{{$productId}}" id="quantity-{{$productId}}" value="{{ $item['quantity']?? ''}}" class="t-a-center background-white border-radius-16 p-16 max-w-560 w-100 m-b-32 text-black regular" placeholder="{{__('worker/order.wanted_quantity')}}" min="1" max="100" {{--pas de max parce que parfois faut plus qu'il y a en stock et ça doit être commandé par le magasinier. Le worker peut voir combien il y en a en stock donc il voit combien il aura pour le lendemain--}}
+                                            {{--ajouté -{{$productId}} parce que sinon on a même id et ça pose problème --}}
                                         aria-required="true">
                                         @error('quantity')
                                             {{$message}}
@@ -55,6 +61,17 @@
                                     </p>
                                 </li>
                             @endif
+                                @error('qt_over_one')
+                                <p class="error mb-32 m-t-32">
+                                    {{$message}}
+                                </p>
+                                @enderror
+                                @error('no_product_chosen')
+                                <p class="error mb-32 m-t-32">
+                                    {{$message}}
+                                </p>
+                                @enderror
+
                         </ul>
                     </div>
                 </div>

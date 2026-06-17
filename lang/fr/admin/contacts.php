@@ -45,4 +45,6 @@ return [
     'most_recent' => 'plus récents',
     'van' => 'Camionette',
 
+    'repeat_password' => 'Répétez le mot de passe',
+
 ];
