@@ -14,14 +14,19 @@
                 <fieldset class="contact-information max-w-admin-web small-section">
                 <div class="profile-inputs">
                     <x-auth.form.password wire="password" name="user_password" id="user_password" value=""
-                                          placeholder="{{__('admin/profile.enter_a_password')}}">
+                                          placeholder="{{__('admin/profile.enter_a_password')}}" class="">
                         {{__('admin/profile.user_password')}}
                     </x-auth.form.password>
+                    @error('not_good_password')
+                    <p class="error mb-32 m-t-32">
+                        {{__('admin/profile.password_not_empty')}}
+                    </p>
+                    @enderror
                 </div>
 
                 <div class="profile-inputs">
                     <x-auth.form.password-confirmation wire="password_confirmation" name="user_password_confirmation" id="user_password_confirmation" value=""
-                                                       placeholder="{{__('admin/profile.reenter_a_password')}}">
+                                                       placeholder="{{__('admin/profile.reenter_a_password')}}" class="">
                         {{__('admin/profile.user_password_confirmation')}}
                     </x-auth.form.password-confirmation>
                 </div>

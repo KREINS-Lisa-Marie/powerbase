@@ -22,6 +22,11 @@ new class extends Component
 
     public function save(): void
     {
+        if ($this->password == '' || $this->password == ' '){
+            $this->addError('not_good_password', __('admin/orders.choose_product'));
+            return;
+        }
+
         $validated_data = $this->validate([
             'password'=>$this->updatePasswordRules(),
         ]);
