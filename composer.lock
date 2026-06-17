@@ -1451,16 +1451,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v12.54.1",
+            "version": "v12.56.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "325497463e7599cd14224c422c6e5dd2fe832868"
+                "reference": "dac16d424b59debb2273910dde88eb7050a2a709"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/325497463e7599cd14224c422c6e5dd2fe832868",
-                "reference": "325497463e7599cd14224c422c6e5dd2fe832868",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/dac16d424b59debb2273910dde88eb7050a2a709",
+                "reference": "dac16d424b59debb2273910dde88eb7050a2a709",
                 "shasum": ""
             },
             "require": {
@@ -1576,7 +1576,7 @@
                 "orchestra/testbench-core": "^10.9.0",
                 "pda/pheanstalk": "^5.0.6|^7.0.0",
                 "php-http/discovery": "^1.15",
-                "phpstan/phpstan": "^2.0",
+                "phpstan/phpstan": "^2.1.41",
                 "phpunit/phpunit": "^10.5.35|^11.5.3|^12.0.1",
                 "predis/predis": "^2.3|^3.0",
                 "resend/resend-php": "^0.10.0|^1.0",
@@ -1669,7 +1669,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2026-03-10T20:25:56+00:00"
+            "time": "2026-03-26T14:51:54+00:00"
         },
         {
             "name": "laravel/prompts",
