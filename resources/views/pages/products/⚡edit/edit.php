@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Storage;
 use App\Models\Product;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
@@ -20,7 +21,8 @@ new class extends Component
     public string $gtin ='';
     public string $quantity= '';
     public string $product_description= '';
-    public  $product_image = null ;
+    public  $product_image = null;
+    public  $current_image = '' ;       //parce que si je n'ajoute pas 'image je veux garder celle qui est déjà là
 
 
     public function mount(Product $product)         //avant de render ( 1x seulement)
@@ -33,7 +35,7 @@ new class extends Component
         $this->gtin = $product->gtin ;
         $this->quantity = $product->quantity ?? 0;
         $this->product_description = $product->product_description ?? '';
-        $this->product_image = $product->product_image ?? null;
+        $this->current_image = $product->product_image ?? '';
     }
 
     public function save(): void
@@ -73,7 +75,7 @@ new class extends Component
             }
         }
         else{
-            $image_path = null;
+            $image_path = $this->current_image;     //si je ne fais pas ça, alors il perds mon image
         }
 
         $this->product->update([
