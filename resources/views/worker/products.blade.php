@@ -23,13 +23,16 @@
 
                 @empty
                     <li>
-                    <x-worker.product-card productname="{{__('worker/homepage.no_product_found')}}" product_id=""/>
+    {{--                <x-worker.product-card productname="{{__('worker/homepage.no_product_found')}}" product_id=""/>--}}
+                        <p class="error-no-product text-white  uppercase bold">
+                            {{__('worker/products.no_product_found')}}
+                        </p>
                     </li>
                 @endforelse
         </ul>
 
     </section>
-    <div class="pagination max-w-admin-web">
+    <div class="pagination-worker max-w-admin-web">
     {{ $products->links() }}
     </div>
 </x-worker.app>
