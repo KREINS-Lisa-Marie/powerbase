@@ -18,7 +18,9 @@ Route::get('/', function () {
         : route( 'worker.homepage', ['locale' => 'fr']);
 });*/
 
-
+Route::get('/login', function () {
+    return redirect()->route('auth.login', ['locale' => app()->getLocale()]);
+});
 
 Route::get('/{locale}/login', function () {
     return view('auth.login');
