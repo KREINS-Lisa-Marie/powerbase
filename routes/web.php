@@ -19,8 +19,8 @@ Route::get('/', function () {
 });*/
 
 Route::get('/login', function () {
-    return redirect()->route('auth.login', ['locale' => app()->getLocale()])->name('login');
-});
+    return redirect()->route('auth.login', ['locale' => app()->getLocale()]);
+})->name('login');
 
 Route::get('/{locale}/login', function () {
     return view('auth.login');
