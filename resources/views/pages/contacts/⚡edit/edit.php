@@ -28,7 +28,7 @@ new class extends Component {
         $this->phone = $contact->phone ?? '';
         $this->private_phone = $contact->private_phone ?? '';
         $this->private_address = $contact->private_address ?? '';
-        $this->car_type = $contact->car_type;
+        $this->car_type = $contact->car_type ?? '';
         $this->car_plate = $contact->car_plate ?? '';
         $this->job = $contact->job ?? '';
     }
@@ -44,8 +44,8 @@ new class extends Component {
             'private_phone'=>'required|string',
             'job'=>'required|string',
             'private_address'=>'required|string',
-            'car_type'=>'required|string',
-            'car_plate'=>'required|string',
+            'car_type'=>'nullable|string',
+            'car_plate'=>'nullable|string',
         ]);
 
         $this->contact->update([
@@ -56,8 +56,8 @@ new class extends Component {
             'private_phone'=>$validated_data['private_phone'],
             'job'=>$validated_data['job'],
             'private_address'=>$validated_data['private_address'],
-            'car_type'=>$validated_data['car_type'],
-            'car_plate'=>$validated_data['car_plate'],
+            'car_type'=>$validated_data['car_type'] ?? null,
+            'car_plate'=>$validated_data['car_plate'] ?? null,
         ]);
 
         $this->redirect(route('pages::contacts.show', ['locale' => __('general.currentLocale'), 'contact'=>$this->contact]));
