@@ -20,5 +20,6 @@ return [
 
     'home' => 'Accueil',
     'go_to_order' => 'Aller vers la page de la commande',
+    'dashboard'=>'Dashboard',
 
 ];

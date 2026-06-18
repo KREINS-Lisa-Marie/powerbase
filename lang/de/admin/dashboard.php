@@ -19,4 +19,5 @@ return [
 
     'home' => 'Startseite',
     'go_to_order' => 'Zur Seite Bestellungen gehen',
+    'dashboard'=>'Dashboard',
 ];

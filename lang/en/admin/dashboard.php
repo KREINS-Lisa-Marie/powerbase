@@ -19,4 +19,5 @@ return [
 
     'home' => 'Home',
     'go_to_order' => 'Go to the order page',
+    'dashboard'=>'Dashboard',
 ];
