@@ -19,7 +19,7 @@ Route::get('/', function () {
 });*/
 
 Route::get('/login', function () {
-    return redirect()->route('auth.login', ['locale' => app()->getLocale()]);
+    return redirect()->route('auth.login', ['locale' => app()->getLocale()])->name('login');
 });
 
 Route::get('/{locale}/login', function () {
