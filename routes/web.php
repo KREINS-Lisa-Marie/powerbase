@@ -49,7 +49,7 @@ Route::get('/{locale}/dashboard', function () {
 
 Route::livewire('/{locale}/dashboard', 'pages::dashboard.index')->name('pages::dashboard.index')->middleware([
     'auth', 'isAdminOrStorekeeper'
-])->with(['title'=> __('admin/dashboard.dashboard')]);
+]);
 
 Route::livewire('/{locale}/admin/profile', 'pages::profile.index')->name('pages::profile.index')->middleware([
     'auth', 'isAdminOrStorekeeper'
