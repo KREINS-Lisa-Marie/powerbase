@@ -29,6 +29,8 @@ new class extends Component
 
     public function render()        //à chaque fois que qqch sur la page change
     {
+        $user = auth()->user();
+
         return view('pages.contacts.⚡index.index', [
             'contacts' => \App\Models\User::query()
                 ->where('first_name', 'like', '%' . $this->search . '%')
@@ -38,6 +40,7 @@ new class extends Component
                 ->orWhere('job', 'like', '%' . $this->search . '%')
                 ->orderBy($this->sortField, $this->sortDirection)
                 ->paginate(10),
+            'user' => $user
         ]);
     }
 
