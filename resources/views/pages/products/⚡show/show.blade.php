@@ -74,14 +74,14 @@
                         {{__('admin/products.image')}}
                     </x-admin.components.definition-term>
                     <x-admin.components.definition>
-                        {{--@if($product->product_image)--}}
+                        @if($product->product_image)--}}
                             <img src="{{Storage::disk('s3')->url('images/products/variants/288x288/'.basename($product->product_image))}}"
                             {{--{!! asset('storage/images/products/variants/288x288/'.basename($product->product_image)) !!}"--}} alt="{{__('admin/products.the_product_image')}}"
                                  class="border-radius-16 product-img">
-                {{--        @else
+                        @else
                             <img src="{!! asset('assets/default/default.jpg') !!}" alt="{{__('admin/products.the_product_image')}}"
                                  class="border-radius-16 product-img">
-                        @endif--}}
+                        @endif
                     </x-admin.components.definition>
                 </dl>
             </div>
