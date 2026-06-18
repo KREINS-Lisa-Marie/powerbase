@@ -12,7 +12,7 @@
             {{$productname}}
         </h3>
         @if($product_image)
-            <img src="{!! asset('storage/images/products/variants/288x288/'.basename($product_image)) !!}" alt="{{__('admin/products.the_product_image')}}"
+            <img src="{{Storage::disk('s3')->url('/images/products/variants/288x288/'.basename($product->product_image))}}" {{--{!! asset('storage/images/products/variants/288x288/'.basename($product_image)) !!}"--}} alt="{{__('admin/products.the_product_image')}}"
                  class="border-radius-16 product-img">
         @else
             <img src="{!! asset('assets/default/default.jpg') !!}" alt="{{__('admin/products.the_product_image')}}"

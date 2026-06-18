@@ -5,7 +5,7 @@
         <div class="product-details j-c-space-b">
             <div class="img-button">
                 @if($product->product_image)
-                    <img src="{!! asset('storage/images/products/variants/392x392/'.basename($product->product_image)) !!}" alt="{{__('admin/products.the_product_image')}}"
+                    <img src="{{Storage::disk('s3')->url('/images/products/variants/392x392/'.basename($product->product_image))}}" {{--{!! asset('storage/images/products/variants/392x392/'.basename($product->product_image)) !!}"--}} alt="{{__('admin/products.the_product_image')}}"
                          class="border-radius-16 product-img" width="392" height="392">
                 @else
                     <img src="{!! asset('assets/default/default.jpg') !!}" alt="{{__('admin/products.the_product_image')}}"
