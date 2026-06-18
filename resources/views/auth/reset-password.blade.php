@@ -27,8 +27,31 @@
                 @csrf
                 <input type="hidden" name="token" value="{{ request()->route('token') }}">
                 <x-auth.form.email-input></x-auth.form.email-input>
-                <x-auth.form.password wire="password" class=""></x-auth.form.password>
-                <x-auth.form.password-confirmation wire="password_confirmation" class=""></x-auth.form.password-confirmation>
+                <div class="d-flex flex-col">
+                    <label for="password" class="auth-label medium">
+                        {{__('auth/login.password')}}
+                    </label>
+                    @error('password')
+                    <p class="error">
+                        {{$message}}
+                    </p>
+                    @enderror
+                    <input type="password" id="password" name="password" class="border-radius-16 background-white border-input auth-input {{$class}}"
+                           value="{{old('password')}}" aria-required="true">
+                </div>
+
+                <div class="d-flex flex-col">
+                    <label for="password_confirmation" class="auth-label medium">
+                        {{__('auth/reset_password.rewrite_password')}}
+                    </label>
+                    @error('password_confirmation')
+                    <p class="error">
+                        {{$message}}
+                    </p>
+                    @enderror
+                    <input type="password" id="password_confirmation" name="password_confirmation" class="border-radius-16 background-white border-input auth-input" value="" aria-required="true">
+                </div>
+
 
                 <x-auth.form.submit-button>
                     {{__('auth/reset_password.reset_password')}}
