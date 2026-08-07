@@ -41,7 +41,7 @@ new class extends Component
                 ->orWhere('users.last_name', 'like', '%' . $search . '%')
                 ->orWhere('orders.created_at', 'like', '%' . $search . '%')
                 ->orderBy($this->sortField, $this->sortDirection)
-                ->paginate(10),
+                ->paginate(10)->onEachSide(0),
             ]);
     }
 };

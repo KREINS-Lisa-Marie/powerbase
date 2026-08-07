@@ -75,6 +75,7 @@ Route::livewire('/{locale}/admin/contacts/{contact}/show', 'pages::contacts.show
 Route::livewire('/{locale}/admin/products/{product}/show', 'pages::products.show')->name('pages::products.show')->middleware([
     'auth', 'isAdminOrStorekeeper'
 ]);
+
 Route::livewire('/{locale}/admin/products/create', 'pages::products.create')->name('pages::products.create')->middleware([
     'auth', 'isAdminOrStorekeeper'
 ]);

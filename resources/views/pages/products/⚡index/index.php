@@ -40,7 +40,7 @@ new class extends Component
                 ->orWhere('created_at', 'like', '%' . $this->search . '%')
                 ->orWhere('updated_at', 'like', '%' . $this->search . '%')
                 ->orderBy($this->sortField, $this->sortDirection)
-                ->paginate(10),
+                ->paginate(10)->onEachSide(0),
         ]);
     }
 };
