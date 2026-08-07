@@ -39,7 +39,7 @@ new class extends Component
                 ->orWhere('phone', 'like', '%' . $this->search . '%')
                 ->orWhere('job', 'like', '%' . $this->search . '%')
                 ->orderBy($this->sortField, $this->sortDirection)
-                ->paginate(10),
+                ->paginate(10)->onEachSide(0),
             'user' => $user
         ]);
     }
