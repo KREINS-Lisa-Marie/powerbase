@@ -26,16 +26,16 @@
             <table class="table max-w-admin-web">
                 <thead>
                 <tr>
-                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('first_name')" :direction="$sortField === 'first_name'? $sortDirection : null">
+                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('first_name')" :direction="$sortField === 'first_name'? $sortDirection : null" class="{{$sortField === 'first_name'? 'active-sort': ''}}">
                         {{__('admin/contacts.full_name')}}
                     </x-admin.components.table.table-th>
-                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('email')"  :direction="$sortField === 'email'? $sortDirection : null">
+                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('email')"  :direction="$sortField === 'email'? $sortDirection : null" class="{{$sortField === 'email'? 'active-sort': ''}}">
                         {{__('admin/contacts.email')}}
                     </x-admin.components.table.table-th>
-                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('phone')"  :direction="$sortField === 'phone'? $sortDirection : null">
+                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('phone')"  :direction="$sortField === 'phone'? $sortDirection : null" class="{{$sortField === 'phone'? 'active-sort': ''}}">
                         {{__('admin/contacts.phone')}}
                     </x-admin.components.table.table-th>
-                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('job')"  :direction="$sortField === 'job'? $sortDirection : null">
+                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('job')"  :direction="$sortField === 'job'? $sortDirection : null" class="{{$sortField === 'job'? 'active-sort': ''}}">
                         {{__('admin/contacts.job')}}
                     </x-admin.components.table.table-th>
                 </tr>

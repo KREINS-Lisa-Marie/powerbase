@@ -23,16 +23,16 @@
             <table class="table max-w-admin-web">
                 <thead>
                 <tr>
-                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('project_name')" :direction="$sortField === 'project_name'? $sortDirection : null">
+                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('project_name')" :direction="$sortField === 'project_name'? $sortDirection : null" class="{{$sortField === 'project_name'? 'active-sort': ''}}">
                         {{__('admin/projects.project_name')}}
                     </x-admin.components.table.table-th>
-                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('project_address')" :direction="$sortField === 'project_address'? $sortDirection : null">
+                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('project_address')" :direction="$sortField === 'project_address'? $sortDirection : null" class="{{$sortField === 'project_address'? 'active-sort': ''}}">
                         {{__('admin/projects.adress')}}
                     </x-admin.components.table.table-th>
-                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('created_at')" :direction="$sortField === 'created_at'? $sortDirection : null">
+                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('created_at')" :direction="$sortField === 'created_at'? $sortDirection : null" class="{{$sortField === 'created_at'? 'active-sort': ''}}">
                         {{__('admin/projects.created_at')}}
                     </x-admin.components.table.table-th>
-                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('project_state')" :direction="$sortField === 'project_state'? $sortDirection : null">
+                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('project_state')" :direction="$sortField === 'project_state'? $sortDirection : null" class="{{$sortField === 'project_state'? 'active-sort': ''}}">
                         {{__('admin/projects.project_state')}}
                     </x-admin.components.table.table-th>
                 </tr>

@@ -23,7 +23,7 @@
             <table class="table max-w-admin-web">
                 <thead>
                 <tr>
-                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('user_id')" :direction="$sortField === 'user_id'? $sortDirection : null">
+                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('user_id')" :direction="$sortField === 'user_id'? $sortDirection : null" class="{{$sortField === 'user_id'? 'active-sort': ''}}">
                         {{__('admin/orders.ordered_by')}}
                     </x-admin.components.table.table-th>
     {{--order_items_count se fait automatiquement quand je fais un withcount    -> nom model_count --}}
@@ -31,10 +31,10 @@
                         {{__('admin/orders.product_quantity')}}
                     </th>
 
-                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('created_at')" :direction="$sortField === 'created_at'? $sortDirection : null">
+                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('created_at')" :direction="$sortField === 'created_at'? $sortDirection : null" class="{{$sortField === 'created_at'? 'active-sort': ''}}">
                         {{__('admin/orders.ordered_at')}}
                     </x-admin.components.table.table-th>
-                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('order_state')" :direction="$sortField === 'order_state'? $sortDirection : null">
+                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('order_state')" :direction="$sortField === 'order_state'? $sortDirection : null" class="{{$sortField === 'order_state'? 'active-sort': ''}}">
                         {{__('admin/orders.state')}}
                     </x-admin.components.table.table-th>
                 </tr>
