@@ -1218,7 +1218,7 @@ body:has(.login-section) {
 /*          table           */
 @media (max-width: 1199px) {
     .admin {
-        thead {
+        /*thead {
             position: absolute;
             overflow: hidden;
             clip: rect(0 0 0 0);
@@ -1227,7 +1227,7 @@ body:has(.login-section) {
             margin: -1px;
             padding: 0;
             border: 0;
-        }
+        }*/
 
         tbody {
             display: flex;
@@ -1247,10 +1247,6 @@ body:has(.login-section) {
             gap: var(--margin-padding-16);
             padding: var(--margin-padding-24);
             align-items: flex-start;
-        }
-
-        tr {
-            background-color: var(--white);
         }
 
         td {
@@ -1865,4 +1861,54 @@ a[href^="tel:"]:hover, a[href^="mailto:"]:hover {
     box-shadow: var(--general-shadow);
     width: 100%;
     padding: var(--margin-padding-16);
+}
+
+
+
+
+@media (max-width: 1199px) {
+    thead{
+        th:not([sortable]){
+            position: absolute;
+            overflow: hidden;
+            clip: rect(0 0 0 0);
+            height: 1px;
+            width: 1px;
+            margin: -1px;
+            padding: 0;
+            border: 0;
+        }
+        tr th{
+            display: inline-block;
+            width: fit-content;
+            padding: var(--margin-padding-16);
+            background-color: var(--dark-red);
+            border-radius: var(--borderradius-16);
+            height: fit-content;
+            color: white;
+        }
+        >tr{
+            background-color: transparent;
+            display: flex;
+            flex-direction: row;
+            gap: var(--margin-padding-16);
+            flex-wrap: wrap;
+            min-height: fit-content;
+
+        }
+        .active-sort {
+            background-color: var(--light-red);
+        }
+        display: block;
+        margin-bottom: var(--margin-padding-40);
+    }
+    table .table-row{
+        border-radius: var(--borderradius-16);
+        grid-column-gap: var(--margin-padding-32);
+        grid-template-columns: 44px 1fr;
+        padding: var(--margin-padding-24) var(--margin-padding-16);
+    }
+    tr{
+        background-color: var(--white);
+    }
 }
