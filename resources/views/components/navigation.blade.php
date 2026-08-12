@@ -50,7 +50,7 @@
             <a href="{{route('worker.products', ['locale' => __('general.currentLocale')])}}" title="{{__('navigation.go_products')}}" class="nav__link__header" aria-label="{{__('navigation.go_products')}}">{{__('navigation.products')}}</a>
         </li>
         <li class="nav__item__header">
-            <a href="{{route('worker::order', ['locale' => __('general.currentLocale')])}}" class="nav__link__header" title="{{__('navigation.go_order')}}" aria-label="{{__('navigation.go_order')}}">{{__('navigation.order')}}</a>
+            <a href="{{route('worker::cart', ['locale' => __('general.currentLocale')])}}" class="nav__link__header" title="{{__('navigation.go_cart')}}" aria-label="{{__('navigation.go_cart')}}">{{__('navigation.cart')}}</a>
         </li>
             <li class="nav__item__header">
                 <a href="{{route('worker.contact', ['locale' => __('general.currentLocale')])}}" class="nav__link__header" title="{{__('navigation.go_contact')}}" aria-label="{{__('navigation.go_contact')}}">{{__('navigation.contact')}}</a>
