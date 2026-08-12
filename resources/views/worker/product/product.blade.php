@@ -1,5 +1,6 @@
  <section class="text-white background-dark margin-first-content-top">
-        <h2 class="uppercase text-white fs-page-title bold page-title mb-64" aria-level="2" role="heading">
+     <x-worker.return-button class=""></x-worker.return-button>
+     <h2 class="uppercase text-white fs-page-title bold page-title mb-64" aria-level="2" role="heading">
             {{$product->product_name}}
         </h2>
         <div class="product-details j-c-space-b">
@@ -85,4 +86,36 @@
                 </x-worker.definition>
             </dl>
         </div>
+     <div class="most-ordered-products m-b-64 m-t-32">
+         <h3 class="uppercase worker-sub bold">
+             {{__('worker/product.you_order_often')}}
+         </h3>
+         <ul class="cart-suggestions-list d-flex flex-wrap flex-gap-24">
+             @forelse($most_ordered as $item)
+                 <li>
+                     <x-worker.product-card productname="{{$item['product']->product_name}}" product_image="{{$item['product']->product_image}}" product_id="{{$item['product']->id}}"/>
+                 </li>
+             @empty
+                 <li>
+                     <x-worker.product-card productname="{{__('worker/homepage.no_product_found')}}" product_id=""/>
+                 </li>
+             @endforelse
+         </ul>
+     </div>
+     <div class="last-ordered-products">
+         <h3 class="uppercase worker-sub bold">
+             {{__('worker/product.your_last_orders')}}
+         </h3>
+         <ul class="cart-suggestions-list d-flex flex-wrap flex-gap-24">
+             @forelse($last_ordered as $item)
+                 <li>
+                     <x-worker.product-card productname="{{$item['product']->product_name}}" product_image="{{$item['product']->product_image}}" product_id="{{$item['product']->id}}"/>
+                 </li>
+             @empty
+                 <li>
+                     <x-worker.product-card productname="{{__('worker/homepage.no_product_found')}}" product_id=""/>
+                 </li>
+             @endforelse
+         </ul>
+     </div>
     </section>
