@@ -3,6 +3,8 @@
         {{__('admin/orders.order_number_title')}} {{$order->id}}
     </x-admin.page-bar>
     <div class="main-container">
+        <x-admin.return-button class=""></x-admin.return-button>
+
         <section class="project-information max-w-admin-web big-section">
 
             <x-admin.components.subtitle>
@@ -81,10 +83,10 @@
                     <table class="split-table">
                         <thead>
                         <tr>
-                            <x-admin.components.table.table-th scope="col" direction="asc">
+                            <x-admin.components.table.table-th scope="col" direction="asc" class="">
                                 {{__('admin/orders.product_name')}}
                             </x-admin.components.table.table-th>
-                            <x-admin.components.table.table-th scope="col" direction="asc">
+                            <x-admin.components.table.table-th scope="col" direction="asc" class="">
                                 {{__('admin/orders.quantity')}}
                             </x-admin.components.table.table-th>
                         </tr>

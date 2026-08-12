@@ -36,6 +36,7 @@
         {{__('admin/projects.create_a_project')}}
     </x-admin.page-bar>
     <div class="main-container">
+        <x-admin.return-button class=""></x-admin.return-button>
         <form wire:submit.prevent="store" class="profile-form volunteers-edit">
             @csrf
             <fieldset class="project-information max-w-admin-web big-section">

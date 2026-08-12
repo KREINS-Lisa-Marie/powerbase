@@ -34,6 +34,7 @@
         {{__('admin/products.create_a_product')}}
     </x-admin.page-bar>
     <div class="main-container">
+        <x-admin.return-button class=""></x-admin.return-button>
         <form wire:submit.prevent="store" class="profile-form volunteers-edit" enctype="multipart/form-data">
             @csrf
             <fieldset class="contact-information max-w-admin-web big-section">

@@ -3,6 +3,7 @@
         {{$contact->first_name}} {{$contact->last_name}}
     </x-admin.page-bar>
     <div class="main-container">
+        <x-admin.return-button class=""></x-admin.return-button>
         <section class="contact-information max-w-admin-web big-section">
 
             <x-admin.components.subtitle>
