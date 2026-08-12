@@ -41,7 +41,7 @@ new class extends Component
                 ->orderBy($this->sortField, $this->sortDirection)
                 ->paginate(10)->onEachSide(0),
             'user' => $user
-        ]);
+        ])->title(__('general.contacts'));
     }
 
 };

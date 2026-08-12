@@ -34,6 +34,6 @@ new class extends Component
                 ->orWhere('updated_at', 'like', '%' . $this->search . '%')
                 ->orderBy($this->sortField, $this->sortDirection)
                 ->paginate(10)->onEachSide(0),
-        ]);
+        ])->title(__('general.projects'));
     }
 };

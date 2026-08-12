@@ -53,4 +53,11 @@ new class extends Component
 
         $this->redirect(route('pages::projects.show', ['locale' => __('general.currentLocale'), 'project'=>$this->project]));
     }
+
+
+
+    public function render()
+    {
+        return view('pages.projects.⚡edit.edit')->title(__('general.project_edit'));
+    }
 };

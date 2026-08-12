@@ -62,4 +62,10 @@ new class extends Component {
 
         $this->redirect(route('pages::contacts.show', ['locale' => __('general.currentLocale'), 'contact'=>$this->contact]));
     }
+
+
+    public function render()
+    {
+        return view('pages.contacts.⚡edit.edit')->title(__('general.contact_edit'));
+    }
 };

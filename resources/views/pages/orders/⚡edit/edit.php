@@ -169,6 +169,13 @@ new class extends Component
         $this->cart= [];
         $this->redirect(route('pages::orders.show', ['locale' => __('general.currentLocale'), 'order'=>$this->order]));
     }
+
+
+    public function render()
+    {
+        return view('pages.orders.⚡edit.edit')->title(__('general.order_edit'));
+    }
+
 };
 
 

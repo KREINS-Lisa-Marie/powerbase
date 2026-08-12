@@ -42,7 +42,7 @@ new class extends Component
                 ->orWhere('orders.created_at', 'like', '%' . $search . '%')
                 ->orderBy($this->sortField, $this->sortDirection)
                 ->paginate(10)->onEachSide(0),
-            ]);
+            ])->title(__('general.orders'));
     }
 };
 

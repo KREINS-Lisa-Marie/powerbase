@@ -17,7 +17,7 @@ new class extends Component
         $contact = \App\Models\User::findOrFail($this->contact_id);
         $user = auth()->user();
 
-        return view('pages.contacts.⚡show.show', ['contact' => $contact, 'user' => $user]);
+        return view('pages.contacts.⚡show.show', ['contact' => $contact, 'user' => $user])->title(__('general.contact_detail'));
     }
 
     public function destroy()

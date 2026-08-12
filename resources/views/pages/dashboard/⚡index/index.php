@@ -64,7 +64,7 @@ new #[Layout('layouts.app')] class extends Component
             ?$five_orders->sortBy($this->sortField)
                 : $five_orders->sortByDesc($this->sortField);
 
-        return view('pages.dashboard.⚡index.index');
+        return view('pages.dashboard.⚡index.index')->title(__('general.dashboard'));
     }
 
 };

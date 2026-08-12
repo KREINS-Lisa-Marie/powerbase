@@ -24,6 +24,6 @@ class ProductController extends Controller
         ->orWhere('product_notes', 'like', '%' . $search . '%')
         ->orderBy('product_name', 'asc')
         ->paginate(20)->onEachSide(0),
-        ]);
+         'title' => __('general.worker_products')]);
     }
 }
