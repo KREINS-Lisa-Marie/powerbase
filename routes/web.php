@@ -136,9 +136,19 @@ Route::get('/{locale}/contact', function () {
     'auth', 'isWorker',
 ]);
 
-Route::livewire('/{locale}/order', 'worker::order')->name('worker::order')->middleware([
+Route::livewire('/{locale}/cart', 'worker::cart')->name('worker::cart')->middleware([
     'auth', 'isWorker',
 ]);
+
+
+Route::livewire('/{locale}/orders', 'worker::orders')->name('worker::orders')->middleware([
+    'auth', 'isWorker',
+]);
+
+Route::livewire('/{locale}/orders/{order}/show', 'worker::orders.show')->name('worker::orders.show')->middleware([
+    'auth', 'isWorker'
+]);
+
 
 Route::get('/{locale}/profile', function () {
     return view('worker.profile');
