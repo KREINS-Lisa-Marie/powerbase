@@ -44,4 +44,6 @@ return [
     'no_result'=>'Pas de commande trouvé',
 
     'choose_product'=>'Choisissez un produit',
+    'create_project'=>'Créér un projet',
+    'close'=>'Fermer',
 ];
