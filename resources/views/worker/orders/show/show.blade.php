@@ -9,7 +9,7 @@
         <p class="worker-sub "> {{__('admin/orders.order_state')}} : {{$order->order_state == 'pending'?__('worker/order.pending'): __('worker/order.completed')}}
         </p>
     </div>
-    
+
     <table class="table max-w-admin-web worker-orders-table worker-order-detail-table">
         <thead class="max-w-admin-web">
         <tr class="max-w-admin-web">
