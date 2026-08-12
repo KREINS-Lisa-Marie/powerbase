@@ -60,7 +60,7 @@ new class extends Component
 
         return view('pages.projects.⚡show.show', [
             'products' => $sorted, 'user' => $user, 'project' => $project
-        ]);
+        ])->title(__('general.show_project'));
     }
 
     // Asort parce que c'est un Associative array

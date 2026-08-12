@@ -1,4 +1,4 @@
-<x-worker.app>
+<x-worker.app :title="$title">
     <x-worker.page-title>
         {{__('worker/homepage.hello')}} {{$user->first_name}}
     </x-worker.page-title>

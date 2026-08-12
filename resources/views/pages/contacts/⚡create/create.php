@@ -53,4 +53,9 @@ new class extends Component
 
         $this->redirectRoute('pages::contacts.index', ['locale' => __('general.currentLocale')]);
     }
+
+    public function render()
+    {
+        return view('pages.contacts.⚡create.create')->title(__('general.contact_create'));
+    }
 };

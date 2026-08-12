@@ -1,4 +1,4 @@
-<x-worker.app>
+<x-worker.app :title="$title">
     <section class="products-page-section">
         <x-worker.title>
             {{__('worker/products.products')}}

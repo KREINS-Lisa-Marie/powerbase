@@ -93,4 +93,10 @@ new class extends Component
 
         $this->redirect(route('pages::products.show', ['locale' => __('general.currentLocale'), 'product'=>$this->product]));
     }
+
+
+    public function render()
+    {
+        return view('pages.products.⚡edit.edit')->title(__('general.product_edit'));
+    }
 };

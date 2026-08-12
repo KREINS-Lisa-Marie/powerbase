@@ -72,4 +72,10 @@ new class extends Component
 
         $this->redirectRoute('pages::products.index', ['locale' => __('general.currentLocale')]);
     }
+
+
+    public function render()
+    {
+        return view('pages.products.⚡create.create')->title(__('general.product_create'));
+    }
 };

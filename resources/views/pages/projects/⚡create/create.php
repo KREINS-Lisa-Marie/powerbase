@@ -48,4 +48,11 @@ new class extends Component
 
         $this->redirect(route('pages::projects.index', ['locale' => __('general.currentLocale'), 'users'=>$this->users]));
     }
+
+
+    public function render()
+    {
+        return view('pages.projects.⚡create.create')->title(__('general.project_create'));
+    }
+
 };

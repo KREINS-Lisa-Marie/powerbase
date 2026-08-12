@@ -37,4 +37,8 @@ new class extends Component
 
         $this->redirect(route('pages::profile.index', ['locale' => app()->getLocale(), 'contact'=>$this->user]));
     }
+
+    public function render()  {
+        return view('pages.profile.⚡edit.edit')->title(__('general.profile_edit'));
+    }
 };
