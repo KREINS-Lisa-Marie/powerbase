@@ -23,7 +23,7 @@
             <table class="table max-w-admin-web">
                 <thead>
                 <tr>
-                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('user_id')" :direction="$sortField === 'user_id'? $sortDirection : null" class="{{$sortField === 'user_id'? 'active-sort': ''}}">
+                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('user_id')" :direction="$sortField === 'user_id'? $sortDirection : null" class="bold {{$sortField === 'user_id'? 'active-sort': ''}}">
                         {{__('admin/orders.ordered_by')}}
                     </x-admin.components.table.table-th>
     {{--order_items_count se fait automatiquement quand je fais un withcount    -> nom model_count --}}
@@ -64,7 +64,7 @@
                             <span
                                 class="show-web">{{__('admin/orders.state')}}</span>
                             {{$order->order_state == 'completed' ? __('admin/orders.completed') : __('admin/orders.pending')}}
-                            <a href="{{route('pages::orders.show',  ['locale' => __('general.currentLocale'),  'order' => $order->id])}}"
+                            <a href="{{route('pages::orders.show',  ['locale' => app()->getLocale(),  'order' => $order->id])}}"
                                title="{{__('admin/orders.go_to_order_page')}}" class="card-link">
                             </a>
                         </x-admin.components.table.table-td>
