@@ -18,6 +18,14 @@ max-width / centering
  display: flex;
 }
 
+.d-inline{
+ display: inline;
+}
+
+.flex-gap-16{
+    gap: var(--margin-padding-16);
+}
+
 .flex-gap-24{
     gap: var(--gap-24);
 }
@@ -48,6 +56,10 @@ max-width / centering
 
 .flex-c{
     flex-direction: column;
+}
+
+.flex-r{
+    flex-direction: row;
 }
 
 
@@ -138,4 +150,8 @@ justify-content: space-between;
 
 .position-relative{
     position: relative;
+}
+
+.flex-a-i-center{
+    align-items: center;
 }
