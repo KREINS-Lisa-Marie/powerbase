@@ -12,4 +12,7 @@ return [
 
     'added_to_cart' => 'Produkt zur Bestellung hinzugefügt',
     'qt_must_be_one'=>'Menge muss >0 sein',
+    'return'=>'Zurück',
+    'your_last_orders'=>'Ihre letzten Bestellungen',
+    'you_order_often'=>'Sie bestellen auch häufig',
 ];

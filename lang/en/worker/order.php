@@ -21,4 +21,11 @@ return [
     'project_name_error'=>' The field "Project name" is mandatory',
     'needs_product'=>'To order, you need to choose a product',
     'increment_qt'=>'Quantity must be at least 1',
+
+    'orders'=>'My orders',
+    'some_orders'=>'Latest orders',
+    'see_all_orders'=>'View all orders',
+    'link_to_product'=>'Link to product',
+    'see_the_product'=>'View product',
+    'your_most_ordered'=>'Most ordered',
 ];

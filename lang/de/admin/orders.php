@@ -43,4 +43,6 @@ return [
     'no_result'=>'Keine Bestellung gefunden',
 
     'choose_product'=>'Produkt auswählen',
+    'close'=>'Schließen',
+    'create_project'=>'Projekt erstellen',
 ];
