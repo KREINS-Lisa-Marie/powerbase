@@ -5,7 +5,7 @@ use Livewire\Livewire;
 
 
 beforeEach(function(){
-    $this-> user = User::factory()-> create();
+    $this-> user = User::factory()-> create(['job'=>'storekeeper']);
     \Pest\Laravel\actingAs($this-> user);});
 
 

@@ -9,14 +9,14 @@ use function Pest\Laravel\actingAs;
 uses(RefreshDatabase::class);
 
 beforeEach(function(){
-    $this-> user = User::factory()-> create();
+    $this-> user = User::factory()-> create(['job'=>'storekeeper']);
     \Pest\Laravel\actingAs($this-> user);});
 
 
 it('renders successfully', function () {
 
     $worker = User::factory()->create([
-        'job' => 'worker',
+        'job' => 'storekeeper',
     ]);
     $random_project_state = 'Particulier';
 
@@ -59,7 +59,7 @@ it('verifies that the projects show page is showing content elements in the righ
 it('displays a detail page of a project and verifies if there is data', function () {
 
     $worker = User::factory()->create([
-        'job' => 'worker',
+        'job' => 'storekeeper',
     ]);
 
     $random_project_state = 'Clôturé';
@@ -67,6 +67,7 @@ it('displays a detail page of a project and verifies if there is data', function
 
     $project = Project::factory()->create([
         'user_id' => $worker->id,
+        'project_name' => 'New Project',
         'project_type' => $random_project_type,
         'project_state' => $random_project_state,
         'client_name' => "Random name",
@@ -78,7 +79,7 @@ it('displays a detail page of a project and verifies if there is data', function
     Livewire::test('pages::projects.show', [
         'project' => $project,
     ])
-        ->assertSee($project->project_name)
+        ->assertSee('New Project')
         ->assertSee($project->user_id)
         ->assertSee($project->project_type)
         ->assertSee($project->project_state)
