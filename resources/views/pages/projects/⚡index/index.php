@@ -12,6 +12,11 @@ new class extends Component
     public $sortDirection = 'asc';
     protected $queryString =['sortField', 'sortDirection'];
 
+    public function mount(): void
+    {
+        $this->authorize('viewAny', Project::class);        //sinon ça doit à chaque sort vérifier authorization        //tous les users peuvent voir tous les projets
+    }
+
 
     public function sortBy($field)
     {

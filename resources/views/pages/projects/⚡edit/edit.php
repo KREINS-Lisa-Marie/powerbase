@@ -18,6 +18,8 @@ new class extends Component
 
     public function mount(Project $project): void
     {
+        $this->authorize('update', $project);
+
         $this->project = $project;
         $this->project_name = $project->project_name;
         $this->user_id = $project->user_id;
