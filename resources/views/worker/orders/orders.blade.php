@@ -1,65 +1,5 @@
- {{--<section class="background-dark text-white section-end-128 admin">
-        <h2 class="uppercase text-white fs-page-title bold page-title mb-64" aria-level="2" role="heading">
-            {{__('worker/order.orders')}}
-        </h2>
-        <table class="d-flex admin table max-w-admin-web worker-orders-table">
-            <thead>
-            <tr class="table-row">
-                <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('id')" :direction="$sortField === 'id'? $sortDirection : null" class="{{$sortField === 'id'? 'active-sort': ''}}">
-                    {{__('admin/orders.order_number')}}
-                </x-admin.components.table.table-th>
-                <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('first_name')" :direction="$sortField === 'first_name'? $sortDirection : null" class="{{$sortField === 'first_name'? 'active-sort': ''}}">
-                    {{__('admin/contacts.full_name')}}
-                </x-admin.components.table.table-th>
-                <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('first_name')" :direction="$sortField === 'first_name'? $sortDirection : null" class="{{$sortField === 'first_name'? 'active-sort': ''}}">
-                    {{__('admin/contacts.full_name')}}
-                </x-admin.components.table.table-th>
-                <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('first_name')" :direction="$sortField === 'first_name'? $sortDirection : null" class="{{$sortField === 'first_name'? 'active-sort': ''}}">
-                    {{__('admin/contacts.full_name')}}
-                </x-admin.components.table.table-th>
-            </tr>
-            </thead>
-            <tbody>
-            @forelse($orders as $old_order)
-                @php
-                    $project = App\Models\Project::where('id', $old_order->project_id)->first();
-                    $project_name = $project->project_name;
-
-                    $nb_products = \App\Models\OrderItem::where('order_id', $old_order->id )->get();
-                @endphp
-
-                <tr>
-                    <td>
-                        <p>
-                            {{$old_order->order_state == 'pending'?__('worker/order.pending'): __('worker/order.completed')}}
-                        </p>
-                    </td>
-                    <td>
-                        {{$project_name}}
-                    </td>
-                    <td>
-                        {{$nb_products->count()}} {{__('worker/order.products')}}
-                    </td>
-                    <td>
-                        <a href="" class="order-detail-btn">
-                            {{__('worker/order.see_the_order')}}
-                        </a>
-                    </td>
-                </tr>
-            @empty
-                <tr>
-                    {{__('worker/order.no_order_found')}}
-                </tr>
-            @endforelse
-            </tbody>
-        </table>
-
-        <div class="pagination-worker max-w-admin-web">
-            {{ $orders->links() }}
-        </div>
- </section>--}}
-
- <section class=" worker-orders background-dark text-white section-end-128 admin orders-index-page orders-list">
+@can('viewAnyLimited', $orders)
+<section class=" worker-orders background-dark text-white section-end-128 admin orders-index-page orders-list">
      <h2 class="uppercase text-white fs-page-title bold page-title mb-64" aria-level="2" role="heading">
          {{__('worker/order.orders')}}
      </h2>
@@ -134,7 +74,7 @@
          {{ $orders->links() }}
      </div>
  </section>
-
+@endcan
 {{--
 take()
 https://stackoverflow.com/questions/45120135/in-laravel-eloquent-what-is-the-difference-between-limit-vs-take
