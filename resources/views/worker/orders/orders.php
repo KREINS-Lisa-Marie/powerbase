@@ -34,6 +34,7 @@ new class extends Component
         $this->user = Auth::user();
         $orders = Order::where('user_id', $this->user->id);
 
+        $this->authorize('viewAnyLimited', $orders);
     }
 
 

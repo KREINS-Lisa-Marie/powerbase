@@ -27,6 +27,8 @@ new class extends Component
 
     public function mount(Product $product)         //avant de render ( 1x seulement)
     {
+        $this->authorize('update', $product);
+
         $this->product = $product;
         $this->product_name = $product->product_name;
         $this->brand = $product->brand;

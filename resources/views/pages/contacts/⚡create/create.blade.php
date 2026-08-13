@@ -28,7 +28,7 @@
 @endphp
 
 
-
+@can('create', \App\Models\User::class)
 <main class="admin" id="content">
     <x-admin.page-bar>
         {{__('admin/contacts.create_a_contact')}}
@@ -176,3 +176,4 @@
         </form>
     </div>
 </main>
+@endcan

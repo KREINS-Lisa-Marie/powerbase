@@ -14,6 +14,7 @@ new class extends Component
 
     public function mount(Product $product)
     {
+        $this->authorize('viewLimited', $product);
         $this->product = $product;
     }
 

@@ -1,3 +1,4 @@
+@can('view', $project)
 <main class="admin project-show" id="content">
     <x-admin.page-bar>
         {{$project->project_name}}
@@ -141,10 +142,11 @@
 
             </section>
             <div class="admin-information-buttons">
+                @can('update', $project)
                 <x-admin.components.admin-primary-button href="{{route('pages::projects.edit', ['locale' => __('general.currentLocale'), 'project' => $project])}}" title="{{__('admin/projects.modify_project')}}"  class="">
                     {{__('admin/projects.modify_project')}}
                 </x-admin.components.admin-primary-button>
-
+                @endcan
                 <button onclick="window.print()" class="text-white border-radius-16 admin-secondary-button bold t-a-center">
                     {{__('admin/projects.print_project')}}
                 </button>
@@ -153,3 +155,4 @@
         </div>
     </div>
 </main>
+@endcan

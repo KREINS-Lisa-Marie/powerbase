@@ -23,10 +23,18 @@ new class extends Component
     public bool $isopenModal = false;
     public $users;
 
+
+    public function mount()
+    {
+        $this->authorize('create', \App\Models\Order::class);
+    }
+
     public function openModal( )
     {
         $this->users = User::get();
-        
+
+        $this->authorize('create', Project::class);   // ajouter car sinon policy ne marche pas
+
         $this->isopenModal = true;
     }
 

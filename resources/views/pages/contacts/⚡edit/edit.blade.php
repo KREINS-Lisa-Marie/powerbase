@@ -28,7 +28,7 @@
 @endphp
 
 
-
+@can('update', $contact)
 <main class="admin" id="content">
     <x-admin.page-bar>
         {{__('admin/contacts.modify_contact')}}
@@ -133,3 +133,4 @@
         </form>
     </div>
 </main>
+@endcan

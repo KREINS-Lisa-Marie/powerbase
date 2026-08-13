@@ -30,7 +30,7 @@
     }
 @endphp
 
-
+@can('create', \App\Models\Project::class)
 <main class="admin project" id="content">
     <x-admin.page-bar>
         {{__('admin/projects.create_a_project')}}
@@ -120,3 +120,4 @@
         </form>
     </div>
 </main>
+@endcan

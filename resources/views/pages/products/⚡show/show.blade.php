@@ -1,3 +1,4 @@
+@can('view', $product)
 <main class="admin product" id="content">
     <x-admin.page-bar>
         {{$product->product_name}}
@@ -90,19 +91,21 @@
         </section>
         <div class="split-row">
             <div class="admin-information-buttons">
+                @can('update', $product)
                 <x-admin.components.admin-primary-button href="{{route('pages::products.edit', ['locale' => __('general.currentLocale'), 'product' => $product])}}" title="{{__('admin/products.modify_product')}}"  class="">
                     {{__('admin/products.modify_product')}}
                 </x-admin.components.admin-primary-button>
-
-                @if($user->job == 'admin' )
+                @endcan
+                @can('delete', $product)
                 <form wire:submit="destroy" method="post">
                     @csrf
                     <x-admin.components.delete-btn title="{{__('admin/products.delete_product')}}">
                         {{__('admin/products.delete_product')}}
                     </x-admin.components.delete-btn>
                 </form>
-                @endif
+                @endcan
             </div>
         </div>
     </div>
 </main>
+@endcan

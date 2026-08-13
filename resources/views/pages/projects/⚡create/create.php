@@ -19,6 +19,7 @@ new class extends Component
 
     public function mount()
     {
+        $this->authorize('create', \App\Models\Project::class);
         $this->users = User::get();
     }
 

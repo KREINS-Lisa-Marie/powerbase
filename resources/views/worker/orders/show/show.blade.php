@@ -1,3 +1,4 @@
+@can('viewLimited', $order)
 <section class=" worker-orders background-dark text-white section-end-128 admin orders-index-page orders-list">
     <h2 class="uppercase text-white fs-page-title bold page-title mb-64" aria-level="2" role="heading">
         {{__('worker/orders.order_details')}} {{__('worker/orders.order_number')}} {{$order->id}}
@@ -71,6 +72,7 @@
     </div>
     @endif
 </section>
+@endcan
 
 {{--
 take()

@@ -1,3 +1,4 @@
+@can('viewLimited', $product)
  <section class="text-white background-dark margin-first-content-top">
      <x-worker.return-button class=""></x-worker.return-button>
      <h2 class="uppercase text-white fs-page-title bold page-title mb-64" aria-level="2" role="heading">
@@ -119,3 +120,4 @@
          </ul>
      </div>
     </section>
+@endcan

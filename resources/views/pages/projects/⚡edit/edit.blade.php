@@ -31,7 +31,7 @@
     }
 @endphp
 
-
+@can('update', $project)
 <main class="admin project-show" id="content">
     <x-admin.page-bar>
         {{__('admin/projects.modify')}}
@@ -114,3 +114,4 @@
         </form>
     </div>
 </main>
+@endcan

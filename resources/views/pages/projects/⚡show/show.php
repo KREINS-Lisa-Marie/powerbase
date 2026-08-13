@@ -10,6 +10,7 @@ new class extends Component
 
     public function mount(Project $project)         //avant de render ( 1x seulement)
     {
+        $this->authorize('view', $project);
         $this->project_id = $project->id;
     }
 

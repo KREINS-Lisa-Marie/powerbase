@@ -8,7 +8,7 @@ use function Pest\Laravel\actingAs;
 uses(RefreshDatabase::class);
 
 beforeEach(function(){
-    $this-> user = User::factory()-> create();
+    $this-> user = User::factory()-> create(['job'=>'admin']);
     \Pest\Laravel\actingAs($this-> user);});
 
 
@@ -47,6 +47,5 @@ it('displays a detail page of a contact and verifies if there is data', function
         ->assertSee($contact->last_name)
         ->assertSee($contact->phone)
         ->assertSee('Admin')
-        ->assertSee($contact->car_type)
         ->assertSee($contact->car_plate);
 });

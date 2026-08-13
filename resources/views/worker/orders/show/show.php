@@ -13,7 +13,7 @@ new class extends Component
 
     public function mount(Order $order)         //avant de render ( 1x seulement)
     {
-
+        $this->authorize('viewLimited', $order);
         $this->user = Auth::user();
 
         $this->orderItems = $order->orderItems;

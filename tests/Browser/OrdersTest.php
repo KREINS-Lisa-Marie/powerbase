@@ -45,7 +45,7 @@ it('can click an order card and go to the show page',
 
 it('can click on create an order and go to the create page', function () {
 
-    $user = User::factory()->create();
+    $user = User::factory()->create(['job'=>'storekeeper']);
     $locale = app()->getLocale();
     actingAs($user);
 
@@ -96,7 +96,7 @@ it('can click the edit button of a order and go to the edit page', function () {
 
 it('can create a order and redirect to the show page', function () {
 
-    $user = User::factory()->create();
+    $user = User::factory()->create(['job'=>'storekeeper']);
     $locale = app()->getLocale();
     actingAs($user);
 
