@@ -10,7 +10,7 @@ new class extends Component
 
     public function mount(Product $product)         //avant de render ( 1x seulement)
     {
-
+        $this->authorize('view', $product);
         $this->product_id = $product->id;
     }
 

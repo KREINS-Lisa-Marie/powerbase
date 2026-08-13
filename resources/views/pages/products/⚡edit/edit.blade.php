@@ -27,6 +27,7 @@
 ];
 @endphp
 
+@can('update', $product)
 <main class=" admin product" id="content">
     <x-admin.page-bar>
  {{__('admin/products.modify')}}
@@ -121,3 +122,4 @@
         </form>
     </div>
 </main>
+@endcan

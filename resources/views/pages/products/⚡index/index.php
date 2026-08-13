@@ -16,6 +16,11 @@ new class extends Component
     protected $queryString =['sortField', 'sortDirection'];
 
 
+    public function mount(): void
+    {
+        $this->authorize('viewAny', Product::class);        //sinon ça doit à chaque sort vérifier authorization        //tous les users peuvent voir tous les contacts
+    }
+
     public function sortBy($field)
     {
         if ($this->sortField === $field){

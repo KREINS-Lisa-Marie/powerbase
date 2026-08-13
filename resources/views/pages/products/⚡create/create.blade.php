@@ -28,7 +28,7 @@
 @endphp
 
 
-
+@can('create', \App\Models\Product::class)
 <main class="admin product" id="content">
     <x-admin.page-bar>
         {{__('admin/products.create_a_product')}}
@@ -121,3 +121,4 @@
         </form>
     </div>
 </main>
+@endcan
