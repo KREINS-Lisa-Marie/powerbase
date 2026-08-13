@@ -1,3 +1,4 @@
+@can('viewAny', \App\Models\Order::class)
 <main class="admin orders-index-page" id="content">
     <x-admin.page-bar>
         {{__('admin/orders.orders')}}
@@ -5,11 +6,13 @@
     <div class="main-container">
         <div class="admin-filters-buttons max-w-admin-web">
             <div class="top-row">
+                @can('create', \App\Models\Order::class)
                 <x-admin.components.admin-primary-button
                     href="{{route('pages::orders.create', ['locale' => __('general.currentLocale')])}}"
                     title="{{__('admin/orders.go_to_create_order')}}" class="">
                     {{__('admin/orders.create_an_order')}}
                 </x-admin.components.admin-primary-button>
+                @endcan
             </div>
             <div class="bottom-row">
                 <x-admin.components.fields.search/>
@@ -85,3 +88,4 @@
     </div>
 
 </main>
+@endcan

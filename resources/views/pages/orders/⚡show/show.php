@@ -11,6 +11,7 @@ new class extends Component
     public int $order_id;
     public function mount(Order $order)         //avant de render ( 1x seulement)
     {
+        $this->authorize('view', $order);
         $this->orderItems = $order->orderItems;
 
         $this->order_id = $order->id;

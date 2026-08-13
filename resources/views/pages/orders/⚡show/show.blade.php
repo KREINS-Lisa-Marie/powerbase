@@ -1,3 +1,4 @@
+@can('view', $order)
 <main class="admin project-show" id="content">
     <x-admin.page-bar>
         {{__('admin/orders.order_number_title')}} {{$order->id}}
@@ -127,9 +128,11 @@
 
             </section>
             <div class="admin-information-buttons">
-                <x-admin.components.admin-primary-button href="{{route('pages::orders.edit', ['locale' => __('general.currentLocale'), 'order' => $order])}}" title="{{__('admin/orders.modify_order')}}"  class="">
+                @can('update', $order)
+                <x-admin.components.admin-primary-button href="{{route('pages::orders.edit', ['locale' => app()->getLocale(), 'order' => $order])}}" title="{{__('admin/orders.modify_order')}}"  class="">
                     {{__('admin/orders.modify_order')}}
                 </x-admin.components.admin-primary-button>
+                @endcan
                 <button onclick="window.print()" class="text-white border-radius-16 admin-secondary-button bold t-a-center">
                     {{__('admin/orders.print_order')}}
                 </button>
@@ -137,3 +140,4 @@
         </div>
     </div>
 </main>
+@endcan

@@ -20,7 +20,7 @@ new class extends Component
     public function mount(Order $order): void
     {
         //ça définit les trucs à afficher
-
+        $this->authorize('update', $order);
         $this->order = $order;
         $this->user_id = $order->user_id;
         $this->order_state = $order->order_state;

@@ -69,7 +69,7 @@ $orders_project_options = [];
 @endphp
 
 
-
+@can('create', \App\Models\Order::class)
 <main class="admin order " id="content">
     <x-admin.page-bar>
         {{__('admin/orders.create_an_order')}}
@@ -177,7 +177,7 @@ $orders_project_options = [];
             </div>
         </form>
         @if($isopenModal)
-
+            @can('create', \App\Models\Project::class)
             <div class="bg-opacity">
                 <form wire:submit.prevent="storeProject"
                       class="profile-form volunteers-edit message-modal border-r-small z-index-10 max-w-web ">
@@ -257,6 +257,8 @@ $orders_project_options = [];
                     </div>
                 </form>
             </div>
+            @endcan
         @endif
     </div>
 </main>
+@endcan
