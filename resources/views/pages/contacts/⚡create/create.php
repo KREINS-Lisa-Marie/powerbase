@@ -22,6 +22,12 @@ new class extends Component
     public string $password = '';
     public string $password_confirmation = '';
 
+
+    public function mount()
+    {
+        $this->authorize('create', User::class);
+    }
+
     public function store(): void
     {
         $validated_data= $this->validate([

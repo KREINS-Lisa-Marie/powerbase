@@ -1,10 +1,11 @@
+@can('viewAny', \App\Models\User::class)
 <main class="admin contact-index-page" id="content">
     <x-admin.page-bar>
         {{__('admin/contacts.contacts')}}
     </x-admin.page-bar>
     <div class="main-container">
         <div class="admin-filters-buttons max-w-admin-web">
-            @if($user->job == 'admin' )
+            @can('create', \App\Models\User::class)
             <div class="top-row">
                 <x-admin.components.admin-primary-button
                     href="{{route('pages::contacts.create', ['locale' => __('general.currentLocale')])}}"
@@ -12,7 +13,7 @@
                     {{__('admin/contacts.create_a_contact')}}
                 </x-admin.components.admin-primary-button>
             </div>
-            @endif
+            @endcan
             <div class="bottom-row bottom-row-volunteer">
                 <x-admin.components.fields.search/>
             </div>
@@ -83,3 +84,4 @@
     </div>
 
 </main>
+@endcan

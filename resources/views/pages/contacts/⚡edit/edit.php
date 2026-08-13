@@ -21,6 +21,8 @@ new class extends Component {
 
     public function mount(User $contact): void
     {
+        $this->authorize('update', $contact);
+
         $this->contact = $contact;
         $this->first_name = $contact->first_name;
         $this->last_name = $contact->last_name;
