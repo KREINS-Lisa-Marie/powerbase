@@ -6,16 +6,14 @@
     <div class="main-container">
         <div class="admin-filters-buttons max-w-admin-web">
             @can('create', \App\Models\User::class)
-            <div class="top-row">
+            <div class="bottom-row">
                 <x-admin.components.admin-primary-button
                     href="{{route('pages::contacts.create', ['locale' => __('general.currentLocale')])}}"
                     title="{{__('admin/contacts.go_to_create_contact')}}" class="">
                     {{__('admin/contacts.create_a_contact')}}
                 </x-admin.components.admin-primary-button>
-            </div>
-            @endcan
-            <div class="bottom-row bottom-row-volunteer">
-                <x-admin.components.fields.search/>
+                @endcan
+                    <x-admin.components.fields.search/>
             </div>
         </div>
 

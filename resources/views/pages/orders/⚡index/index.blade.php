@@ -5,7 +5,7 @@
     </x-admin.page-bar>
     <div class="main-container">
         <div class="admin-filters-buttons max-w-admin-web">
-            <div class="top-row">
+            <div class="bottom-row">
                 @can('create', \App\Models\Order::class)
                 <x-admin.components.admin-primary-button
                     href="{{route('pages::orders.create', ['locale' => __('general.currentLocale')])}}"
@@ -13,9 +13,7 @@
                     {{__('admin/orders.create_an_order')}}
                 </x-admin.components.admin-primary-button>
                 @endcan
-            </div>
-            <div class="bottom-row">
-                <x-admin.components.fields.search/>
+                    <x-admin.components.fields.search/>
             </div>
         </div>
 

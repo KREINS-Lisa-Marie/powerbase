@@ -5,15 +5,13 @@
     </x-admin.page-bar>
     <div class="main-container">
         <div class="admin-filters-buttons max-w-admin-web">
-            <div class="top-row">
+            <div class="bottom-row">
                 @can('create', \App\Models\Product::class)
                 <x-admin.components.admin-primary-button href="{{route('pages::products.create', ['locale' => __('general.currentLocale')])}}" title="{{__('admin/products.got_to_create_product')}}" class="">
                     {{__('admin/products.create_a_product')}}
                 </x-admin.components.admin-primary-button>
                 @endcan
-            </div>
-            <div class="bottom-row">
-                <x-admin.components.fields.search/>
+                    <x-admin.components.fields.search/>
             </div>
         </div>
         <section class="products-list">
