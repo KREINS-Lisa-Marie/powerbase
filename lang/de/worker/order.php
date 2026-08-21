@@ -28,4 +28,5 @@ return [
     'link_to_product'=>'Link zum Produkt',
     'see_the_product'=>'Produkt ansehen',
     'your_most_ordered'=>'Am häufigsten bestellt',
+    'filters'=>'Kategorie Filter',
 ];

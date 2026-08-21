@@ -8,7 +8,7 @@ uses(RefreshDatabase::class);
 
 
 beforeEach(function(){
-    $this-> user = User::factory()-> create();
+    $this-> user = User::factory()-> create(['job'=>'storekeeper']);
     \Pest\Laravel\actingAs($this-> user);});
 
 
@@ -32,11 +32,22 @@ it('redirects to the orders index route after the successfull creation of an ord
         $project = \App\Models\Project::factory()->create([
             'user_id'=> $user->id,
         ]);
+        $product = \App\Models\Product::factory()->create();
+
+        $cart = ['product'=>$product->id, 'quantity'=> 3];
+
+       /* $orderItem = \App\Models\OrderItem::factory()->create([
+            'order_id'=>$order->id,
+            'product_id'=>$product->id,
+            'quantity'=>3,
+        ]);*/
+
 
         Livewire::test('pages::orders.create')
             ->set('user_id', $user->id)
             ->set('order_state', $random_order_state)
             ->set('project_id', $project->id)
+            ->set('cart', $cart)
             ->call('store')
             ->assertHasNoErrors()
             ->assertRedirect(route('pages::orders.index', ['locale' => __('general.currentLocale')]));

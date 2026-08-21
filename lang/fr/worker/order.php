@@ -28,5 +28,5 @@ return [
     'link_to_product'=>'Lien vers le produit',
     'see_the_product'=>'Voir le produit',
     'your_most_ordered'=>'Les plus commandés',
-
+    'filters'=>'Filtres de catégorie',
 ];

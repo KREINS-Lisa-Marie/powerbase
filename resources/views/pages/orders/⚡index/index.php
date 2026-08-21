@@ -12,7 +12,7 @@ new class extends Component
     public  $search = '';
 
 //tri
-    public $sortField = 'user_id';
+    public $sortField = 'first_name';
     public $sortDirection = 'asc';
     protected $queryString =['sortField', 'sortDirection'];
 

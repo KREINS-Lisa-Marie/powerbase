@@ -28,4 +28,6 @@ return [
     'link_to_product'=>'Link to product',
     'see_the_product'=>'View product',
     'your_most_ordered'=>'Most ordered',
+    'filters'=>'Category filters',
+
 ];
