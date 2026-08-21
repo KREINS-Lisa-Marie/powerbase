@@ -24,7 +24,7 @@
             <table class="table max-w-admin-web">
                 <thead>
                 <tr>
-                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('user_id')" :direction="$sortField === 'user_id'? $sortDirection : null" class="bold {{$sortField === 'user_id'? 'active-sort': ''}}">
+                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('first_name')" :direction="$sortField === 'first_name'? $sortDirection : null" class="bold {{$sortField === 'first_name'? 'active-sort': ''}}">
                         {{__('admin/orders.ordered_by')}}
                     </x-admin.components.table.table-th>
     {{--order_items_count se fait automatiquement quand je fais un withcount    -> nom model_count --}}
