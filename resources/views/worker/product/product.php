@@ -18,6 +18,19 @@ new class extends Component
         $this->product = $product;
     }
 
+
+    public function incrementQuantity()
+    {
+        $this->quantity++;
+    }
+
+    public function decrementQuantity()
+    {
+        if ($this->quantity > 1) {
+            $this->quantity--;
+        }
+    }
+
     public function addToOrder( int $productId)
     {
         $product = Product::findOrFail($productId);

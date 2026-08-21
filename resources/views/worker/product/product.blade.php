@@ -18,9 +18,25 @@
                             <label for="quantity" class="field__label sro">
                                 {{__('admin/products.quantity')}}
                             </label>
-                            <input wire:model.live="quantity" type="number" name="quantity" id="quantity" value="{{$value ?? ''}}" class="t-a-center" placeholder="{{__('admin/products.wanted_quantity')}}" min="1" max="100"      {{--pas de max parce que parfois faut plus qu'il y a en stock et ça doit être commandé par le magasinier. Le worker peut voir combien il y en a en stock donc il voit combien il aura pour le lendemain--}}
-                            {{--j'ai mis live parce que si je mets blur, la personne doit cliquer hors du input pour que ça actualise quantity--}}
-                                   aria-required="true">
+                            {{--<input wire:model.live="quantity" type="number" name="quantity" id="quantity" value="{{$value ?? ''}}" class="t-a-center" placeholder="{{__('admin/products.wanted_quantity')}}" min="1" max="100"      --}}{{--pas de max parce que parfois faut plus qu'il y a en stock et ça doit être commandé par le magasinier. Le worker peut voir combien il y en a en stock donc il voit combien il aura pour le lendemain--}}{{--
+                            --}}{{--j'ai mis live parce que si je mets blur, la personne doit cliquer hors du input pour que ça actualise quantity--}}{{--
+                                   aria-required="true">--}}
+                            <div class="product-qt">
+                                <button type="button" wire:click="decrementQuantity()" class="decrement-btn">
+                                    -
+                                </button>
+                                <input wire:model.live="quantity" type="number"
+                                       name="quantity" id="quantity"
+                                       value="{{ $item['quantity']?? ''}}"
+                                       class="t-a-center background-white border-radius-16 p-16 max-w-560 w-100 m-b-32 text-black regular"
+                                       placeholder="{{__('worker/order.wanted_quantity')}}" min="1"
+                                       max="100"
+                                       {{--pas de max parce que parfois faut plus qu'il y a en stock et ça doit être commandé par le magasinier. Le worker peut voir combien il y en a en stock donc il voit combien il aura pour le lendemain--}}
+                                       aria-required="true">
+                                <button type="button" wire:click="incrementQuantity()" class="increment-btn">
+                                    +
+                                </button>
+                            </div>
                             @error('quantity')
                             {{$message}}
                             @enderror
