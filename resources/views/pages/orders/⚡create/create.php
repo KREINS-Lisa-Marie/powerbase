@@ -19,6 +19,7 @@ new class extends Component
     public string $client_name = '' ;
     public string $project_address = '' ;
     public string $project_description = '' ;
+    public string $project_user_id = '';
 
     public bool $isopenModal = false;
     public $users;
@@ -113,7 +114,7 @@ new class extends Component
     {
         $validated_data= $this->validate([
             'project_name'=>'required|string|max:255',
-            'user_id'=>'int|required',
+            'project_user_id'=>'int|required',
             'project_type'=>'required|string|max:255',
             'project_state'=>'required|string|max:255',
             'client_name'=>'required|string|max:255',
@@ -124,7 +125,7 @@ new class extends Component
 
         $project = Project::create([
             'project_name'=>$validated_data['project_name'],
-            'user_id'=>$validated_data['user_id'],
+            'user_id'=>$validated_data['project_user_id'],
             'project_type'=>$validated_data['project_type'],
             'project_state'=>$validated_data['project_state'],
             'client_name'=>$validated_data['client_name'],

@@ -206,7 +206,7 @@ $orders_project_options = [];
                                     </x-admin.components.fields.text>
                                 </div>
                                 <div>
-                                    <x-admin.components.fields.select select_name="user_id" label="{{__('admin/projects.person_in_charge')}}*" :options="$in_charge_options" wire="user_id">
+                                    <x-admin.components.fields.select select_name="project_user_id" label="{{__('admin/projects.person_in_charge')}}*" :options="$in_charge_options" wire="project_user_id">
                                     </x-admin.components.fields.select>
                                 </div>
                                 <div>
