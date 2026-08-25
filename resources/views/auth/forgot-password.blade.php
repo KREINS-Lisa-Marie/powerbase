@@ -1,4 +1,4 @@
- <x-worker.app>
+ <x-worker.app title="{{__('general.forgot_pw')}}">
      <h1 class="sro" role="heading" aria-level="1" data-element-id="headingsMap-0-0">
          {{__('auth/forgot_password.powerbase')}}
      </h1>

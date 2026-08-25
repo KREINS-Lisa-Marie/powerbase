@@ -1,4 +1,4 @@
-<th scope="{{ $scope }}" class="bold" {{ $attributes }}>
+<th scope="{{ $scope }}" class="bold {{ $class }}" {{ $attributes }}>
     {!! $slot!!}
     @if($direction === 'desc')
         ▲

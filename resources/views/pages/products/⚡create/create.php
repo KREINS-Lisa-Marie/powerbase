@@ -19,6 +19,11 @@ new class extends Component
     public string $product_description= '';
     public  $product_image = null ;
 
+    public function mount()
+    {
+        $this->authorize('create', \App\Models\Product::class);
+    }
+
     public function store(): void
     {
         $validated_data= $this->validate([
@@ -71,5 +76,11 @@ new class extends Component
         ]);
 
         $this->redirectRoute('pages::products.index', ['locale' => __('general.currentLocale')]);
+    }
+
+
+    public function render()
+    {
+        return view('pages.products.⚡create.create')->title(__('general.product_create'));
     }
 };

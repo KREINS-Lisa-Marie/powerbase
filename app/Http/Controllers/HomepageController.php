@@ -21,7 +21,9 @@ class HomepageController extends Controller
             ->limit(8)
             ->get();
 
-        return view('worker.homepage', compact( 'newest_products', 'user', 'random_products'));
+        $title =__('general.homepage');
+
+        return view('worker.homepage', compact( 'newest_products', 'user', 'random_products', 'title'));
     }
 }
 

@@ -1,8 +1,10 @@
+@can('view', $contact)
 <main class="admin contacts" id="content">
     <x-admin.page-bar>
         {{$contact->first_name}} {{$contact->last_name}}
     </x-admin.page-bar>
     <div class="main-container">
+        <x-admin.return-button class=""></x-admin.return-button>
         <section class="contact-information max-w-admin-web big-section">
 
             <x-admin.components.subtitle>
@@ -100,18 +102,22 @@
             </section>
             @if($user->job == 'admin' )
             <div class="admin-information-buttons">
+                @can('update', $contact)
                 <x-admin.components.admin-primary-button href="{{route('pages::contacts.edit', ['locale' => __('general.currentLocale'), 'contact' => $contact])}}" title="{{__('admin/contacts.modify_the_data')}}"  class="">
                     {{__('admin/contacts.modify_contact')}}
                 </x-admin.components.admin-primary-button>
-
+                @endcan
+                @can('delete', $contact)
                 <form wire:submit="destroy" method="post">
                     @csrf
                     <x-admin.components.delete-btn title="{{__('admin/contacts.delete_the_person')}}">
                         {{__('admin/contacts.delete_info')}}
                     </x-admin.components.delete-btn>
                 </form>
+                 @endcan
             </div>
             @endif
         </div>
     </div>
 </main>
+@endcan

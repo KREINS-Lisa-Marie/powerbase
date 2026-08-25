@@ -8,7 +8,7 @@ use function Pest\Laravel\actingAs;
 uses(RefreshDatabase::class);
 
 beforeEach(function(){
-    $this-> user = User::factory()-> create();
+    $this-> user = User::factory()-> create(['job'=>'storekeeper']);
     \Pest\Laravel\actingAs($this-> user);});
 
 
@@ -51,6 +51,7 @@ it('redirects to the orders show route after the successfull edit of an order',
 
         $user = User::factory()->create();
         $user2 = User::factory()->create();
+        $product = \App\Models\Product::factory()->create();
 
         $project = \App\Models\Project::factory()->create([
             'user_id'=>$user->id,
@@ -62,6 +63,11 @@ it('redirects to the orders show route after the successfull edit of an order',
         $order = \App\Models\Order::factory()->create([
             'user_id'=> $user->id,
             'project_id'=> $project->id,
+        ]);
+        $orderItem = \App\Models\OrderItem::factory()->create([
+            'order_id'=>$order->id,
+            'product_id'=>$product->id,
+            'quantity'=>3,
         ]);
 
         Livewire::test('pages::orders.edit', [

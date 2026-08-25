@@ -37,7 +37,7 @@
 
 @endphp
 
-
+@can('update', $order)
 <main class="admin project-show" id="content">
     <x-admin.page-bar>
         {{__('admin/orders.modify_order')}}
@@ -166,3 +166,4 @@
         </form>
     </div>
 </main>
+@endcan

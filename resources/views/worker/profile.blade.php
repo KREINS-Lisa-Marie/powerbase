@@ -1,4 +1,4 @@
-<x-worker.app>
+<x-worker.app title="{{__('general.worker_profile')}}">
     <section class="text-white background-dark margin-first-content-top">
         <h2 class="uppercase text-white fs-page-title bold page-title mb-64" aria-level="2" role="heading">
             {{__('worker/profile.profile')}}

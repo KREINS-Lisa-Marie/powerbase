@@ -16,6 +16,11 @@ new class extends Component
     protected $queryString =['sortField', 'sortDirection'];
 
 
+    public function mount(): void
+    {
+        $this->authorize('viewAny', Product::class);        //sinon ça doit à chaque sort vérifier authorization        //tous les users peuvent voir tous les contacts
+    }
+
     public function sortBy($field)
     {
         if ($this->sortField === $field){
@@ -40,7 +45,7 @@ new class extends Component
                 ->orWhere('created_at', 'like', '%' . $this->search . '%')
                 ->orWhere('updated_at', 'like', '%' . $this->search . '%')
                 ->orderBy($this->sortField, $this->sortDirection)
-                ->paginate(10),
-        ]);
+                ->paginate(10)->onEachSide(0),
+        ])->title(__('general.products'));
     }
 };

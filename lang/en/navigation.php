@@ -6,6 +6,7 @@ return [
     'profile' => 'Profile',
     'contact' => 'Contact',
     'order' => 'Order',
+    'cart' => 'Cart',
     'products' => 'Products',
     'homepage' => 'Home',
     'main_navigation' => 'Main navigation',
@@ -15,6 +16,7 @@ return [
     'go_products' => 'Go to products page',
     'go_contact' => 'Go to contact page',
     'go_order' => 'Go to orders page',
+    'go_cart' => 'Go to cart page',
     'go_profile' => 'Go to profile page',
     'change_language' => 'Change language to',
 ];

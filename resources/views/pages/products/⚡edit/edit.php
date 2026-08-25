@@ -27,6 +27,8 @@ new class extends Component
 
     public function mount(Product $product)         //avant de render ( 1x seulement)
     {
+        $this->authorize('update', $product);
+
         $this->product = $product;
         $this->product_name = $product->product_name;
         $this->brand = $product->brand;
@@ -92,5 +94,11 @@ new class extends Component
         $locale = app()->getLocale();
 
         $this->redirect(route('pages::products.show', ['locale' => __('general.currentLocale'), 'product'=>$this->product]));
+    }
+
+
+    public function render()
+    {
+        return view('pages.products.⚡edit.edit')->title(__('general.product_edit'));
     }
 };

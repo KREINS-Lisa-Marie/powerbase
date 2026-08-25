@@ -18,6 +18,8 @@ new class extends Component
 
     public function mount(Project $project): void
     {
+        $this->authorize('update', $project);
+
         $this->project = $project;
         $this->project_name = $project->project_name;
         $this->user_id = $project->user_id;
@@ -52,5 +54,12 @@ new class extends Component
         ]);
 
         $this->redirect(route('pages::projects.show', ['locale' => __('general.currentLocale'), 'project'=>$this->project]));
+    }
+
+
+
+    public function render()
+    {
+        return view('pages.projects.⚡edit.edit')->title(__('general.project_edit'));
     }
 };

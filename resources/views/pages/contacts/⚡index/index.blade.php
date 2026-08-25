@@ -1,20 +1,19 @@
+@can('viewAny', \App\Models\User::class)
 <main class="admin contact-index-page" id="content">
     <x-admin.page-bar>
         {{__('admin/contacts.contacts')}}
     </x-admin.page-bar>
     <div class="main-container">
         <div class="admin-filters-buttons max-w-admin-web">
-            @if($user->job == 'admin' )
-            <div class="top-row">
+            @can('create', \App\Models\User::class)
+            <div class="bottom-row">
                 <x-admin.components.admin-primary-button
                     href="{{route('pages::contacts.create', ['locale' => __('general.currentLocale')])}}"
                     title="{{__('admin/contacts.go_to_create_contact')}}" class="">
                     {{__('admin/contacts.create_a_contact')}}
                 </x-admin.components.admin-primary-button>
-            </div>
-            @endif
-            <div class="bottom-row bottom-row-volunteer">
-                <x-admin.components.fields.search/>
+                @endcan
+                    <x-admin.components.fields.search/>
             </div>
         </div>
 
@@ -26,16 +25,16 @@
             <table class="table max-w-admin-web">
                 <thead>
                 <tr>
-                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('first_name')" :direction="$sortField === 'first_name'? $sortDirection : null">
+                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('first_name')" :direction="$sortField === 'first_name'? $sortDirection : null" class="{{$sortField === 'first_name'? 'active-sort': ''}}">
                         {{__('admin/contacts.full_name')}}
                     </x-admin.components.table.table-th>
-                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('email')"  :direction="$sortField === 'email'? $sortDirection : null">
+                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('email')"  :direction="$sortField === 'email'? $sortDirection : null" class="{{$sortField === 'email'? 'active-sort': ''}}">
                         {{__('admin/contacts.email')}}
                     </x-admin.components.table.table-th>
-                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('phone')"  :direction="$sortField === 'phone'? $sortDirection : null">
+                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('phone')"  :direction="$sortField === 'phone'? $sortDirection : null" class="{{$sortField === 'phone'? 'active-sort': ''}}">
                         {{__('admin/contacts.phone')}}
                     </x-admin.components.table.table-th>
-                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('job')"  :direction="$sortField === 'job'? $sortDirection : null">
+                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('job')"  :direction="$sortField === 'job'? $sortDirection : null" class="{{$sortField === 'job'? 'active-sort': ''}}">
                         {{__('admin/contacts.job')}}
                     </x-admin.components.table.table-th>
                 </tr>
@@ -83,3 +82,4 @@
     </div>
 
 </main>
+@endcan

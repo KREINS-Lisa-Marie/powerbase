@@ -20,7 +20,7 @@ new class extends Component
     public function mount(Order $order): void
     {
         //ça définit les trucs à afficher
-
+        $this->authorize('update', $order);
         $this->order = $order;
         $this->user_id = $order->user_id;
         $this->order_state = $order->order_state;
@@ -169,6 +169,13 @@ new class extends Component
         $this->cart= [];
         $this->redirect(route('pages::orders.show', ['locale' => __('general.currentLocale'), 'order'=>$this->order]));
     }
+
+
+    public function render()
+    {
+        return view('pages.orders.⚡edit.edit')->title(__('general.order_edit'));
+    }
+
 };
 
 

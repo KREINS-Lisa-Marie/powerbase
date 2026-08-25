@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -15,6 +16,10 @@ new class extends Component
     public $sortDirection = 'asc';
     protected $queryString =['sortField', 'sortDirection'];
 
+    public function mount(): void
+    {
+        $this->authorize('viewAny', User::class);        //sinon ça doit à chaque sort vérifier authorization        //tous les users peuvent voir tous les contacts
+    }
 
     public function sortBy($field)
     {
@@ -29,6 +34,7 @@ new class extends Component
 
     public function render()        //à chaque fois que qqch sur la page change
     {
+
         $user = auth()->user();
 
         return view('pages.contacts.⚡index.index', [
@@ -39,9 +45,9 @@ new class extends Component
                 ->orWhere('phone', 'like', '%' . $this->search . '%')
                 ->orWhere('job', 'like', '%' . $this->search . '%')
                 ->orderBy($this->sortField, $this->sortDirection)
-                ->paginate(10),
+                ->paginate(10)->onEachSide(0),
             'user' => $user
-        ]);
+        ])->title(__('general.contacts'));
     }
 
 };

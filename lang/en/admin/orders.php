@@ -43,4 +43,6 @@ return [
     'no_result' => 'No order found',
 
     'choose_product'=>'Choose a product',
+    'close'=>'Close',
+    'create_project'=>'Create a project',
 ];

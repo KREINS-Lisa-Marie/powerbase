@@ -21,4 +21,12 @@ return [
     'project_name_error'=>' Das Feld "Projektname" is Pflicht',
     'needs_product'=>'Um zu bestellen brauchen Sie ein Produkt',
     'increment_qt'=>'Menge muss mindestens 1 sein',
+
+    'orders'=>'Meine Bestellungen',
+    'some_orders'=>'Letzte Bestellungen',
+    'see_all_orders'=>'Alle Bestellungen anzeigen',
+    'link_to_product'=>'Link zum Produkt',
+    'see_the_product'=>'Produkt ansehen',
+    'your_most_ordered'=>'Am häufigsten bestellt',
+    'filters'=>'Kategorie Filter',
 ];

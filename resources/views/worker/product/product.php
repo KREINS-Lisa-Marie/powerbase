@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\OrderItem;
 use App\Models\Product;
 use Livewire\Component;
 
@@ -13,7 +14,21 @@ new class extends Component
 
     public function mount(Product $product)
     {
+        $this->authorize('viewLimited', $product);
         $this->product = $product;
+    }
+
+
+    public function incrementQuantity()
+    {
+        $this->quantity++;
+    }
+
+    public function decrementQuantity()
+    {
+        if ($this->quantity > 1) {
+            $this->quantity--;
+        }
     }
 
     public function addToOrder( int $productId)
@@ -43,13 +58,36 @@ new class extends Component
             $this->addError('cart', __('worker/product.qt_must_be_one'));
             return;
         }
-
-
-
     }
 
     public function render()
     {
-        return view('worker::product.product')->layout('components.worker.app');
+
+        $user= Auth::user();
+        //commandes du user
+        $user_orders =  \App\Models\Order::where('user_id', $user->id)->get();
+
+        //id des commmandes du user
+        $orders_ids = $user_orders->pluck('id');
+
+        // reprend tous les orderitems ou l'id est orders_id (ceux du user)
+        $user_order_items = OrderItem::whereIn('order_id', $orders_ids)->get();
+
+        //reprend le nom et la qt totale des produits commandés
+        $most_ordered = $user_order_items->groupBy('product_id')->map(function ($items) {       //grouper par product_id
+            // map pour faire un array de chaque produit (chaque produit est un groupe)
+            return [
+                'product' => \App\Models\Product::findOrFail($items->first()->product_id),
+                'total_quantity' => $items->sum('quantity'),//sum calcule la somme de l'addition des produits
+            ];
+        })
+            ->sortByDesc('total_quantity')      // trie descandant pour la qt totale
+            ->take(3);
+
+        // 3 derniers produits que le user a commandé
+        $last_ordered = OrderItem::whereIn('order_id', $orders_ids)->latest()->limit(3)->get();
+
+
+        return view('worker::product.product', compact('most_ordered', 'last_ordered'))->layout('components.worker.app')->title(__('general.worker_product'));
     }
 };

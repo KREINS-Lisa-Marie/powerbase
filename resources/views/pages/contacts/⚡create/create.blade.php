@@ -28,12 +28,13 @@
 @endphp
 
 
-
+@can('create', \App\Models\User::class)
 <main class="admin" id="content">
     <x-admin.page-bar>
         {{__('admin/contacts.create_a_contact')}}
     </x-admin.page-bar>
     <div class="main-container">
+        <x-admin.return-button class=""></x-admin.return-button>
         <form wire:submit.prevent="store" class="" autocomplete="off">
             @csrf
             <fieldset class="contact-information max-w-admin-web big-section">
@@ -175,3 +176,4 @@
         </form>
     </div>
 </main>
+@endcan

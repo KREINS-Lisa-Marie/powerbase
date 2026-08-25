@@ -1,5 +1,7 @@
+@can('viewLimited', $product)
  <section class="text-white background-dark margin-first-content-top">
-        <h2 class="uppercase text-white fs-page-title bold page-title mb-64" aria-level="2" role="heading">
+     <x-worker.return-button class=""></x-worker.return-button>
+     <h2 class="uppercase text-white fs-page-title bold page-title mb-64" aria-level="2" role="heading">
             {{$product->product_name}}
         </h2>
         <div class="product-details j-c-space-b">
@@ -16,9 +18,25 @@
                             <label for="quantity" class="field__label sro">
                                 {{__('admin/products.quantity')}}
                             </label>
-                            <input wire:model.live="quantity" type="number" name="quantity" id="quantity" value="{{$value ?? ''}}" class="t-a-center" placeholder="{{__('admin/products.wanted_quantity')}}" min="1" max="100"      {{--pas de max parce que parfois faut plus qu'il y a en stock et ça doit être commandé par le magasinier. Le worker peut voir combien il y en a en stock donc il voit combien il aura pour le lendemain--}}
-                            {{--j'ai mis live parce que si je mets blur, la personne doit cliquer hors du input pour que ça actualise quantity--}}
-                                   aria-required="true">
+                            {{--<input wire:model.live="quantity" type="number" name="quantity" id="quantity" value="{{$value ?? ''}}" class="t-a-center" placeholder="{{__('admin/products.wanted_quantity')}}" min="1" max="100"      --}}{{--pas de max parce que parfois faut plus qu'il y a en stock et ça doit être commandé par le magasinier. Le worker peut voir combien il y en a en stock donc il voit combien il aura pour le lendemain--}}{{--
+                            --}}{{--j'ai mis live parce que si je mets blur, la personne doit cliquer hors du input pour que ça actualise quantity--}}{{--
+                                   aria-required="true">--}}
+                            <div class="product-qt">
+                                <button type="button" wire:click="decrementQuantity()" class="decrement-btn">
+                                    -
+                                </button>
+                                <input wire:model.live="quantity" type="number"
+                                       name="quantity" id="quantity"
+                                       value="{{ $item['quantity']?? ''}}"
+                                       class="t-a-center background-white border-radius-16 p-16 max-w-560 w-100 m-b-32 text-black regular"
+                                       placeholder="{{__('worker/order.wanted_quantity')}}" min="1"
+                                       max="100"
+                                       {{--pas de max parce que parfois faut plus qu'il y a en stock et ça doit être commandé par le magasinier. Le worker peut voir combien il y en a en stock donc il voit combien il aura pour le lendemain--}}
+                                       aria-required="true">
+                                <button type="button" wire:click="incrementQuantity()" class="increment-btn">
+                                    +
+                                </button>
+                            </div>
                             @error('quantity')
                             {{$message}}
                             @enderror
@@ -85,4 +103,37 @@
                 </x-worker.definition>
             </dl>
         </div>
+     <div class="most-ordered-products m-b-64 m-t-32">
+         <h3 class="uppercase worker-sub bold">
+             {{__('worker/product.you_order_often')}}
+         </h3>
+         <ul class="cart-suggestions-list d-flex flex-wrap flex-gap-24">
+             @forelse($most_ordered as $item)
+                 <li>
+                     <x-worker.product-card productname="{{$item['product']->product_name}}" product_image="{{$item['product']->product_image}}" product_id="{{$item['product']->id}}"/>
+                 </li>
+             @empty
+                 <li>
+                     <x-worker.product-card productname="{{__('worker/homepage.no_product_found')}}" product_id=""/>
+                 </li>
+             @endforelse
+         </ul>
+     </div>
+     <div class="last-ordered-products">
+         <h3 class="uppercase worker-sub bold">
+             {{__('worker/product.your_last_orders')}}
+         </h3>
+         <ul class="cart-suggestions-list d-flex flex-wrap flex-gap-24">
+             @forelse($last_ordered as $item)
+                 <li>
+                     <x-worker.product-card productname="{{$item['product']->product_name}}" product_image="{{$item['product']->product_image}}" product_id="{{$item['product']->id}}"/>
+                 </li>
+             @empty
+                 <li>
+                     <x-worker.product-card productname="{{__('worker/homepage.no_product_found')}}" product_id=""/>
+                 </li>
+             @endforelse
+         </ul>
+     </div>
     </section>
+@endcan

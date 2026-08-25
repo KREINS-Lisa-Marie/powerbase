@@ -21,6 +21,8 @@ new class extends Component {
 
     public function mount(User $contact): void
     {
+        $this->authorize('update', $contact);
+
         $this->contact = $contact;
         $this->first_name = $contact->first_name;
         $this->last_name = $contact->last_name;
@@ -61,5 +63,11 @@ new class extends Component {
         ]);
 
         $this->redirect(route('pages::contacts.show', ['locale' => __('general.currentLocale'), 'contact'=>$this->contact]));
+    }
+
+
+    public function render()
+    {
+        return view('pages.contacts.⚡edit.edit')->title(__('general.contact_edit'));
     }
 };

@@ -6,6 +6,7 @@ return [
     'profile' => 'Profil',
     'contact' => 'Contact',
     'order' => 'Commande',
+    'cart' => 'Panier',
     'products' => 'Produits',
     'homepage' => 'Accueil',
     'main_navigation' => 'Navigation principale',
@@ -15,6 +16,7 @@ return [
     'go_products' => 'Aller vers la page des produits',
     'go_contact' => 'Aller vers la page Contact',
     'go_order' => 'Aller vers la page Commandes',
+    'go_cart' => 'Aller vers la page du panier',
     'go_profile' => 'Aller vers la page Profile',
     'change_language' => 'Changer la langue vers',
 ];

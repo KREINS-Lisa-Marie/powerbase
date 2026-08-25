@@ -11,6 +11,7 @@ new class extends Component
     public int $order_id;
     public function mount(Order $order)         //avant de render ( 1x seulement)
     {
+        $this->authorize('view', $order);
         $this->orderItems = $order->orderItems;
 
         $this->order_id = $order->id;
@@ -22,7 +23,7 @@ new class extends Component
         $user = \App\Models\User::findOrFail($order->user_id);
         $project = \App\Models\Project::findOrFail($order->project_id);
 
-        return view('pages.orders.⚡show.show', ['order' => $order, 'user' => $user, 'project' => $project]);
+        return view('pages.orders.⚡show.show', ['order' => $order, 'user' => $user, 'project' => $project])->title(__('general.show_order'));
     }
 
     public function destroy()

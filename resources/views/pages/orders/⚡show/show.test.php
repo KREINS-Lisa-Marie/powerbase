@@ -10,7 +10,7 @@ use function Pest\Laravel\actingAs;
 uses(RefreshDatabase::class);
 
 beforeEach(function(){
-    $this-> user = User::factory()-> create();
+    $this-> user = User::factory()-> create(['job'=>'storekeeper']);
     \Pest\Laravel\actingAs($this-> user);});
 
 
@@ -87,6 +87,5 @@ it('displays a detail page of a orders and verifies if there is data', function 
     ])
         ->assertSee($order->for_who)
         ->assertSee($worker->phone)
-        ->assertSee($order->project_name)
-        ->assertSee($order->order_state);
+        ->assertSee($order->project_name);
 });

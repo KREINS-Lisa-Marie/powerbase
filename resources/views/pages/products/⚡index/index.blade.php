@@ -1,16 +1,17 @@
+@can('viewAny', \App\Models\Product::class)
 <main class="admin products-index-page" id="content">
     <x-admin.page-bar>
         {{__('admin/products.products')}}
     </x-admin.page-bar>
     <div class="main-container">
         <div class="admin-filters-buttons max-w-admin-web">
-            <div class="top-row">
+            <div class="bottom-row">
+                @can('create', \App\Models\Product::class)
                 <x-admin.components.admin-primary-button href="{{route('pages::products.create', ['locale' => __('general.currentLocale')])}}" title="{{__('admin/products.got_to_create_product')}}" class="">
                     {{__('admin/products.create_a_product')}}
                 </x-admin.components.admin-primary-button>
-            </div>
-            <div class="bottom-row">
-                <x-admin.components.fields.search/>
+                @endcan
+                    <x-admin.components.fields.search/>
             </div>
         </div>
         <section class="products-list">
@@ -20,16 +21,16 @@
             <table class="table max-w-admin-web">
                 <thead>
                 <tr>
-                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('product_name')" :direction="$sortField === 'product_name'? $sortDirection : null">
+                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('product_name')" :direction="$sortField === 'product_name'? $sortDirection : null" class="{{$sortField === 'product_name'? 'active-sort': ''}}">
                         {{__('admin/products.product_name')}}
                     </x-admin.components.table.table-th>
-                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('quantity')" :direction="$sortField === 'quantity'? $sortDirection : null">
+                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('quantity')" :direction="$sortField === 'quantity'? $sortDirection : null" class="{{$sortField === 'quantity'? 'active-sort': ''}}">
                         {{__('admin/products.stock_number')}}
                     </x-admin.components.table.table-th>
-                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('created_at')" :direction="$sortField === 'created_at'? $sortDirection : null">
+                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('created_at')" :direction="$sortField === 'created_at'? $sortDirection : null" class="{{$sortField === 'created_at'? 'active-sort': ''}}">
                         {{__('admin/products.in_stock_since')}}
                     </x-admin.components.table.table-th>
-                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('updated_at')" :direction="$sortField === 'updated_at'? $sortDirection : null">
+                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('updated_at')" :direction="$sortField === 'updated_at'? $sortDirection : null" class="{{$sortField === 'updated_at'? 'active-sort': ''}}">
                         {{__('admin/products.updated_at')}}
                     </x-admin.components.table.table-th>
                 </tr>
@@ -72,3 +73,4 @@
         </div>
     </div>
 </main>
+@endcan

@@ -1,18 +1,19 @@
+@can('viewAny', \App\Models\Order::class)
 <main class="admin orders-index-page" id="content">
     <x-admin.page-bar>
         {{__('admin/orders.orders')}}
     </x-admin.page-bar>
     <div class="main-container">
         <div class="admin-filters-buttons max-w-admin-web">
-            <div class="top-row">
+            <div class="bottom-row">
+                @can('create', \App\Models\Order::class)
                 <x-admin.components.admin-primary-button
                     href="{{route('pages::orders.create', ['locale' => __('general.currentLocale')])}}"
                     title="{{__('admin/orders.go_to_create_order')}}" class="">
                     {{__('admin/orders.create_an_order')}}
                 </x-admin.components.admin-primary-button>
-            </div>
-            <div class="bottom-row">
-                <x-admin.components.fields.search/>
+                @endcan
+                    <x-admin.components.fields.search/>
             </div>
         </div>
 
@@ -23,7 +24,7 @@
             <table class="table max-w-admin-web">
                 <thead>
                 <tr>
-                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('user_id')" :direction="$sortField === 'user_id'? $sortDirection : null">
+                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('first_name')" :direction="$sortField === 'first_name'? $sortDirection : null" class="bold {{$sortField === 'first_name'? 'active-sort': ''}}">
                         {{__('admin/orders.ordered_by')}}
                     </x-admin.components.table.table-th>
     {{--order_items_count se fait automatiquement quand je fais un withcount    -> nom model_count --}}
@@ -31,10 +32,10 @@
                         {{__('admin/orders.product_quantity')}}
                     </th>
 
-                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('created_at')" :direction="$sortField === 'created_at'? $sortDirection : null">
+                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('created_at')" :direction="$sortField === 'created_at'? $sortDirection : null" class="{{$sortField === 'created_at'? 'active-sort': ''}}">
                         {{__('admin/orders.ordered_at')}}
                     </x-admin.components.table.table-th>
-                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('order_state')" :direction="$sortField === 'order_state'? $sortDirection : null">
+                    <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('order_state')" :direction="$sortField === 'order_state'? $sortDirection : null" class="{{$sortField === 'order_state'? 'active-sort': ''}}">
                         {{__('admin/orders.state')}}
                     </x-admin.components.table.table-th>
                 </tr>
@@ -64,7 +65,7 @@
                             <span
                                 class="show-web">{{__('admin/orders.state')}}</span>
                             {{$order->order_state == 'completed' ? __('admin/orders.completed') : __('admin/orders.pending')}}
-                            <a href="{{route('pages::orders.show',  ['locale' => __('general.currentLocale'),  'order' => $order->id])}}"
+                            <a href="{{route('pages::orders.show',  ['locale' => app()->getLocale(),  'order' => $order->id])}}"
                                title="{{__('admin/orders.go_to_order_page')}}" class="card-link">
                             </a>
                         </x-admin.components.table.table-td>
@@ -85,3 +86,4 @@
     </div>
 
 </main>
+@endcan

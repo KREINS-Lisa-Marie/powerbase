@@ -66,4 +66,21 @@ class User extends Authenticatable
         return $this->hasMany(Project::class);
     }
 
+    public function isAdmin()
+    {
+        return $this->job === 'admin';
+    }
+    public function isStorekeeper()
+    {
+        return $this->job === 'storekeeper';
+    }
+    public function isWorker()
+    {
+        return $this->job === 'worker';
+    }
+    public function isAdminOrStorekeeper()
+    {
+        return $this->isAdmin() || $this->isStorekeeper();
+    }
+
 }

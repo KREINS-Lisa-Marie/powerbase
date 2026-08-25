@@ -10,7 +10,7 @@ new class extends Component
 
     public function mount(Product $product)         //avant de render ( 1x seulement)
     {
-
+        $this->authorize('view', $product);
         $this->product_id = $product->id;
     }
 
@@ -18,7 +18,7 @@ new class extends Component
     {
         $product = Product::findOrFail($this->product_id);
         $user = auth()->user();
-        return view('pages.products.⚡show.show',['product' => $product, 'user' => $user] );
+        return view('pages.products.⚡show.show',['product' => $product, 'user' => $user] )->title(__('general.detail_product'));
     }
 
     public function destroy()

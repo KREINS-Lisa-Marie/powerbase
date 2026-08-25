@@ -12,6 +12,11 @@ new class extends Component
     public $sortDirection = 'asc';
     protected $queryString =['sortField', 'sortDirection'];
 
+    public function mount(): void
+    {
+        $this->authorize('viewAny', Project::class);        //sinon ça doit à chaque sort vérifier authorization        //tous les users peuvent voir tous les projets
+    }
+
 
     public function sortBy($field)
     {
@@ -33,7 +38,7 @@ new class extends Component
                 ->orWhere('created_at', 'like', '%' . $this->search . '%')
                 ->orWhere('updated_at', 'like', '%' . $this->search . '%')
                 ->orderBy($this->sortField, $this->sortDirection)
-                ->paginate(10),
-        ]);
+                ->paginate(10)->onEachSide(0),
+        ])->title(__('general.projects'));
     }
 };

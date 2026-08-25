@@ -8,7 +8,7 @@ use function Pest\Laravel\actingAs;
 uses(RefreshDatabase::class);
 
 beforeEach(function(){
-    $this-> user = User::factory()-> create();
+    $this-> user = User::factory()-> create(['job'=>'admin']);
     \Pest\Laravel\actingAs($this-> user);});
 
 

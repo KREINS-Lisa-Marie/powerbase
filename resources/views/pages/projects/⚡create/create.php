@@ -19,6 +19,7 @@ new class extends Component
 
     public function mount()
     {
+        $this->authorize('create', \App\Models\Project::class);
         $this->users = User::get();
     }
 
@@ -48,4 +49,11 @@ new class extends Component
 
         $this->redirect(route('pages::projects.index', ['locale' => __('general.currentLocale'), 'users'=>$this->users]));
     }
+
+
+    public function render()
+    {
+        return view('pages.projects.⚡create.create')->title(__('general.project_create'));
+    }
+
 };

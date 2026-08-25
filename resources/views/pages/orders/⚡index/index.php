@@ -12,10 +12,14 @@ new class extends Component
     public  $search = '';
 
 //tri
-    public $sortField = 'user_id';
+    public $sortField = 'first_name';
     public $sortDirection = 'asc';
     protected $queryString =['sortField', 'sortDirection'];
 
+    public function mount(): void
+    {
+        $this->authorize('viewAny', Order::class);        //sinon ça doit à chaque sort vérifier authorization        //tous les users peuvent voir tous les contacts
+    }
 
     public function sortBy($field)
     {
@@ -41,8 +45,8 @@ new class extends Component
                 ->orWhere('users.last_name', 'like', '%' . $search . '%')
                 ->orWhere('orders.created_at', 'like', '%' . $search . '%')
                 ->orderBy($this->sortField, $this->sortDirection)
-                ->paginate(10),
-            ]);
+                ->paginate(10)->onEachSide(0),
+            ])->title(__('general.orders'));
     }
 };
 

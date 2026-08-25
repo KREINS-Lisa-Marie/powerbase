@@ -22,6 +22,12 @@ new class extends Component
     public string $password = '';
     public string $password_confirmation = '';
 
+
+    public function mount()
+    {
+        $this->authorize('create', User::class);
+    }
+
     public function store(): void
     {
         $validated_data= $this->validate([
@@ -52,5 +58,10 @@ new class extends Component
         ]);
 
         $this->redirectRoute('pages::contacts.index', ['locale' => __('general.currentLocale')]);
+    }
+
+    public function render()
+    {
+        return view('pages.contacts.⚡create.create')->title(__('general.contact_create'));
     }
 };

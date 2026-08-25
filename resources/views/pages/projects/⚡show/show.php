@@ -10,6 +10,7 @@ new class extends Component
 
     public function mount(Project $project)         //avant de render ( 1x seulement)
     {
+        $this->authorize('view', $project);
         $this->project_id = $project->id;
     }
 
@@ -60,7 +61,7 @@ new class extends Component
 
         return view('pages.projects.⚡show.show', [
             'products' => $sorted, 'user' => $user, 'project' => $project
-        ]);
+        ])->title(__('general.show_project'));
     }
 
     // Asort parce que c'est un Associative array
