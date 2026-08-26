@@ -1,10 +1,28 @@
-@can('viewAnyLimited', $orders)
+@can('viewAnyLimited', \App\Models\Order::class)
 <section class=" worker-orders background-dark text-white section-end-128 admin orders-index-page orders-list">
      <h2 class="uppercase text-white fs-page-title bold page-title mb-64" aria-level="2" role="heading">
          {{__('worker/order.orders')}}
      </h2>
+    <div class="position-relative orders-filters-search">
+        <div class="filters-container">
 
-
+            <input type="checkbox" id="faq-1"
+                   class="filters-container--input sro">
+            <label class="filters-container--label" for="faq-1" itemprop="name">
+                {{__('worker/order.filters')}} <span class="arrow">▼</span>
+            </label>
+            <div class="worker-orders-filter">
+                @foreach($categories as $category)
+                    <button type="button" wire:click="selectCategoryFilter('{{$category}}')" class="{{ in_array($category, $categoryFilters) ? 'active-sort': ''}} uppercase">
+                        {{$category}}
+                    </button>
+                @endforeach
+            </div>
+        </div>
+        <div class="worker-orders-search">
+            <x-admin.components.fields.search/>
+        </div>
+    </div>
      <!--d-flex admin table max-w-admin-web worker-orders-table-->
      <table class="table max-w-admin-web worker-orders-table">
          <thead class="max-w-admin-web">
@@ -12,13 +30,13 @@
              <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('id')" :direction="$sortField === 'id'? $sortDirection : null" class="{{$sortField === 'id'? 'active-sort': ''}} uppercase">
                  {{__('admin/orders.order_number')}}
              </x-admin.components.table.table-th>
-             <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('id')" :direction="$sortField === 'id'? $sortDirection : null" class="{{$sortField === 'id'? 'active-sort': ''}} uppercase">
+             <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('order_state')" :direction="$sortField === 'order_state'? $sortDirection : null" class="{{$sortField === 'order_state'? 'active-sort': ''}} uppercase">
                  {{__('admin/orders.order_state')}}
              </x-admin.components.table.table-th>
-             <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('first_name')" :direction="$sortField === 'first_name'? $sortDirection : null" class="{{$sortField === 'first_name'? 'active-sort': ''}} uppercase">
+             <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('created_at')" :direction="$sortField === 'created_at'? $sortDirection : null" class="{{$sortField === 'created_at'? 'active-sort': ''}} uppercase">
                  {{__('worker/orders.ordered_at')}}
              </x-admin.components.table.table-th>
-             <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('first_name')" :direction="$sortField === 'first_name'? $sortDirection : null" class="{{$sortField === 'first_name'? 'active-sort': ''}} uppercase">
+             <x-admin.components.table.table-th scope="col" sortable wire:click="sortBy('order_items_count')" :direction="$sortField === 'order_items_count'? $sortDirection : null" class="{{$sortField === 'order_items_count'? 'active-sort': ''}} uppercase">
                  {{__('worker/orders.nb_products')}}
              </x-admin.components.table.table-th>
              <x-admin.components.table.table-th scope="col" direction="" class=" uppercase" sortable="">
