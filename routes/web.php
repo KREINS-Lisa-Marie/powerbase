@@ -141,7 +141,7 @@ Route::livewire('/{locale}/cart', 'worker::cart')->name('worker::cart')->middlew
 ]);
 
 
-Route::livewire('/{locale}/orders', 'worker::orders')->name('worker::orders')->middleware([
+Route::livewire('/{locale}/my-orders', 'worker::orders')->name('worker::orders')->middleware([
     'auth', 'isWorker',
 ]);
 
