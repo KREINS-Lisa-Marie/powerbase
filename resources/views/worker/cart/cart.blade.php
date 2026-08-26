@@ -129,7 +129,7 @@
     </section>
 
 
-    <section class="background-dark text-white section-end-128 admin">
+    <section class="background-dark text-white section-end-128 admin cart-table">
         <h2 class="uppercase text-white fs-page-title bold page-title mb-64" aria-level="2" role="heading">
             {{__('worker/order.some_orders')}}
         </h2>
