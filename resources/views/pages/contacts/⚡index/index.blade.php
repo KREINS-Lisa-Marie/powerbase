@@ -16,8 +16,6 @@
                     <x-admin.components.fields.search/>
             </div>
         </div>
-
-
         <section class="contacts-list">
             <h2 class="sro">
                 {{__('admin/contacts.list_of_contacts')}}
@@ -41,7 +39,7 @@
                 </thead>
                 <tbody>
 
-                    @forelse($contacts as $contact)
+                @forelse($contacts as $contact)
                     <tr class="table-row position-relative">
                         <x-admin.components.table.table-td class="table-full_name">
                             <span class="show-web">{{__('admin/contacts.name_title')}}</span>
@@ -66,13 +64,13 @@
                             </a>
                         </x-admin.components.table.table-td>
                     </tr>
-                    @empty
-                        <tr class="table-row position-relative">
-                            <x-admin.components.table.table-td class="table-full_name">
-                                {{__('admin/contacts.no_result')}}
-                            </x-admin.components.table.table-td>
-                        </tr>
-                    @endforelse
+                @empty
+                    <tr class="table-row position-relative">
+                        <x-admin.components.table.table-td class="table-full_name">
+                            {{__('admin/contacts.no_result')}}
+                        </x-admin.components.table.table-td>
+                    </tr>
+                @endforelse
                 </tbody>
             </table>
         </section>
