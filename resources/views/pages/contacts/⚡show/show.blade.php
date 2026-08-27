@@ -1,5 +1,6 @@
 
 <main class="admin contacts" id="content">
+    @can('view', $contact)
     <x-admin.page-bar>
         {{$contact->first_name}} {{$contact->last_name}}
     </x-admin.page-bar>
@@ -119,5 +120,6 @@
             @endif
         </div>
     </div>
+    @endcan
 </main>
 
