@@ -1,4 +1,4 @@
-@can('viewAny', \App\Models\User::class)
+
 <main class="admin contact-index-page" id="content">
     <x-admin.page-bar>
         {{__('admin/contacts.contacts')}}
@@ -82,4 +82,4 @@
     </div>
 
 </main>
-@endcan
+
