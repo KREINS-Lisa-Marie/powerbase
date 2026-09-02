@@ -1,6 +1,6 @@
 @can('viewLimited', $product)
  <section class="text-white background-dark margin-first-content-top">
-     <x-worker.return-button class=""></x-worker.return-button>
+     <x-worker.product-return-btn :url="$previousUrl" class=""></x-worker.product-return-btn>
      <h2 class="uppercase text-white fs-page-title bold page-title mb-64" aria-level="2" role="heading">
             {{$product->product_name}}
         </h2>
@@ -99,7 +99,7 @@
                     {{__('worker/product.remaining_stock')}}
                 </x-worker.definitionterm>
                 <x-worker.definition>
-                    {{$product->quantity <= 0 ? "0" : $product->quantity}}
+                    {{$remainingQuantity <= 0 ? "0" : $remainingQuantity}}
                 </x-worker.definition>
             </dl>
         </div>
@@ -114,7 +114,9 @@
                  </li>
              @empty
                  <li>
-                     <x-worker.product-card productname="{{__('worker/homepage.no_product_found')}}" product_id=""/>
+                     <p class="error-no-product text-white  uppercase bold">
+                         {{__('worker/products.no_product_found')}}
+                     </p>
                  </li>
              @endforelse
          </ul>
@@ -130,7 +132,9 @@
                  </li>
              @empty
                  <li>
-                     <x-worker.product-card productname="{{__('worker/homepage.no_product_found')}}" product_id=""/>
+                     <p class="error-no-product text-white  uppercase bold">
+                         {{__('worker/products.no_product_found')}}
+                     </p>
                  </li>
              @endforelse
          </ul>
