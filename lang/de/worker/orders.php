@@ -10,4 +10,6 @@ return [
     'link_to_product'=>'Bestellungslink',
     'order_number'=>'Bestellnummer',
     'order_details'=>'Bestellungsdetails',
+    'cancel'=>'Abbrechen',
+    'confirm_delete_order'=>'Möchten Sie die Bestellung löschen?',
 ];

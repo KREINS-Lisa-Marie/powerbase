@@ -2,11 +2,44 @@
 
 use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\PublicInfoController;
+use App\Http\Controllers\WorkerContactController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return redirect()->route('auth.login', ['locale' => app()->getLocale()]);
+Route::get('/info', function () {
+    return view('public.info',  [PublicInfoController::class, 'index']);
+})->name('public.info');
+
+Route::get('/{locale}/info', function () {
+    return view('public.info',  [PublicInfoController::class, 'index']);
+})->name('public.info');
+
+
+Route::get('/info', function () {
+    return redirect()->route('public.info', ['locale' => app()->getLocale()]);
 });
+
+Route::get('/{locale}/info',  [PublicInfoController::class, 'index'])->name('public.info');
+
+
+
+Route::get('/contact-us', function () {
+    return view('public.contact');
+})->name('public.contact');
+
+Route::get('/{locale}/contact-us', function () {
+    return view('public.contact');
+})->name('public.contact');
+
+Route::get('/legals', function () {
+    return redirect()->route('public.legals', ['locale' => app()->getLocale()]);
+});
+
+Route::get('/{locale}/legals', function () {
+    return view('public.legals');
+})->name('public.legals');
+
+
 
 /*Route::get('/home', function (){
         // si worker alors redirigé vers pages worker et sinon vers admin
@@ -25,6 +58,14 @@ Route::get('/login', function () {
 Route::get('/{locale}/login', function () {
     return view('auth.login');
 })->name('auth.login')->middleware('guest');
+
+Route::get('/register', function () {
+    return redirect()->route('auth.register', ['locale' => app()->getLocale()]);
+})->name('register');
+
+Route::get('/{locale}/register', function () {
+    return view('auth.register');
+})->name('auth.register')->middleware('guest');
 
 Route::get('/{locale}/forgot-password', function () {
     return view('auth.forgot-password');
@@ -130,9 +171,8 @@ Route::get('/{locale}',  [HomepageController::class, 'index'])->name('worker.hom
     'auth', 'isWorker',
 ]);
 
-Route::get('/{locale}/contact', function () {
-    return view('worker.contact');
-})->name('worker.contact')->middleware([
+
+Route::get('/{locale}/contact',  [WorkerContactController::class, 'index'])->name('worker.contact')->middleware([
     'auth', 'isWorker',
 ]);
 

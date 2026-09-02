@@ -28,8 +28,8 @@
 @endphp
 
 
-@can('create', \App\Models\User::class)
 <main class="admin" id="content">
+    @can('create', \App\Models\User::class)
     <x-admin.page-bar>
         {{__('admin/contacts.create_a_contact')}}
     </x-admin.page-bar>
@@ -114,7 +114,7 @@
                             </x-admin.components.fields.text>
                         </div>
 
-                        <div>
+                        {{--<div>
                             <div class="d-flex flex-col">
                                 <label for="password" class="field__label">
                                     {{__('admin/contacts.enter_a_password')}}*
@@ -130,7 +130,7 @@
 
                         <div>
 
-                            <div class="d-flex flex-col">
+                            --}}{{--<div class="d-flex flex-col">
                                 <label for="password_confirmation" class="field__label">
                                     {{__('admin/contacts.repeat_password')}}*
                                 </label>
@@ -141,9 +141,9 @@
                                     {{$message}}
                                 </p>
                                 @enderror
-                            </div>
+                            </div>--}}{{--
 
-                        </div>
+                        </div>--}}
                     </div>
                 </div>
 
@@ -175,5 +175,5 @@
             </div>
         </form>
     </div>
+    @endcan
 </main>
-@endcan

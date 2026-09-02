@@ -10,4 +10,6 @@ return [
     'link_to_product'=>'Order link',
     'order_number'=>'Order number',
     'order_details'=>'Order details',
+    'cancel'=>'Cancel',
+    'confirm_delete_order'=>'Do you want to delete the order?',
 ];

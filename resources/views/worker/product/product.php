@@ -10,12 +10,14 @@ new class extends Component
 
     public int $quantity = 1;
     public string $successMessage = '';     //message pour dire à l'utilisateur qu'il a mis le produit en panier parce que sinon, on ne voit pas si ça a marché ou pas.
+    public string $previousUrl;     //sinon ne marche plus après avoir ajouté au panier
     public $cart = [];
 
     public function mount(Product $product)
     {
         $this->authorize('viewLimited', $product);
         $this->product = $product;
+        $this->previousUrl = url()->previous();
     }
 
 
@@ -33,7 +35,21 @@ new class extends Component
 
     public function addToOrder( int $productId)
     {
-        $product = Product::findOrFail($productId);
+        $companyId = auth()->user()->company_id;
+
+        //$product = Product::findOrFail($productId);
+
+        $product = Product::where('id', $productId)
+            ->where(function ($query) use ($companyId){
+                $query->whereNull('company_id')
+                    ->orWhere('company_id', $companyId);
+            })->first();
+
+        if (!$product){
+            $this->addError('cart', __('worker/product.product_not_allowed'));
+            return;
+        }
+
         $cart = session()->get('cart', []); //valeurs de cart ou si il y en a pas alors vide
         //faut utiliser session parce que sinon je peux pas les passer de product à order
 
@@ -63,6 +79,14 @@ new class extends Component
     public function render()
     {
 
+        $companyId = auth()->user()->company_id;
+
+        $productSetting = \App\Models\ProductSetting::where('company_id', $companyId)
+            ->where('product_id', $this->product->id)->first();
+
+        $remainingQuantity =  $productSetting->quantity ?? 0;
+
+
         $user= Auth::user();
         //commandes du user
         $user_orders =  \App\Models\Order::where('user_id', $user->id)->get();
@@ -88,6 +112,6 @@ new class extends Component
         $last_ordered = OrderItem::whereIn('order_id', $orders_ids)->latest()->limit(3)->get();
 
 
-        return view('worker::product.product', compact('most_ordered', 'last_ordered'))->layout('components.worker.app')->title(__('general.worker_product'));
+        return view('worker::product.product', compact('most_ordered', 'last_ordered', 'remainingQuantity'))->layout('components.worker.app')->title(__('general.worker_product'));
     }
 };

@@ -3,7 +3,7 @@
         <form action="" method="POST" class="form text-white " wire:submit.prevent="store">
             @csrf
             <h2 class="uppercase text-white fs-page-title bold page-title mb-64" aria-level="2" role="heading">
-                {{__('worker/order.order')}}
+                {{__('navigation.cart')}}
             </h2>
 
             <div class="d-flex flex-r flex-gap-32 flex-j-c-space-between cart-container">
@@ -119,7 +119,9 @@
                             </li>
                         @empty
                             <li>
-                            <x-worker.product-card productname="{{__('worker/homepage.no_product_found')}}" product_id=""/>
+                                <p class="error-no-product text-white  uppercase bold">
+                                    {{__('worker/products.no_product_found')}}
+                                </p>
                             </li>
                         @endforelse
                     </ul>

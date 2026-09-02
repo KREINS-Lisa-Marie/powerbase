@@ -1,8 +1,8 @@
 <div class="d-flex flex-col">
     <label for="password_confirmation" class="auth-label medium">
-        {{__('auth/reset_password.rewrite_password')}}
+        {{__('auth/reset_password.rewrite_password')}}*
     </label>
-    @error('verification_password')
+    @error('password_confirmation')
     <p class="error">
         {{$message}}
     </p>

@@ -25,7 +25,7 @@
 
             <form action="/reset-password" method="post" class="">
                 @csrf
-                <input type="hidden" name="token" value="{{ request()->route('token') }}">
+                <input type="hidden" name="token" value="{{ request('token') }}">
                 <x-auth.form.email-input></x-auth.form.email-input>
                 <div class="d-flex flex-col">
                     <label for="password" class="auth-label medium">

@@ -101,8 +101,6 @@ it('can create a contact and redirect to the show page', function () {
         ->fill('email', 'kevin@mail.com')
         ->fill('phone', '5269436529')
         ->select('job', 'admin')
-        ->fill('password', 'password')
-        ->fill('password_confirmation', 'password')
         ->fill('private_phone', '5269436529')
         ->fill('private_address', '5269436529')
         ->select('car_type', 'van')

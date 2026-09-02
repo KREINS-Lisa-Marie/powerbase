@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Enums\UserRoles;
+use App\Models\Company;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
@@ -26,14 +27,16 @@ class UserFactory extends Factory
     public function definition(): array
     {
         $job = [UserRoles::Worker->value, UserRoles::Admin->value, UserRoles::Storekeeper->value];
+        $random_company = Company::exists() ? Company::all()->pluck('id')->random() : Company::factory()->create()->id;
 
         return [
             'first_name' => fake()->firstName(),
             'last_name'=>fake()->lastName(),
             'email' => fake()->unique()->safeEmail(),
             'phone'=>fake()->e164PhoneNumber(),
+            'company_id'=>$random_company,
             'job'=>fake()->randomElement($job),
-            'private_phone'=>fake()->phoneNumber(),
+            'private_phone'=>fake()->e164PhoneNumber(),
             'private_address'=>fake()->address(),
             'car_type'=>fake()->word(),
             'car_plate'=>fake()->word(),

@@ -26,12 +26,12 @@ class OrderPolicy
      */
     public function view(User $user, Order $order): bool           // unecommande spécifique
     {
-        return $user->isAdminOrStorekeeper();
+        return $user->isAdminOrStorekeeper() && $user->company_id === $order->company_id;
     }
 
   public function viewLimited(User $user, Order $order): bool           // unecommande spécifique
     {
-        return $user->isWorker();
+        return $user->isWorker() && $user->id === $order->user_id;
     }
 
     /**
@@ -47,7 +47,7 @@ class OrderPolicy
      */
     public function update(User $user, Order $order): bool
     {
-        return $user->isAdminOrStorekeeper();
+        return $user->isAdminOrStorekeeper()&& $user->company_id === $order->company_id;
     }
 
     /**
@@ -55,7 +55,7 @@ class OrderPolicy
      */
     public function delete(User $user, Order $order): bool
     {
-        return false;
+        return $user->isWorker() && $user->id === $order->user_id  && $order->order_state === 'pending';
     }
 
     /**

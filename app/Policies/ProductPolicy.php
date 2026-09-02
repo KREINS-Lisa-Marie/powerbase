@@ -18,9 +18,9 @@ class ProductPolicy
  /**
      * Determine whether the user can view any models.
      */
-    public function viewLimited(User $user): bool        // Juste workers
+    public function viewLimited(User $user, Product $product): bool        // Juste workers
     {
-        return $user->isWorker();
+        return $user->isWorker() && ($product->company_id === null || $user->company_id === $product->company_id);
     }
 
     /**
@@ -28,7 +28,7 @@ class ProductPolicy
      */
     public function view(User $user, Product $product): bool            // Un produit spécifique
     {
-        return $user->isAdminOrStorekeeper();
+        return $user->isAdminOrStorekeeper() && ($product->company_id === null || $user->company_id === $product->company_id);
     }
 
     /**
@@ -44,7 +44,12 @@ class ProductPolicy
      */
     public function update(User $user, Product $product): bool
     {
-        return $user->isAdminOrStorekeeper();
+        return $user->isAdminOrStorekeeper() && $user->company_id === $product->company_id;
+    }
+
+    public function updateLimited(User $user, Product $product): bool
+    {
+        return $user->isAdminOrStorekeeper() && $product->company_id === null;
     }
 
     /**
@@ -52,7 +57,7 @@ class ProductPolicy
      */
     public function delete(User $user, Product $product): bool
     {
-        return $user->job === 'admin';
+        return $user->job === 'admin' && $user->company_id === $product->company_id;
     }
 
     /**

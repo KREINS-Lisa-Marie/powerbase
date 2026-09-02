@@ -60,6 +60,7 @@ new class extends Component {
             'private_address'=>$validated_data['private_address'],
             'car_type'=>$validated_data['car_type'] ?? null,
             'car_plate'=>$validated_data['car_plate'] ?? null,
+            'company_id'=>$this->contact->company_id,
         ]);
 
         $this->redirect(route('pages::contacts.show', ['locale' => __('general.currentLocale'), 'contact'=>$this->contact]));

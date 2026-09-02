@@ -23,7 +23,7 @@ new class extends Component
     public function save(): void
     {
         if ($this->password == '' || $this->password == ' '){
-            $this->addError('not_good_password', __('admin/orders.choose_product'));
+            $this->addError('not_good_password', __('admin/profile.password_not_empty'));
             return;
         }
 
@@ -35,7 +35,7 @@ new class extends Component
             'password'=>Hash::make($validated_data['password']),
         ]);
 
-        $this->redirect(route('pages::profile.index', ['locale' => app()->getLocale(), 'contact'=>$this->user]));
+        $this->redirect(route('pages::profile.index', ['locale' => app()->getLocale()]));
     }
 
     public function render()  {

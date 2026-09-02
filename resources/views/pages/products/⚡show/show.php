@@ -18,7 +18,10 @@ new class extends Component
     {
         $product = Product::findOrFail($this->product_id);
         $user = auth()->user();
-        return view('pages.products.⚡show.show',['product' => $product, 'user' => $user] )->title(__('general.detail_product'));
+        $productQuantity = \App\Models\ProductSetting::where('company_id', $user->company_id)
+            ->where('product_id', $product->id)->first();
+
+        return view('pages.products.⚡show.show',['product' => $product, 'user' => $user, 'productQuantity'=> $productQuantity] )->title(__('general.detail_product'));
     }
 
     public function destroy()

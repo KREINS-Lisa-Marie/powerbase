@@ -13,4 +13,4 @@ Artisan::command('inspire', function () {
 //ici je lui dis que chaque jour dans la semaine de travail, à 13h il doit envoyer le mail — donc il doit faire la commande que je lui dis
 Schedule::command('mail:send-order-reminders')
     ->weekdays()
-    ->dailyAt('13:00');
+    ->dailyAt('13:00')->timezone('Europe/Brussels');

@@ -17,6 +17,7 @@ return [
     'go_contact' => 'Aller vers la page Contact',
     'go_order' => 'Aller vers la page Commandes',
     'go_cart' => 'Aller vers la page du panier',
+    'go_login' => 'Login',
     'go_profile' => 'Aller vers la page Profile',
     'change_language' => 'Changer la langue vers',
 ];

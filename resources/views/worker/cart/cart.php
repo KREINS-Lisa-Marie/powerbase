@@ -2,6 +2,7 @@
 
 use App\Models\OrderItem;
 use App\Models\Product;
+use Illuminate\Validation\Rule;
 use Livewire\Component;
 
 new class extends Component
@@ -52,6 +53,7 @@ new class extends Component
 
     public function store(): void
     {
+        $companyId = auth()->user()->company_id;
 
         if (empty($this->cart) || $this->cart == null){
             $this->addError('no_product_chosen', __('worker/order.needs_product'));
@@ -62,16 +64,27 @@ new class extends Component
                 $this->addError('qt_over_one', __('worker/order.increment_qt'));
                 return;
             }
+            //vérifier que l'on ne met pas produits d'une autre company
+            $allowedProducts = Product::where('id', $productId)
+                ->where(function ($query) use($companyId) {     //importer $companyId pour l'utiliser
+                    $query->whereNull('company_id')
+                        ->orWhere('company_id', $companyId);
+                })->exists();
+            if (!$allowedProducts){
+                $this->addError('productNotAllowed', __('worker/order.product_not_allowed'));
+                return;
+            }
         }
 
 
 
         $validated_data= $this->validate([
-            'project_id'=>'required|integer',
+            'project_id'=>['required','integer', Rule::exists('projects', 'id')->where('company_id', $companyId)]
         ]);
 
         $order = \App\Models\Order::create([
             'user_id'=> auth()->user()->id,
+            'company_id'=> $companyId,
             'order_state'=>'pending',
             'project_id'=>$validated_data['project_id'],
         ]);
@@ -81,7 +94,8 @@ new class extends Component
                 'product_id'=> $productId,
                 'quantity'=> $item['quantity'],
             ]);
-            \App\Models\Product::findOrFail( $productId)
+            \App\Models\ProductSetting::where('company_id', $companyId)
+                ->where( 'product_id', $productId)
                 ->decrement('quantity', $item['quantity']);
         }
 
@@ -95,7 +109,8 @@ new class extends Component
 
     public function render()
     {
-        $projects = \App\Models\Project::all();
+        $companyId= auth()->user()->company_id;
+        $projects = \App\Models\Project::where('company_id', $companyId)->get();
 
         $orders_project_options = [];
         foreach ($projects as $project){

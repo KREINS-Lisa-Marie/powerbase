@@ -118,11 +118,20 @@ it('can create a product and redirect to the show page', function () {
 
 it('can edit a product and redirect to the show page', function () {
 
-    $user = User::factory()->create(['job'=>'storekeeper']);
+    $user = User::factory()->create(['job'=>'admin']);
     $locale = app()->getLocale();
     actingAs($user);
+    $companyId = $user->company_id;
 
-    $product = \App\Models\Product::factory()->create();
+    $product = \App\Models\Product::factory()->create([
+        'company_id'=>$companyId
+    ]);
+
+    $productSetting = \App\Models\ProductSetting::factory()->create([
+        'company_id' => $companyId,
+        'product_id' => $product->id,
+        'quantity' => 12,
+    ]);
 
     $route = route('pages::products.edit',[
         'locale' => $locale,
@@ -132,16 +141,15 @@ it('can edit a product and redirect to the show page', function () {
     visit($route)
         ->assertSee('Modifier')
         ->fill('product_description', 'nouvelle description')
-        ->fill('brand', 'amax')
         ->fill('product_name', $product->product_name)
         ->fill('ref_article', $product->ref_article)
         ->fill('gtin', (string) $product->gtin)
-        ->fill('quantity', (string) $product->quantity)
+        ->fill('quantity', (string) $productSetting->quantity)
         ->click('.admin-primary-button')
         ->assertSee($product->product_name)
         ->wait(1);  //seconde
 
     assertDatabaseHas('products', [
-        'brand' => 'amax',
+        'product_description' => 'nouvelle description',
     ]);
 });

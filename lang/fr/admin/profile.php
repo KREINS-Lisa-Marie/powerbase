@@ -30,4 +30,13 @@ return [
 
     'my_password'=>'Mon mot de passe',
     'password_not_empty'=>'Le mot de passe ne peut pas être vide',
+    'company_name'=>'Société',
+    'company_phone'=>'Numéro de l’entrepôt',
+    'company_email'=>'Email de l’entrepôt',
+    'powerbase_support'=>'Support de Powerbase',
+    'powerbase_support_phone'=>'Téléphone du support',
+    'powerbase_support_email'=>'Email du support',
+    'company_information'=>'Informations de la société',
+    'edit_company'=>'Modifier les informations de la société',
+    'submit_company_info'=>'Enregistrer les informations',
 ];

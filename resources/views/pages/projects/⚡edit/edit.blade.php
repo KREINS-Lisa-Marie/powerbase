@@ -1,38 +1,5 @@
-@php
-    $project_options = [
-         [
-             'name' => __('admin/projects.private'),
-             'value' => \App\Enums\ProjectTypes::Private->value,
-         ],
-         [
-             'name' => __('admin/projects.corporate'),
-             'value' => \App\Enums\ProjectTypes::Corporate->value,
-         ],
-    ];
-
-        $project_state = [
-         [
-             'name' => __('admin/projects.closed'),
-             'value' => \App\Enums\ProjectStates::Closed->value,
-         ],
-         [
-             'name' => __('admin/projects.open'),
-             'value' => \App\Enums\ProjectStates::Open->value,
-         ],
-    ];
-
-    $in_charge_options = [];
-     $users =  App\Models\User::get();
-     foreach ($users as $user) {
-        $in_charge_options[] = [
-            'name'  => "$user->first_name $user->last_name",
-            'value' => $user->id,
-        ];
-    }
-@endphp
-
-@can('update', $project)
 <main class="admin project-show" id="content">
+    @can('update', $project)
     <x-admin.page-bar>
         {{__('admin/projects.modify')}}
     </x-admin.page-bar>
@@ -64,7 +31,7 @@
                         <div>
                             <x-admin.components.fields.select select_name="project_state"
                                                               label="{{__('admin/projects.project_state')}}*"
-                                                              :options="$project_state" wire="project_state">
+                                                              :options="$project_state_options" wire="project_state">
                             </x-admin.components.fields.select>
                         </div>
 
@@ -113,5 +80,5 @@
             </div>
         </form>
     </div>
+    @endcan
 </main>
-@endcan

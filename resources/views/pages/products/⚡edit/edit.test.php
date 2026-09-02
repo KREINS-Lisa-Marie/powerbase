@@ -46,7 +46,7 @@ it('redirects to the products show route after the successfull edit of a product
             ->set('product_description', $product->product_description)
             ->set('product_notes', $product->product_notes)
             ->set('product_image', $product->product_image)
-            ->set('quantity', $product->quantity)
+            ->set('quantity', 5)
             ->call('save')
             ->assertHasNoErrors()
             ->assertRedirect(route('pages::products.show', [

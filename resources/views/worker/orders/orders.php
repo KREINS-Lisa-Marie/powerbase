@@ -38,9 +38,15 @@ new class extends Component
         $this->user = Auth::user();
         $orders = Order::where('user_id', $this->user->id);
 
+        $companyId = auth()->user()->company_id;
+
         $this->authorize('viewAnyLimited', Order::class);
 
         $this->categories = \App\Models\Product::query()
+            ->where(function ($query) use ($companyId) {
+                $query->whereNull('company_id')
+                    ->orWhere('company_id', $companyId);
+            })
             ->whereNotNull('product_notes')
             ->distinct()
             ->pluck('product_notes');

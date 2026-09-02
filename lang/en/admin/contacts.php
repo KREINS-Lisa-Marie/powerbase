@@ -45,4 +45,7 @@ return [
     'van' => 'Van',
 
     'repeat_password' => 'Repeat the password',
-    ];
+    'no_car' => 'No car',
+    'no_carplate' => 'No license plate',
+
+];

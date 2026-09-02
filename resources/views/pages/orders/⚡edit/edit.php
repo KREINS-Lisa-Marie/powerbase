@@ -2,6 +2,7 @@
 
 use App\Models\Order;
 use App\Models\Product;
+use Illuminate\Validation\Rule;
 use Livewire\Component;
 
 new class extends Component
@@ -44,11 +45,20 @@ new class extends Component
 
     public function updatedSearch()         //ça actualise automatiquement via livewire la search
     {
+        $this->authorize('update', $this->order);
+        $company = auth()->user()->company_id;
+        $search = $this->search;
+
         $this->searchedProduct =  Product::query()
-            ->where('product_name', 'like', '%' . $this->search . '%')
-            ->orWhere('gtin', 'like', '%' . $this->search . '%')
-            ->orWhere('ref_article', 'like', '%' . $this->search . '%')
-            ->orWhere('brand', 'like', '%' . $this->search . '%')
+            ->where(function ($query) use ($company) {
+                $query->where('company_id', $company)->orWhere('company_id', null);
+            })
+            ->where(function ($query) use ($search) {
+                $query->where('product_name', 'like', '%' . $search . '%')
+                    ->orWhere('gtin', 'like', '%' . $search . '%')
+                    ->orWhere('ref_article', 'like', '%' . $search . '%')
+                    ->orWhere('brand', 'like', '%' . $search . '%');
+            })
             ->limit(6)
             ->get();
     }
@@ -77,7 +87,10 @@ new class extends Component
 
     public function removeFromOrder( int $productId)            //supprimer de la commande
     {
-        $product = Product::findOrFail($productId);
+        $this->authorize('update', $this->order);
+        $company = auth()->user()->company_id;
+
+        $product = \App\Models\ProductSetting::where('company_id', $company)->where('product_id', $productId);
         $product->increment('quantity', $this->cart[$productId]['originalquantity']);       //augmente le stock du produit supprimé de la commande par le nombre de la qt originale
         $order = $this->order;
         $order->orderItems()->where('product_id', $productId)->delete();         //supprime le produit des orderitems
@@ -89,6 +102,9 @@ new class extends Component
 
     public function save(): void
     {
+        $this->authorize('update', $this->order);
+        $company = auth()->user()->company_id;
+
         //recuperer le panier
         $this->cart = session()->get('cart_order'.$this->order->id, $this->cart);
         //si 'cart_order'.$this->order->id n'existe pas, alors ça renvoie $this->cart au lieu de null
@@ -111,9 +127,9 @@ new class extends Component
 
 //validation
         $validated_data= $this->validate([
-            'user_id'=>'required|integer',
+            'user_id'=>['required','integer', Rule::exists('users', 'id')->where('company_id', $company)],
             'order_state'=>'string|required',
-            'project_id'=>'required|integer',
+            'project_id'=>['required','integer', Rule::exists('projects', 'id')->where('company_id', $company)],
         ]);
 
 //update
@@ -121,6 +137,7 @@ new class extends Component
             'user_id'=>$validated_data['user_id'],
             'order_state'=>$validated_data['order_state'],
             'project_id'=>$validated_data['project_id'],
+            'company_id'=>$company,
         ]);
 
         $order = $this->order;
@@ -153,13 +170,13 @@ new class extends Component
             );
 
 
-            $product= Product::findOrFail( $productId);
+            $productSetting= \App\Models\ProductSetting::where('company_id', $company)->where('product_id', $productId);
 
             //changer la différence dans le stock
             if ($qt_difference>0){
-                $product->decrement('quantity', $qt_difference);
+                $productSetting->decrement('quantity', $qt_difference);
             }elseif($qt_difference<0){
-                $product->increment('quantity', abs($qt_difference));       //abs fait de + un -
+                $productSetting->increment('quantity', abs($qt_difference));       //abs fait de + un -
             }
         }
 
@@ -173,7 +190,47 @@ new class extends Component
 
     public function render()
     {
-        return view('pages.orders.⚡edit.edit')->title(__('general.order_edit'));
+        $this->authorize('update', $this->order);
+        $company = auth()->user()->company_id;
+
+    $orders_state_options = [
+        [
+            'name' => __('admin/orders.pending'),
+            'value' => 'pending',
+        ],
+        [
+            'name' => __('admin/orders.completed'),
+            'value' =>'completed',
+        ],
+    ];
+
+
+       $users = \App\Models\User::where('company_id', $company)->get();
+
+       $orders_users_options = [];
+
+            foreach ($users as $user){
+                $orders_users_options[] =
+                    [
+                        'name' => "$user->first_name $user->last_name",
+                        'value' => $user->id,
+                    ];
+            }
+
+    $projects = \App\Models\Project::where('company_id', $company)->get();
+
+            $orders_project_options = [];
+
+            foreach ($projects as $project){
+                $orders_project_options[] =
+                    [
+                        'name' => $project->project_name,
+                        'value' => $project->id,
+                    ];
+            }
+
+
+        return view('pages.orders.⚡edit.edit', compact('orders_users_options', 'orders_project_options', 'orders_state_options'))->title(__('general.order_edit'));
     }
 
 };

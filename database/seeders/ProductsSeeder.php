@@ -43,7 +43,8 @@ class ProductsSeeder extends Seeder
             'gtin'                => $row['gtin'],
             'product_description' => $row['product_description'],
             'product_notes'       => $row['product_notes'],
-            'quantity'            => (int) $row['quantity'],
+           /* 'quantity'            => (int) $row['quantity'],*/
+            'company_id'       => null,
             'product_image'       => null,
             'created_at'          => now(),
             'updated_at'          => now(),

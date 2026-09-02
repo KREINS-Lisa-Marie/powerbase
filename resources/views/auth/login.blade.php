@@ -39,6 +39,9 @@
                     <a href="{{route('auth.forgot-password', ['locale' => __('general.currentLocale')])}}" class="d-block medium m-b-24">
                         {{__('auth/login.password_forgotten')}}
                     </a>
+                    <a href="{{route('auth.register', ['locale' => __('general.currentLocale')])}}" class="d-block medium m-b-24">
+                        {{__('auth/login.no_account')}}
+                    </a>
                     <div class="d-flex  flex-gap-12 mb-64">
                         <input type="checkbox" name="remember" id="remember_me"
                                class="p-16 border-r-small background-white ">

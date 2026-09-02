@@ -10,7 +10,10 @@
                 @forelse($newest_products as $newest_product)
                 <x-worker.product-card productname="{{$newest_product->product_name}}" product_id="{{$newest_product->id}}" product_image="{{$newest_product->product_image}}"  />
                 @empty
-                    <x-worker.product-card productname="{{__('worker/homepage.no_product_found')}}" product_id="null"/>
+                   {{-- <x-worker.product-card productname="{{__('worker/homepage.no_product_found')}}" product_id="null"/>--}}
+                    <p class="error-no-product text-white  uppercase bold">
+                        {{__('worker/products.no_product_found')}}
+                    </p>
                 @endforelse
             </div>
         </section>
@@ -23,7 +26,10 @@
                 @forelse($random_products as $product)
                     <x-worker.product-card productname="{{$product->product_name}}" product_image="{{$product->product_image}}" product_id="{{$product->id}}"/>
                 @empty
-                    <x-worker.product-card productname="{{__('worker/homepage.no_product_found')}}" product_id=""/>
+                    {{--<x-worker.product-card productname="{{__('worker/homepage.no_product_found')}}" product_id=""/>--}}
+                    <p class="error-no-product text-white  uppercase bold">
+                        {{__('worker/products.no_product_found')}}
+                    </p>
                 @endforelse
             </div>
         </section>

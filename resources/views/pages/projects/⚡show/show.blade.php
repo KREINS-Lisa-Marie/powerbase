@@ -1,5 +1,5 @@
-@can('view', $project)
 <main class="admin project-show" id="content">
+    @can('view', $project)
     <x-admin.page-bar>
         {{$project->project_name}}
     </x-admin.page-bar>
@@ -97,7 +97,7 @@
                     <h3 class="sro">
                         {{__('admin/projects.list_of_products')}}
                     </h3>
-                    <table class="max-w-admin-web split-table">
+                    <table class="max-w-admin-web split-table" id="projects-table">
                         <thead>
                         <tr>
                             <th scope="col" class="bold" direction="asc">
@@ -154,5 +154,5 @@
             </div>
         </div>
     </div>
+    @endcan
 </main>
-@endcan

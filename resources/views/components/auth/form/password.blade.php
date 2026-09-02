@@ -1,6 +1,6 @@
 <div class="d-flex flex-col">
     <label for="password" class="auth-label medium">
-        {{__('auth/login.password')}}
+        {{__('auth/login.password')}}*
     </label>
     @error('password')
     <p class="error">

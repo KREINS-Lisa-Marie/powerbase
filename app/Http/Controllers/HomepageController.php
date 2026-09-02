@@ -11,12 +11,19 @@ class HomepageController extends Controller
     public function index()
     {
         $user = auth()->user();
+        $companyId = $user->company_id;
         //$products = Product::where('quantity', '>', 0)->paginate(20);
 
-        $newest_products = Product::orderBy('created_at', 'desc')
+        $newest_products = Product::where(function ($query) use ($companyId) {
+                $query->whereNull('company_id')
+                    ->orWhere('company_id', $companyId);
+            })->orderBy('created_at', 'desc')
             ->limit(4)->get();
 
-        $random_products = Product::withCount('orderItems')
+        $random_products = Product::where(function ($query) use ($companyId) {
+            $query->whereNull('company_id')
+                ->orWhere('company_id', $companyId);
+        })->withCount('orderItems')
             ->orderBy('order_items_count', 'desc')
             ->limit(8)
             ->get();

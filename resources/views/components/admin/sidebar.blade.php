@@ -56,34 +56,34 @@
 
     <ul class="flex flex-col sidebar-nav-links nav__container__header l-height-32 bold">
         <li class="nav__item__header">
-            <a href="{{route('pages::dashboard.index', ['locale' => __('general.currentLocale')])}}" class="nav__link__header" aria-label=" {{__('admin/sidebar.go_to_the_page_dashboard')}}" title="{{__('admin/sidebar.go_to_the_page_dashboard')}}" >
+            <a href="{{route('pages::dashboard.index', ['locale' => __('general.currentLocale')])}}" class="nav__link__header {{ request()->routeIs('pages::dashboard.index') ? 'active-admin' : '' }}" aria-label=" {{__('admin/sidebar.go_to_the_page_dashboard')}}" title="{{__('admin/sidebar.go_to_the_page_dashboard')}}" >
                 {{__('admin/sidebar.dashboard')}}
                 </a>
         </li>
         <li class="nav__item__header">
-            <a href="{{route('pages::products.index', ['locale' => __('general.currentLocale')])}}" class="nav__link__header" aria-label="{{__('admin/sidebar.go_to_the_page_products')}}" title="{{__('admin/sidebar.go_to_the_page_products')}}">
+            <a href="{{route('pages::products.index', ['locale' => __('general.currentLocale')])}}" class="nav__link__header {{ request()->routeIs('pages::products.index') ? 'active-admin' : '' }}" aria-label="{{__('admin/sidebar.go_to_the_page_products')}}" title="{{__('admin/sidebar.go_to_the_page_products')}}">
                 {{__('admin/sidebar.products')}}
                 </a>
         </li>
         <li class="nav__item__header">
-            <a href="{{route('pages::projects.index', ['locale' => __('general.currentLocale')])}}" class="nav__link__header" aria-label="{{__('admin/sidebar.go_to_the_page_projects')}}" title="{{__('admin/sidebar.go_to_the_page_projects')}}">
+            <a href="{{route('pages::projects.index', ['locale' => __('general.currentLocale')])}}" class="nav__link__header {{ request()->routeIs('pages::projects.index') ? 'active-admin' : '' }}" aria-label="{{__('admin/sidebar.go_to_the_page_projects')}}" title="{{__('admin/sidebar.go_to_the_page_projects')}}">
                 {{__('admin/sidebar.projects')}}
             </a>
         </li>
         <li class="nav__item__header">
-            <a href="{{route('pages::contacts.index', ['locale' => __('general.currentLocale')])}}" class="nav__link__header" aria-label="{{__('admin/sidebar.go_to_the_page_contacts')}}" title="{{__('admin/sidebar.go_to_the_page_contacts')}}">
+            <a href="{{route('pages::contacts.index', ['locale' => __('general.currentLocale')])}}" class="nav__link__header {{ request()->routeIs('pages::contacts.index') ? 'active-admin' : '' }}" aria-label="{{__('admin/sidebar.go_to_the_page_contacts')}}" title="{{__('admin/sidebar.go_to_the_page_contacts')}}">
                 {{__('admin/sidebar.contacts')}}
                 </a>
         </li>
         <li class="nav__item__header">
-            <a href="{{route('pages::orders.index', ['locale' => __('general.currentLocale')])}}" class="nav__link__header" aria-label="{{__('admin/sidebar.go_to_the_page_orders')}}" title="{{__('admin/sidebar.go_to_the_page_orders')}}">
+            <a href="{{route('pages::orders.index', ['locale' => __('general.currentLocale')])}}" class="nav__link__header {{ request()->routeIs('pages::orders.index') ? 'active-admin' : '' }}" aria-label="{{__('admin/sidebar.go_to_the_page_orders')}}" title="{{__('admin/sidebar.go_to_the_page_orders')}}">
                 {{__('admin/sidebar.orders')}}
                 </a> <span class="numbers">{!! $orders_number !!}</span>
         </li>
     </ul>
 
     <div class="nav__container__header profile-disconnect-link bold">
-        <a href="{{route('pages::profile.index', ['locale' => __('general.currentLocale')])}}" class="nav__item__header" title="{{__('admin/sidebar.go_to_the_page_profile')}}" aria-label="{{__('admin/sidebar.go_to_the_page_profile')}}">
+        <a href="{{route('pages::profile.index', ['locale' => __('general.currentLocale')])}}" class="nav__item__header {{ request()->routeIs('pages::profile.index') ? 'active-admin' : '' }}" title="{{__('admin/sidebar.go_to_the_page_profile')}}" aria-label="{{__('admin/sidebar.go_to_the_page_profile')}}">
             {{__('admin/sidebar.profile')}}
         </a>
         <form action="{{route('logout')}}" method="POST" class="nav__item__header">

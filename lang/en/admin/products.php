@@ -4,7 +4,7 @@ return [
     'general_information' => 'General information',
     'product_name' => 'Product Name',
     'description' => 'Description',
-    'notes' => 'Notes',
+    'notes' => 'Category',
     'stock_number' => 'Quantity in inventory',
     'image' => 'Image',
     'modify_product' => 'Modify Product',
@@ -32,4 +32,8 @@ return [
     'gtin' => 'GTIN13',
 
     'no_result'=>'No product found',
+    'scan_gtin'=>'Scan GTIN',
+    'cancel'=>'Cancel',
+    'comment'=>'Comment',
+    'placeholder_comment'=>'Comes with 3 pieces now',
 ];

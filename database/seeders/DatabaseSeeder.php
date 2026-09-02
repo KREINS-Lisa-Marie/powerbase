@@ -6,6 +6,12 @@ namespace Database\Seeders;
 //use App\Models\OrderItem;
 //use App\Models\Product;
 //use App\Models\Project;
+use App\Models\Company;
+use App\Models\Order;
+use App\Models\OrderItem;
+use App\Models\Product;
+use App\Models\ProductSetting;
+use App\Models\Project;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -23,10 +29,14 @@ class DatabaseSeeder extends Seeder
 //real data
         $this->call(ProductsSeeder::class);
 
+        $company = \App\Models\Company::firstOrCreate(['name' => 'Electro Maes']);
+
+
         if (!User::where('email', 'marc.arimont@powerbase.com')->exists()){
             User::create([
                 'first_name' => 'Marc',
                 'last_name' => 'Arimont',
+                'company_id' => $company->id,
                 'phone' => '0123456789',
                 'job' => 'admin',
                 'private_phone'=>'1234567890',
@@ -39,6 +49,7 @@ class DatabaseSeeder extends Seeder
             User::create([
                 'first_name' => 'General',
                 'last_name' => 'Admin',
+                'company_id' => $company->id,
                 'phone' => '9876543210',
                 'job' => 'admin',
                 'private_phone' => '0987654321',
@@ -47,6 +58,35 @@ class DatabaseSeeder extends Seeder
                 'password' => Hash::make(config('admin.password')),
             ]);
         }
+
+
+        //delete when production
+        if (app()->environment('local')) {
+            $projects = Project::factory(5)->create();
+
+            $orders = Order::factory(20)->create();
+            //$products = Product::inRandomOrder()->take(rand(1,5))->get();
+
+            foreach (Order::all() as $order) {
+                foreach (Product::inRandomOrder()->take(rand(1, 5))->get() as $product) {       //entre 1 et 5 produits
+                    OrderItem::firstOrCreate(
+                            ['order_id' => $order->id, 'product_id' => $product->id,],
+                            ['quantity' => random_int(1, 10)],
+                    );
+                }
+            }
+
+            foreach (Company::all() as $company) {
+                foreach (Product::inRandomOrder()->take(rand(1, 5))->get() as $product) {
+                    ProductSetting::firstOrCreate(
+                            ['company_id' => $company->id, 'product_id' => $product->id,],
+                            ['quantity' => random_int(1, 50)],
+                    );
+                }
+            }
+
+        }
+
 
 //needed to do this because i dont want the passwords to be online so that everybody can see them.
 

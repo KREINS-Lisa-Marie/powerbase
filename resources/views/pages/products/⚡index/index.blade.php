@@ -45,7 +45,7 @@
                         </x-admin.components.table.table-td>
                         <x-admin.components.table.table-td class="table-name fw-medium">
                             <span class="show-web">{{__('admin/products.stock_number')}}</span>
-                            {{$product->quantity}}
+                            {{$product->company_quantity ?? 0}}
                         </x-admin.components.table.table-td>
                         <x-admin.components.table.table-td class="table-state">
                             <span class="show-web">{{__('admin/products.in_stock_since')}}</span>

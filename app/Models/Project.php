@@ -13,6 +13,7 @@ class Project extends Model
     use HasFactory;
 
     protected $fillable = [
+        'company_id',
         'project_name',
         'user_id',
         'project_type',
@@ -31,5 +32,8 @@ class Project extends Model
     {
         return $this->belongsTo(User::class);
     }
-
+    public function company():BelongsTo
+    {
+        return $this->belongsTo(Company::class);
+    }
 }
