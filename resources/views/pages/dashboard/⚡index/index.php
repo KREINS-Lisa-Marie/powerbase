@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\ProductSetting;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Order;
@@ -25,7 +26,7 @@ new #[Layout('layouts.app')] class extends Component
 
 //tri
     public $sortField = 'created_at';
-    public $sortDirection = 'asc';
+    public $sortDirection = 'desc';
 
     protected $queryString =['sortField', 'sortDirection'];
 
@@ -43,22 +44,25 @@ new #[Layout('layouts.app')] class extends Component
     public function mount()         //avant de render ( 1x seulement)
     {
         $this->user = Auth::user();
-        $this->orders_to_finish = Order::where('order_state', '!=', 'completed')->count();
-        $this->products_low_quantity = Product::where('quantity', '<', 5)->count();
-        $this->products_in_stock = Product::count();/*
+        $companyId = $this->user->company_id;
+        $this->orders_to_finish = Order::where('company_id', $companyId)->where('order_state', '!=', 'completed')->count();
+        $this->products_low_quantity = \App\Models\ProductSetting::where('company_id', $this->user->company_id)->where('quantity', '<', 5)->count();
+
+        $this->products_in_stock = ProductSetting::where('company_id', $this->user->company_id)->where('quantity', '>', 0)->count();
+        /*
         $this->five_latest_orders = Order::withCount('orderItems')->latest()->limit(5)->get();*/
         //$this->users = User::all();
-        $this->daily_orders = Order::whereDate('created_at',  Carbon::today())->count();
-        $this->completed_orders = Order::whereDate('updated_at', Carbon::today())->where( 'order_state', '=', 'completed')->count();
+        $this->daily_orders = Order::where('company_id', $companyId)->whereDate('created_at',  Carbon::today())->count();
+        $this->completed_orders = Order::where('company_id', $companyId)->whereDate('updated_at', Carbon::today())->where( 'order_state', '=', 'completed')->count();
 
-        $this->today_products = Product::whereDate('created_at', Carbon::today())->count();
-        $this->today_projects = Project::whereDate('created_at', Carbon::today())->count();
-        $this->open_projects = Project::where('project_state', '=', 'open')->count();
+        $this->today_products = Product::where('company_id', $companyId)->whereDate('created_at', Carbon::today())->count();
+        $this->today_projects = Project::where('company_id', $companyId)->whereDate('created_at', Carbon::today())->count();
+        $this->open_projects = Project::where('company_id', $companyId)->where('project_state', '=', 'open')->count();
     }
 
     public function render()        //à chaque fois que qqch sur la page change
     {
-        $five_orders = Order::withCount('orderItems')->with('user')->latest()->limit(5)->get(); //ici parce que ça doit rerender à chaque fois que je change de direction
+        $five_orders = Order::where('company_id', $this->user->company_id)->withCount('orderItems')->with('user')->latest()->limit(5)->get(); //ici parce que ça doit rerender à chaque fois que je change de direction
         $this->five_latest_orders =
             $this->sortDirection === 'asc'
             ?$five_orders->sortBy($this->sortField)

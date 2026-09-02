@@ -125,7 +125,7 @@
             </thead>
             <tbody>
 
-                @foreach($five_latest_orders as $order)
+                @forelse($five_latest_orders as $order)
                 <tr class="table-row position-relative">
                     <x-admin.components.table.table-td class="table-full_name">
                         <span class="show-web">{{__('admin/orders.ordered_by')}}</span>
@@ -152,7 +152,13 @@
                         </a>
                     </x-admin.components.table.table-td>
                 </tr>
-                @endforeach
+                @empty
+                    <tr class="table-row position-relative">
+                        <x-admin.components.table.table-td class="table-full_name">
+                            {{__('admin/orders.no_result')}}
+                        </x-admin.components.table.table-td>
+                    </tr>
+                @endforelse
             </tbody>
         </table>
     </section>
