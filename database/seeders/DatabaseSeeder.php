@@ -58,6 +58,160 @@ class DatabaseSeeder extends Seeder
                 'password' => Hash::make(config('admin.password')),
             ]);
         }
+        if (!User::where('email', 'pierre@powerbase.com')->exists()) {
+            User::create([
+                'first_name' => 'Pierre',
+                'last_name' => 'Simon',
+                'company_id' => $company->id,
+                'phone' => '03284380',
+                'job' => 'worker',
+                'private_phone' => '0987654321',
+                'private_address' => 'Rue de l’église 2, 4000 Liège',
+                'email' => 'pierre@powerbase.com',
+                'password' => Hash::make(config('admin.password')),
+            ]);
+        }
+        if (!User::where('email', 'kevin@powerbase.com')->exists()) {
+            User::create([
+                'first_name' => 'Kevin',
+                'last_name' => 'Meunier',
+                'company_id' => $company->id,
+                'phone' => '02383042',
+                'job' => 'storekeeper',
+                'private_phone' => '0987654321',
+                'private_address' => 'Rue de Seraing 5, 4000 Liège',
+                'email' => 'kevin@powerbase.com',
+                'password' => Hash::make(config('admin.password')),
+            ]);
+        }
+        if (!User::where('email', 'alfredo@powerbase.com')->exists()) {
+            User::create([
+                'first_name' => 'Alfredo',
+                'last_name' => 'Stivale',
+                'company_id' => $company->id,
+                'phone' => '0437943210',
+                'job' => 'worker',
+                'private_phone' => '0987654321',
+                'private_address' => 'Rue de la main 7, 4000 Liège',
+                'email' => 'alfredo@powerbase.com',
+                'password' => Hash::make(config('admin.password')),
+            ]);
+        }
+        if (!User::where('email', 'maxime@powerbase.com')->exists()) {
+            User::create([
+                'first_name' => 'Maxime',
+                'last_name' => 'Lemaire',
+                'company_id' => $company->id,
+                'phone' => '03479324',
+                'job' => 'worker',
+                'private_phone' => '0987654321',
+                'private_address' => 'Rue de la cerise 9, 4000 Liège',
+                'email' => 'maxime@powerbase.com',
+                'password' => Hash::make(config('admin.password')),
+            ]);
+        }
+        if (!User::where('email', 'tom@powerbase.com')->exists()) {
+            User::create([
+                'first_name' => 'Tom',
+                'last_name' => 'Bertrand',
+                'company_id' => $company->id,
+                'phone' => '032383042',
+                'job' => 'storekeeper',
+                'private_phone' => '0987654321',
+                'private_address' => 'Rue de Liège 3, 4000 Liège',
+                'email' => 'tom@powerbase.com',
+                'password' => Hash::make(config('admin.password')),
+            ]);
+        }
+
+
+        if (!User::where('email', 'martin@powerbase.com')->exists()) {
+            User::create([
+                'first_name' => 'Martin',
+                'last_name' => 'Servais',
+                'company_id' => $company->id,
+                'phone' => '094449324',
+                'job' => 'storekeeper',
+                'private_phone' => '0987654321',
+                'private_address' => 'Rue d’Eupen 24, 4000 Liège',
+                'email' => 'martin@powerbase.com',
+                'password' => Hash::make(config('admin.password')),
+            ]);
+        }
+
+        if (!User::where('email', 'nico@powerbase.com')->exists()) {
+            User::create([
+                'first_name' => 'Nico',
+                'last_name' => 'Servais',
+                'company_id' => $company->id,
+                'phone' => '094449324',
+                'job' => 'worker',
+                'private_phone' => '09876321',
+                'private_address' => 'Rue de la ville 24, 4000 Liège',
+                'email' => 'nico@powerbase.com',
+                'password' => Hash::make(config('admin.password')),
+            ]);
+        }
+
+        if (!User::where('email', 'bob@powerbase.com')->exists()) {
+            User::create([
+                'first_name' => 'Bob',
+                'last_name' => 'Martin',
+                'company_id' => $company->id,
+                'phone' => '0432449324',
+                'job' => 'worker',
+                'private_phone' => '098948321',
+                'private_address' => 'Rue d’Eupen 4, 4000 Liège',
+                'email' => 'bob@powerbase.com',
+                'password' => Hash::make(config('admin.password')),
+            ]);
+        }
+
+
+
+        //company 2
+
+        $company2 = \App\Models\Company::firstOrCreate(['name' => 'Electro Servais']);
+
+        if (!User::where('email', 'aline@powerbase.com')->exists()) {
+            User::create([
+                'first_name' => 'Aline',
+                'last_name' => 'Melot',
+                'company_id' => $company2->id,
+                'phone' => '9876233210',
+                'job' => 'admin',
+                'private_phone' => '0237654321',
+                'private_address' => 'Rue de l’église 87, 4000 Liège',
+                'email' => 'aline@powerbase.com',
+                'password' => Hash::make(config('admin.password')),
+            ]);
+        }
+        if (!User::where('email', 'michelle@powerbase.com')->exists()) {
+            User::create([
+                'first_name' => 'Michelle',
+                'last_name' => 'Dosquet',
+                'company_id' => $company2->id,
+                'phone' => '03287380',
+                'job' => 'worker',
+                'private_phone' => '0956654321',
+                'private_address' => 'Rue de l’église 27, 4000 Liège',
+                'email' => 'michelle@powerbase.com',
+                'password' => Hash::make(config('admin.password')),
+            ]);
+        }
+        if (!User::where('email', 'julie@powerbase.com')->exists()) {
+            User::create([
+                'first_name' => 'Julie',
+                'last_name' => 'Levin',
+                'company_id' => $company2->id,
+                'phone' => '043383042',
+                'job' => 'storekeeper',
+                'private_phone' => '0439654321',
+                'private_address' => 'Rue de Seraing 45, 4000 Liège',
+                'email' => 'julie@powerbase.com',
+                'password' => Hash::make(config('admin.password')),
+            ]);
+        }
 
 
         //delete when production
