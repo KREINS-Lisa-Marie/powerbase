@@ -21,7 +21,7 @@ class ProjectPolicy
      */
     public function view(User $user, Project $project): bool            //un projet
     {
-        return $user->isAdminOrStorekeeper();
+        return $user->isAdminOrStorekeeper() && $user->company_id === $project->company_id;
     }
 
     /**
@@ -37,7 +37,7 @@ class ProjectPolicy
      */
     public function update(User $user, Project $project): bool
     {
-        return $user->isAdminOrStorekeeper();
+        return $user->isAdminOrStorekeeper() && $user->company_id === $project->company_id;
     }
 
     /**
