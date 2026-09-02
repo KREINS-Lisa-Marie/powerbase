@@ -1,76 +1,5 @@
-@php
-    $orders_state_options = [
-        [
-            'name' => __('admin/orders.pending'),
-        'value' => 'pending',
-        ],
-        [
-            'name' => __('admin/orders.completed'),
-            'value' =>'completed',
-        ],
-
-
-];
-
-$projects = \App\Models\Project::all();
-$orders_project_options = [];
-            foreach ($projects as $project){
-             $orders_project_options[] =
-                 [
-            'name' => $project->project_name,
-        'value' => $project->id,
-        ];
-            }
-
-
-            $users = \App\Models\User::all();
-
-            $orders_users_options = [];
-            foreach ($users as $user){
-             $orders_users_options[] =
-                 [
-            'name' => "$user->first_name $user->last_name",
-        'value' => $user->id,
-        ];
-            }
-
-
-
-            $project_options = [
-         [
-             'name' => __('admin/projects.private'),
-             'value' => \App\Enums\ProjectTypes::Private->value,
-         ],
-         [
-             'name' => __('admin/projects.corporate'),
-             'value' => \App\Enums\ProjectTypes::Corporate->value,
-         ],
-    ];
-    $project_state = [
-         [
-             'name' => __('admin/projects.closed'),
-             'value' => \App\Enums\ProjectStates::Closed->value,
-         ],
-         [
-             'name' => __('admin/projects.open'),
-             'value' => \App\Enums\ProjectStates::Open->value,
-         ],
-    ];
-
-    $in_charge_options = [];
-
-     foreach ($users as $user) {
-        $in_charge_options[] = [
-            'name'  => "$user->first_name $user->last_name",
-            'value' => $user->id,
-        ];
-    }
-
-@endphp
-
-
-@can('create', \App\Models\Order::class)
 <main class="admin order " id="content">
+    @can('create', \App\Models\Order::class)
     <x-admin.page-bar>
         {{__('admin/orders.create_an_order')}}
     </x-admin.page-bar>
@@ -210,7 +139,7 @@ $orders_project_options = [];
                                     </x-admin.components.fields.select>
                                 </div>
                                 <div>
-                                    <x-admin.components.fields.select select_name="project_state" label="{{__('admin/projects.project_state')}}*" :options="$project_state" wire="project_state">
+                                    <x-admin.components.fields.select select_name="project_state" label="{{__('admin/projects.project_state')}}*" :options="$project_state_options" wire="project_state">
                                     </x-admin.components.fields.select>
                                 </div>
                             </div>
@@ -260,5 +189,5 @@ $orders_project_options = [];
             @endcan
         @endif
     </div>
+    @endcan
 </main>
-@endcan

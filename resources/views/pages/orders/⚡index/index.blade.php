@@ -1,5 +1,5 @@
-@can('viewAny', \App\Models\Order::class)
 <main class="admin orders-index-page" id="content">
+    @can('viewAny', \App\Models\Order::class)
     <x-admin.page-bar>
         {{__('admin/orders.orders')}}
     </x-admin.page-bar>
@@ -43,13 +43,10 @@
                 <tbody>
 
                     @forelse($orders as $order)
-                        @php
-                            $user = \App\Models\User::findOrFail($order->user_id)
-                        @endphp
                     <tr class="table-row position-relative">
                         <x-admin.components.table.table-td class="table-full_name">
                             <span class="show-web">{{__('admin/orders.ordered_by')}}</span>
-                            {{$user->first_name}} {{$user->last_name}}
+                            {{$order->first_name}} {{$order->last_name}}
                         </x-admin.components.table.table-td>
                         <x-admin.components.table.table-td class="table-name fw-medium">
                             <span
@@ -85,5 +82,5 @@
         </div>
     </div>
 
+    @endcan
 </main>
-@endcan

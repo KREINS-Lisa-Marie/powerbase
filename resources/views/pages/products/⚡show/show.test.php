@@ -28,7 +28,12 @@ it('renders successfully', function () {
 
 it('verifies that the products show page is showing content elements in the right order', function () {
 
-    $product = Product::factory()->create();
+    $user = User::factory()-> create(['job'=>'admin']);
+    \Pest\Laravel\actingAs($this-> user);
+
+    $product = Product::factory()->create([
+        'company_id' => $user->company_id,
+    ]);
 
     Livewire::test('pages::products.show',
         [

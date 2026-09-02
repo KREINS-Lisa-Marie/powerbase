@@ -67,7 +67,7 @@
                             {{__('admin/products.stock_number')}}
                         </x-admin.components.definition-term>
                         <x-admin.components.definition>
-                            {{$product->quantity}}
+                            {{ $productQuantity->quantity ?? 0 }}
                         </x-admin.components.definition>
                     </div>
                 </dl>
@@ -87,6 +87,14 @@
                     </x-admin.components.definition>
                 </dl>
             </div>
+            <dl class="m-t-32">
+                <x-admin.components.definition-term>
+                    {{__('admin/products.comment')}}
+                </x-admin.components.definition-term>
+                <x-admin.components.definition>
+                    {{ $productQuantity->comment ?? '' }}
+                </x-admin.components.definition>
+            </dl>
 
         </section>
         <div class="split-row">
@@ -95,6 +103,11 @@
                 <x-admin.components.admin-primary-button href="{{route('pages::products.edit', ['locale' => __('general.currentLocale'), 'product' => $product])}}" title="{{__('admin/products.modify_product')}}"  class="">
                     {{__('admin/products.modify_product')}}
                 </x-admin.components.admin-primary-button>
+                @endcan
+                @can('updateLimited', $product)
+                    <x-admin.components.admin-primary-button href="{{route('pages::products.edit', ['locale' => __('general.currentLocale'), 'product' => $product])}}" title="{{__('admin/products.modify_product')}}"  class="">
+                        {{__('admin/products.modify_product')}}
+                    </x-admin.components.admin-primary-button>
                 @endcan
                 @can('delete', $product)
                 <form wire:submit="destroy" method="post">

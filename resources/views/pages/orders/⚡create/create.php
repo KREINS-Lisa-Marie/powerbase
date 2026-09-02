@@ -1,7 +1,9 @@
 <?php
 
+use App\Models\Order;
 use App\Models\Project;
 use App\Models\User;
+use Illuminate\Validation\Rule;
 use Livewire\Component;
 
 new class extends Component
@@ -27,12 +29,13 @@ new class extends Component
 
     public function mount()
     {
-        $this->authorize('create', \App\Models\Order::class);
+        $this->authorize('create', Order::class);
     }
 
     public function openModal( )
     {
-        $this->users = User::get();
+        $company = auth()->user()->company_id;
+        $this->users = User::where('company_id', $company)->get();
 
         $this->authorize('create', Project::class);   // ajouter car sinon policy ne marche pas
 
@@ -49,13 +52,20 @@ new class extends Component
 
     public function updatedSearch()         //ça actualise automatiquement via livewire la search
     {
+        $company = auth()->user()->company_id;
+        $search = $this->search;
+
         $this->searchedProduct =  \App\Models\Product::query()
-            ->where('product_name', 'like', '%' . $this->search . '%')
-            ->orWhere('gtin', 'like', '%' . $this->search . '%')
-            ->orWhere('ref_article', 'like', '%' . $this->search . '%')
-            ->orWhere('brand', 'like', '%' . $this->search . '%')
-            ->limit(6)
-            ->get();
+            ->where(function ($query) use ($company){
+                $query->where('company_id', $company)
+                    ->orWhere('company_id', null);
+            })->where(function ($query) use ($search){
+                $query->where('product_name', 'like', '%' . $this->search . '%')
+                    ->orWhere('gtin', 'like', '%' . $this->search . '%')
+                    ->orWhere('ref_article', 'like', '%' . $this->search . '%')
+                    ->orWhere('brand', 'like', '%' . $this->search . '%');
+            })->limit(6)
+              ->get();
     }
 
     public function addToOrder( int $productId)
@@ -80,10 +90,13 @@ new class extends Component
 
     public function store(): void
     {
+        $this->authorize('create', \App\Models\Order::class);
+        $company = auth()->user()->company_id;
+
         $validated_data= $this->validate([
-            'user_id'=>'required|integer',
+            'user_id'=>['required','integer', \Illuminate\Validation\Rule::exists('users', 'id')->where('company_id', $company)],
             'order_state'=>'string|required|max:255',
-            'project_id'=>'required|integer',
+            'project_id'=>['required','integer', \Illuminate\Validation\Rule::exists('projects', 'id')->where('company_id', $company)], //vérifie que le projet existe et qu'il appartient à la company
         ]);
 
         if (empty($this->cart)){
@@ -95,6 +108,7 @@ new class extends Component
             'user_id'=>$validated_data['user_id'],
             'order_state'=>$validated_data['order_state'],
             'project_id'=>$validated_data['project_id'],
+            'company_id'=>$company,
         ]);
 
         foreach ($this->cart as $productId=>$item){
@@ -102,7 +116,7 @@ new class extends Component
                'product_id'=> $productId,
                 'quantity'=> $item['quantity'],
             ]);
-            \App\Models\Product::findOrFail( $productId)
+            \App\Models\ProductSetting::where('company_id', $company)->where('product_id', $productId)
                 ->decrement('quantity', $item['quantity']);
         }
 
@@ -112,9 +126,12 @@ new class extends Component
 
     public function storeProject(): void
     {
+        $this->authorize('create', Project::class);
+        $company = auth()->user()->company_id;
+
         $validated_data= $this->validate([
             'project_name'=>'required|string|max:255',
-            'project_user_id'=>'int|required',
+            'project_user_id'=>['integer','required', Rule::exists('users', 'id')->where('company_id', $company)],
             'project_type'=>'required|string|max:255',
             'project_state'=>'required|string|max:255',
             'client_name'=>'required|string|max:255',
@@ -131,6 +148,7 @@ new class extends Component
             'client_name'=>$validated_data['client_name'],
             'project_address'=>$validated_data['project_address'],
             'project_description'=>$validated_data['project_description'],
+            'company_id'=>$company,
         ]);
 
         $this->closeModal();
@@ -139,6 +157,80 @@ new class extends Component
 
     public function render()
     {
-        return view('pages.orders.⚡create.create')->title(__('general.order_create'));
+        $company = auth()->user()->company_id;
+
+        $orders_state_options = [
+            [
+                'name' => __('admin/orders.pending'),
+                'value' => 'pending',
+            ],
+            [
+                'name' => __('admin/orders.completed'),
+                'value' =>'completed',
+            ],
+        ];
+
+        $projects = \App\Models\Project::where('company_id', $company)->get();
+        $orders_project_options = [];
+        foreach ($projects as $project){
+            $orders_project_options[] =
+                [
+                    'name' => $project->project_name,
+                    'value' => $project->id,
+                ];
+        }
+
+        $users = \App\Models\User::where('company_id', $company)->get();
+
+        $orders_users_options = [];
+        foreach ($users as $user){
+            $orders_users_options[] =
+                [
+                    'name' => "$user->first_name $user->last_name",
+                    'value' => $user->id,
+                ];
+        }
+
+        $project_options = [
+            [
+                'name' => __('admin/projects.private'),
+                'value' => \App\Enums\ProjectTypes::Private->value,
+            ],
+            [
+                'name' => __('admin/projects.corporate'),
+                'value' => \App\Enums\ProjectTypes::Corporate->value,
+            ],
+        ];
+        $project_state_options = [
+            [
+                'name' => __('admin/projects.closed'),
+                'value' => \App\Enums\ProjectStates::Closed->value,
+            ],
+            [
+                'name' => __('admin/projects.open'),
+                'value' => \App\Enums\ProjectStates::Open->value,
+            ],
+        ];
+
+        $in_charge_options = [];
+
+        foreach ($users as $user) {
+            $in_charge_options[] = [
+                'name'  => "$user->first_name $user->last_name",
+                'value' => $user->id,
+            ];
+        }
+
+
+
+
+        return view('pages.orders.⚡create.create', compact(
+            'in_charge_options',
+            'project_state_options',
+            'project_options',
+            'orders_state_options',
+            'orders_project_options',
+            'orders_users_options',
+        ))->title(__('general.order_create'));
     }
 };

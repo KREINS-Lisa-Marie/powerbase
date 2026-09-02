@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\ProductSetting;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use function Pest\Laravel\actingAs;
@@ -115,8 +116,19 @@ it('can click on one of the 5 last orders link on the dashboard and go to the or
 it('shows the number of products in stock on the dashboard ', function () {
 
     $user = User::factory()->create(['job'=>'storekeeper']);
+    $companyId = $user->company_id;
 
-    $products = \App\Models\Product::factory(15)->create();
+    $products = \App\Models\Product::factory(15)->create([
+        'company_id' => $companyId,
+    ]);
+
+    foreach ($products as $product) {
+        ProductSetting::factory()->create([
+            'product_id'=> $product->id,
+            'company_id' => $companyId,
+            'quantity' => 15,
+        ]);
+}
 
     $locale = app()->getLocale();
     actingAs($user);
@@ -133,15 +145,33 @@ it('shows the number of products in stock on the dashboard ', function () {
 it('shows the number of products <5 pieces in stock on the dashboard ', function () {
 
     $user = User::factory()->create(['job'=>'storekeeper']);
+    $companyId = $user->company_id;
 
-    $products = \App\Models\Product::factory(15)->create([
-        'quantity'=> 24
+
+    $high_products = \App\Models\Product::factory(15)->create([
+        'company_id'=> $companyId
     ]);
-    $products = \App\Models\Product::factory(15)->create([
-        'quantity'=> 4
+    $low_products = \App\Models\Product::factory(15)->create([
+        'company_id'=> $companyId
     ]);
 
-    $low_stock_nb = \App\Models\Product::where('quantity', '<', 5)->count();
+    foreach ($high_products as $product){
+        ProductSetting::factory()->create([
+            'company_id' => $companyId,
+            'product_id' => $product->id,
+            'quantity' => 24,
+        ]);
+    }
+
+    foreach ($low_products as $product){
+        ProductSetting::factory()->create([
+            'company_id' => $companyId,
+            'product_id' => $product->id,
+            'quantity' => 2,
+        ]);
+    }
+
+    $low_stock_nb = \App\Models\ProductSetting::where( 'company_id', $companyId)->where('quantity', '<', 5)->count();
 
     $locale = app()->getLocale();
     actingAs($user);

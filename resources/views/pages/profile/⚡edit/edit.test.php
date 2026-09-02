@@ -39,7 +39,6 @@ it('redirects to the profile index route after the successfull edit of a contact
             ->call('save')
             ->assertHasNoErrors()
             ->assertRedirect(route('pages::profile.index', [
-                'contact' => $this->user->id,
                 'locale' => __('general.currentLocale')]));
     }
 );

@@ -1,44 +1,5 @@
-@php
-    $orders_state_options = [
-        [
-            'name' => __('admin/orders.pending'),
-        'value' => 'pending',
-        ],
-        [
-            'name' => __('admin/orders.completed'),
-            'value' =>'completed',
-        ],
-];
-
-
-       $users = \App\Models\User::all();
-
-       $orders_users_options = [];
-
-            foreach ($users as $user){
-             $orders_users_options[] =
-                 [
-            'name' => "$user->first_name $user->last_name",
-        'value' => $user->id,
-        ];
-            }
-
-    $projects = \App\Models\Project::all();
-
-            $orders_project_options = [];
-
-            foreach ($projects as $project){
-             $orders_project_options[] =
-                 [
-            'name' => $project->project_name,
-        'value' => $project->id,
-        ];
-            }
-
-@endphp
-
-@can('update', $order)
 <main class="admin project-show" id="content">
+    @can('update', $order)
     <x-admin.page-bar>
         {{__('admin/orders.modify_order')}}
     </x-admin.page-bar>
@@ -165,5 +126,5 @@
             </div>
         </form>
     </div>
+    @endcan
 </main>
-@endcan

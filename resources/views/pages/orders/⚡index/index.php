@@ -12,8 +12,8 @@ new class extends Component
     public  $search = '';
 
 //tri
-    public $sortField = 'first_name';
-    public $sortDirection = 'asc';
+    public $sortField = 'created_at';
+    public $sortDirection = 'desc';
     protected $queryString =['sortField', 'sortDirection'];
 
     public function mount(): void
@@ -32,18 +32,27 @@ new class extends Component
         $this->sortField = $field;
     }
 
+    public function updatedSearch(): void
+    {
+        $this->resetPage();
+    }
+
     public function render()        //à chaque fois que qqch sur la page change
     {
         $search = strtolower($this->search);
+        $companyId = auth()->user()->company_id;
 
         return view('pages.orders.⚡index.index', [
             'orders' => Order::query()
+                ->where('orders.company_id', $companyId)
                 ->withCount('orderItems')       //pour savoir combien d'item il y a dans chaque commande
                 ->join('users', 'orders.user_id', '=', 'users.id')      //join parce que sinon je ne peux pas acceder au nom du user
                 ->select('orders.*', 'users.first_name', 'users.last_name')     //prend des commandes pour le prénom ou nom de...
-                ->orWhere('users.first_name', 'like', '%' . $search . '%')
-                ->orWhere('users.last_name', 'like', '%' . $search . '%')
-                ->orWhere('orders.created_at', 'like', '%' . $search . '%')
+                    ->where(function ($query) use ($search){
+                    $query->where('users.first_name', 'like', '%' . $search . '%')
+                        ->orWhere('users.last_name', 'like', '%' . $search . '%')
+                        ->orWhere('orders.created_at', 'like', '%' . $search . '%');
+                })
                 ->orderBy($this->sortField, $this->sortDirection)
                 ->paginate(10)->onEachSide(0),
             ])->title(__('general.orders'));

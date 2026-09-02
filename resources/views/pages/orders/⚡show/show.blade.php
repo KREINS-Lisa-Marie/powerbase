@@ -1,5 +1,5 @@
 @can('view', $order)
-<main class="admin project-show" id="content">
+<main class="admin project-show orders-show" id="content">
     <x-admin.page-bar>
         {{__('admin/orders.order_number_title')}} {{$order->id}}
     </x-admin.page-bar>
@@ -81,7 +81,7 @@
                     <h3 class="sro">
                         {{__('admin/projects.list_of_products')}}
                     </h3>
-                    <table class="split-table">
+                    <table class="split-table" id="orders-table">
                         <thead>
                         <tr>
                             <x-admin.components.table.table-th scope="col" direction="asc" class="">

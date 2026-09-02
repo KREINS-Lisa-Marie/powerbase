@@ -1,39 +1,10 @@
-@php
-    $vehicle_options = [
-        [
-            'name' => 'Camionette',
-        'value' => '1',
-        ],
-        [
-            'name' => 'Voiture',
-            'value' =>'0',
-        ],
-];
-
-
-    $job_options = [
-        [
-            'name' => 'Electricien',
-        'value' => 'electricien',
-        ],
-        [
-            'name' => 'Magasinier',
-            'value' =>'magasinier',
-        ],
-            [
-            'name' => 'Admin',
-            'value' =>'admin',
-        ],
-];
-@endphp
-
-@can('update', $product)
 <main class=" admin product" id="content">
     <x-admin.page-bar>
  {{__('admin/products.modify')}}
         {{$product->product_name}}
     </x-admin.page-bar>
     <div class="main-container">
+        @can('update', $product)
         <form wire:submit.prevent="save" class="profile-form volunteers-edit" enctype="multipart/form-data">
             @csrf
             <fieldset class="contact-information max-w-admin-web big-section">
@@ -85,7 +56,7 @@
                         <div>
                             <x-admin.components.fields.number wire="quantity" name="quantity"
                                                               id="quantity"
-                                                              value="{!! $product->quantity !!}" placeholder="22">
+                                                              value="{!! $quantity !!}" placeholder="22">
                                 {{__('admin/products.stock_number')}}*
                             </x-admin.components.fields.number>
                         </div>
@@ -108,6 +79,14 @@
                         </div>
                     </div>
                 </div>
+                <div>
+                    <div>
+                        <x-admin.components.fields.textarea wire="comment" name="comment" id="comment" value="{!! $comment !!}"
+                                                            placeholder="{{__('admin/products.placeholder_comment')}}">
+                            {{__('admin/products.comment')}}
+                        </x-admin.components.fields.textarea>
+                    </div>
+                </div>
 
             </fieldset>
 
@@ -120,6 +99,45 @@
                 </div>
             </div>
         </form>
+        @endcan
+        @can('updateLimited', $product)
+        <form wire:submit.prevent="updateProductLimited" class="profile-form volunteers-edit" enctype="multipart/form-data">
+            @csrf
+            <fieldset class="contact-information max-w-admin-web big-section">
+                <x-admin.components.subtitle>
+                    {{__('admin/products.general_information')}}
+                </x-admin.components.subtitle>
+                <p class="obligations m-b-32 ">
+                    {{__('worker/order.mandatory_field')}}
+                </p>
+                <div class="contact-information-list">
+                        <div>
+                            <x-admin.components.fields.number wire="quantity" name="quantity"
+                                                              id="quantity"
+                                                              value="{!! $quantity !!}" placeholder="22">
+                                {{__('admin/products.stock_number')}}*
+                            </x-admin.components.fields.number>
+                        </div>
+                        <div>
+                            <div>
+                                <x-admin.components.fields.textarea wire="comment" name="comment" id="comment" value="{!! $comment !!}"
+                                                                    placeholder="{{__('admin/products.placeholder_comment')}}">
+                                    {{__('admin/products.comment')}}
+                                </x-admin.components.fields.textarea>
+                            </div>
+                        </div>
+                </div>
+            </fieldset>
+
+            <div class="split-row">
+                <div class="admin-information-buttons">
+                    <x-admin.components.submit-button class="">
+                        {{__('admin/products.edit_product')}}
+                    </x-admin.components.submit-button>
+
+                </div>
+            </div>
+        </form>
+        @endcan
     </div>
 </main>
-@endcan

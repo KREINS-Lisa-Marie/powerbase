@@ -12,8 +12,8 @@ new class extends Component
     public $search = '';
 
     //tri
-    public $sortField = 'first_name';
-    public $sortDirection = 'asc';
+    public $sortField = 'created_at';
+    public $sortDirection = 'desc';
     protected $queryString =['sortField', 'sortDirection'];
 
     public function mount(): void
@@ -32,18 +32,27 @@ new class extends Component
         $this->sortField = $field;
     }
 
+    public function updatedSearch(): void
+    {
+        $this->resetPage();     //remet pagination à 1 quand je veux faire une search
+    }
+
     public function render()        //à chaque fois que qqch sur la page change
     {
 
         $user = auth()->user();
+        $companyId= $user->company_id;
 
         return view('pages.contacts.⚡index.index', [
             'contacts' => \App\Models\User::query()
-                ->where('first_name', 'like', '%' . $this->search . '%')
-                ->orWhere('last_name', 'like', '%' . $this->search . '%')
-                ->orWhere('email', 'like', '%' . $this->search . '%')
-                ->orWhere('phone', 'like', '%' . $this->search . '%')
-                ->orWhere('job', 'like', '%' . $this->search . '%')
+                ->where('company_id', $companyId)
+                ->where(function ($query){          //faut grouper sinon il prend des contacts d'autres sociétés qui n'ont pas ce company_id
+                    $query->where('first_name', 'like', '%' . $this->search . '%')
+                        ->orWhere('last_name', 'like', '%' . $this->search . '%')
+                        ->orWhere('email', 'like', '%' . $this->search . '%')
+                        ->orWhere('phone', 'like', '%' . $this->search . '%')
+                        ->orWhere('job', 'like', '%' . $this->search . '%');
+                })
                 ->orderBy($this->sortField, $this->sortDirection)
                 ->paginate(10)->onEachSide(0),
             'user' => $user
