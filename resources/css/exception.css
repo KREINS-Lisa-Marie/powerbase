@@ -39,7 +39,7 @@
 }
 
 @media (min-width: 1682px) {
-    .table{
+     .table{
         min-width: var(--max-w-big-desktop);
     }
 }
