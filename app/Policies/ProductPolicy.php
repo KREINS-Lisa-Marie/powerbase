@@ -44,6 +44,10 @@ class ProductPolicy
      */
     public function update(User $user, Product $product): bool
     {
+        if ($product->company_id === null) {
+            return $user->email === config('admin.global_admin_email');
+        }
+
         return $user->isAdminOrStorekeeper() && $user->company_id === $product->company_id;
     }
 
