@@ -88,7 +88,7 @@
                             {{__('admin/contacts.vehicle_type')}}
                         </x-admin.components.definition-term>
                         <x-admin.components.definition>
-                            {{$contact->car_type == 'van'? __('admin/contacts.van') : __('admin/contacts.car')}}
+                            {{$contact->car_type == 'van'? __('admin/contacts.van') : ($contact->car_type == 'car'? __('admin/contacts.car') : __('admin/contacts.no_car'))}}
                         </x-admin.components.definition>
                     </div>
                     <div>
@@ -96,7 +96,7 @@
                             {{__('admin/contacts.license_plate')}}
                         </x-admin.components.definition-term>
                         <x-admin.components.definition>
-                            {{$contact->car_plate}}
+                            {{$contact->car_plate ? $contact->car_plate : __('admin/contacts.no_carplate')}}
                         </x-admin.components.definition>
                     </div>
                 </dl>

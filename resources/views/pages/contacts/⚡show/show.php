@@ -16,6 +16,7 @@ new class extends Component
     public function render()        //à chaque fois que qqch sur la page change
     {
         $contact = \App\Models\User::findOrFail($this->contact_id);
+        $this->authorize('view', $contact);
         $user = auth()->user();
 
         return view('pages.contacts.⚡show.show', ['contact' => $contact, 'user' => $user])->title(__('general.contact_detail'));
