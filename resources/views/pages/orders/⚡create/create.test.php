@@ -34,7 +34,12 @@ it('redirects to the orders index route after the successfull creation of an ord
         ]);
         $product = \App\Models\Product::factory()->create();
 
-        $cart = ['product'=>$product->id, 'quantity'=> 3];
+        $cart = [
+            $product->id => [
+                'name' => $product->product_name,
+                'quantity' => 3,
+            ],
+        ];
 
        /* $orderItem = \App\Models\OrderItem::factory()->create([
             'order_id'=>$order->id,
