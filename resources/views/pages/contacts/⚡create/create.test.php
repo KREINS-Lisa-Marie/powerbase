@@ -41,8 +41,6 @@ it('redirects to the contacts index route after the successfull creation of a co
             ->set('private_address', '123 Main Street')
             ->set('car_type', 'Camionette')
             ->set('car_plate', 'ABC-123')
-            ->set('password', '12345678')
-            ->set('password_confirmation', '12345678')
             ->call('store')
             ->assertHasNoErrors()
             ->assertRedirect(route('pages::contacts.index', ['locale' => __('general.currentLocale')]));
