@@ -1,6 +1,6 @@
-@can('viewAnyLimited', \App\Models\Order::class)
 <section class=" worker-orders background-dark text-white section-end-128 admin orders-index-page orders-list">
-     <h2 class="uppercase text-white fs-page-title bold page-title mb-64" aria-level="2" role="heading">
+    @can('viewAnyLimited', \App\Models\Order::class)
+    <h2 class="uppercase text-white fs-page-title bold page-title mb-64" aria-level="2" role="heading">
          {{__('worker/order.orders')}}
      </h2>
     <div class="position-relative orders-filters-search">
@@ -91,8 +91,8 @@
      <div class="pagination-worker max-w-admin-web">
          {{ $orders->links() }}
      </div>
- </section>
-@endcan
+    @endcan
+</section>
 {{--
 take()
 https://stackoverflow.com/questions/45120135/in-laravel-eloquent-what-is-the-difference-between-limit-vs-take
