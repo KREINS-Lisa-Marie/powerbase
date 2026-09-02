@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Project;
+use Illuminate\Validation\Rule;
 use Livewire\Component;
 
 new class extends Component
@@ -14,6 +15,10 @@ new class extends Component
     public string $client_name ='';
     public string $project_address ='';
     public string $project_description ='';
+    public  $project_options;
+    public  $project_state_options;
+    public  $in_charge_options;
+
 
 
     public function mount(Project $project): void
@@ -28,14 +33,48 @@ new class extends Component
         $this->client_name = $project->client_name ?? '';
         $this->project_address = $project->project_address ?? '';
         $this->project_description = $project->project_description ?? '';
+
+        $this->project_options = [
+            [
+                'name' => __('admin/projects.private'),
+                'value' => \App\Enums\ProjectTypes::Private->value,
+            ],
+            [
+                'name' => __('admin/projects.corporate'),
+                'value' => \App\Enums\ProjectTypes::Corporate->value,
+            ],
+        ];
+
+        $this->project_state_options = [
+            [
+                'name' => __('admin/projects.closed'),
+                'value' => \App\Enums\ProjectStates::Closed->value,
+            ],
+            [
+                'name' => __('admin/projects.open'),
+                'value' => \App\Enums\ProjectStates::Open->value,
+            ],
+        ];
+
+        $in_charge_options = [];
+        $users =  App\Models\User::where('company_id', $project->company_id)->get();//sinon montre aussi users qui sont pas de la company;
+        foreach ($users as $user) {
+            $in_charge_options[] = [
+                'name'  => "$user->first_name $user->last_name",
+                'value' => $user->id,
+            ];
+        }
+        $this->in_charge_options = $in_charge_options ;
     }
 
 
     public function save(): void
     {
+        $companyId = auth()->user()->company_id;
+
         $validated_data= $this->validate([
             'project_name'=>'required|string|max:255',
-            'user_id'=>'integer|required|max:255',
+            'user_id'=>['int','required', Rule::exists('users', 'id')->where('company_id', $companyId)],  //évite de mettre users qui sont pas de la company
             'project_type'=>'required|string',
             'project_state'=>'required|string|max:255',
             'client_name'=>'required|string',
@@ -51,9 +90,10 @@ new class extends Component
             'client_name'=>$validated_data['client_name'],
             'project_address'=>$validated_data['project_address'],
             'project_description'=>$validated_data['project_description'],
+            'company_id'=>$this->project->company_id,
         ]);
 
-        $this->redirect(route('pages::projects.show', ['locale' => __('general.currentLocale'), 'project'=>$this->project]));
+        $this->redirect(route('pages::projects.show', ['locale' => app()->getLocale(), 'project'=>$this->project]));
     }
 
 

@@ -1,5 +1,5 @@
-@can('viewAny', \App\Models\Project::class)
 <main class="admin orders-index-page projects-index-page" id="content">
+    @can('viewAny', \App\Models\Project::class)
     <x-admin.page-bar>
         {{__('admin/projects.projects')}}
     </x-admin.page-bar>
@@ -79,5 +79,5 @@
         </div>
     </div>
 
+    @endcan
 </main>
-@endcan

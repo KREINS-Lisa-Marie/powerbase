@@ -2,6 +2,7 @@
 
 use App\Models\Project;
 use App\Models\User;
+use Illuminate\Validation\Rule;
 use Livewire\Component;
 
 new class extends Component
@@ -20,15 +21,17 @@ new class extends Component
     public function mount()
     {
         $this->authorize('create', \App\Models\Project::class);
-        $this->users = User::get();
+        $this->users = User::where('company_id', auth()->user()->company_id)->get();//sinon montre aussi users qui sont pas de la company
     }
 
 
     public function store(): void
     {
+        $companyId = auth()->user()->company_id;
+
         $validated_data= $this->validate([
             'project_name'=>'required|string|max:255',
-            'user_id'=>'int|required',
+            'user_id'=>['int','required', Rule::exists('users', 'id')->where('company_id', $companyId)],  //évite de mettre users qui sont pas de la company
             'project_type'=>'required|string|max:255',
             'project_state'=>'required|string|max:255',
             'client_name'=>'required|string|max:255',
@@ -45,9 +48,10 @@ new class extends Component
             'client_name'=>$validated_data['client_name'],
             'project_address'=>$validated_data['project_address'],
             'project_description'=>$validated_data['project_description'],
+            'company_id'=>$companyId,
         ]);
 
-        $this->redirect(route('pages::projects.index', ['locale' => __('general.currentLocale'), 'users'=>$this->users]));
+        $this->redirect(route('pages::projects.index', ['locale' => app()->getLocale()]));
     }
 
 
