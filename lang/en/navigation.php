@@ -17,6 +17,7 @@ return [
     'go_contact' => 'Go to contact page',
     'go_order' => 'Go to orders page',
     'go_cart' => 'Go to cart page',
+    'go_login' => 'Login',
     'go_profile' => 'Go to profile page',
     'change_language' => 'Change language to',
 ];

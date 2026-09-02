@@ -17,6 +17,7 @@ return [
     'go_contact' => 'Zur Kontaktseite gehen',
     'go_order' => 'Zur Bestellseite gehen',
     'go_cart' => 'Zum Warenkorb gehen',
+    'go_login' => 'Login',
     'go_profile' => 'Zur Profilseite gehen',
     'change_language' => 'Sprache ändern zu',
 ];
