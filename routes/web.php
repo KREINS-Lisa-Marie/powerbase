@@ -7,15 +7,6 @@ use App\Http\Controllers\WorkerContactController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/info', function () {
-    return view('public.info',  [PublicInfoController::class, 'index']);
-})->name('public.info');
-
-Route::get('/{locale}/info', function () {
-    return view('public.info',  [PublicInfoController::class, 'index']);
-})->name('public.info');
-
-
-Route::get('/info', function () {
     return redirect()->route('public.info', ['locale' => app()->getLocale()]);
 });
 
@@ -24,8 +15,8 @@ Route::get('/{locale}/info',  [PublicInfoController::class, 'index'])->name('pub
 
 
 Route::get('/contact-us', function () {
-    return view('public.contact');
-})->name('public.contact');
+    return redirect()->route('public.contact', ['locale' => app()->getLocale()]);
+});
 
 Route::get('/{locale}/contact-us', function () {
     return view('public.contact');
