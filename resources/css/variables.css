@@ -18,6 +18,7 @@
     --placeholder: #616161;
     --text-color-dark-red: #3A0100;
     --dark-grey: #555555;
+    --darkest-grey: #222222;
 
     --dark-background-transparent: rgba(0, 0, 0, 0.70);
 }
@@ -42,6 +43,7 @@
     --dashboard-title-desktop: 32px;
     --dashboard-numbers-desktop: 64px;
     --public-title: 128px;
+    --worker-subtitle: 18px;
 
     /*      phone       */
     --mobile-text: 12px;

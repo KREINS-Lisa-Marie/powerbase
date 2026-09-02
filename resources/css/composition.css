@@ -103,6 +103,10 @@ max-width / centering
     margin-top: var(--margin-padding-64);
 }
 
+.m-t-80{
+    margin-top: var(--margin-padding-80);
+}
+
 .m-t-32{
     margin-top: var(--margin-padding-32);
 }
@@ -150,6 +154,9 @@ justify-content: space-between;
 
 .position-relative{
     position: relative;
+}
+.absolute{
+    position: absolute;
 }
 
 .flex-a-i-center{

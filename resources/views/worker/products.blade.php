@@ -33,6 +33,6 @@
 
     </section>
     <div class="pagination-worker max-w-admin-web">
-    {{ $products->links() }}
+    {{ $products->withQueryString()->links() }}
     </div>
 </x-worker.app>
