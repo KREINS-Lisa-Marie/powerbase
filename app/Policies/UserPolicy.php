@@ -21,7 +21,7 @@ class UserPolicy
      */
     public function view(User $user, User $model): bool
     {
-        return $user->isAdminOrStorekeeper();
+        return $user->isAdminOrStorekeeper()  && $user->company_id === $model->company_id;
     }
 
     /**
@@ -37,7 +37,7 @@ class UserPolicy
      */
     public function update(User $user, User $model): bool
     {
-        return $user->isAdmin();
+        return $user->isAdmin() && $user->company_id === $model->company_id;
     }
 
     /**
@@ -45,7 +45,7 @@ class UserPolicy
      */
     public function delete(User $user, User $model): bool
     {
-        return $user->isAdmin();
+        return $user->isAdmin() && $user->company_id === $model->company_id;
     }
 
     /**
