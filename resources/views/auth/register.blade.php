@@ -1,15 +1,14 @@
-<x-worker.app title="{{__('general.reset_pw')}}">
+<x-worker.app title="{{__('general.login')}}">
+
     <h1 class="sro" role="heading" aria-level="1" data-element-id="headingsMap-0-0">
-        {{__('auth/reset_password.powerbase')}}
+        {{__('auth/login.powerbase')}}
     </h1>
 
-    <section class="login-section border-radius-16 background-light-grey ">
+    <section class="border-radius-16 background-light-grey login-section">
             <div class="d-flex flex-cr">
-                <div>
-                    <h2 class="bold text-dark-red uppercase" aria-level="2" role="heading">
-                        {{__('auth/reset_password.reset_password')}}
-                    </h2>
-                </div>
+                <h2 class="bold text-dark-red uppercase" aria-level="2" role="heading">
+                    {{__('auth/register.register')}}
+                </h2>
                 <a href="{{ route('pages::dashboard.index', ['locale' => __('general.currentLocale')]) }}"
                    lang="{{app()->getLocale()}}"
                    hreflang="{{app()->getLocale()}}"
@@ -23,46 +22,43 @@
                 </a>
             </div>
 
-            <form action="/reset-password" method="post" class="">
-                @csrf
-                <input type="hidden" name="token" value="{{ request('token') }}">
-                <x-auth.form.email-input></x-auth.form.email-input>
-                <div class="d-flex flex-col">
-                    <label for="password" class="auth-label medium">
-                        {{__('auth/login.password')}}
-                    </label>
-                    @error('password')
-                    <p class="error">
-                        {{$message}}
-                    </p>
-                    @enderror
-                    <input type="password" id="password" name="password" class="border-radius-16 background-white border-input auth-input"
-                           value="{{old('password')}}" aria-required="true">
-                </div>
-
-                <div class="d-flex flex-col">
-                    <label for="password_confirmation" class="auth-label medium">
-                        {{__('auth/reset_password.rewrite_password')}}
-                    </label>
-                    @error('password_confirmation')
-                    <p class="error">
-                        {{$message}}
-                    </p>
-                    @enderror
-                    <input type="password" id="password_confirmation" name="password_confirmation" class="border-radius-16 background-white border-input auth-input" value="" aria-required="true">
-                </div>
-
-
-                <x-auth.form.submit-button>
-                    {{__('auth/reset_password.reset_password')}}
-                </x-auth.form.submit-button>
-            </form>
-
             @if (session('status'))
-                <div class="">
+                <div class="bold">
                     {{ session('status') }}
                 </div>
             @endif
-        </section>
 
+
+            <form action="{{ route('register.store', ['locale' => app()->getLocale()]) }}" method="post" class="reset-form">
+                @csrf
+
+                <x-auth.form.text-input id="first_name" name="first_name" placeholder="John" wire="first_name" >{{__('auth/register.first_name')}}*</x-auth.form.text-input>
+                <x-auth.form.text-input id="last_name" name="last_name" placeholder="Doe" wire="last_name" >{{__('auth/register.last_name')}}*</x-auth.form.text-input>
+                <x-auth.form.phone-input></x-auth.form.phone-input>
+                <x-auth.form.text-input id="company_name" name="company_name" placeholder="Powerbase" wire="company_name" >{{__('auth/register.company_name')}}*</x-auth.form.text-input>
+                <x-auth.form.email-input></x-auth.form.email-input>
+                <x-auth.form.password wire="password" class=""></x-auth.form.password>
+                <x-auth.form.password-confirmation wire="password_confirmation" class=""></x-auth.form.password-confirmation>
+
+                <div class="add-info">
+                    <a href="{{route('auth.login', ['locale' => app()->getLocale()])}}" class="d-block medium m-b-24">
+                        {{__('auth/register.already_account')}}
+                    </a>
+
+                    <div class="d-flex  flex-gap-12 mb-64">
+                        <input type="checkbox" name="remember" id="remember_me"
+                               class="p-16 border-r-small background-white ">
+
+                        <label for="remember_me" class="">
+                            {{__('auth/login.remember_me')}}
+                        </label>
+                    </div>
+
+                </div>
+
+                <x-auth.form.submit-button>
+                    {{__('auth/login.register')}}
+                </x-auth.form.submit-button>
+            </form>
+        </section>
     </x-worker.app>
