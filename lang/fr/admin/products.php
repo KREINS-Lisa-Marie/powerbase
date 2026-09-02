@@ -4,7 +4,7 @@ return [
     'general_information' => 'Informations générales',
     'product_name' => 'Nom du produit',
     'description' => 'Description',
-    'notes' => 'Notes',
+    'notes' => 'Catégorie',
     'stock_number' => 'Stock',
     'image' => 'Image',
     'modify_product' => 'Modifier le produit',
@@ -33,5 +33,9 @@ return [
     'gtin' => 'GTIN13',
 
     'no_result'=>'Pas de produit trouvé',
+    'scan_gtin'=>'Scanner GTIN',
+    'cancel'=>'Annuler',
+    'comment'=>'Commentaire',
+    'placeholder_comment'=>'La boite vient avec 3 pièces maintenant',
 
 ];

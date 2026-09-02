@@ -4,7 +4,7 @@ return [
     'general_information' => 'Allgemeine Informationen',
     'product_name' => 'Produktname',
     'description' => 'Beschreibung',
-    'notes' => 'Notizen',
+    'notes' => 'Kategorie',
     'stock_number' => 'Lagerbestand',
     'image' => 'Bild',
     'modify_product' => 'Produkt bearbeiten',
@@ -33,4 +33,8 @@ return [
 
 
     'no_result'=>'Kein Produkt gefunden',
+    'scan_gtin'=>'GTIN scannen',
+    'cancel'=>'Abbruch',
+    'comment'=>'Kommentar',
+    'placeholder_comment'=>'Verpackung mit 3 Stück jetzt',
 ];

@@ -46,5 +46,7 @@ return [
     'van' => 'Camionette',
 
     'repeat_password' => 'Répétez le mot de passe',
+    'no_car' => 'Pas de voiture',
+    'no_carplate' => 'Pas de plaque',
 
 ];

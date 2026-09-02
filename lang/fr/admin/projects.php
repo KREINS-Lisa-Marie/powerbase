@@ -44,4 +44,6 @@ return [
     'list_of_projects' =>'Liste de projets',
     'list_of_products' =>'Liste de produits',
 
+    'no_result' =>'Pas de projets trouvés',
+
 ];

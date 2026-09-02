@@ -40,6 +40,7 @@ return [
 
     'project_state' => 'Project status',
     'no_product_found' => 'No products chosen',
+    'no_result' =>'No projects found',
 
     'list_of_projects' =>'List of projects',
     'list_of_products' =>'List of products',

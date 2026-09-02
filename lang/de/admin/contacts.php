@@ -45,4 +45,7 @@ return [
     'van' => 'Kleintransporter',
 
     'repeat_password' => 'Password wiederholen',
+    'no_car' => 'Kein Auto',
+    'no_carplate' => 'Kein Kennzeichen',
+
 ];

@@ -30,4 +30,13 @@ return [
 
     'my_password'=>'My password',
     'password_not_empty'=>'The password cannot be empty',
+    'company_name'=>'Company',
+    'company_phone'=>'Warehouse number',
+    'company_email'=>'Warehouse email',
+    'powerbase_support'=>'Powerbase Support',
+    'powerbase_support_phone'=>'Support phone',
+    'powerbase_support_email'=>'Support email',
+    'company_information'=>'Company information',
+    'edit_company'=>'Edit company information',
+    'submit_company_info'=>'Save information',
 ];
