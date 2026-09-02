@@ -3,7 +3,7 @@
 return [
     'add_to_cart' => 'Mettre dans le panier',
     'remaining_stock' => 'Stock restant',
-    'notes' => 'Notes',
+    'notes' => 'Catégorie',
     'description' => 'Description',
 
     'ref_article' => 'Réference',
