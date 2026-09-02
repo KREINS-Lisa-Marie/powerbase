@@ -63,12 +63,30 @@
     </table>
     @if($order->order_state == 'pending')
     <div class="m-t-64">
-        <form wire:submit="destroy" method="post">
-            @csrf
-            <x-admin.components.delete-btn title="{{__('worker/order.delete_the_order')}}">
-                {{__('worker/orders.delete_order')}}
-            </x-admin.components.delete-btn>
-        </form>
+        <button type="button" wire:click="confirmDelete" class="text-white border-radius-16 admin-secondary-button bold t-a-center">
+            {{__('worker/orders.delete_order')}}
+        </button>
+
+        @if($openModal)
+            <div class="bg-opacity">
+                <div class="confirmation-modal border-r-big d-flex flex-c j-c-center flex-gap-56">
+                    <p class="bold ">{{ __('worker/orders.confirm_delete_order') }}</p>
+                    <div class="d-flex flex-dir-col flex-gap-24 flex-wrap">
+                        <form wire:submit="destroy" method="post">
+                            @csrf
+                            <x-admin.components.delete-btn title="{{__('worker/order.delete_the_order')}}">
+                                {{__('worker/orders.delete_order')}}
+                            </x-admin.components.delete-btn>
+                        </form>
+                        <button type="button" wire:click="cancelDelete"
+                                class="text-white border-radius-16 admin-primary-button bold t-a-center">
+                            {{__('worker/orders.cancel')}}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        @endif
+
     </div>
     @endif
 </section>
