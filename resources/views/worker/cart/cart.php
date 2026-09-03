@@ -94,9 +94,11 @@ new class extends Component
                 'product_id'=> $productId,
                 'quantity'=> $item['quantity'],
             ]);
-            \App\Models\ProductSetting::where('company_id', $companyId)
-                ->where( 'product_id', $productId)
-                ->decrement('quantity', $item['quantity']);
+
+            \App\Models\ProductSetting::firstOrCreate(
+                ['company_id' => $companyId, 'product_id' => $productId],
+                ['quantity'=> 0 ],      // si trouve pas il mets stock à 0
+            )->decrement('quantity', $item['quantity']);
         }
 
         //réinitialiser tout après avoir créé la commande
