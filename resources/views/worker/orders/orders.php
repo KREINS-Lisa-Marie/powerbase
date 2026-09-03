@@ -32,6 +32,11 @@ new class extends Component
         $this->sortField = $field;
     }
 
+    public function updatedSearch(): void
+    {
+        $this->resetPage();
+    }
+
 
     public function mount()         //avant de render ( 1x seulement)
     {
@@ -66,18 +71,6 @@ new class extends Component
     public function render(): View
     {
         $search = strtolower($this->search);
-
-       /* return view('worker::orders.orders', [
-            'orders' => Order::query()
-                ->withCount('orderItems')       //pour savoir combien d'item il y a dans chaque commande
-                ->where('user_id', $this->user->id)
-                /*->join('order_items', 'orders.id', '=', 'order_items.order_id')      //join parce que sinon je ne peux pas acceder au nom du user
-                ->select('orders.*', 'users.first_name', 'users.last_name')     //prend des commandes pour le prénom ou nom de.../
-                ->where('orders.created_at', 'like', '%' . $search . '%')
-                ->orWhere('orders.order_state', 'like', '%' . $search . '%')
-                ->orderBy($this->sortField, $this->sortDirection)
-                ->paginate(10)->onEachSide(0)
-        ])->layout('components.worker.app')->title(__('general.worker_orders'));*/
 
          $orders =  Order::query()
                  ->withCount('orderItems')       //pour savoir combien d'item il y a dans chaque commande
