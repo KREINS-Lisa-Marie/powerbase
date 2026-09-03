@@ -1,7 +1,8 @@
 
 @php
-    $new_order = \App\Models\Order::where('order_state', '!=', 'completed')->get();
-    $orders_number = $new_order->count();
+    $orders_number = \App\Models\Order::where('order_state', '!=', 'completed')
+    ->where('company_id', auth()->user()->company_id)
+    ->count();
 
 @endphp
 <header class="sidebar d-flex">
