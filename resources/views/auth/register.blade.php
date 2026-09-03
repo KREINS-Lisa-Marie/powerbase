@@ -45,14 +45,14 @@
                         {{__('auth/register.already_account')}}
                     </a>
 
-                    <div class="d-flex  flex-gap-12 mb-64">
+      {{--              <div class="d-flex  flex-gap-12 mb-64">
                         <input type="checkbox" name="remember" id="remember_me"
                                class="p-16 border-r-small background-white ">
 
                         <label for="remember_me" class="">
                             {{__('auth/login.remember_me')}}
                         </label>
-                    </div>
+                    </div>--}}
 
                 </div>
 

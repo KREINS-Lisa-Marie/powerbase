@@ -16,11 +16,11 @@
                     {{__('public/legals.general_info')}}
                 </h4>
                 <div itemscope itemtype="https://schema.org/Organization">
-                    <span itemprop="legalName">Les pattes heureuses</span><br>
+                    <span itemprop="legalName">Powerbase</span><br>
                     <p itemprop="address" itemscope itemtype="https://schema.org/PostalAddress"><span itemprop="streetAddress">Rue des Bois 4,</span> <span itemprop="postalCode">4700</span> <span itemprop="addressLocality">Malmedy</span><br>
                 </p>
                     <p>
-                        <span itemprop="email">lespattesheureuses@info.be</span>
+                        <span itemprop="email">powerbase@info.be</span>
                     </p>
                 </div>
             </div>
