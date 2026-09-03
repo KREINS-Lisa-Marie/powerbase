@@ -86,6 +86,7 @@
                                 {{__('admin/products.ref_article')}}*
                             </x-admin.components.fields.text>
                         </div>
+                        @cannot('createLimited', \App\Models\Product::class)
                         <div>
                             <x-admin.components.fields.number wire="quantity" name="quantity"
                                                               id="quantity"
@@ -93,6 +94,7 @@
                                 {{__('admin/products.stock_number')}}*
                             </x-admin.components.fields.number>
                         </div>
+                        @endcannot
                     </dl>
 
                     <div>
@@ -201,6 +203,7 @@
                         </div>
                     </div>
                 </div>
+                @cannot('createLimited', \App\Models\Product::class)
                 <div>
                     <div>
                         <x-admin.components.fields.textarea wire="comment" name="comment" id="comment" value="{!! $comment !!}"
@@ -209,6 +212,7 @@
                         </x-admin.components.fields.textarea>
                     </div>
                 </div>
+                @endcannot
             </fieldset>
 
             <div class="split-row">

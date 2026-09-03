@@ -57,17 +57,26 @@ new class extends Component
     {
         $this->authorize('update', $this->product);
 
-        $validated_data= $this->validate([
+        $validationRules = [
             'product_name'=>'required|string|max:255',
             'brand'=>'string|required|max:255',
             'product_notes'=>['nullable', 'string'],
             'ref_article'=>'string|required|max:255',
             'gtin' => ['required', 'string', 'max:255', Rule::unique('products')->ignore        ($this->product->id)],  //sinon fail
             'product_description'=>['nullable', 'string'],
-            'comment'=>['nullable', 'string'],
-            'quantity'=>'required|integer',
+            /*'comment'=>['nullable', 'string'],*/
+            /*'quantity'=>'required|integer',*/
             'product_image'=>'image|nullable|mimes:jpg,jpeg,png,webp',
-        ]);
+        ];
+
+        $globalProduct = $this->product->company_id === null ;
+
+        if (!$globalProduct){
+            $validationRules['comment'] = ['nullable', 'string'];
+            $validationRules['quantity'] = 'required|integer';
+        }
+
+        $validated_data = $this->validate($validationRules);
 
         $companyId = auth()->user()->company_id;
 
@@ -109,11 +118,12 @@ new class extends Component
             'product_image'=> $image_path,
         ]);
 
+        if (!$globalProduct){
         \App\Models\ProductSetting::updateOrCreate(
             ['company_id' => $companyId, 'product_id'=>$this->product->id],
             ['quantity'=>$validated_data['quantity'], 'comment'=>$validated_data['comment']],
         );
-
+        }
         $locale = app()->getLocale();
 
         $this->redirect(route('pages::products.show', ['locale' => __('general.currentLocale'), 'product'=>$this->product]));

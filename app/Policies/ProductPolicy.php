@@ -39,6 +39,11 @@ class ProductPolicy
         return $user->isAdminOrStorekeeper();
     }
 
+    public function createLimited(User $user): bool
+    {
+        return $user->email === config('admin.global_admin_email');
+    }
+
     /**
      * Determine whether the user can update the model.
      */
@@ -53,7 +58,7 @@ class ProductPolicy
 
     public function updateLimited(User $user, Product $product): bool
     {
-        return $user->isAdminOrStorekeeper() && $product->company_id === null;
+        return $user->isAdminOrStorekeeper() && $product->company_id === null && $user->email !== config('admin.global_admin_email');
     }
 
     /**

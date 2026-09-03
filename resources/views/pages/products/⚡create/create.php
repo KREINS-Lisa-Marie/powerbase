@@ -27,17 +27,28 @@ new class extends Component
 
     public function store(): void
     {
-        $validated_data= $this->validate([
+
+        $user = auth()->user();
+        $globalAdmin = $user->can('createLimited', \App\Models\Product::class);
+
+
+        $validationRules = [
             'product_name'=>'required|string|max:255',
             'brand'=>'string|required|max:255',
             'product_notes'=>['nullable', 'string'],
             'ref_article'=>'string|required|max:255',
             'gtin'=>['required','string','max:255',Rule::unique('products')],
             'product_description'=>['nullable', 'string'],
-            'comment'=>['nullable', 'string'],
-            'quantity'=>'required|int',
             'product_image'=>'image|nullable|mimes:jpg,jpeg,png,webp',
-        ]);
+        ];
+
+        if (!$globalAdmin){
+            $validationRules['quantity'] = 'required|int';
+            $validationRules['comment'] = ['nullable', 'string'] ;
+        }
+
+        $validated_data = $this->validate($validationRules);
+
 
         if ($this->product_image){
             $image_path = $this->product_image->store(config('productimage.originals_path'), 's3');
@@ -69,7 +80,10 @@ new class extends Component
             $image_path = null;
         }
 
-        $companyId = auth()->user()->company_id;
+        $companyId = $globalAdmin ? null : auth()->user()->company_id;
+
+
+
 
         $product = \App\Models\Product::create([
             'product_name'=>$validated_data['product_name'],
@@ -82,13 +96,14 @@ new class extends Component
             'product_image'=> $image_path,
             'company_id'=>$companyId
         ]);
-
+        if (!$globalAdmin){
         $productSettings = \App\Models\ProductSetting::create([
             'company_id'=> $companyId,
            'product_id'=>$product->id,
            'quantity'=>$validated_data['quantity'],
             'comment'=>$validated_data['comment'],
         ]);
+        }
 
         $this->redirectRoute('pages::products.index', ['locale' => __('general.currentLocale')]);
     }

@@ -52,7 +52,7 @@
                                 {{__('admin/products.ref_article')}}*
                             </x-admin.components.fields.text>
                         </div>
-
+                        @if($product->company_id !== null)
                         <div>
                             <x-admin.components.fields.number wire="quantity" name="quantity"
                                                               id="quantity"
@@ -60,6 +60,7 @@
                                 {{__('admin/products.stock_number')}}*
                             </x-admin.components.fields.number>
                         </div>
+                        @endif
                     </dl>
 
                     <div>
@@ -79,6 +80,7 @@
                         </div>
                     </div>
                 </div>
+                @if($product->company_id !== null)
                 <div>
                     <div>
                         <x-admin.components.fields.textarea wire="comment" name="comment" id="comment" value="{!! $comment !!}"
@@ -87,6 +89,7 @@
                         </x-admin.components.fields.textarea>
                     </div>
                 </div>
+                @endif
 
             </fieldset>
 
