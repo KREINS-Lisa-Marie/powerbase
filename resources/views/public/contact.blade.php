@@ -1,13 +1,12 @@
 <x-public.app title="{{__('general.worker_contact')}}">
 <section class="m-l-r-main body-content contact-us-section border-radius-16">
     <h2 class="bold page-title">
-        Contactez-nous
+        {{__('public/contact.contact_us')}}
     </h2>
     <div class="d-flex flex-r flex-gap-24 flex-a-i-center">
         <div class="first-left">
             <p>
-                Si vous avez des questions ou suggestions pour améliorer notre application, veuillez nous contacter via
-                email ou téléphone.
+                {{__('public/contact.for_questions')}}
             </p>
         </div>
         <div class="second-right">
